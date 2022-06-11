@@ -26,7 +26,7 @@ class RegistrationController extends Controller
             'country' => ['required'],
             'department' => ['required'],
             'address' => ['required'],
-            'registration_type' => ['required'],
+            'registration_type' => ['required'], // Considered as role in User Model
             'privacy_policy_check' => ['required'],
         ]);
 
@@ -35,6 +35,7 @@ class RegistrationController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
+            'role' => $request->registration_type,
             'company' => $request->company,
             'postal_code' => $request->postal_code,
             'city' => $request->city,
