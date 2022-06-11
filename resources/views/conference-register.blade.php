@@ -1,20 +1,31 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 <div class="title">Registration</div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form method="POST" action="/registration">
     @csrf
     <div class="user__details">
         <div class="input__box">
             <span class="details">Full Name</span>
-            <input type="text" name="fullName" placeholder="E.g: John Smith" required>
+            <input type="text" name="name" value="{{ old('name') }}" placeholder="E.g: John Smith" required>
         </div>
         <div class="input__box">
             <span class="details">Email</span>
-            <input type="email" name="email" placeholder="johnsmith@hotmail.com" required>
+            <input type="email" name="email" value="{{ old('email') }}" placeholder="johnsmith@hotmail.com" required>
         </div>
         <div class="input__box">
             <span class="details">Phone Number</span>
-            <input type="tel" name="phone" placeholder="012-345-6789" required>
+            <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="012-345-6789" required>
         </div>
 
         <div class="input__box">
@@ -23,30 +34,30 @@
         </div>
         <div class="input__box">
             <span class="details">Confirm Password</span>
-            <input type="password" name="confirmPassword" placeholder="********" required>
+            <input type="password" name="password_confirmation" placeholder="********" required>
         </div>
 
         <div class="input__box">
             <span class="details">Position / Department</span>
-            <input type="text" name="department" required>
+            <input type="text" name="department" value="{{ old('department') }}" required>
         </div>
         <div class="input__box">
             <span class="details">Organization / Company </span>
-            <input type="text" name="company" required>
+            <input type="text" name="company" value="{{ old('company') }}" required>
         </div>
 
         <div class="input__box">
             <span class="details">Address</span>
-            <input type="text" name="address" required>
+            <input type="text" name="address" value="{{ old('address') }}" required>
         </div>
         <div class="input__box">
             <span class="details">Postal Code </span>
-            <input type="tel" required>
+            <input type="text" name="postal_code" value="{{ old('postal_code') }}" required>
         </div>
 
         <div class="input__box">
             <span class="details">Country </span>
-            <select class="form-control" data-val="true" data-val-required="The Country field is required." id="Country" name="Country">
+            <select class="form-control" data-val="true" data-val-required="The Country field is required." id="country" name="country">
                 <option value="">-- choose one --</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Albania">Albania</option>
@@ -292,25 +303,23 @@
 
         <div class="input__box">
             <span class="details">City</span>
-            <input type="text" name="city" required>
+            <input type="text" name="city" value="{{ old('city') }}" required>
         </div>
 
         <div class="input__box">
-            <span class="details">Amount</span>
-            <select class="form-control" id="amount" name="amount">
+            <span class="details">Registration Type</span>
+            <select class="form-control" id="registration_type" name="registration_type" required>
                 <option value="">-- choose one --</option>
-                <option value="None">$ 100</option>
-                <option value="Gluten Free">$ 200</option>
-                <option value="Vegetarian"> $ 300</option>
-                <option value="Vegan">$ 400</option>
-                <option value="Halal Food">$ 500</option>
-                <option value="al">$ 600</option>
+                <option value="doctors">Doctors</option>
+                <option value="nurs_and_paramedics">Nurs & Paramedics</option>
+                <option value="students">Students</option>
+                <option value="international_deligate">International Deligate</option>
             </select>
         </div>
         <div style="clear:both;"> </div>
 
         <p class="agree">
-            <input style="width: 20px; height: 20px; position: relative;top: 4px;" name="privacyPolicyCheck" type="checkbox">
+            <input style="width: 20px; height: 20px; position: relative;top: 4px;" name="privacy_policy_check" type="checkbox" required>
             I agree to the <a href="#"> Privacy Policy</a>
         </p>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Srmklive\PayPal\ExpressCheckout;
 
 class PaypalPaymentController extends Controller
 {
@@ -39,7 +40,7 @@ class PaypalPaymentController extends Controller
 
     public function paymentSuccess(Request $request)
     {
-        $paypalModule = new ExpressCheckout;
+        $paypalModule = new ExpressCheckout();
         $response = $paypalModule->getExpressCheckoutDetails($request->token);
 
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
