@@ -22,7 +22,7 @@
 
                 <li><a href="#">Late Abstracts</a></li>
 
-                <li><a href="registration.html">Registration</a></li>
+                <li><a href="/registration">Registration</a></li>
                 <li><a href="#">Accommodation</a></li>
 
                 <li><a href="#">Travel </a></li>
