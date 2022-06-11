@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,16 @@ Route::get('/', function () {
 Route::get('/registration', function () {
     return view('conference-register');
 });
+
+Route::post('/registration', function () {
+    return view('conference-register');
+});
+
+Route::post('/registration', [RegistrationController::class, 'register']);
+
+Route::get('handle-payment', 'PayPalPaymentController@handlePayment')->name('make.payment');
+Route::get('cancel-payment', 'PayPalPaymentController@paymentCancel')->name('cancel.payment');
+Route::get('payment-success', 'PayPalPaymentController@paymentSuccess')->name('success.payment');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

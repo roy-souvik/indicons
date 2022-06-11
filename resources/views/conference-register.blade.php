@@ -1,45 +1,43 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 <div class="title">Registration</div>
-<form method="POST" action="/profile">
+<form method="POST" action="/registration">
     @csrf
     <div class="user__details">
         <div class="input__box">
             <span class="details">Full Name</span>
-            <input type="text" placeholder="E.g: John Smith" required>
+            <input type="text" name="fullName" placeholder="E.g: John Smith" required>
         </div>
         <div class="input__box">
             <span class="details">Email</span>
-            <input type="email" placeholder="johnsmith@hotmail.com" required>
+            <input type="email" name="email" placeholder="johnsmith@hotmail.com" required>
         </div>
         <div class="input__box">
             <span class="details">Phone Number</span>
-            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789" required>
+            <input type="tel" name="phone" placeholder="012-345-6789" required>
         </div>
-
 
         <div class="input__box">
             <span class="details">Password</span>
-            <input type="password" placeholder="********" required>
+            <input type="password" name="password" placeholder="********" required>
         </div>
         <div class="input__box">
             <span class="details">Confirm Password</span>
-            <input type="password" placeholder="********" required>
+            <input type="password" name="confirmPassword" placeholder="********" required>
         </div>
 
         <div class="input__box">
             <span class="details">Position / Department</span>
-            <input type="email" required>
+            <input type="text" name="department" required>
         </div>
         <div class="input__box">
             <span class="details">Organization / Company </span>
-            <input type="tel" required>
+            <input type="text" name="company" required>
         </div>
-
 
         <div class="input__box">
             <span class="details">Address</span>
-            <input type="email" required>
+            <input type="text" name="address" required>
         </div>
         <div class="input__box">
             <span class="details">Postal Code </span>
@@ -294,16 +292,12 @@
 
         <div class="input__box">
             <span class="details">City</span>
-            <input type="email" required>
+            <input type="text" name="city" required>
         </div>
-
-
-
-
 
         <div class="input__box">
             <span class="details">Amount</span>
-            <select class="form-control" id="Diatery" name="Diatery">
+            <select class="form-control" id="amount" name="amount">
                 <option value="">-- choose one --</option>
                 <option value="None">$ 100</option>
                 <option value="Gluten Free">$ 200</option>
@@ -315,15 +309,15 @@
         </div>
         <div style="clear:both;"> </div>
 
-        <p class="agree"> <input style="    width: 20px;
-    height: 20px;
-    position: relative;
-    top: 4px;" type="checkbox"> I agree to the <a href="#"> Privacy Policy </a> </p>
+        <p class="agree">
+            <input style="width: 20px; height: 20px; position: relative;top: 4px;" name="privacyPolicyCheck" type="checkbox">
+            I agree to the <a href="#"> Privacy Policy</a>
+        </p>
 
     </div>
 
     <div class="button">
-        <input type="submit" value="Register">
+        <input type="submit" value="Register" />
     </div>
 </form>
 @stop
