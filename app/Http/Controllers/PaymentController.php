@@ -38,9 +38,9 @@ class PaymentController extends Controller
             [
                 'role' => 'student',
                 'currency' => 'INR',
-                'early_bird_registration_fees' => 2,
-                'standard_registration_fees' => 4,
-                'spot_registration_fees' => 6,
+                'early_bird_registration_fees' => 3000,
+                'standard_registration_fees' => 3500,
+                'spot_registration_fees' => 5000,
             ],
             [
                 'role' => 'international_deligate',
