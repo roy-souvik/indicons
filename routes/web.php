@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,12 +29,16 @@ Route::post('/registration', function () {
 
 Route::post('/registration', [RegistrationController::class, 'register']);
 
-Route::get('handle-payment', 'PayPalPaymentController@handlePayment')->name('make.payment');
-Route::get('cancel-payment', 'PayPalPaymentController@paymentCancel')->name('cancel.payment');
-Route::get('payment-success', 'PayPalPaymentController@paymentSuccess')->name('success.payment');
+Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
+    ->middleware(['auth'])
+    ->name('payment.show');
+
+// Route::get('handle-payment', 'PaymentController@handlePayment')->name('payment.handler');
+// Route::get('cancel-payment', 'PaymentController@paymentCancel')->name('payment.cancel');
+// Route::get('payment-success', 'PaymentController@paymentSuccess')->name('payment.success');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -310,9 +310,9 @@
             <span class="details">Registration Type</span>
             <select class="form-control" id="registration_type" name="registration_type" required>
                 <option value="">-- choose one --</option>
-                <option value="doctors">Doctors</option>
-                <option value="nurs_and_paramedics">Nurs & Paramedics</option>
-                <option value="students">Students</option>
+                <option value="doctor">Doctors</option>
+                <option value="nurs_and_paramedic">Nurs & Paramedics</option>
+                <option value="student">Students</option>
                 <option value="international_deligate">International Deligate</option>
             </select>
         </div>

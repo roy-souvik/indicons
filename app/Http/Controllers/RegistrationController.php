@@ -48,8 +48,6 @@ class RegistrationController extends Controller
 
         Auth::login($user);
 
-        // Redirect to payment page
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('payment.show'));
     }
 }
