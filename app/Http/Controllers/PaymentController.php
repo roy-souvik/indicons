@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentSuccess;
 use App\Models\ConferencePayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
-use Srmklive\PayPal\ExpressCheckout;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class PaymentController extends Controller
@@ -16,31 +17,31 @@ class PaymentController extends Controller
         $paymentSlab = [
             [
                 'role' => 'doctor',
-                'currency' => 'INR',
-                'early_bird_registration_fees' => 12000,
-                'standard_registration_fees' => 13000,
-                'spot_registration_fees' => 13000,
+                'currency' => 'USD',
+                'early_bird_registration_fees' => 12000/78,
+                'standard_registration_fees' => 13000/78,
+                'spot_registration_fees' => 13000/78,
             ],
             [
                 'role' => 'nurs_and_paramedic',
-                'currency' => 'INR',
-                'early_bird_registration_fees' => 12000,
-                'standard_registration_fees' => 13000,
-                'spot_registration_fees' => 13000,
+                'currency' => 'USD',
+                'early_bird_registration_fees' => 12000/78,
+                'standard_registration_fees' => 13000/78,
+                'spot_registration_fees' => 13000/78,
             ],
             [
                 'role' => 'nurs_and_paramedics',
-                'currency' => 'INR',
-                'early_bird_registration_fees' => 12000,
-                'standard_registration_fees' => 13000,
-                'spot_registration_fees' => 13000,
+                'currency' => 'USD',
+                'early_bird_registration_fees' => 12000/78,
+                'standard_registration_fees' => 13000/78,
+                'spot_registration_fees' => 13000/78,
             ],
             [
                 'role' => 'student',
-                'currency' => 'INR',
-                'early_bird_registration_fees' => 3000,
-                'standard_registration_fees' => 3500,
-                'spot_registration_fees' => 5000,
+                'currency' => 'USD',
+                'early_bird_registration_fees' => 3000/78,
+                'standard_registration_fees' => 3500/78,
+                'spot_registration_fees' => 5000/78,
             ],
             [
                 'role' => 'international_deligate',
@@ -78,7 +79,7 @@ class PaymentController extends Controller
 
         $payment->save();
 
-        // TODO: Send email
+        Mail::to(Auth::user())->send(new PaymentSuccess($request->transaction_id));
 
         return $payment;
     }
