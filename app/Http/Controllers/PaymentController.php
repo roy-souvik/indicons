@@ -111,11 +111,13 @@ class PaymentController extends Controller
 
     public function paymentCancel()
     {
-        dd('Your payment has been declend. The payment cancelation page goes here!');
+        dd('Your payment has been declined.');
     }
 
     public function paymentSuccess(Request $request)
     {
-        dd($request->transaction_id . ' Payment was successfull. The payment success page goes here!');
+        $transactionId = $request->transaction_id;
+
+        return view('payment-success', compact('transactionId'));
     }
 }
