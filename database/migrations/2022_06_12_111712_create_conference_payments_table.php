@@ -16,7 +16,7 @@ class CreateConferencePaymentsTable extends Migration
         Schema::create('conference_payments', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('payment_id');
+            $table->string('transaction_id');
             $table->string('status');
             $table->string('amount');
             $table->json('payment_response');

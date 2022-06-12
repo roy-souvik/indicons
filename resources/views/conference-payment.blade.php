@@ -2,6 +2,7 @@
 @section('content')
 
 <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
 
@@ -45,6 +46,24 @@
 <div id="paypal-button-container" style="width: 3rem;"></div>
 
 <script>
+    const token = "{{ csrf_token() }}";
+
+    function saveConferencePayment(data) {
+        return $.ajax({
+            url: '/save-payment',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            processData: false,
+            success: function(result) {
+                return result;
+            },
+            error: function(xhr, status, error) {
+                return error;
+            },
+        });
+    }
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
 
@@ -62,10 +81,19 @@
         // Finalize the transaction
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(orderData) {
-                // Successful capture! For demo purposes:
-                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                var transaction = orderData.purchase_units[0].payments.captures[0];
-                alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                const transaction = orderData.purchase_units[0].payments.captures[0];
+
+                const responseData = {
+                    '_token': token,
+                    'transaction_id': transaction.id,
+                    'status': transaction.status,
+                    'amount': transaction.amount.value,
+                    'payment_response': orderData,
+                };
+
+                saveConferencePayment(responseData).then(() => {
+                    location.href = '/payment-success?transaction_id=' + transaction.id;
+                });
             });
         },
     }).render('#paypal-button-container');

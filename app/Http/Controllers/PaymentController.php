@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConferencePayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
@@ -37,9 +38,9 @@ class PaymentController extends Controller
             [
                 'role' => 'student',
                 'currency' => 'INR',
-                'early_bird_registration_fees' => 3000,
-                'standard_registration_fees' => 3500,
-                'spot_registration_fees' => 5000,
+                'early_bird_registration_fees' => 2,
+                'standard_registration_fees' => 4,
+                'spot_registration_fees' => 6,
             ],
             [
                 'role' => 'international_deligate',
@@ -65,31 +66,48 @@ class PaymentController extends Controller
         return view('conference-payment', compact('paymentSlabItem', 'registrationTypeAuth'));
     }
 
-    public function handlePayment()
+    public function saveConferencePayment(Request $request): ConferencePayment
     {
-        $product = [];
-        $product['items'] = [
-            [
-                'name' => 'Nike Joyride 2',
-                'price' => 112,
-                'desc'  => 'Running shoes for Men',
-                'qty' => 2
-            ]
-        ];
+        $payment = new ConferencePayment();
 
-        $product['invoice_id'] = 1;
-        $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
-        $product['return_url'] = route('success.payment');
-        $product['cancel_url'] = route('cancel.payment');
-        $product['total'] = 224;
+        $payment->user_id = Auth::user()->id;
+        $payment->transaction_id = $request->transaction_id;
+        $payment->status = $request->status;
+        $payment->amount = $request->amount;
+        $payment->payment_response = json_encode($request->payment_response);
 
-        $paypalModule = new ExpressCheckout;
+        $payment->save();
 
-        $res = $paypalModule->setExpressCheckout($product);
-        $res = $paypalModule->setExpressCheckout($product, true);
+        // TODO: Send email
 
-        return redirect($res['paypal_link']);
+        return $payment;
     }
+
+    // public function handlePayment()
+    // {
+    //     $product = [];
+    //     $product['items'] = [
+    //         [
+    //             'name' => 'Nike Joyride 2',
+    //             'price' => 112,
+    //             'desc'  => 'Running shoes for Men',
+    //             'qty' => 2
+    //         ]
+    //     ];
+
+    //     $product['invoice_id'] = 1;
+    //     $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
+    //     $product['return_url'] = route('success.payment');
+    //     $product['cancel_url'] = route('cancel.payment');
+    //     $product['total'] = 224;
+
+    //     $paypalModule = new ExpressCheckout;
+
+    //     $res = $paypalModule->setExpressCheckout($product);
+    //     $res = $paypalModule->setExpressCheckout($product, true);
+
+    //     return redirect($res['paypal_link']);
+    // }
 
     public function paymentCancel()
     {
@@ -98,13 +116,6 @@ class PaymentController extends Controller
 
     public function paymentSuccess(Request $request)
     {
-        $paypalModule = new ExpressCheckout();
-        $response = $paypalModule->getExpressCheckoutDetails($request->token);
-
-        if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-            dd('Payment was successfull. The payment success page goes here!');
-        }
-
-        dd('Error occured!');
+        dd($request->transaction_id . ' Payment was successfull. The payment success page goes here!');
     }
 }

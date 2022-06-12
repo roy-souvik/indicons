@@ -33,9 +33,16 @@ Route::get('/conference-payment', [PaymentController::class, 'showConferencePaym
     ->middleware(['auth'])
     ->name('payment.show');
 
+Route::post('/save-payment', [PaymentController::class, 'saveConferencePayment'])
+    ->middleware(['auth'])
+    ->name('payment.save');
+
+Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])
+    ->middleware(['auth'])
+    ->name('payment.success');
+
 // Route::get('handle-payment', 'PaymentController@handlePayment')->name('payment.handler');
-// Route::get('cancel-payment', 'PaymentController@paymentCancel')->name('payment.cancel');
-// Route::get('payment-success', 'PaymentController@paymentSuccess')->name('payment.success');
+Route::get('cancel-payment', 'PaymentController@paymentCancel')->name('payment.cancel');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
