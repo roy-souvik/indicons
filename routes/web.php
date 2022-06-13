@@ -29,23 +29,30 @@ Route::post('/registration', function () {
 
 Route::post('/registration', [RegistrationController::class, 'register']);
 
-Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
-    ->middleware(['auth'])
-    ->name('payment.show');
 
-Route::post('/save-payment', [PaymentController::class, 'saveConferencePayment'])
-    ->middleware(['auth'])
-    ->name('payment.save');
+Route::middleware('auth')->group(function () {
+    Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
+        ->name('payment.show');
 
-Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])
-    ->middleware(['auth'])
-    ->name('payment.success');
+    Route::post('/save-payment', [PaymentController::class, 'saveConferencePayment'])
+        ->name('payment.save');
 
-// Route::get('handle-payment', 'PaymentController@handlePayment')->name('payment.handler');
-Route::get('cancel-payment', 'PaymentController@paymentCancel')->name('payment.cancel');
+    Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])
+        ->name('payment.success');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    // Route::get('handle-payment', 'PaymentController@handlePayment')->name('payment.handler');
+    Route::get('cancel-payment', 'PaymentController@paymentCancel')->name('payment.cancel');
+
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/conference-payments', function () {
+            return view('admin.conference-payments');
+        })->name('admin.conference.payments');
+    });
+});
 
 require __DIR__ . '/auth.php';
