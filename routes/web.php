@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::prefix('admin')->group(function () {
+    Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
             ->name('admin.conference.payments');
 
