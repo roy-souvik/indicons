@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -49,9 +50,12 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::prefix('admin')->group(function () {
-        Route::get('/conference-payments', function () {
-            return view('admin.conference-payments');
-        })->name('admin.conference.payments');
+        Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
+            ->name('admin.conference.payments');
+
+        Route::get('/home', function () {
+            return view('admin.home');
+        })->name('admin.home');
     });
 });
 

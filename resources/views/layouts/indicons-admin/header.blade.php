@@ -1,10 +1,7 @@
 <header class="topbar" data-navbarbg="skin5">
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <div class="navbar-header" data-logobg="skin6">
-            <!-- ============================================================== -->
-            <!-- Logo -->
-            <!-- ============================================================== -->
-            <a class="navbar-brand" href="dashboard.html">
+            <a class="navbar-brand" href="/">
                 <!-- Logo icon -->
                 <b class="logo-icon">
                     <!-- Dark Logo icon -->
@@ -15,7 +12,7 @@
                 <span class="logo-text">
                     <!-- dark Logo text -->
                     <!-- <img src="plugins/images/logo-text.png" alt="homepage" /> -->
-                    Admin Demo
+                    Admin
                 </span>
             </a>
             <!-- ============================================================== -->
