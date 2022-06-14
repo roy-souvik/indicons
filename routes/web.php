@@ -50,12 +50,16 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
-        Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
-            ->name('admin.conference.payments');
+        Route::get('/', function () {
+            return view('admin.home');
+        })->name('admin');
 
         Route::get('/home', function () {
             return view('admin.home');
         })->name('admin.home');
+
+        Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
+            ->name('admin.conference.payments');
     });
 });
 

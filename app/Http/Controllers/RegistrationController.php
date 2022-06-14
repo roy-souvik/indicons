@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +15,7 @@ class RegistrationController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:200'],
+            'name' => ['required', 'string', 'max:200', 'alpha'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required'],
