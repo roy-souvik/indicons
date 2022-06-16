@@ -25,11 +25,11 @@ Route::get('/registration', function () {
     $roles = User::getDisplayRoles();
 
     return view('conference-register', compact('roles'));
-});
+})->name('conference-register.show');
 
 Route::post('/registration', function () {
     return view('conference-register');
-});
+})->name('conference-register.save');
 
 Route::post('/registration', [RegistrationController::class, 'register']);
 
@@ -47,10 +47,13 @@ Route::middleware('auth')->group(function () {
     // Route::get('handle-payment', 'PaymentController@handlePayment')->name('payment.handler');
     Route::get('cancel-payment', 'PaymentController@paymentCancel')->name('payment.cancel');
 
-
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/abstract', function () {
+        return view('abstract');
+    })->name('abstract.show');
 
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {
