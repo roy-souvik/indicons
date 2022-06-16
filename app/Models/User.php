@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    const ROLE_KEYS = [
+        'doctor',
+        'nurs_and_paramedic',
+        'student',
+        'international_deligate',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +26,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'title',
         'email',
         'password',
         'role',
@@ -49,8 +58,53 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function getDisplayRoles(): array
+    {
+        $roles = [];
+
+        foreach (self::ROLE_KEYS as $key) {
+            $roles[$key] = ucwords(Str::replace('_', ' ', $key));
+        }
+
+        return $roles;
+    }
+
     public function isSuperAdmin(): bool
     {
         return $this->role === 'super_admin';
+    }
+
+    public function getRoleShortNames(): array
+    {
+        $shortNames = [];
+
+        foreach (self::ROLE_KEYS as $key) {
+            $value = $key;
+
+            if ($key === self::ROLE_KEYS[1]) {
+                $value = 'nur_para';
+            } elseif ($key === self::ROLE_KEYS[3]) {
+                $value = 'int_del';
+            } else {
+                $value = Str::substr($value, 0, 2);
+            }
+
+            $shortNames[$key] = $value;
+        }
+
+        return $shortNames;
+    }
+
+    /**
+     * Get the user's registration id.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getRegistrationIdAttribute(): string
+    {
+        $rolePrefix = $this->getRoleShortNames()[$this->role];
+
+        return "{$rolePrefix}_000{$this->id}";
     }
 }

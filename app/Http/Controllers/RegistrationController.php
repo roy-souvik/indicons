@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Rules\AlphaSpace;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,8 @@ class RegistrationController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:200', 'alpha'],
+            'name' => ['required', 'string', 'max:200', new AlphaSpace],
+            'title' => ['required', 'string', 'max:10', 'alpha'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required'],
@@ -31,6 +33,7 @@ class RegistrationController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'title' => $request->title,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,9 @@ Route::get('/', function () {
 });
 
 Route::get('/registration', function () {
-    return view('conference-register');
+    $roles = User::getDisplayRoles();
+
+    return view('conference-register', compact('roles'));
 });
 
 Route::post('/registration', function () {

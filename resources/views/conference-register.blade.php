@@ -16,6 +16,20 @@
     @csrf
     <div class="user__details">
         <div class="input__box">
+            <span class="details">Title</span>
+            <select name="title" id="title" class="form-control" required>
+                <option value="">-- choose one --</option>
+                @foreach (['Dr', 'Mr', 'Mrs', 'Ms'] as $title)
+                    <option value="{{$title}}"
+                    @php
+                        old('title') == $title ? 'selected' : ''
+                    @endphp
+                    >{{$title}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="input__box">
             <span class="details">Full Name</span>
             <input type="text" name="name" value="{{ old('name') }}" placeholder="E.g: John Smith" required>
         </div>
@@ -310,10 +324,9 @@
             <span class="details">Registration Type</span>
             <select class="form-control" id="registration_type" name="registration_type" required>
                 <option value="">-- choose one --</option>
-                <option value="doctor">Doctors</option>
-                <option value="nurs_and_paramedic">Nurs & Paramedics</option>
-                <option value="student">Students</option>
-                <option value="international_deligate">International Deligate</option>
+                @foreach ($roles as $roleKey => $roleName)
+                    <option value="{{$roleKey}}">{{$roleName}}</option>
+                @endforeach
             </select>
         </div>
         <div style="clear:both;"> </div>

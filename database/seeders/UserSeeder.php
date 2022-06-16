@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
         $superAdmins = [
             [
                 'name' => 'Indicons Admin',
+                'title' => 'Mr',
                 'email' => 'contact@indicons.com',
                 'email_verified_at' => now()->timestamp,
                 'password' => Hash::make(env('INDICONS_ADMIN_PASS')),
