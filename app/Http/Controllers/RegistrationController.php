@@ -52,4 +52,9 @@ class RegistrationController extends Controller
 
         return redirect(route('payment.show'));
     }
+
+    public function saveAbstract(Request $request)
+    {
+        dd($request->all());
+    }
 }

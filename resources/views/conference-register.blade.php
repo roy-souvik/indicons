@@ -16,7 +16,7 @@
     @csrf
     <div class="user__details">
         <div class="input__box">
-            <span class="details">Title</span>
+            <span class="details">Salutation</span>
             <select name="title" id="title" class="form-control" required>
                 <option value="">-- choose one --</option>
                 @foreach (['Dr', 'Mr', 'Mrs', 'Ms'] as $title)

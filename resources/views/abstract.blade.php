@@ -3,36 +3,87 @@
 <div class="title">Registration</div>
 
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 <form method="POST" action="/registration">
     @csrf
     <div class="user__details">
-
         <div class="input__box">
-            <span class="details">City</span>
-            <input type="text" name="city" value="{{ old('city') }}" required>
+            <span class="details">Qualification</span>
+            <input type="text" name="qualification" value="{{ old('qualification') }}" required>
         </div>
 
+        <div class="input__box">
+            <span class="details">Profession</span>
+            <input type="text" name="profession" value="{{ old('profession') }}" required>
+        </div>
 
-        <div style="clear:both;"> </div>
+        <div class="input__box">
+            <span class="details">Institution</span>
+            <input type="text" name="institution" value="{{ old('institution') }}" required>
+        </div>
 
-        <p class="agree">
-            <input style="width: 20px; height: 20px; position: relative;top: 4px;" name="privacy_policy_check" type="checkbox" required>
-            I agree to the <a href="#"> Privacy Policy</a>
-        </p>
+        <div class="input__box">
+            <span class="details">Alternate Number</span>
+            <input type="text" name="alternate_number" value="{{ old('alternate_number') }}">
+        </div>
 
+        <div class="input__box">
+            <span class="details">Heading</span>
+            <input type="text" name="heading" value="{{ old('heading') }}" required>
+        </div>
+
+        <div class="input__box">
+            <span class="details">Theme</span>
+            <input type="text" name="theme" value="{{ old('theme') }}" required>
+        </div>
+
+        <div class="input__box">
+            <span class="details">Co-Author</span>
+            <input type="text" name="co_author" value="{{ old('co_author') }}" required>
+        </div>
+
+        <div class="input__box">
+            <span class="details">Description</span>
+            <textarea class="form-control" name="description" required cols="30" rows="5">{{ old('description') }}</textarea>
+        </div>
+
+        <div>
+            <p>
+                <label>
+                    <input type="checkbox" name="statements[]" value="I agree for podium presentation" /> I agree for podium presentation
+                </label>
+
+                <br/>
+
+                <label>
+                    <input type="checkbox" name="statements[]" value="I agree for poster presentation (if not selected for Podium)" /> I agree for poster presentation (if not selected for Podium)
+                </label>
+
+                <br/>
+
+                <label>
+                    <input type="checkbox" name="statements[]" value="I agree to submit full paper if accepted" /> I agree to submit full paper if accepted
+                </label>
+
+                <br/>
+
+                <label>
+                    <input type="checkbox" name="statements[]" value="I agree my work to be published in your upcoming indexed journal" /> I agree my work to be published in your upcoming indexed journal
+                </label>
+            </p>
+        </div>
     </div>
 
-    <div class="button">
-        <input type="submit" value="Register" />
+    <div class="button" role="button">
+        <input type="submit" value="Submit" />
     </div>
 </form>
 @stop

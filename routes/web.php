@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function () {
         return view('abstract');
     })->name('abstract.show');
 
+    Route::post('/abstract', [RegistrationController::class, 'saveAbstract'])
+    ->name('abstract.save');
+
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {
             return view('admin.home');
