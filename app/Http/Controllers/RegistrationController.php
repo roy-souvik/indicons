@@ -56,5 +56,12 @@ class RegistrationController extends Controller
     public function saveAbstract(Request $request)
     {
         dd($request->all());
+
+        $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+
+        ]);
+
+        $path = $request->file('image')->store('public/images');
     }
 }

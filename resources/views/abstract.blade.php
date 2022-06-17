@@ -42,12 +42,24 @@
 
         <div class="input__box">
             <span class="details">Theme</span>
-            <input type="text" name="theme" value="{{ old('theme') }}" required>
+
+            <select name="theme" id="theme" required>
+                <option value="">-- choose one --</option>
+                <option value="originality">Originality</option>
+                <option value="clarity">Clarity</option>
+                <option value="rigour">Rigour</option>
+                <option value="practical relevance.">Practical relevance</option>
+            </select>
         </div>
 
         <div class="input__box">
             <span class="details">Co-Author</span>
             <input type="text" name="co_author" value="{{ old('co_author') }}" required>
+        </div>
+
+        <div class="input__box">
+            <span class="details">Image</span>
+            <input type="file" name="image" placeholder="Choose image" id="image">
         </div>
 
         <div class="input__box">
