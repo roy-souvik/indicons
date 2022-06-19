@@ -14,6 +14,7 @@ class ConferenceAbstract extends Model
     protected $fillable = [
         'user_id',
         'heading',
+        'image',
         'theme',
         'co_author',
         'description',

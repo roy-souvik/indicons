@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ConferenceAbstract;
 use App\Models\User;
 use App\Rules\AlphaSpace;
 use Illuminate\Auth\Events\Registered;
@@ -55,13 +56,40 @@ class RegistrationController extends Controller
 
     public function saveAbstract(Request $request)
     {
-        dd($request->all());
-
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-
+            'heading' => ['required', 'string', 'max:250'],
+            'theme' => ['required', 'string', 'max:250'],
+            'co_author' => ['string', 'max:200', 'nullable'],
+            'description' => ['required', 'string'],
+            'qualification' => ['required', 'string', 'max:200'],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:5120'],
+            'profession' => ['required', 'string', 'max:200'],
+            'institution' => ['required', 'string', 'max:200'],
+            'alternate_number' => ['max:20', 'nullable'],
         ]);
 
-        $path = $request->file('image')->store('public/images');
+        $statements = implode(',', $request->input('statements', []));
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $filename);
+        }
+
+        $abstract = ConferenceAbstract::create([
+            'user_id' => Auth::user()->id,
+            'image' => $filename,
+            'heading' => $request->input('heading'),
+            'theme' => $request->input('theme'),
+            'co_author' => $request->input('co_author'),
+            'description' => $request->input('description'),
+            'statements' => !empty($statements) ? $statements : null,
+            'qualification' => $request->input('qualification'),
+            'profession' => $request->input('profession'),
+            'institution' => $request->input('institution'),
+            'alternate_number' => $request->input('alternate_number'),
+        ]);
+
+        return view('abstract-saved', compact('abstract'));
     }
 }

@@ -12,7 +12,7 @@
 </div>
 @endif
 
-<form method="POST" action="/registration">
+<form method="POST" action="{{route('abstract.save')}}" enctype="multipart/form-data">
     @csrf
     <div class="user__details">
         <div class="input__box">
@@ -54,7 +54,7 @@
 
         <div class="input__box">
             <span class="details">Co-Author</span>
-            <input type="text" name="co_author" value="{{ old('co_author') }}" required>
+            <input type="text" name="co_author" value="{{ old('co_author') }}">
         </div>
 
         <div class="input__box">

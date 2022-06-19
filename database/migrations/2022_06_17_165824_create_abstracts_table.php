@@ -26,7 +26,7 @@ class CreateAbstractsTable extends Migration
             $table->string('qualification');
             $table->string('profession');
             $table->string('institution');
-            $table->string('alternate_number');
+            $table->string('alternate_number')->nullable();
             $table->boolean('confirmed')->default(false);
 
             $table->timestamps();
