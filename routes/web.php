@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/abstract', [RegistrationController::class, 'saveAbstract'])
         ->name('abstract.save');
 
+    // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {
             return view('admin.home');
@@ -69,6 +70,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
             ->name('admin.conference.payments');
+
+        Route::get('/abstracts', [AdminController::class, 'abstractList'])
+            ->name('admin.abstracts.show');
     });
 });
 

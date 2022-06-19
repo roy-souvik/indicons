@@ -1,6 +1,7 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
-<div class="title">Registration</div>
+<h2 class="title">Submit Abstract in the format below</h2>
+<p>Maximum 300 words for the abstract body/description</p>
 
 @if ($errors->any())
 <div class="alert alert-danger">
