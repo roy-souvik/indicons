@@ -73,6 +73,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/abstracts', [AdminController::class, 'abstractList'])
             ->name('admin.abstracts.show');
+
+        Route::post('/abstracts', [AdminController::class, 'abstractUpdate'])
+            ->name('admin.abstracts.update');
     });
 });
 
