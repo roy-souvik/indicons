@@ -13,7 +13,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_registration_fees']}}">
-                <label for="early_bird">Pay {{$paymentSlabItem['early_bird_registration_fees']}}</label>
+                <label for="early_bird">{{$paymentSlabItem['currency']}} {{$paymentSlabItem['early_bird_registration_fees']}}</label>
                 @else
                 Expired!
                 @endif
@@ -25,7 +25,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem['standard_registration_fees']}}">
-                <label for="early_bird">Pay {{$paymentSlabItem['standard_registration_fees']}}</label>
+                <label for="early_bird">{{$paymentSlabItem['currency']}} {{$paymentSlabItem['standard_registration_fees']}}</label>
                 @else
                 Expired!
                 @endif
@@ -36,12 +36,45 @@
             <td>Spot Registration</td>
             <td>
                 <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem['spot_registration_fees']}}">
-                <label for="spot">Pay {{$paymentSlabItem['spot_registration_fees']}}</label>
+                <label for="spot">{{$paymentSlabItem['currency']}} {{$paymentSlabItem['spot_registration_fees']}}</label>
             </td>
         </tr>
     </tbody>
 </table>
 
+<h4>Accompanying person details</h4>
+
+<table class="table">
+    <tr>
+        <td><input type="checkbox" name="person_1_check" id="person_1_check"></td>
+        <td>
+            <select name="person_1_title" id="person_1_title" class="form-control">
+                <option value="">-- choose one --</option>
+                @foreach (['Dr', 'Mr', 'Mrs', 'Ms'] as $title)
+                <option value="{{$title}}">{{$title}}</option>
+                @endforeach
+            </select>
+        </td>
+        <td><input type="text" placeholder="Name" name="person_1_name" id="person_1_name" required></td>
+        <td><input type="email" placeholder="Email" name="person_1_email" id="person_1_email"></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="person_2_check" id="person_2_check"></td>
+        <td>
+            <select name="person_2_title" id="person_2_title" class="form-control">
+                <option value="">-- choose one --</option>
+                @foreach (['Dr', 'Mr', 'Mrs', 'Ms'] as $title)
+                <option value="{{$title}}">{{$title}}</option>
+                @endforeach
+            </select>
+        </td>
+        <td><input type="text" placeholder="Name" name="person_2_name" id="person_2_name" required></td>
+        <td><input type="email" placeholder="Email" name="person_2_email" id="person_2_email"></td>
+    </tr>
+</table>
+
+
+<br/>
 <!-- Set up a container element for the button -->
 <div id="paypal-button-container" style="width: 3rem;"></div>
 

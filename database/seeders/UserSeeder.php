@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 
 use Faker\Factory as Faker;
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now()->timestamp,
                 'password' => Hash::make(env('INDICONS_ADMIN_PASS')),
                 'phone' => '9876543212',
-                'role' => 'super_admin',
+                'role_id' => Role::firstWhere('key', 'super_admin')->id,
                 'company' => 'admin',
                 'postal_code' => '122234',
                 'city' => 'city',

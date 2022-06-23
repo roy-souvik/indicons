@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
+
+class AccompanyingPerson extends Model
+{
+    use HasFactory;
+
+    protected $table = 'accompanying_persons';
+
+    protected $fillable = [
+        'user_id',
+        'title',
+        'name',
+        'email',
+    ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}

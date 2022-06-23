@@ -324,8 +324,8 @@
             <span class="details">Registration Type</span>
             <select class="form-control" id="registration_type" name="registration_type" required>
                 <option value="">-- choose one --</option>
-                @foreach ($roles as $roleKey => $roleName)
-                    <option value="{{$roleKey}}">{{$roleName}}</option>
+                @foreach ($roles as $role)
+                    <option value="{{$role->id}}">{{$role->name}}</option>
                 @endforeach
             </select>
         </div>

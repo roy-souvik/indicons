@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
-use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/registration', function () {
-    $roles = User::getDisplayRoles();
+    $roles = Role::active()->get();
 
     return view('conference-register', compact('roles'));
 })->name('conference-register.show');
