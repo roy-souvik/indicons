@@ -16,10 +16,11 @@ class CreateFeesTable extends Migration
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
             $table->integer('role_id');
-            $table->string('type');
             $table->string('event');
-            $table->string('amount', 20);
             $table->string('currency', 10);
+            $table->string('early_bird_amount', 20)->nullable();
+            $table->string('standard_amount', 20)->nullable();
+            $table->string('spot_amount', 20)->nullable();
         });
     }
 

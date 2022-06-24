@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fee;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,40 +16,55 @@ class FeeSeeder extends Seeder
      */
     public function run()
     {
-        $roles = Role::active()->get();
+        DB::table('fees')->truncate();
 
-        $paymentSlab = [
+        $roles = Role::all();
+
+        $fees = [
             [
                 'role_id' => $roles->firstWhere('key', 'doctor')->id,
-                'type' => '',
                 'event' => 'conference_registration',
-                'amount' => 12000,
                 'currency' => 'INR',
-                'early_bird_registration_fees' => number_format(12000/78, 2),
-                'standard_registration_fees' => number_format(13000/78, 2),
-                'spot_registration_fees' => number_format(15000/78, 2),
+                'early_bird_amount' => 12000,
+                'standard_amount' => 13000,
+                'spot_amount' => 15000,
             ],
             [
-                'role' => 'nurs_and_paramedic',
-                'currency' => 'USD',
-                'early_bird_registration_fees' => number_format(3000/78, 2),
-                'standard_registration_fees' => number_format(3500/78, 2),
-                'spot_registration_fees' => number_format(5000/78, 2),
+                'role_id' => $roles->firstWhere('key', 'nur_para')->id,
+                'event' => 'conference_registration',
+                'currency' => 'INR',
+                'early_bird_amount' => 3000,
+                'standard_amount' => 3500,
+                'spot_amount' => 5000,
             ],
             [
-                'role' => 'student',
-                'currency' => 'USD',
-                'early_bird_registration_fees' => number_format(3000/78, 2),
-                'standard_registration_fees' => number_format(3500/78, 2),
-                'spot_registration_fees' => number_format(5000/78, 2),
+                'role_id' => $roles->firstWhere('key', 'student')->id,
+                'event' => 'conference_registration',
+                'currency' => 'INR',
+                'early_bird_amount' => 3000,
+                'standard_amount' => 3500,
+                'spot_amount' => 5000,
             ],
             [
-                'role' => 'international_deligate',
+                'role_id' => $roles->firstWhere('key', 'student')->id,
+                'event' => 'conference_registration',
                 'currency' => 'USD',
-                'early_bird_registration_fees' => 150,
-                'standard_registration_fees' => 170,
-                'spot_registration_fees' => 200,
+                'early_bird_amount' => 150,
+                'standard_amount' => 170,
+                'spot_amount' => 200,
+            ],
+            [
+                'role_id' => $roles->firstWhere('key', 'accompanying_person')->id,
+                'event' => 'conference_registration',
+                'currency' => 'INR',
+                'early_bird_amount' => 8000,
+                'standard_amount' => 8000,
+                'spot_amount' => 8000,
             ],
         ];
+
+        foreach ($fees as $fee) {
+            Fee::create($fee);
+        }
     }
 }

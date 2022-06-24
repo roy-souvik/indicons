@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Mail\PaymentSuccess;
 use App\Models\ConferencePayment;
+use App\Models\Fee;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
@@ -14,37 +15,6 @@ class PaymentController extends Controller
 {
     public function showConferencePaymentPage()
     {
-        $paymentSlab = [
-            [
-                'role' => 'doctor',
-                'currency' => 'USD',
-                'early_bird_registration_fees' => number_format(12000/78, 2),
-                'standard_registration_fees' => number_format(13000/78, 2),
-                'spot_registration_fees' => number_format(15000/78, 2),
-            ],
-            [
-                'role' => 'nurs_and_paramedic',
-                'currency' => 'USD',
-                'early_bird_registration_fees' => number_format(3000/78, 2),
-                'standard_registration_fees' => number_format(3500/78, 2),
-                'spot_registration_fees' => number_format(5000/78, 2),
-            ],
-            [
-                'role' => 'student',
-                'currency' => 'USD',
-                'early_bird_registration_fees' => number_format(3000/78, 2),
-                'standard_registration_fees' => number_format(3500/78, 2),
-                'spot_registration_fees' => number_format(5000/78, 2),
-            ],
-            [
-                'role' => 'international_deligate',
-                'currency' => 'USD',
-                'early_bird_registration_fees' => 150,
-                'standard_registration_fees' => 170,
-                'spot_registration_fees' => 200,
-            ],
-        ];
-
         $registrationTypeAuth = [
             'is_early_bird' => !Carbon::createFromFormat('Y-m-d', '2022-10-31')->isPast(),
             'is_standard' => !Carbon::createFromFormat('Y-m-d', '2023-01-15')->isPast(),
@@ -52,12 +22,16 @@ class PaymentController extends Controller
         ];
 
         $user = Auth::user();
+        $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
 
-        $paymentSlabItem = Arr::first($paymentSlab, function ($value, $key) use ($user) {
-            return $value['role'] === $user->role;
-        });
+        $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
+        $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
 
-        return view('conference-payment', compact('paymentSlabItem', 'registrationTypeAuth'));
+        return view('conference-payment', compact(
+            'paymentSlabItem',
+            'registrationTypeAuth',
+            'accompanyingPersonFees',
+        ));
     }
 
     public function saveConferencePayment(Request $request): ConferencePayment

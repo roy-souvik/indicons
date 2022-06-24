@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -106,5 +108,10 @@ class User extends Authenticatable
         $rolePrefix = $this->getRoleShortNames()[$this->role];
 
         return "{$rolePrefix}_000{$this->id}";
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 }

@@ -12,8 +12,8 @@
             <td>Early Bird Registration</td>
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
-                <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_registration_fees']}}">
-                <label for="early_bird">{{$paymentSlabItem['currency']}} {{$paymentSlabItem['early_bird_registration_fees']}}</label>
+                <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
+                <label for="early_bird">{{$paymentSlabItem->currency}} {{$paymentSlabItem->early_bird_amount}}</label>
                 @else
                 Expired!
                 @endif
@@ -24,8 +24,8 @@
             <td>Standard Registration</td>
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
-                <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem['standard_registration_fees']}}">
-                <label for="early_bird">{{$paymentSlabItem['currency']}} {{$paymentSlabItem['standard_registration_fees']}}</label>
+                <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
+                <label for="early_bird">{{$paymentSlabItem['currency']}} {{$paymentSlabItem->standard_amount}}</label>
                 @else
                 Expired!
                 @endif
@@ -35,14 +35,17 @@
         <tr>
             <td>Spot Registration</td>
             <td>
-                <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem['spot_registration_fees']}}">
-                <label for="spot">{{$paymentSlabItem['currency']}} {{$paymentSlabItem['spot_registration_fees']}}</label>
+                <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem->spot_amount}}">
+                <label for="spot">{{$paymentSlabItem['currency']}} {{$paymentSlabItem->spot_amount}}</label>
             </td>
         </tr>
     </tbody>
 </table>
 
 <h4>Accompanying person details</h4>
+<p>
+    Fees for each person is <u>{{$accompanyingPersonFees->currency}} {{$accompanyingPersonFees->early_bird_amount}}</u>
+</p>
 
 <table class="table">
     <tr>
@@ -57,6 +60,10 @@
         </td>
         <td><input type="text" placeholder="Name" name="person_1_name" id="person_1_name" required></td>
         <td><input type="email" placeholder="Email" name="person_1_email" id="person_1_email"></td>
+        <td>
+            <input type="hidden" name="person_1_amount" value="{{$accompanyingPersonFees->early_bird_amount}}">
+            <button class="btn btn-primary" id="person_1_confirm">Confirm</button>
+        </td>
     </tr>
     <tr>
         <td><input type="checkbox" name="person_2_check" id="person_2_check"></td>
@@ -70,16 +77,33 @@
         </td>
         <td><input type="text" placeholder="Name" name="person_2_name" id="person_2_name" required></td>
         <td><input type="email" placeholder="Email" name="person_2_email" id="person_2_email"></td>
+        <td>
+            <input type="hidden" name="person_2_amount" value="{{$accompanyingPersonFees->early_bird_amount}}">
+            <button class="btn btn-primary" id="person_2_confirm">Confirm</button>
+        </td>
     </tr>
 </table>
 
+<br>
 
+<h2>
+    Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
+</h2>
+
+
+<br/>
 <br/>
 <!-- Set up a container element for the button -->
 <div id="paypal-button-container" style="width: 3rem;"></div>
 
 <script>
     const token = "{{ csrf_token() }}";
+
+    $(function () {
+        console.log('Rready');
+
+        $('#total-amount').text(document.querySelector('input[name="payment"]:checked')?.value ?? 0);
+    });
 
     function saveConferencePayment(data) {
         return $.ajax({

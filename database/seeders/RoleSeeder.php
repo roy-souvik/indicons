@@ -39,6 +39,11 @@ class RoleSeeder extends Seeder
                 'name' => 'International Deligate',
                 'key' => 'int_del',
             ],
+            [
+                'name' => 'Accompanying Person',
+                'key' => 'accompanying_person',
+                'is_active' => false,
+            ],
         ];
 
         foreach ($roles as $role) {
