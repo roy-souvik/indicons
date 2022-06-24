@@ -18,6 +18,7 @@ class AccompanyingPerson extends Model
         'title',
         'name',
         'email',
+        'fees',
     ];
 
     public function user(): BelongsTo

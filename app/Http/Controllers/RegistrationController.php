@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
 use App\Models\User;
 use App\Rules\AlphaSpace;
@@ -92,5 +93,38 @@ class RegistrationController extends Controller
         ]);
 
         return view('abstract-saved', compact('abstract'));
+    }
+
+    public function getAccompanyingPersons()
+    {
+        return AccompanyingPerson::where('user_id', Auth::user()->id)->get();
+    }
+
+    public function createAccompanyingPerson(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:250'],
+            'title' => ['required', 'string', 'max:10'],
+            'email' => ['email', 'nullable'],
+            'fees' => ['required', 'max:10'],
+        ]);
+
+        $requestData = $request->only([
+            'title',
+            'name',
+            'email',
+            'fees',
+        ]);
+
+        $requestData['user_id'] = Auth::user()->id;
+
+        return AccompanyingPerson::create($requestData);
+    }
+
+    public function deleteAccompanyingPerson(int $id)
+    {
+        $person = AccompanyingPerson::findOrFail($id);
+
+        return $person->delete();
     }
 }

@@ -58,6 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/abstract', [RegistrationController::class, 'saveAbstract'])
         ->name('abstract.save');
 
+    Route::post('/accompanying-persons', [RegistrationController::class, 'createAccompanyingPerson'])
+        ->name('accompanyingPersons.save');
+
+    Route::delete('/accompanying-persons/{id}', [RegistrationController::class, 'deleteAccompanyingPerson'])
+        ->name('accompanyingPersons.delete');
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {

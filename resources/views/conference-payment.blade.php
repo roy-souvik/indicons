@@ -25,7 +25,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
-                <label for="early_bird">{{$paymentSlabItem['currency']}} {{$paymentSlabItem->standard_amount}}</label>
+                <label for="standard">{{$paymentSlabItem['currency']}} {{$paymentSlabItem->standard_amount}}</label>
                 @else
                 Expired!
                 @endif
@@ -42,14 +42,15 @@
     </tbody>
 </table>
 
-<h4>Accompanying person details</h4>
+@if ($accompanyingPersons->count() < 2)
+<br>
+<h5>Enter accompanying person details</h5>
 <p>
     Fees for each person is <u>{{$accompanyingPersonFees->currency}} {{$accompanyingPersonFees->early_bird_amount}}</u>
 </p>
 
 <table class="table">
-    <tr>
-        <td><input type="checkbox" name="person_1_check" id="person_1_check"></td>
+    <tr id="person_1_row">
         <td>
             <select name="person_1_title" id="person_1_title" class="form-control">
                 <option value="">-- choose one --</option>
@@ -58,15 +59,14 @@
                 @endforeach
             </select>
         </td>
-        <td><input type="text" placeholder="Name" name="person_1_name" id="person_1_name" required></td>
-        <td><input type="email" placeholder="Email" name="person_1_email" id="person_1_email"></td>
+        <td><input type="text" placeholder="Name" class="form-control" name="person_1_name" id="person_1_name"></td>
+        <td><input type="email" placeholder="Email (optional)" class="form-control" name="person_1_email" id="person_1_email"></td>
         <td>
-            <input type="hidden" name="person_1_amount" value="{{$accompanyingPersonFees->early_bird_amount}}">
+            <input type="hidden" name="person_1_fees" id="person_1_fees" value="{{$accompanyingPersonFees->early_bird_amount}}">
             <button class="btn btn-primary" id="person_1_confirm">Confirm</button>
         </td>
     </tr>
-    <tr>
-        <td><input type="checkbox" name="person_2_check" id="person_2_check"></td>
+    <tr id="person_2_row">
         <td>
             <select name="person_2_title" id="person_2_title" class="form-control">
                 <option value="">-- choose one --</option>
@@ -75,19 +75,42 @@
                 @endforeach
             </select>
         </td>
-        <td><input type="text" placeholder="Name" name="person_2_name" id="person_2_name" required></td>
-        <td><input type="email" placeholder="Email" name="person_2_email" id="person_2_email"></td>
+        <td><input type="text" placeholder="Name" class="form-control" name="person_2_name" id="person_2_name"></td>
+        <td><input type="email" placeholder="Email (optional)" class="form-control" name="person_2_email" id="person_2_email"></td>
         <td>
-            <input type="hidden" name="person_2_amount" value="{{$accompanyingPersonFees->early_bird_amount}}">
+            <input type="hidden" name="person_2_fees" id="person_2_fees" value="{{$accompanyingPersonFees->early_bird_amount}}">
             <button class="btn btn-primary" id="person_2_confirm">Confirm</button>
         </td>
     </tr>
 </table>
+@endif
+
+@if ($accompanyingPersons->count() > 0)
+<br>
+<h5>Accompanying persons</h5>
+<table class="table" id="accompanying-persons-list">
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Email</b></td>
+        <td><b>Action</b></td>
+    </tr>
+    @foreach($accompanyingPersons as $person)
+    <tr>
+        <td>{{$person->name}}</td>
+        <td>{{$person->email ?? 'N/A'}}</td>
+        <td><button class="btn btn-light delete-person" data-id="{{$person->id}}">Delete</button></td>
+    </tr>
+    @endforeach
+</table>
+@endif
 
 <br>
 
 <h2>
     Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
+
+    <input type="hidden" id="person_1_fees_payable" value="0">
+    <input type="hidden" id="person_2_fees_payable" value="0">
 </h2>
 
 
@@ -100,10 +123,73 @@
     const token = "{{ csrf_token() }}";
 
     $(function () {
-        console.log('Rready');
+        updateAmount();
 
-        $('#total-amount').text(document.querySelector('input[name="payment"]:checked')?.value ?? 0);
+        $('input[name="payment"]').change(function () {
+            updateAmount();
+        });
+
+        $('#person_1_confirm').click(function () {
+            var title = $('#person_1_title').val();
+            var name = $('#person_1_name').val();
+            var email = $('#person_1_email').val();
+            var fees = $('#person_1_fees').val();
+
+            createAccompanyingPerson({
+                '_token': token,
+                title,
+                name,
+                email,
+                fees,
+            }).then(function () {
+                $('#person_1_fees_payable').val(fees);
+                updateAmount();
+            });
+        });
+
+        $('#person_2_confirm').click(function () {
+            var title = $('#person_2_title').val();
+            var name = $('#person_2_name').val();
+            var email = $('#person_2_email').val();
+            var fees = $('#person_2_fees').val();
+
+            createAccompanyingPerson({
+                '_token': token,
+                title,
+                name,
+                email,
+                fees,
+            }).then(function () {
+                $('#person_2_fees_payable').val(fees);
+                updateAmount();
+            });
+        });
     });
+
+    function updateAmount() {
+        var payerAmount = parseInt(document.querySelector('input[name="payment"]:checked')?.value ?? 0, 10);
+        var person1Amount = $('#person_1_fees_payable').val() ?? 0;
+        var person2Amount = $('#person_2_fees_payable').val() ?? 0;
+
+        $('#total-amount').text(payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10));
+    }
+
+    function createAccompanyingPerson(data) {
+        return $.ajax({
+            url: '/accompanying-persons',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            processData: false,
+            success: function(result) {
+                return result;
+            },
+            error: function(xhr, status, error) {
+                return error;
+            },
+        });
+    }
 
     function saveConferencePayment(data) {
         return $.ajax({

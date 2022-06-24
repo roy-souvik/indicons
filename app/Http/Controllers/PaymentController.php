@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PaymentSuccess;
+use App\Models\AccompanyingPerson;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
 use App\Models\Role;
@@ -26,11 +27,16 @@ class PaymentController extends Controller
 
         $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
         $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
+        $accompanyingPersons = AccompanyingPerson::where('user_id', Auth::user()->id)
+            ->orderBy('id', 'desc')
+            ->limit(2)
+            ->get();
 
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationTypeAuth',
             'accompanyingPersonFees',
+            'accompanyingPersons',
         ));
     }
 
