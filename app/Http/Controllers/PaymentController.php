@@ -42,9 +42,10 @@ class PaymentController extends Controller
 
     public function saveConferencePayment(Request $request): ConferencePayment
     {
+        $authUser = Auth::user();
         $payment = new ConferencePayment();
 
-        $payment->user_id = Auth::user()->id;
+        $payment->user_id = $authUser->id;
         $payment->transaction_id = $request->transaction_id;
         $payment->status = $request->status;
         $payment->amount = $request->amount;
@@ -52,36 +53,28 @@ class PaymentController extends Controller
 
         $payment->save();
 
-        Mail::to(Auth::user())->send(new PaymentSuccess($request->transaction_id));
+        $companionRole = Role::firstWhere('key', 'accompanying_person');
+        $companionTotalAmount = intval($request->amount) - intval(data_get($request, 'payer_amount', 0));
+        $companionFee = Fee::firstWhere('role_id', $companionRole->id)->spot_amount;
+        $companionCount = $companionTotalAmount / intval($companionFee);
+
+        $accompanyingPersons = AccompanyingPerson::where('user_id', $authUser->id)
+            ->where('confirmed', 0)
+            ->orderBy('id', 'desc')
+            ->limit($companionCount)
+            ->get();
+
+        if (!empty($request->status)) {
+            foreach ($accompanyingPersons as $person) {
+                $person->confirmed = 1;
+                $person->save();
+            }
+        }
+
+        Mail::to($authUser)->send(new PaymentSuccess($request->transaction_id));
 
         return $payment;
     }
-
-    // public function handlePayment()
-    // {
-    //     $product = [];
-    //     $product['items'] = [
-    //         [
-    //             'name' => 'Nike Joyride 2',
-    //             'price' => 112,
-    //             'desc'  => 'Running shoes for Men',
-    //             'qty' => 2
-    //         ]
-    //     ];
-
-    //     $product['invoice_id'] = 1;
-    //     $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
-    //     $product['return_url'] = route('success.payment');
-    //     $product['cancel_url'] = route('cancel.payment');
-    //     $product['total'] = 224;
-
-    //     $paypalModule = new ExpressCheckout;
-
-    //     $res = $paypalModule->setExpressCheckout($product);
-    //     $res = $paypalModule->setExpressCheckout($product, true);
-
-    //     return redirect($res['paypal_link']);
-    // }
 
     public function paymentCancel()
     {
