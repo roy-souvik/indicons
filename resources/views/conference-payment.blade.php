@@ -122,7 +122,7 @@
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                'value': updateAmount()
+                                'value': updateAmount().total_amount
                             }
                         }]
                     });
@@ -139,6 +139,7 @@
                             'status': transaction.status,
                             'amount': transaction.amount.value,
                             'payment_response': orderData,
+                            'payer_amount': updateAmount().payer_amount
                         };
 
                         saveConferencePayment(responseData).then(() => {
@@ -211,7 +212,10 @@
 
             $('#total-amount').text(totalAmount);
 
-            return totalAmount;
+            return {
+                total_amount: totalAmount,
+                payer_amount: payerAmount,
+            };
         }
 
         function createAccompanyingPerson(data) {
