@@ -101,7 +101,7 @@
     <div class="d-flex">
         <h2>Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span></h2>
 
-        <button class="btn btn-light ms-5" id="proceed-payment">Proceed to payment</button>
+        <button class="btn btn-primary ms-5" id="proceed-payment">Proceed to payment</button>
     </div>
 
 
@@ -199,6 +199,7 @@
             });
 
             $('#proceed-payment').click(function() {
+                $('#paypal-button-container').html('');
                 paypal.Buttons(ppButtonConfig).render('#paypal-button-container');
             });
         });

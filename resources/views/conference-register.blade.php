@@ -20,11 +20,7 @@
             <select name="title" id="title" class="form-control" required>
                 <option value="">-- choose one --</option>
                 @foreach (['Dr', 'Mr', 'Mrs', 'Ms'] as $title)
-                    <option value="{{$title}}"
-                    @php
-                        old('title') == $title ? 'selected' : ''
-                    @endphp
-                    >{{$title}}</option>
+                    <option value="{{$title}}" {{old('title') == $title ? 'selected' : ''}}>{{$title}}</option>
                 @endforeach
             </select>
         </div>
@@ -325,7 +321,7 @@
             <select class="form-control" id="registration_type" name="registration_type" required>
                 <option value="">-- choose one --</option>
                 @foreach ($roles as $role)
-                    <option value="{{$role->id}}">{{$role->name}}</option>
+                    <option value="{{$role->id}}" {{old('registration_type') == $role->id ? 'selected' : ''}}>{{$role->name}}</option>
                 @endforeach
             </select>
         </div>
