@@ -49,7 +49,7 @@
     </p>
 
     @php
-        $numbers = $accompanyingPersons->count() == 0 ? [1, 2] : [2];
+    $numbers = $accompanyingPersons->count() == 0 ? [1, 2] : [2];
     @endphp
 
     <table class="table">
@@ -98,21 +98,55 @@
 
     <br>
 
-    <h2>
-        Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
-    </h2>
+    <div class="d-flex">
+        <h2>Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span></h2>
+
+        <button class="btn btn-light ms-5" id="proceed-payment">Proceed to payment</button>
+    </div>
+
 
 
     <br />
     <br />
     <!-- Set up a container element for the button -->
-    <div id="paypal-button-container" style="width: 3rem;"></div>
+    <div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div>
 
     <script>
         const token = "{{ csrf_token() }}";
 
         $(function() {
             updateAmount();
+
+            var ppButtonConfig = {
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                'value': updateAmount()
+                            }
+                        }]
+                    });
+                },
+
+                // Finalize the transaction
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(orderData) {
+                        const transaction = orderData.purchase_units[0].payments.captures[0];
+
+                        const responseData = {
+                            '_token': token,
+                            'transaction_id': transaction.id,
+                            'status': transaction.status,
+                            'amount': transaction.amount.value,
+                            'payment_response': orderData,
+                        };
+
+                        saveConferencePayment(responseData).then(() => {
+                            location.href = '/payment-success?transaction_id=' + transaction.id;
+                        });
+                    });
+                },
+            };
 
             $('input[name="payment"]').change(function() {
                 updateAmount();
@@ -157,10 +191,14 @@
                 });
             });
 
-            $('.delete-person').click(function () {
+            $('.delete-person').click(function() {
                 var id = $(this).attr('data-id');
 
                 deleteAccompanyingPerson(id);
+            });
+
+            $('#proceed-payment').click(function() {
+                paypal.Buttons(ppButtonConfig).render('#paypal-button-container');
             });
         });
 
@@ -169,7 +207,11 @@
             var person1Amount = $('#person_1_fees_payable').val() ?? 0;
             var person2Amount = $('#person_2_fees_payable').val() ?? 0;
 
-            $('#total-amount').text(payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10));
+            var totalAmount = payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10);
+
+            $('#total-amount').text(totalAmount);
+
+            return totalAmount;
         }
 
         function createAccompanyingPerson(data) {
@@ -225,38 +267,5 @@
                 },
             });
         }
-        // Render the PayPal button into #paypal-button-container
-        paypal.Buttons({
-
-            // Set up the transaction
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            'value': document.querySelector('input[name="payment"]:checked')?.value ?? 0
-                        }
-                    }]
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(orderData) {
-                    const transaction = orderData.purchase_units[0].payments.captures[0];
-
-                    const responseData = {
-                        '_token': token,
-                        'transaction_id': transaction.id,
-                        'status': transaction.status,
-                        'amount': transaction.amount.value,
-                        'payment_response': orderData,
-                    };
-
-                    saveConferencePayment(responseData).then(() => {
-                        location.href = '/payment-success?transaction_id=' + transaction.id;
-                    });
-                });
-            },
-        }).render('#paypal-button-container');
     </script>
     @stop
