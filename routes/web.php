@@ -73,6 +73,9 @@ Route::middleware('auth')->group(function () {
             return view('admin.home');
         })->name('admin.home');
 
+        Route::get('/fees-structure', [AdminController::class, 'manageFeesStructure'])
+            ->name('admin.manage.fees');
+
         Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
             ->name('admin.conference.payments');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
+use App\Models\Fee;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,6 +21,13 @@ class AdminController extends Controller
         $abstracts = ConferenceAbstract::with('user')->get();
 
         return view('admin.abstracts', compact('abstracts'));
+    }
+
+    public function manageFeesStructure()
+    {
+        $fees = Fee::with(['Role'])->where('event', 'conference_registration')->get();
+
+        return view('admin.fees-structure', compact('fees'));
     }
 
     public function abstractUpdate(Request $request)

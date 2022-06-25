@@ -46,7 +46,7 @@ class FeeSeeder extends Seeder
                 'spot_amount' => 5000,
             ],
             [
-                'role_id' => $roles->firstWhere('key', 'student')->id,
+                'role_id' => $roles->firstWhere('key', 'int_del')->id,
                 'event' => 'conference_registration',
                 'currency' => 'USD',
                 'early_bird_amount' => 150,

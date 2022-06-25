@@ -12,9 +12,16 @@
                 </li>
 
                 <li class="sidebar-item pt-2">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.conference.payments')}}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.abstracts.show')}}" aria-expanded="false">
                         <i class="far fa-clock" aria-hidden="true"></i>
-                        <span class="hide-menu">Conference Payments</span>
+                        <span class="hide-menu">Abstracts</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.manage.fees')}}" aria-expanded="false">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span class="hide-menu">Manage Fees</span>
                     </a>
                 </li>
 
