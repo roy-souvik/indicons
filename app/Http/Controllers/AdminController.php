@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -28,6 +29,30 @@ class AdminController extends Controller
         $fees = Fee::with(['Role'])->where('event', 'conference_registration')->get();
 
         return view('admin.fees-structure', compact('fees'));
+    }
+
+    public function updateFeesStructure(Request $request)
+    {
+        $request->validate([
+            'id' => ['required', 'integer'],
+        ]);
+
+        $requestData = $request->only([
+            'id',
+            'early_bird_amount',
+            'standard_amount',
+            'spot_amount',
+        ]);
+
+        $fees = Fee::where('id', data_get($requestData, 'id'))->firstOrFail();
+
+        $fees->early_bird_amount = data_get($requestData, 'early_bird_amount');
+        $fees->standard_amount = data_get($requestData, 'standard_amount');
+        $fees->spot_amount = data_get($requestData, 'spot_amount');
+
+        $fees->save();
+
+        return $fees;
     }
 
     public function abstractUpdate(Request $request)

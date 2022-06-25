@@ -76,6 +76,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/fees-structure', [AdminController::class, 'manageFeesStructure'])
             ->name('admin.manage.fees');
 
+        Route::post('/fees-structure', [AdminController::class, 'updateFeesStructure'])
+            ->name('admin.fees.update');
+
         Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
             ->name('admin.conference.payments');
 

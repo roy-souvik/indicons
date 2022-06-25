@@ -17,7 +17,6 @@ class RegistrationController extends Controller
 {
     public function register(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'max:200', new AlphaSpace],
             'title' => ['required', 'string', 'max:10', 'alpha'],
