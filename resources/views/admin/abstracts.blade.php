@@ -18,9 +18,10 @@
             <thead>
                 <tr>
                     <th class="border-top-0">ID</th>
+                    <th class="border-top-0">User Name</th>
+                    <th class="border-top-0">Image</th>
                     <th class="border-top-0">Heading</th>
                     <th class="border-top-0">Theme</th>
-                    <!-- <th class="border-top-0">Co Author</th> -->
                     <th class="border-top-0" style="width: 16rem;">Description</th>
                     <th class="border-top-0">Qualification</th>
                     <th class="border-top-0">Profession</th>
@@ -35,6 +36,8 @@
                 @foreach ($abstracts as $abstract)
                 <tr>
                     <td>{{$abstract->abstract_id}}</td>
+                    <td>{{$abstract->user->name}}</td>
+                    <td><img src="/images/{{$abstract->image}}" class="img-thumbnail" alt=""></td>
                     <td>{{$abstract->heading}}</td>
                     <td>{{ucfirst($abstract->theme)}}</td>
                     <td>
