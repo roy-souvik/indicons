@@ -37,12 +37,14 @@ Route::get('/abstract', function () {
 
 Route::post('/registration', [RegistrationController::class, 'register']);
 
-Route::post('/save-payment', [PaymentController::class, 'saveConferencePayment'])
-    ->name('payment.save');
+// Route::get('/test', [PaymentController::class, 'saveConferencePayment']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
         ->name('payment.show');
+
+    Route::post('/save-payment', [PaymentController::class, 'saveConferencePayment'])
+        ->name('payment.save');
 
     Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])
         ->name('payment.success');

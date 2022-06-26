@@ -106,7 +106,7 @@ class User extends Authenticatable
      */
     public function getRegistrationIdAttribute(): string
     {
-        $rolePrefix = $this->getRoleShortNames()[$this->role];
+        $rolePrefix = $this->role->key;
 
         return "{$rolePrefix}_000{$this->id}";
     }

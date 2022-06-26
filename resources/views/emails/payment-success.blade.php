@@ -3,9 +3,9 @@
 
     <h3>Conference: VAICON 2023</h3>
     <h5>Venue: PALA BALL ROOM, ITC SONAR</h5>
-    <p>1, JBS HALDANE AVENUE, KOLKATA – 700 046, WEST BENGAL, INDIA</p>
+    <p>1, JBS HALDANE AVENUE, KOLKATA - 700 046, WEST BENGAL, INDIA</p>
 
-    <p>Dates: 27 th , 28 th and 29 th January, 2023</p>
+    <p>Dates: 27th , 28th and 29th January, 2023</p>
 
     <h5>Transaction ID: {{$payment->transaction_id}}</h5>
     <h5>Registration ID: {{$payment->user->registration_id}}</h5>
@@ -25,7 +25,8 @@
     <div>
 
         @php
-        $memberAmount = $fee->{$payment->registration_type}_amount;
+        $registrationTypeColumn = $payment->registration_type . '_amount';
+        $memberAmount = $fee->{$registrationTypeColumn};
 
         $companionsAmount = $payment->user->companions->reduce(function ($carry, $companion) {
         $fee = !empty($companion->confirmed) ? intval($companion->fees) : 0;
@@ -35,7 +36,7 @@
         @endphp
 
         <p></p>
-        <table>
+        <table border="1">
             <tr>
                 <td>Registration Category</td>
                 <td>Registration type</td>
