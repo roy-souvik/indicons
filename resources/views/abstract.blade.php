@@ -202,6 +202,9 @@
 
 <div style="text-align: center">
     <a href="/registration" class="btn btn-primary btn-lg">Register to submit an abstract</a>
+
+        <br>
+    <a href="/login" class="btn btn-primary btn-lg">Login</a>
 </div>
 <br>
 @endif
