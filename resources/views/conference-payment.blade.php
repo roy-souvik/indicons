@@ -44,12 +44,20 @@
 
 @if ($accompanyingPersons->count() < 2) <br>
     <h5>Enter accompanying person details</h5>
+    @php
+        $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+            ? intval($accompanyingPersonFees->early_bird_amount / 75)
+            : $accompanyingPersonFees->amount;
+    @endphp
     <p>
-        Fees for each person is <u>{{$accompanyingPersonFees->currency}} {{$accompanyingPersonFees->early_bird_amount}}</u>
+        Fees for each person is
+        <u>
+            {{$paymentSlabItem->currency}} {{$companionAmount}}
+        </u>
     </p>
 
     @php
-    $numbers = $accompanyingPersons->count() == 0 ? [1, 2] : [2];
+        $numbers = $accompanyingPersons->count() == 0 ? [1, 2] : [2];
     @endphp
 
     <table class="table">
@@ -63,10 +71,14 @@
                     @endforeach
                 </select>
             </td>
-            <td><input type="text" placeholder="Name" class="form-control" name="person_{{$number}}_name" id="person_{{$number}}_name"></td>
-            <td><input type="email" placeholder="Email (optional)" class="form-control" name="person_{{$number}}_email" id="person_{{$number}}_email"></td>
             <td>
-                <input type="hidden" name="person_{{$number}}_fees" id="person_{{$number}}_fees" value="{{$accompanyingPersonFees->early_bird_amount}}">
+                <input type="text" placeholder="Name" class="form-control" name="person_{{$number}}_name" id="person_{{$number}}_name">
+            </td>
+            <td>
+                <input type="email" placeholder="Email (optional)" class="form-control" name="person_{{$number}}_email" id="person_{{$number}}_email">
+            </td>
+            <td>
+                <input type="hidden" name="person_{{$number}}_fees" id="person_{{$number}}_fees" value="{{$companionAmount}}">
                 <button class="btn btn-primary" id="person_{{$number}}_confirm">Confirm</button>
             </td>
         </tr>
