@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/accompanying-persons/{id}', [RegistrationController::class, 'deleteAccompanyingPerson'])
         ->name('accompanyingPersons.delete');
+
+
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {
@@ -87,6 +89,9 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/abstracts', [AdminController::class, 'abstractUpdate'])
             ->name('admin.abstracts.update');
+
+        Route::post('/sponsorships', [AdminController::class, 'sponsorshipShow'])
+            ->name('admin.sponsorship.show');
     });
 });
 

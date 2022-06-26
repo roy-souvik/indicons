@@ -6,6 +6,7 @@ use App\Mail\AbstractUpdated;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
+use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -89,5 +90,12 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());
         }
+    }
+
+    public function sponsorshipShow()
+    {
+        $sponsorships = Sponsorship::all();
+
+        return view('admin.sponsorship-list', compact('sponsorships'));
     }
 }
