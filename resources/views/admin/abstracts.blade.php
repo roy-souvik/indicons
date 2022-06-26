@@ -22,7 +22,7 @@
                     <th class="border-top-0">Image</th>
                     <th class="border-top-0">Heading</th>
                     <th class="border-top-0">Theme</th>
-                    <th class="border-top-0" style="width: 16rem;">Description</th>
+                    <th class="border-top-0" style="width: 10rem;">Description</th>
                     <th class="border-top-0">Qualification</th>
                     <th class="border-top-0">Profession</th>
                     <th class="border-top-0">Institution</th>
