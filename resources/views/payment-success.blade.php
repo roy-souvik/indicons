@@ -5,5 +5,9 @@
 
 <h4>Transaction ID: {{$transactionId}}</h4>
 
-<a href="/">Go Back</a>
+<a href="/" class="btn btn-primary">Go Back</a>
+
+<br><br>
+
+<a href="/abstract" class="btn btn-primary">Submit an abstract</a>
 @stop

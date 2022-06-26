@@ -1,56 +1,97 @@
-<div>
-    <h3>Conference: VAICON 2023</h3>
-    <h5>Venue: PALA BALL ROOM, ITC SONAR</h5>
-    <p>1, JBS HALDANE AVENUE, KOLKATA - 700 046, WEST BENGAL, INDIA</p>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td style="font-size:19px;background:transparent;border:none">
+                <img style="display:block" src="https://indicons.in/email/im-mail.jpg" alt="image" width="700" data-image-whitelisted="">
+            </td>
+        </tr>
+        <tr>
+            <td style="border:none"></td>
+        </tr>
 
-    <p>Dates: 27th , 28th and 29th January, 2023</p>
+        <tr>
+            <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
+                <p>Conference: <b>VAICON 2023.</b></p>
+                <p>Venue: <b>PALA BALL ROOM, ITC SONAR 1, JBS HALDANE AVENUE,KOLKATA - 700 046, WEST BENGAL, INDIA</b></p>
+                <p>Dates: <b>27th, 28th and 29th January, 2023</b></p>
+                <p>Registration ID: <b>{{$abstract->user->registration_id}}</b></p>
 
-    <h5>Dear {{$abstract->user->getDisplayName()}},</h5>
+                <p>Abstract ID: <b>{{$abstract->abstract_id}}</b></p>
 
-    <p>
-        <strong>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata.</strong>
-        Thank you for registering for VAICON 2023, which takes place 27 th to 29 th January 2023 at ITC Sonar,
-        Kolkata, India.
-    </p>
+                <p>Dear <strong>{{$abstract->user->getDisplayName()}},</strong> </p>
 
-    <p>
-        We are pleased to inform you that the abstract you submitted to the Scientific Committee has been
-        accepted for PRESENTATION.
-    </p>
+                @if ($status != 'declined')
+                <p>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata. </p>
 
-    <h5>Your Abstract Details:</h5>
+                @if ($status == 'confirmed')
+                <p>
+                    We are pleased to inform you that the abstract you submitted to the Scientific Committee has been accepted for PRESENTATION.
+                </p>
+                @endif
 
-    <div>
-        <table border="1" style="padding: 0.5rem;">
-            <tr>
-                <td>Abstract ID</td>
-                <td>{{$abstract->abstract_id}}</td>
-            </tr>
-            <tr>
-                <td>Abstract title</td>
-                <td>{{$abstract->heading}}</td>
-            </tr>
-            <tr>
-                <td>Theme</td>
-                <td>{{$abstract->theme}}</td>
-            </tr>
-            <tr>
-                <td>Presentation mode</td>
-                <td>Podium presentation / poster presentation</td>
-            </tr>
-            <tr>
-                <td>Presenting time</td>
-                <td>5 min / 1 pm to 2 pm - on 27th and 28th January, 2023</td>
-            </tr>
-        </table>
-    </div>
+                @else
 
-    <br />
+                <p>
+                We are sorry to inform you that the abstract you submitted to the Scientific Committee has been rejected for PRESENTATION.
+                </p>
 
-    <h5>Thanking you.</h5>
+                @endif
 
-    <p>Dr. Jayanta Das</p>
-    <p>Organising Secretary. VAICON 2023</p>
-    <p>Website: www.vaicon2023.com</p>
-    <p>Email: vaicon2023@gmail.com</p>
-</div>
+                <h4>Your Abstract Details:</h4>
+
+                <div style="clear:both"></div>
+
+                <table border="1" cellspacing="0" cellpadding="2">
+                    <tr>
+                        <td width="132" valign="top">
+                            <p><strong>Abstract ID</strong></p>
+                        </td>
+                        <td width="469" valign="top">
+                            <p><strong>{{$abstract->abstract_id}}</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="132" valign="top">
+                            <p><strong>Abstract title</strong></p>
+                        </td>
+                        <td width="469" valign="top">
+                            <p><strong>{{$abstract->heading}}</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="132" valign="top">
+                            <p><strong>Theme</strong></p>
+                        </td>
+                        <td width="469" valign="top">
+                            <p><strong>{{ucfirst($abstract->theme)}}</strong></p>
+                        </td>
+                    </tr>
+                    @if ($status != 'declined')
+                    <tr>
+                        <td width="132" valign="top">
+                            <p><strong>Presentation mode</strong></p>
+                        </td>
+                        <td width="469" valign="top">
+                            <p><strong>Podium presentation / poster presentation</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="132" valign="top">
+                            <p><strong>Presenting time</strong></p>
+                        </td>
+                        <td width="469" valign="top">
+                            <p><strong>5 min / 1 pm to 2 pm &ndash; on 27 and 28 January, 2022</strong></p>
+                        </td>
+                    </tr>
+                    @endif
+                </table>
+
+                <br>
+                Thanking you.<br><br>
+                <p><strong>Website: </strong> <a href="http://www.vaicon2023.com">www.vaicon2023.com </a> </p>
+                <p><strong>Email: </strong> <a href="mailto:vaicon2023@gmail.com">vaicon2023@gmail.com</a></p>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

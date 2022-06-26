@@ -5,63 +5,74 @@
 <p>Originality. The abstract submitted must be of an original scientific nature and
     have not been previously published in whole or part by any journal or
     publication.
-     Language. Abstracts MUST be submitted in English.
-     Mode of Presentation. The Programme Committee reserves the right to select
+	</p>
+	<ul>
+<li>  Language. Abstracts MUST be submitted in English. </li>
+<li> Mode of Presentation. The Programme Committee reserves the right to select
     and assign the abstracts relevant to the sessions for oral or poster
-    presentation.
-     Acknowledgement of Receipt. Upon submission, authors will receive a
-    confirmation by email. Otherwise, please contact the Congress Secretariat.
-     Review and Selection. Abstracts will be double-blind and peer reviewed by an
+    presentation.</li>
+<li>  Acknowledgement of Receipt. Upon submission, authors will receive a
+    confirmation by email. Otherwise, please contact the Congress Secretariat.</li>
+<li> Review and Selection. Abstracts will be double-blind and peer reviewed by an
     international panel of eminent experts. Selection will be based upon:
     relevance to theme, originality and interest, clinical and research content, and
-    state of completeness.
-     Notifications of Acceptance will be sent to presenting authors along with the
-    details of the presentation format.
-     Registration. All presenting authors of abstracts (either oral or poster) are
+    state of completeness.</li>
+<li>  Notifications of Acceptance will be sent to presenting authors along with the
+    details of the presentation format.</li>
+<li> Registration. All presenting authors of abstracts (either oral or poster) are
     required to register and pay the registration fee by the deadline. Failure to do
-    so will result in exclusion from the final programme.
-     Publication. All accepted abstracts will be published in the Scientific
+    so will result in exclusion from the final programme.</li>
+<li>  Publication. All accepted abstracts will be published in the Scientific
     Proceedings of the congress in electronic format upon receipt of registration
     fees in full. Authors will be required to sign copyright transfers to Organising
-    committee.
-     Abstracts should be any of the following theams:
-     Lympho-Venous disease and management
-     Vascular disease and management
-     Society and healthcare
-     Research and sustainable healthcare
-</p>
+    committee.</li>
+	</ul>
+<u> Abstracts should be any of the following theams: </u>
+	<ul>
+<li>  Lympho-Venous disease and management</li>
+<li>  Vascular disease and management</li>
+<li> Society and healthcare</li>
+<li>  Research and sustainable healthcare</li>
+</ul>
+
 
 <h2>Abstract Format</h2>
 
-<p>Word Limit. Abstracts cannot exceed 500 words. A maximum of 2 graphs, tables
+<p>Word Limit. Abstracts cannot exceed 500 words. A maximum of 2 graphs, tables
     or images saved in JPEG/GIF/ TIF format of at least 300 dpi can be included in
-    your abstract.
-    2. Title. Abstract title must be in Title Case, e.g. Asian Pacific Congress of
-    Nephrology. The title should be brief and descriptive.
-    3. Author Information. Author and co-author names, institutions, cities and
+    your abstract. </p>
+	<ul>
+
+  <ul>
+  <li>  2. Title. Abstract title must be in Title Case, e.g. Asian Pacific Congress of
+    Nephrology. The title should be brief and descriptive. </li>
+  <li>  3. Author Information. Author and co-author names, institutions, cities and
     countries are to be typed in appropriate boxes. Please include family name and
     initials of author(s) and do NOT include degrees or professional titles (Dr, PhD,
-    Prof, MD, etc.).
-    4. Content. Each abstract must contain sufficient details for evaluation. Make the
+    Prof, MD, etc.).</li>
+  <li>  4. Content. Each abstract must contain sufficient details for evaluation. Make the
     abstract as informative as possible. Clearly indicate the aims and conclusions
     supported by data. Results stated in the abstracts must be complete (though
     concise) and final. Organize the body of the abstract as follows: (a) objectives, (b)
     methods, (c) results, (d) conclusions. Use standard abbreviations and generic
     drug names. Place unusual abbreviations or acronyms in parentheses at first use.
-    Do not identify author(s) or institution(s) in text.
-</p>
+    Do not identify author(s) or institution(s) in text.</li>
+	</ul>
+
 
 <h2>ABOUT THE REVIEWING PROCESS</h2>
 
 <p>Your abstract will undergo a double-blind peer review by the Scientific committee
     within two to three weeks after the last date of submission. All abstracts will be
-    reviewed using four criteria:
-     Originality
-     Clarity
-     Rigour and
-     Practical relevance.
+    reviewed using four criteria: </p>
+	  <ul>
+<li> Originality </li>
+<li> Clarity</li>
+<li>  Rigour and </li>
+<li>  Practical relevance. </li>
+</ul>
 
-    These reviews will be passed on to the Organising Committee, which will make a
+  <p>  These reviews will be passed on to the Organising Committee, which will make a
     final decision on which abstracts to accept and in what categories.
     Results of the abstract review will be sent to the author within two weeks of
     submission
@@ -92,7 +103,7 @@
 <p>Organising committee will award a number of young investigators* in
     recognition of outstanding and original research (represented by the
     submitted abstracts).
-    All accepted abstracts will be eligible for the Outstanding Abstract
+    All accepted abstracts will be eligible for the Outstanding Abstract
     Awards. The organizing committee will identify a number of abstracts with
     the highest scores from all the submitted abstracts. There will be no age
     restriction.</p>
@@ -202,8 +213,8 @@
 
 <div style="text-align: center">
     <a href="/registration" class="btn btn-primary btn-lg">Register to submit an abstract</a>
-
-    <a class="mt-3" href="/login" class="btn btn-primary btn-lg">Login</a>
+    <br>
+    <a href="/login" class="btn btn-primary btn-lg mt-3">Login to submit an abstract</a>
 </div>
 <br>
 @endif
@@ -220,105 +231,128 @@
         provided and must be visible at all times.</li>
     <li>Be sure to include the abstract title, author and coauthor names, and the
         institution(s) where research is underway.
-        • Place your e-mail address, phone, and fax numbers in the upper right-hand
+    <li>Place your e-mail address, phone, and fax numbers in the upper right-hand
         corner of the poster board.</li>
-    <li></li>
-    <li></li>
+
 </ul>
-•
-•
-• It is suggested that you place multiple copies of a reproduction of the abstract
+
+<ul>
+
+<p> It is suggested that you place multiple copies of a reproduction of the abstract
 in the upper left-hand side of the poster, written with the headings
 “Introduction/Background,” Methods,” “Results,” and “Conclusions”. Include your
 contact information on these copies for attendees who desire
-further information.
-• It is recommended that you hand-carry your poster to the conference, using
+further information. </p>
+<ul>
+<li> It is recommended that you hand-carry your poster to the conference, using
 tubular packaging or a portfolio case. Costs associated with creating and
 
 shipping the poster display will be the responsibility of the authors. Velcro (easiest to
 use), pushpins, or thumbtacks will be provided to mount your
-poster.
-• Refer to your acceptance letter and/or the final conference program for the
-time and location of your poster session and set-up time.
-• The designated poster presenter (author or coauthor) must be present at the
+poster. </li>
+<li> Refer to your acceptance letter and/or the final conference program for the
+time and location of your poster session and set-up time. </li>
+<li>The designated poster presenter (author or coauthor) must be present at the
 assigned space during the designated time to discuss the work presented.
-The Organisers cannot not be responsible for any lost or damaged posters.
+The Organisers cannot not be responsible for any lost or damaged posters. </li>
+</ul>
 
-Tips for Poster Preparation
-• Posters should stimulate discussion, not give a long presentation. Therefore,
+<p> <strong>Tips for Poster Preparation </strong></p>
+<p>Posters should stimulate discussion, not give a long presentation. Therefore,
 keep text to a minimum, emphasize graphics, and make sure every item
-included in your poster is necessary.
-o Utilize handouts to supplement your poster.
-o Goal: 20% text, 40% graphics, 40% space.
-o Make sure ideas flow logically from one section to the next.
-o Use charts and graphs to illustrate data (avoid large tables of raw data).
-o Use high resolution photographs (web images often will not work).
-o Do not use all capital letters.
-• The use of typewritten, handwritten or a printed PowerPointTM presentation
-as a poster is unacceptable. Presentations in these formats will be removed.
-• Be consistent.
-o Keep consistent margins.
-o Keep line spacing consistent.
-o Keep the color, style, and thickness of borders the same.
-o Keep shading consistent.
-• Pick no more than 2–3 fonts
-• Pick no more than 2–3 colors
-• Test readability
-o Title banner should be legible from 20 feet away.
-o Body text should legible from 6 feet away
+included in your poster is necessary. </p>
+<ul>
+<li> Utilize handouts to supplement your poster. </li>
+<li> Goal: 20% text, 40% graphics, 40% space.</li>
+<li> Make sure ideas flow logically from one section to the next.</li>
+<li> Use charts and graphs to illustrate data (avoid large tables of raw data).</li>
+<li>Use high resolution photographs (web images often will not work).</li>
+<li> Do not use all capital letters.</li>
+<p>
+ The use of typewritten, handwritten or a printed PowerPointTM presentation
+as a poster is unacceptable. Presentations in these formats will be removed. </p>
+
+<p> <strong>Be consistent.</strong> </p>
+<ul>
+<li>
+Keep consistent margins. </li>
+<li> Keep line spacing consistent.</li>
+<li>  Keep the color, style, and thickness of borders the same.</li>
+<li> Keep shading consistent.</li>
+</ul>
+
+
+<p>  <strong>Pick no more than 2–3 fonts</strong> </p>
+<p> <strong>Pick no more than 2–3 colors</strong> </p>
+<p> <strong> Test readability</strong> </p>
+<ul>
+ <li>Title banner should be legible from 20 feet away.</li>
+ <li> Body text should legible from 6 feet away</li>
+  </ul>
 </p>
 
 <h2>E-POSTER DISPLAY GUIDELINES</h2>
 
-<p>Instructions for the Preparation of E-Posters
+<p><strong>Instructions for the Preparation of E-Posters </strong></p>
 
-    Digital E-
+  <p>  Digital E-
     Poster Digital E-Poster without a video Digital E-Poster including a video
     File format PDF (.pdf) and JPG PowerPoint (.pptx)
     Orientation Portrait Format, Single-Page Portrait Format, Single-Page
     Dimensions in
-    Pixel
+    Pixel<br />
 
-    1080 width x 1920 height 1080 width x 1920 height
 
+<strong>    1080 width x 1920 height 1080 width x 1920 height</strong>
+</p>
+
+
+  <p>
     Dimensions in
     cm
-    70 width x 120 height 70 width x 120 height
+    70 width x 120 height 70 width x 120 height </p>
 
-    Recommended
+    <p>   Recommended
     font size
 
     Minimum 16 points Minimum 16 points
     Sound No sound supported No sound supported
     Maximum file
     size
-    20 MB 50 MB
+    20 MB 50 MB </p>
+
+	<p>
 
     Video formats .mp4, .mpg, .mov, .avi
     Number of
-    videos
+    videos </p>
 
-    5 video
+   	<p> 5 video </p>
 
-    Portrait Format, Single-Page
-    • Language: All E-Posters should be prepared in English.
-    • File format: PDF or JPG
-    • E-Poster size in pixel: 1080 width x 1920 height – portrait orientation
-    • E-Poster size in cm: 70 width x 120 height – portrait orientation
-    • Font size: 16. Recommended font Arial, Times New Roman
-    • Blue area on top of the template is for title and author names**
-    ** The poster must be submitted to the system by July 20, 2021.
+  <p> <u>  Portrait Format, Single-Page </u> </p>
+<ul>
+<li>Language: All E-Posters should be prepared in English. </li>
+<li> File format: PDF or JPG</li>
+<li>E-Poster size in pixel: 1080 width x 1920 height – portrait orientation</li>
+<li> E-Poster size in cm: 70 width x 120 height – portrait orientation</li>
+<li>Font size: 16. Recommended font Arial, Times New Roman</li>
+<li> Blue area on top of the template is for title and author names**</li>
+</ul>
+
+
+ <p>   ** The poster must be submitted to the system by July 20, 2021.
     In case you wish to add a video to your poster, please keep these
-    requirements in mind:
-    • File format: .pptx only
-    • Video formats: .mp4, .mpg, .avi
-    • Max. file size: 50 MB
+    requirements in mind: </p>
+<ul>
+<li>File format: .pptx only </li>
+<li>Video formats: .mp4, .mpg, .avi </li>
+<li>Max. file size: 50 MB </li>
 
-    • Max. number: 5 videos
-    • Sound: not supported
+<li> Max. number: 5 videos </li>
+<li> Sound: not supported
     Please note that all E-Posters with videos will be automatically converted
     from .pptx to .pdf format, but the videos can still be played. Hyperlinks,
     animated images and animations are not permitted for E-Posters and will
-    be non-functioning.</p>
+    be non-functioning.</li>
 
 @stop

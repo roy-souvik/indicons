@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AbstractUpdated;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 
 class RegistrationController extends Controller
@@ -90,6 +92,8 @@ class RegistrationController extends Controller
             'institution' => $request->input('institution'),
             'alternate_number' => $request->input('alternate_number'),
         ]);
+
+        Mail::to(Auth::user())->send(new AbstractUpdated($abstract, 'submitted'));
 
         return view('abstract-saved', compact('abstract'));
     }

@@ -9,6 +9,6 @@
     <p>Please try again or contact us.</p>
 @endif
 
-<a href="/">Back to home</a>
+<a href="/" class="btn btn-primary">Go Back</a>
 
 @stop

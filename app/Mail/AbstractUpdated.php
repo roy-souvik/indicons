@@ -33,12 +33,13 @@ class AbstractUpdated extends Mailable
      */
     public function build()
     {
-        $subject = "Your Abstract {$this->abstract->abstract_id} is {$this->status}";
+        $subject = "Your Abstract [{$this->abstract->abstract_id}] is {$this->status}";
 
         return $this->view('emails.abstract-updated')
             ->subject($subject)
             ->with([
                 'abstract' => $this->abstract,
+                'status' => $this->status,
             ]);
     }
 }
