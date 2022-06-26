@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AbstractUpdated;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
-use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -68,15 +69,23 @@ class AdminController extends Controller
         ]);
 
         try {
-            $abstract = ConferenceAbstract::findOrFail(data_get($requestData, 'id'));
+            $abstract = ConferenceAbstract::with(['user'])->findOrFail(data_get($requestData, 'id'));
 
             $abstract->confirmed = data_get($requestData, 'confirmed');
 
             $abstract->save();
 
-            // TODO: Send email here
+            if (!empty($abstract->confirmed)) {
+                $status = 'confirmed';
+            } else {
+                $status = 'declined';
+            }
 
-            return back()->with('success', 'Abstract confirmed successfully!');
+            Mail::to($abstract->user)->send(new AbstractUpdated($abstract, $status));
+
+            $message = "Abstract {$abstract->abstract_id} is {$status}";
+
+            return back()->with('success', $message);
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());
         }

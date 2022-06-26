@@ -8,6 +8,7 @@
         <table class="table text-nowrap">
             <thead>
                 <tr>
+                    <th class="border-top-0">Reg. ID</th>
                     <th class="border-top-0">Name</th>
                     <th class="border-top-0">Email</th>
                     <th class="border-top-0">Registration Type</th>
@@ -18,6 +19,7 @@
             <tbody>
                 @foreach ($payments as $payment)
                     <tr>
+                        <td>{{$payment->user->registration_id}}</td>
                         <td>{{$payment->user->name}}</td>
                         <td>{{$payment->user->email}}</td>
                         <td>{{$payment->user->role}}</td>

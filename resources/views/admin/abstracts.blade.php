@@ -17,6 +17,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th class="border-top-0">ID</th>
                     <th class="border-top-0">Heading</th>
                     <th class="border-top-0">Theme</th>
                     <!-- <th class="border-top-0">Co Author</th> -->
@@ -32,11 +33,10 @@
             </thead>
             <tbody>
                 @foreach ($abstracts as $abstract)
-
                 <tr>
+                    <td>{{$abstract->abstract_id}}</td>
                     <td>{{$abstract->heading}}</td>
                     <td>{{ucfirst($abstract->theme)}}</td>
-                    <!-- <td>{{$abstract->co_author}}</td>/ -->
                     <td>
                         {{$abstract->description}}
                         <br />

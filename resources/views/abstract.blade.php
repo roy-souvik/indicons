@@ -203,8 +203,7 @@
 <div style="text-align: center">
     <a href="/registration" class="btn btn-primary btn-lg">Register to submit an abstract</a>
 
-        <br>
-    <a href="/login" class="btn btn-primary btn-lg">Login</a>
+    <a class="mt-3" href="/login" class="btn btn-primary btn-lg">Login</a>
 </div>
 <br>
 @endif
@@ -215,52 +214,58 @@
     Poster displays will be limited to one side of a 4 foot by 8 foot tack board.
     The recommended poster size is 3 feet by 6.5 feet (36 inches by 78
     inches).
-    • The poster board number assigned to the poster must be placed in the upper
-    left-hand corner of the display. A poster board number cut-out will be
-    provided and must be visible at all times.
-    • Be sure to include the abstract title, author and coauthor names, and the
-    institution(s) where research is underway.
-    • Place your e-mail address, phone, and fax numbers in the upper right-hand
-    corner of the poster board.
-    • It is suggested that you place multiple copies of a reproduction of the abstract
-    in the upper left-hand side of the poster, written with the headings
-    “Introduction/Background,” Methods,” “Results,” and “Conclusions”. Include your
-    contact information on these copies for attendees who desire
-    further information.
-    • It is recommended that you hand-carry your poster to the conference, using
-    tubular packaging or a portfolio case. Costs associated with creating and
+<ul>
+    <li>The poster board number assigned to the poster must be placed in the upper
+        left-hand corner of the display. A poster board number cut-out will be
+        provided and must be visible at all times.</li>
+    <li>Be sure to include the abstract title, author and coauthor names, and the
+        institution(s) where research is underway.
+        • Place your e-mail address, phone, and fax numbers in the upper right-hand
+        corner of the poster board.</li>
+    <li></li>
+    <li></li>
+</ul>
+•
+•
+• It is suggested that you place multiple copies of a reproduction of the abstract
+in the upper left-hand side of the poster, written with the headings
+“Introduction/Background,” Methods,” “Results,” and “Conclusions”. Include your
+contact information on these copies for attendees who desire
+further information.
+• It is recommended that you hand-carry your poster to the conference, using
+tubular packaging or a portfolio case. Costs associated with creating and
 
-    shipping the poster display will be the responsibility of the authors. Velcro (easiest to
-    use), pushpins, or thumbtacks will be provided to mount your
-    poster.
-    • Refer to your acceptance letter and/or the final conference program for the
-    time and location of your poster session and set-up time.
-    • The designated poster presenter (author or coauthor) must be present at the
-    assigned space during the designated time to discuss the work presented.
-    The Organisers cannot not be responsible for any lost or damaged posters.
+shipping the poster display will be the responsibility of the authors. Velcro (easiest to
+use), pushpins, or thumbtacks will be provided to mount your
+poster.
+• Refer to your acceptance letter and/or the final conference program for the
+time and location of your poster session and set-up time.
+• The designated poster presenter (author or coauthor) must be present at the
+assigned space during the designated time to discuss the work presented.
+The Organisers cannot not be responsible for any lost or damaged posters.
 
-    Tips for Poster Preparation
-    • Posters should stimulate discussion, not give a long presentation. Therefore,
-    keep text to a minimum, emphasize graphics, and make sure every item
-    included in your poster is necessary.
-    o Utilize handouts to supplement your poster.
-    o Goal: 20% text, 40% graphics, 40% space.
-    o Make sure ideas flow logically from one section to the next.
-    o Use charts and graphs to illustrate data (avoid large tables of raw data).
-    o Use high resolution photographs (web images often will not work).
-    o Do not use all capital letters.
-    • The use of typewritten, handwritten or a printed PowerPointTM presentation
-    as a poster is unacceptable. Presentations in these formats will be removed.
-    • Be consistent.
-    o Keep consistent margins.
-    o Keep line spacing consistent.
-    o Keep the color, style, and thickness of borders the same.
-    o Keep shading consistent.
-    • Pick no more than 2–3 fonts
-    • Pick no more than 2–3 colors
-    • Test readability
-    o Title banner should be legible from 20 feet away.
-    o Body text should legible from 6 feet away
+Tips for Poster Preparation
+• Posters should stimulate discussion, not give a long presentation. Therefore,
+keep text to a minimum, emphasize graphics, and make sure every item
+included in your poster is necessary.
+o Utilize handouts to supplement your poster.
+o Goal: 20% text, 40% graphics, 40% space.
+o Make sure ideas flow logically from one section to the next.
+o Use charts and graphs to illustrate data (avoid large tables of raw data).
+o Use high resolution photographs (web images often will not work).
+o Do not use all capital letters.
+• The use of typewritten, handwritten or a printed PowerPointTM presentation
+as a poster is unacceptable. Presentations in these formats will be removed.
+• Be consistent.
+o Keep consistent margins.
+o Keep line spacing consistent.
+o Keep the color, style, and thickness of borders the same.
+o Keep shading consistent.
+• Pick no more than 2–3 fonts
+• Pick no more than 2–3 colors
+• Test readability
+o Title banner should be legible from 20 feet away.
+o Body text should legible from 6 feet away
 </p>
 
 <h2>E-POSTER DISPLAY GUIDELINES</h2>

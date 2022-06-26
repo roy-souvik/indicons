@@ -13,7 +13,7 @@
     <h5>Dear {{$payment->user->getDisplayName()}},</h5>
 
     <p>
-        Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata.
+        <strong>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata.</strong>
         Thank you for registering for VAICON 2023, which takes place 27 th to 29 th January 2023 at ITC Sonar,
         Kolkata, India.
     </p>
@@ -36,7 +36,7 @@
         @endphp
 
         <p></p>
-        <table border="1">
+        <table border="1" style="padding: 0.5rem;">
             <tr>
                 <td>Registration Category</td>
                 <td>Registration type</td>

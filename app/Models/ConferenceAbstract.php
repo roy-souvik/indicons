@@ -36,4 +36,9 @@ class ConferenceAbstract extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getAbstractIdAttribute(): string
+    {
+        return "ABST_000{$this->id}";
+    }
 }
