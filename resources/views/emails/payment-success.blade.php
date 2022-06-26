@@ -88,8 +88,8 @@
 
                 <br>
                 Thanking you.<br><br>
-                <p><strong>Website: </strong> <a href="http://www.vaicon2023.com">www.vaicon2023.com </a> </p>
-                <p><strong>Email: </strong> <a href="mailto:vaicon2023@gmail.com">vaicon2023@gmail.com</a></p>
+                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.vaicon2023.com">www.vaicon2023.com </a> </p>
+                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:vaicon2023@gmail.com">vaicon2023@gmail.com</a></p>
 
             </td>
         </tr>
