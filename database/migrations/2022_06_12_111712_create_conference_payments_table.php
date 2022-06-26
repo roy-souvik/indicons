@@ -19,6 +19,7 @@ class CreateConferencePaymentsTable extends Migration
             $table->string('transaction_id');
             $table->string('status');
             $table->string('amount');
+            $table->string('registration_type')->nullable();
             $table->json('payment_response');
             $table->timestamps();
         });

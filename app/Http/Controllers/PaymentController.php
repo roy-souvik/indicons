@@ -50,6 +50,7 @@ class PaymentController extends Controller
         $payment->status = $request->status;
         $payment->amount = $request->amount;
         $payment->payment_response = json_encode($request->payment_response);
+        $payment->registration_type = $request->member_registration_type;
 
         $payment->save();
 

@@ -139,7 +139,8 @@
                             'status': transaction.status,
                             'amount': transaction.amount.value,
                             'payment_response': orderData,
-                            'payer_amount': updateAmount().payer_amount
+                            'payer_amount': updateAmount().payer_amount,
+                            'member_registration_type': $('input[name="payment"]:checked').attr('id'),
                         };
 
                         saveConferencePayment(responseData).then(() => {

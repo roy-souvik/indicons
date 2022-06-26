@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\ConferencePayment;
+use App\Models\Fee;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -30,9 +32,16 @@ class PaymentSuccess extends Mailable
      */
     public function build()
     {
+        $payment = ConferencePayment::with(['user.companions'])
+            ->where('transaction_id', $this->transactionId)
+            ->first();
+
+        $fee = Fee::where('role_id', $payment->user->role_id)->first();
+
         return $this->view('emails.payment-success')
             ->with([
-                'transactionId' => $this->transactionId,
+                'payment' => $payment,
+                'fee' => $fee,
             ]);
     }
 }

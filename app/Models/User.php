@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -110,8 +111,18 @@ class User extends Authenticatable
         return "{$rolePrefix}_000{$this->id}";
     }
 
+    public function getDisplayName()
+    {
+        return "{$this->title}. {$this->name}";
+    }
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function companions(): HasMany
+    {
+        return $this->hasMany(AccompanyingPerson::class);
     }
 }
