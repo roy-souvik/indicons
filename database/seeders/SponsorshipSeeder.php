@@ -68,36 +68,6 @@ class SponsorshipSeeder extends Seeder
                 'amount' => '100000',
                 'number' => 1,
             ],
-            [
-                'category' => 'other',
-                'title' => 'Bronze',
-                'amount' => '100000',
-            ],
-            [
-                'category' => 'other',
-                'title' => 'Bronze',
-                'amount' => '100000',
-            ],
-            [
-                'category' => 'other',
-                'title' => 'Bronze',
-                'amount' => '100000',
-            ],
-            [
-                'category' => 'other',
-                'title' => 'Bronze',
-                'amount' => '100000',
-            ],
-            [
-                'category' => 'other',
-                'title' => 'Bronze',
-                'amount' => '100000',
-            ],
-            [
-                'category' => 'other',
-                'title' => 'Bronze',
-                'amount' => '100000',
-            ],
         ];
 
         foreach ($sponsorships as $sponsorship) {

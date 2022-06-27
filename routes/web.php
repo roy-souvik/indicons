@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/abstracts', [AdminController::class, 'abstractUpdate'])
             ->name('admin.abstracts.update');
 
-        Route::post('/sponsorships', [AdminController::class, 'sponsorshipShow'])
+        Route::get('/sponsorships', [AdminController::class, 'sponsorshipShow'])
             ->name('admin.sponsorship.show');
     });
 });
