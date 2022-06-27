@@ -33,6 +33,8 @@ class RegistrationController extends Controller
             'address' => ['required'],
             'registration_type' => ['required', 'integer'], // Considered as role as in Role Model
             'privacy_policy_check' => ['required'],
+            'is_vaicon_member' => ['required'],
+            'vaicon_member_id' => ['filled'], // TODO: check exist from DB table
         ]);
 
         $user = User::create([
@@ -48,6 +50,7 @@ class RegistrationController extends Controller
             'country' => $request->country,
             'department' => $request->department,
             'address' => $request->address,
+            'vaicon_member_id' => $request->input('vaicon_member_id'), // TODO: Get the DB auto ID if member id matches
         ]);
 
         event(new Registered($user));

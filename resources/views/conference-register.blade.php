@@ -325,6 +325,18 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="input__box" style="margin-left: 2.2rem;">
+            <span class="details">Vaicon Member</span>
+            <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
+                <option value="">-- choose one --</option>
+                <option value="yes" {{old('is_vaicon_member') == 'yes' ? 'selected' : ''}}>Yes</option>
+                <option value="no" {{old('is_vaicon_member') == 'no' ? 'selected' : ''}}>No</option>
+            </select>
+
+            <input type="text" class="d-none" placeholder="Enter valid VAICON member id" name="vaicon_member_id" id="vaicon_member_id" value="{{ old('vaicon_member_id') }}">
+        </div>
+
         <div style="clear:both;"> </div>
 
         <p class="agree">
@@ -338,4 +350,20 @@
         <input type="submit" value="Register" />
     </div>
 </form>
+
+<script>
+    $(function () {
+        const $vaiconMemberInput = $('#vaicon_member_id');
+
+        $('#is_vaicon_member').change(function () {
+            const selectedOption = $(this).val();
+
+            if (selectedOption === 'yes') {
+                $vaiconMemberInput.removeClass('d-none');
+            } else {
+                $vaiconMemberInput.addClass('d-none');
+            }
+        });
+    });
+</script>
 @stop
