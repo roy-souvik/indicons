@@ -40,6 +40,7 @@ class User extends Authenticatable
         'country',
         'department',
         'address',
+        'vaicon_member_id',
     ];
 
     /**
