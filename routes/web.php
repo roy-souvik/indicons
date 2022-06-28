@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SponsorshipController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,8 @@ Route::post('/registration', function () {
 Route::get('/abstract', function () {
     return view('abstract');
 })->name('abstract.show');
+
+Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->name('sponsorship.show');
 
 Route::post('/registration', [RegistrationController::class, 'register']);
 

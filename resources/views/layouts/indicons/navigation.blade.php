@@ -28,7 +28,7 @@
                 <li><a href="#">Travel </a></li>
 
                 <li><a href="#"> UIP </a></li>
-                <li><a href="#"> Sponsorship </a></li>
+                <li><a href="{{route('sponsorship.show')}}"> Sponsorship </a></li>
 
                 @if (Auth::user())
                 <li>
