@@ -28,7 +28,7 @@ class AdminController extends Controller
 
     public function manageFeesStructure()
     {
-        $fees = Fee::with(['Role'])->where('event', 'conference_registration')->get();
+        $fees = Fee::with(['Role'])->where('event', 'physical_conference')->get();
 
         return view('admin.fees-structure', compact('fees'));
     }
@@ -44,6 +44,9 @@ class AdminController extends Controller
             'early_bird_amount',
             'standard_amount',
             'spot_amount',
+            'early_bird_member_discount',
+            'standard_member_discount',
+            'spot_member_discount',
         ]);
 
         $fees = Fee::where('id', data_get($requestData, 'id'))->firstOrFail();
@@ -51,6 +54,10 @@ class AdminController extends Controller
         $fees->early_bird_amount = data_get($requestData, 'early_bird_amount');
         $fees->standard_amount = data_get($requestData, 'standard_amount');
         $fees->spot_amount = data_get($requestData, 'spot_amount');
+
+        $fees->early_bird_member_discount = data_get($requestData, 'early_bird_member_discount');
+        $fees->standard_member_discount = data_get($requestData, 'standard_member_discount');
+        $fees->spot_member_discount = data_get($requestData, 'spot_member_discount');
 
         $fees->save();
 

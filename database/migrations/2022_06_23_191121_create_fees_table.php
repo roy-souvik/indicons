@@ -19,8 +19,11 @@ class CreateFeesTable extends Migration
             $table->string('event');
             $table->string('currency', 10);
             $table->string('early_bird_amount', 20)->nullable();
+            $table->string('early_bird_member_discount', 20)->default(0);
             $table->string('standard_amount', 20)->nullable();
+            $table->string('standard_member_discount', 20)->default(0);
             $table->string('spot_amount', 20)->nullable();
+            $table->string('spot_member_discount', 20)->default(0);
         });
     }
 

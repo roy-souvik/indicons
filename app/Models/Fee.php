@@ -20,6 +20,9 @@ class Fee extends Model
         'early_bird_amount',
         'standard_amount',
         'spot_amount',
+        'early_bird_member_discount',
+        'standard_member_discount',
+        'spot_member_discount',
     ];
 
     public function role(): BelongsTo

@@ -1,7 +1,7 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency={{$paymentSlabItem->currency}}"></script>
 
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
 
@@ -12,7 +12,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
-                <label for="early_bird">{{$paymentSlabItem->currency}} {{$paymentSlabItem->early_bird_amount}}</label>
+                    <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - intval($paymentSlabItem->early_bird_member_discount)}}</label>
                 @else
                 Expired!
                 @endif
@@ -24,7 +24,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
-                <label for="standard">{{$paymentSlabItem['currency']}} {{$paymentSlabItem->standard_amount}}</label>
+                    <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - intval($paymentSlabItem->standard_member_discount)}}</label>
                 @else
                 Expired!
                 @endif
@@ -35,7 +35,7 @@
             <td>Spot Registration</td>
             <td>
                 <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem->spot_amount}}">
-                <label for="spot">{{$paymentSlabItem['currency']}} {{$paymentSlabItem->spot_amount}}</label>
+                <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - intval($paymentSlabItem->spot_member_discount)}}</label>
             </td>
         </tr>
     </tbody>
@@ -44,9 +44,11 @@
 @if ($accompanyingPersons->count() < 2) <br>
     <h5>Enter accompanying person details</h5>
     @php
+        $amt = intval($accompanyingPersonFees->early_bird_amount) - intval($accompanyingPersonFees->early_bird_member_discount);
+
         $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-            ? intval($accompanyingPersonFees->early_bird_amount / 75)
-            : $accompanyingPersonFees->amount;
+            ? intval($amt / 75)
+            : $amt;
     @endphp
     <p>
         Fees for each person is
@@ -114,8 +116,6 @@
 
         <button class="btn btn-primary ms-5" id="proceed-payment">Proceed to payment</button>
     </div>
-
-
 
     <br />
     <br />
