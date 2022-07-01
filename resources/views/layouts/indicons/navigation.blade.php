@@ -13,16 +13,11 @@
                         <li><a href="#">Congress</a></li>
                         <li>
                             <a href="#">Information</a>
-
                         </li>
                         <li>
                             <a href="#">Scientific</a>
-
                         </li>
                         <li><a href="{{route('abstract.show')}}"> Abstracts</a></li>
-
-
-                        <li><a href="#">Late Abstracts</a></li>
 
                         <li><a href="{{route('conference-register.show')}}">Registration</a></li>
                         <li><a href="#">Accommodation</a></li>
