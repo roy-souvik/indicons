@@ -34,7 +34,7 @@ class RegistrationController extends Controller
             'registration_type' => ['required', 'integer'], // Considered as role as in Role Model
             'privacy_policy_check' => ['required'],
             'is_vaicon_member' => ['required'],
-            'vaicon_member_id' => ['string'], // TODO: check exist from DB table
+            'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
         ]);
 
         $user = User::create([
