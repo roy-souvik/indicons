@@ -28,19 +28,19 @@ Route::get('/registration', function () {
     return view('conference-register', compact('roles'));
 })->name('conference-register.show');
 
-Route::post('/abstracts/importnant-dates', function () {
+Route::get('/abstracts/importnant-dates', function () {
     return view('abstract-dates');
 })->name('abstract.dates');
 
-Route::post('/abstracts/guidelines', function () {
+Route::get('/abstracts/guidelines', function () {
     return view('abstract-guidelines');
 })->name('abstract.guidelines');
 
-Route::post('/abstracts/poster-guidelines', function () {
+Route::get('/abstracts/poster-guidelines', function () {
     return view('abstract-poster-guidelines');
 })->name('abstract.posterguidelines');
 
-Route::post('/abstracts/e-poster-guidelines', function () {
+Route::get('/abstracts/e-poster-guidelines', function () {
     return view('abstract-eposter-guidelines');
 })->name('abstract.eposterguidelines');
 
