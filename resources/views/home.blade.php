@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -14,6 +14,12 @@
     <link href="indicons/css/style.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
+ 
+	
+	
+	
 </head>
 
 <body>
@@ -67,16 +73,15 @@
 
 	<style>
 	#countdown {
-         text-align: center;
-    margin-bottom: 40px;
-    background: #b50303;
+      text-align: center;
     display: table;
     margin: auto;
     padding: 21px 60px;
     border-radius: 200px;
-    position: relative;
-    top: -84px;
+    position: absolute;
+    top: -167px;
     width: auto;
+    right: 0px;
 	}
 		#countdown  ul{
 		padding:0px;
@@ -95,8 +100,9 @@ letter-spacing: .125rem;
 display: inline-block;
     font-size: 1.5em;
     list-style-type: none;
-    padding: 0px 2.5em;
+    padding: 0px 1.5em;
     text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #countdown li span {
@@ -139,7 +145,7 @@ font-size:16px;
 
   <div id="countdown">
 
-    <h1 id="headline">Countdown to start Vaicon 2023 Kolkata</h1>
+ 
 
 
     <ul>
@@ -208,7 +214,63 @@ font-size:16px;
 
 
 
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="news-slider" class="owl-carousel">
+      
+         
+                <div class="post-slide">
+         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+         
+             </div>   
+         
+<div class="post-slide">
+         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+         
+             </div>
+			 
+			 
+			 
+			 <div class="post-slide">
+         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+         
+             </div>
+			 
+			 
+			 
+			 <div class="post-slide">
+         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+         
+             </div>
+			 
+			 
+			 
+			 <div class="post-slide">
+         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+         
+             </div>
+			 
+			 
+			 
+		 <div class="post-slide">
+         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+         
+             </div>		 
+			 
+			 
+			 
+         
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -272,7 +334,8 @@ font-size:16px;
                     <div class="col-md-4">
                         <div class="top-box-bottom-main">
                             <div class="top-bpx-bottom-img"><img src="indicons/images/Mask1.png"> </div>
-                            <h3>Message from VAI President</h3>
+                            <h3>Message from<br>
+ VAI President</h3>
 
                             <p>
                                Dear Friends,<br>
@@ -286,14 +349,12 @@ font-size:16px;
 
 <p>
 <br>
-<strong>VAICON2023</strong>, which takes  place <strong>27th to 29th January 2023 at ITC Sonar, Kolkata, India.</strong>
- VAI as the apex  professional body of India for venous and lymphatic diseaseis associated with  other similar professional bodies across the world and having significant  representation in UIP. The <strong>VAICON2023</strong> will bring the world&rsquo;s top professionals  in venous and lymphatic disease at the same platform, while providing a great  opportunity for young vascular specialists to meet, greet, be inspired,  encouraged and energised.<br>
-  Kolkata is known  for its historic, cultural and educational excellence. First medical college of  Asia and city of five Nobel prises really made Kolkata &lsquo;city of joy&rsquo;! <br>
-
-  <strong>VAICON2023</strong> is a multi-disciplinary platform involving presence from vascular,  general and plastic surgery, interventional radiology, vascular medicine and  angiology, lymphology, cosmetic surgery, sonography, research and nursing. The VAICON2023 will  provide you a great opportunity to reach a wide range of professionals in all  related fields, allowing you to expand into new markets.<br>
-  I have no doubts  that the <strong>VAICON2023 under</strong> the leaderships of <strong>Dr. K. Mukherjee and Dr.  Jayanta Das</strong> will be a well-organised, well-attended, grand and glamorous  event. <br>
+<strong>VAICON2023</strong>,  which takes place&nbsp;<strong>27 <sup>th </sup>  to 29<sup>th </sup> January 2023 at ITC Sonar, Kolkata, India.</strong>&nbsp;VAI  as the apex professional body of India for venous and lymphatic diseases  associated with other similar professional bodies across the world and having  significant representation in UIP. The&nbsp;<strong>VAICON2023</strong>&nbsp;will bring the world&rsquo;s  top professionals in venous and lymphatic disease at the same platform, while  providing a great opportunity for young vascular specialists to meet, greet, be  inspired, encouraged and energised.<br>
+  Kolkata is known for its historic, cultural and  educational excellence. First medical college of Asia and city of five Nobel  prises really made Kolkata &lsquo;<em>city of joy&rsquo;</em>!<br>
+  <strong>VAICON2023</strong>&nbsp;is a multi-disciplinary platform involving  presence from vascular, general and plastic surgery, interventional radiology,  vascular medicine and angiology, lymphology, cosmetic surgery, sonography,  research and nursing. The<strong> VAICON2023</strong> will provide you a great opportunity to  reach a wide range of professionals in all related fields, allowing you to  expand into new markets.<br>
+  I have no doubts that the&nbsp;<strong>VAICON2023 </strong><strong>under</strong>&nbsp;the  leaderships of&nbsp;<strong>Dr.  K. Mukherjee and Dr. Jayanta Das</strong>&nbsp;will be a well-organised,  well-attended, grand and glamorous event.<br>
   Kolkatais welcoming you with open arms.<br>
-  See you all in VAICON2023, Kolkata.</p>
+  See you all in <strong>VAICON2023</strong>, Kolkata.</p>
 
       <span class="showbutton">Read More </span>
 
@@ -319,7 +380,8 @@ The President, Venous Association of India.</strong>
 		<div class="col-md-4">
                         <div class="top-box-bottom-main">
                             <div class="top-bpx-bottom-img"><img src="indicons/images/Mask1.png"> </div>
-                            <h3>Message from Organising Chairman</h3>
+                            <h3>Message from <br>
+ Organising Chairman</h3>
 
 
                             <p>
@@ -330,13 +392,12 @@ The President, Venous Association of India.</strong>
 
  <div class="showcase">
 
-      <span> It my honor and  the greatest of pleasure to invite you to the <strong>16th VAICON2023</strong>,  in the <strong>&lsquo;city of joy&rsquo;</strong>, <strong>Kolkata</strong>. <br>
+      <span> It my honor and the greatest of pleasure to invite you to the&nbsp;<strong>16th  VAICON2023</strong>, in the&nbsp;&lsquo;<em>city of joy</em>!,&nbsp;<strong>Kolkata</strong> <br>
  </span>
 
-<p>  The <strong>VAICON2023</strong>, will be held on <strong>27th  to 29th January 2023</strong> at ITC Sonar, Kolkata, India.
- In this  international conference, many international specialists will come together and  have the opportunity to discuss and exchange opinions on every possible aspect  of venous diseases &amp; management along with related matters. I believe that  the topics to be addressed in this conference and its impact will make great  contributions to our profession, considering the opportunity of the conference  and the level of participation.<br>
-Please make sure  that you find the time to enjoy one of the most vibrant cities in the World: Kolkata. <br>
- Am confident that Conference secretariate, headed by <strong>Dr. Jayanta Das</strong>,  will provide you the best support to have a wonderful memory. </p>
+<p>  The&nbsp;<strong>VAICON2023</strong>, will be held on&nbsp;<strong>27 <sup>th </sup> to 29 <sup>th </sup> January  2023</strong>&nbsp;at ITC Sonar, Kolkata, India. In this international conference,  many international specialists will come together and have the opportunity to  discuss and exchange opinions on every possible aspect of venous diseases &amp;  management along with related matters. I believe that the topics to be  addressed in this conference and its impact will make great contributions to  our profession, considering the opportunity of the conference and the level of  participation.<br>
+  Please make sure that you find the time to enjoy one of the most vibrant cities  in the World, Kolkata.<br>
+  Am confident that conference secretariate, headed by&nbsp;<strong>Dr. Jayanta Das</strong>,  will provide you the best support to have a wonderful memory. </p>
 
       <span class="showbutton">Read More </span>
 
@@ -363,7 +424,8 @@ VAICON2023, Kolkata.</strong>
 <div class="col-md-4">
                         <div class="top-box-bottom-main">
                             <div class="top-bpx-bottom-img"><img src="indicons/images/Mask1.png"> </div>
-                            <h3>Message from Organising Secretary</h3>
+                            <h3>Message from<br>
+ Organising Secretary</h3>
 
 
                             <p>
@@ -374,13 +436,11 @@ VAICON2023, Kolkata.</strong>
 
  <div class="showcase">
 
-      <span>  As the  organising secretary, it&rsquo;s my privilege to invite you to the <strong>16th  VAICON2023</strong>, in the <strong>&lsquo;city of joy&rsquo;</strong>, <strong>Kolkata</strong>. <br>
+     As the organising secretary, it&rsquo;s my privilege to  invite you to the&nbsp;<strong>16 <sup>th </sup> VAICON2023</strong>, in the&nbsp;<strong>&lsquo;</strong><em>city of  joy!&rsquo;</em>,&nbsp;<strong>Kolkata</strong> <br>
  </span>
 
-<p> The venue of <strong>VAICON2023</strong> is ITC  Sonar, Kolkata, India.The VAICON2013 is scheduled to be held on <strong>27th to 29th  January 2023.</strong>
- In these three  days international conference, all the stakeholders; doctors, nurses,  paramedics, administrators &amp; policy makers, academicians, researchers,  industry partners and society in large, will be able to come closer and have  the opportunity to discuss and exchange opinions and ideasfor a better future towards  sustainable delivery of healthcare. I strongly believe that the confluence of  divergent knowledgewill have a greater impact for the better tomorrow,through  the great contributions of our profession, considering the opportunity of the conference  and the level of participation in <strong>VAICON2023</strong>.
-  Save your dates to  enjoy one of the most vibrantconferences in the <strong>&lsquo;city of joy&rsquo;,Kolkata</strong>. I  can assure to make youfeel at home with memorable moments.&nbsp; Feel free to contact me for any  assistance.&nbsp; <br>
-  Let&rsquo;s joint at<strong>VAICON2023,  Kolkata.</strong></p>
+<p>   The venue of&nbsp;<strong>VAICON2023</strong>&nbsp;is ITC Sonar, Kolkata,  India.The <strong>VAICON2013</strong> is scheduled to be held on&nbsp;<strong>27 <sup>th </sup> to 29 <sup>th </sup> January  2023.</strong>&nbsp;In these three days international conference, all the stakeholders&rsquo;  doctors, nurses, paramedics, administrators &amp; policy makers, academicians,  researchers, industry partners and society in large, will be able to come  closer and have the opportunity to discuss and exchange opinions and ideasfor a  better future towards sustainable delivery of healthcare. I strongly believe  that the confluence of divergent knowledgewill have a greater impact for the  better tomorrow,through the great contributions of our profession, considering  the opportunity of the conference and the level of participation in&nbsp;<strong>VAICON2023</strong>.  Save your dates to enjoy one of the most vibrantconferences in the&nbsp;<strong>&lsquo;</strong><em>city  of joy&rsquo;!,</em><strong> Kolkata</strong>. I can assure to make youfeel at home with  memorable moments.&nbsp; Feel free to contact me for any assistance.&nbsp;<br>
+  Let&rsquo;s joint at<strong> VAICON2023, Kolkata.</strong></p>
 
       <span class="showbutton">Read More </span>
 
@@ -457,29 +517,53 @@ VAICON2023, Kolkata.</strong>
                     <div class="row">
 
                         <div class="col-md-6">
-                            <img style="height:50px;" src="indicons/images/ic9.png">
-                            <h3>ORGANIZATION SECRETARIAT </h3>
-                            <p>Yazarlar Sok. No:16 Esentepe Mah. Sisli,
-                                34394, Istanbul </p>
+               
+           <h3>ORGANIZATION SECRETARIAT</h3>
+                            <h3>  Dr. Jayanta Das   </h3>
+                            <p>Amri Hospital</p>
 
-                            <p> <img src="indicons/images/ic7.png"> +90 212 279 00 20 </p>
-                            <p> <img src="indicons/images/ic1.png"> +90 212 279 00 35 </p>
-                            <p> <img src="indicons/images/ic2.png"> uip2022@soloevent.net </p>
+                            <p>   Saltlake, Kolkata </p>
+                   
 
                         </div>
 
                         <div class="col-md-6">
-                            <img style="height:50px;" src="indicons/images/ic8.png">
+ 
                             <h3>VENUE INFORMATION </h3>
-                            <p>Istanbul Convention Exhibition Center - ICEC, Gümüş Cad. No:4 34367,<br>
-                                Harbiye / İstanbul / Türkiye</p>
+                            <p>ITC Sonar, Kolkata<br>
+                                </p>
+ 
+                            <p style="margin:0px 20px;"> <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14737.410466522097!2d88.4108412!3d22.5659114!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb24c98f0b227ce0b!2sAMRI%20HOSPITAL%2C%20SALT%20LAKE!5e0!3m2!1sen!2suk!4v1656835744232!5m2!1sen!2suk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+							
+							
+		 
 
-                            <p> <img src="indicons/images/ic7.png"> +90 212 373 11 00
-                            </p>
-                            <p> <img src="indicons/images/ic1.png"> +90 212 224 08 78
-                            </p>
-                            <p> <img src="indicons/images/ic2.png"> www.icec.org/home-page </p>
-                            <p> <img src="indicons/images/pin.png"> Click here for map </p>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+							
+							
+							
+							
+							
+							
+							
+							
                         </div>
                     </div>
                 </div>
@@ -551,6 +635,27 @@ VAICON2023, Kolkata.</strong>
   });
 });
 </script>
+
+
+
+  <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>
+
+<script>
+$(document).ready(function() {
+    $("#news-slider").owlCarousel({
+        items : 4,
+        itemsDesktop:[1199,3],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [600,1],
+        navigation:true,
+        navigationText:["",""],
+        pagination:true,
+        autoPlay:false
+    });
+});
+</script> 
+
 </body>
 
 </html>
