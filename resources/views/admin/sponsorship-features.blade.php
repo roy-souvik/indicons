@@ -27,7 +27,11 @@
                     <td>{{$feature->title}}</td>
 
                     <td>
-                        <a class="btn btn-link" href="">Delete</a>
+                        <form name="delete-feature" action="{{route('admin.sponsorship.features.delete', $feature->id)}}" method="post">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-warning">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

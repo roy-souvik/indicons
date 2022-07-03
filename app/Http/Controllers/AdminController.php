@@ -124,8 +124,16 @@ class AdminController extends Controller
         $feature->save();
 
         return redirect()->back()->with([
-            'status' => 'success',
-            'message' => 'Feature created successfully',
+            'success' => 'Feature created successfully',
+        ]);
+    }
+
+    public function sponsorshipFeaturesDelete(SponsorshipFeature $feature)
+    {
+        $feature->delete();
+
+        return redirect()->back()->with([
+            'success' => 'Feature deleted successfully',
         ]);
     }
 }
