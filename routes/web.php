@@ -44,6 +44,10 @@ Route::get('/abstracts-e-poster-guidelines', function () {
     return view('abstract-eposter-guidelines');
 })->name('abstract.eposterguidelines');
 
+Route::get('/abstracts-submit', function () {
+    return view('abstract-submitpage');
+})->name('abstract.submitpage');
+
 Route::post('/registration', function () {
     return view('conference-register');
 })->name('conference-register.save');

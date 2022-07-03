@@ -17,19 +17,16 @@
                          <li>
                              <a href="#">Scientific</a>
                          </li>
-                         <li><a href="{{route('abstract.show')}}"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow '></i>
-
+                         <li>
+                            <a href="#"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow '></i>
 
                              <ul class="js-sub-menu sub-menu">
                                  <li><a href="{{route('abstract.dates')}}">Important Dates</a></li>
                                  <li><a href="{{route('abstract.guidelines')}}">Abstract Guideline</a></li>
                                  <li><a href="{{route('abstract.posterguidelines')}}">Poster Guideline</a></li>
                                  <li><a href="{{route('abstract.eposterguidelines')}}">E-poster Guideline</a></li>
+                                 <li><a href="{{route('abstract.submitpage')}}">Submit Abstract</a></li>
                              </ul>
-
-
-
-
                          </li>
 
                          <li><a href="{{route('conference-register.show')}}">Registration</a></li>
