@@ -5,6 +5,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
 use App\Models\Role;
+use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -115,6 +116,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/sponsorships', [AdminController::class, 'sponsorshipShow'])
             ->name('admin.sponsorship.show');
+
+        Route::post('/sponsorships/{sponsorship}/features', [AdminController::class, 'sponsorshipFeaturesCreate'])
+            ->name('admin.sponsorship.features.create');
+
+        Route::get('/sponsorships/{sponsorship}/features', [AdminController::class, 'sponsorshipFeaturesShow'])
+            ->name('admin.sponsorship.features.show');
     });
 });
 

@@ -7,6 +7,7 @@ use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
 use App\Models\Sponsorship;
+use App\Models\SponsorshipFeature;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -104,5 +105,27 @@ class AdminController extends Controller
         $sponsorships = Sponsorship::all();
 
         return view('admin.sponsorship-list', compact('sponsorships'));
+    }
+
+    public function sponsorshipFeaturesShow(Sponsorship $sponsorship)
+    {
+        $sponsorship->load('features');
+
+        return view('admin.sponsorship-features', compact('sponsorship'));
+    }
+
+    public function sponsorshipFeaturesCreate(Sponsorship $sponsorship, Request $request)
+    {
+        $feature = new SponsorshipFeature();
+
+        $feature->sponsorship_id = $sponsorship->id;
+        $feature->title = $request->title;
+
+        $feature->save();
+
+        return redirect()->back()->with([
+            'status' => 'success',
+            'message' => 'Feature created successfully',
+        ]);
     }
 }

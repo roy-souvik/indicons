@@ -13,7 +13,7 @@
                     <th class="border-top-0">Title</th>
                     <th class="border-top-0">Amount</th>
                     <th class="border-top-0">Number</th>
-                    <th class="border-top-0">Action</th>
+                    <th class="border-top-0" style="text-align: center; width: 15rem;">Action</th>
                 </tr>
             </thead>
             <tbody>
