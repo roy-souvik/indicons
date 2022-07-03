@@ -21,6 +21,7 @@ class CreateSponsorshipsTable extends Migration
             $table->string('currency', 10)->default('INR');
             $table->string('amount', 20);
             $table->integer('number')->nullable();
+            $table->string('color', 30)->nullable();
             $table->timestamps();
         });
     }

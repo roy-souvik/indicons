@@ -12,7 +12,7 @@
                 <tr>
                     <th class="border-top-0">Title</th>
                     <th class="border-top-0">Amount</th>
-                    <th class="border-top-0">Currency</th>
+                    <th class="border-top-0">Number</th>
                     <th class="border-top-0">Action</th>
                 </tr>
             </thead>
@@ -20,8 +20,8 @@
                 @foreach ($sponsorships as $sponsorship)
                 <tr>
                     <td>{{$sponsorship->title}}</td>
-                    <td>{{$sponsorship->currency}}</td>
                     <td>{{number_format($sponsorship->amount)}}</td>
+                    <td>{{empty($sponsorship->number) ? 'N/A' : $sponsorship->number}}</td>
                     <td>
                         <a class="btn btn-link" href="/admin/sponsorships/{{$sponsorship->id}}/edit">Edit</a>
                         |
