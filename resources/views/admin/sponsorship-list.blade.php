@@ -22,12 +22,16 @@
                     <td>{{$sponsorship->title}}</td>
                     <td>{{number_format($sponsorship->amount)}}</td>
                     <td>{{empty($sponsorship->number) ? 'N/A' : $sponsorship->number}}</td>
-                    <td>
+                    <td class="d-flex">
                         <a class="btn btn-link" href="/admin/sponsorships/{{$sponsorship->id}}/edit">Edit</a>
                         |
                         <a class="btn btn-link" href="/admin/sponsorships/{{$sponsorship->id}}/features">Features</a>
                         |
-                        <a class="btn btn-link" href="">Delete</a>
+                        <form name="delete-sponsorship" action="{{route('admin.sponsorship.delete', $sponsorship->id)}}" method="post">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-link">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

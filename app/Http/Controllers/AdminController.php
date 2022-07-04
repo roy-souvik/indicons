@@ -136,4 +136,13 @@ class AdminController extends Controller
             'success' => 'Feature deleted successfully',
         ]);
     }
+
+    public function sponsorshipDelete(Sponsorship $sponsorship)
+    {
+        $sponsorship->delete();
+
+        return redirect()->back()->with([
+            'success' => 'Sponsorship deleted successfully',
+        ]);
+    }
 }

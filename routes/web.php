@@ -117,6 +117,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/sponsorships', [AdminController::class, 'sponsorshipShow'])
             ->name('admin.sponsorship.show');
 
+        Route::delete('/sponsorships/{sponsorship}', [AdminController::class, 'sponsorshipDelete'])
+            ->name('admin.sponsorship.delete');
+
         Route::post('/sponsorships/{sponsorship}/features', [AdminController::class, 'sponsorshipFeaturesCreate'])
             ->name('admin.sponsorship.features.create');
 
