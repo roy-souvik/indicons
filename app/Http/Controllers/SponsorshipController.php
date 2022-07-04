@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 
 class SponsorshipController extends Controller
 {
     public function sponsorshipShow()
     {
-        return view('sponsorship');
+        $sponsorships = Sponsorship::with(['features'])->get();
+
+        return view('sponsorship', compact('sponsorships'));
     }
 }
