@@ -23,7 +23,7 @@
                     <td>{{number_format($sponsorship->amount)}}</td>
                     <td>{{empty($sponsorship->number) ? 'N/A' : $sponsorship->number}}</td>
                     <td class="d-flex">
-                        <a class="btn btn-link" href="/admin/sponsorships/{{$sponsorship->id}}/edit">Edit</a>
+                        <a class="btn btn-link" href="{{route('admin.sponsorship.edit', $sponsorship->id)}}">Edit</a>
                         |
                         <a class="btn btn-link" href="/admin/sponsorships/{{$sponsorship->id}}/features">Features</a>
                         |

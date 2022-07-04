@@ -145,4 +145,22 @@ class AdminController extends Controller
             'success' => 'Sponsorship deleted successfully',
         ]);
     }
+
+    public function sponsorshipEdit(Sponsorship $sponsorship)
+    {
+        return view('admin.sponsorship-edit', compact('sponsorship'));
+    }
+
+    public function sponsorshipUpdate(Sponsorship $sponsorship, Request $request)
+    {
+        $sponsorship->title = data_get($request, 'title', $sponsorship->title);
+        $sponsorship->amount = data_get($request, 'amount', $sponsorship->amount);
+        $sponsorship->number = data_get($request, 'number', $sponsorship->number);
+
+        $sponsorship->save();
+
+        return redirect(route('admin.sponsorship.show'))->with([
+            'success' => 'Sponsorship updated successfully',
+        ]);
+    }
 }
