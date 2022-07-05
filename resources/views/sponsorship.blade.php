@@ -74,6 +74,28 @@
                 </div>
             </div> -->
 
+            <h3 class="mt-4">Other Sponsorships</h3>
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Number</th>
+                    <th></th>
+                </tr>
+
+                @foreach ($sponsorships as $sponsorship)
+                    @if ($sponsorship->category !== 'main')
+                        <tr>
+                            <td>{{$sponsorship->title}}</td>
+                            <td>{{$sponsorship->currency}} {{$sponsorship->amount}}</td>
+                            <td>{{$sponsorship->number}}</td>
+                            <td>
+                                <button class="btn btn-link" data-id={{$sponsorship->id}}>Buy</button>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+            </table>
         </div>
     </div>
 </div>
