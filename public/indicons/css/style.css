@@ -1,10 +1,10 @@
- 
+
  body{
 border-top: 10px solid #296dc4;
 }
 
  nav{
- 
+
   top: 0;
   left: 0;
   width: 100%;
@@ -16,7 +16,7 @@ border-top: 10px solid #296dc4;
 }
 nav .navbar{
   height: 100%;
- 
+
   width: 100%;
   display: flex;
   align-items: center;
@@ -307,12 +307,12 @@ nav .navbar .links li .sub-menu li{
 @media (max-width:370px){
   nav .navbar .nav-links{
   max-width: 100%;
-} 
+}
 }
 
 
 .top-box{position: relative;
- 
+
 	background:#e0e0e0;
     z-index: 9999;
 }
@@ -321,7 +321,7 @@ nav .navbar .links li .sub-menu li{
 }
 
 .top-box h2{
- 
+
     color: #fff;
     text-align: center;
     position: absolute;
@@ -383,7 +383,7 @@ background:#b50303;
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
- 
+
 .top-box-main:before {
   pointer-events: none;
   position: absolute;
@@ -402,14 +402,14 @@ background:#b50303;
   -webkit-transition-property: -webkit-transform, opacity;
   transition-property: transform, opacity;
 }
- 
+
 .top-box-main:hover {
   -webkit-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
   transform: translateY(-5px);
   /* move the element up by 5px */
 }
- 
+
 .top-box-main:hover:before {
   opacity: 1;
   -webkit-transform: translateY(5px);
@@ -457,7 +457,7 @@ color: #296dc4;
     font-weight: 600;
 }
 
-.top-box-bottom-main p{    
+.top-box-bottom-main p{
     color: #000;
     font-weight: 500;
     font-size: 14.5px;
@@ -556,14 +556,14 @@ height: 45px;
     transition: all 0.3s ease;
 }
 
- 
+
 
 
 .user__details .input__box input:focus,
 .user__details .input__box input:valid {
   border-color: #000;
-  
- 
+
+
 }
 
 /* inside the form gender details */
@@ -768,13 +768,13 @@ text-align: center;
 }
 
 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
  .pricingTable{
     background: #fff;
     font-family: 'Roboto', sans-serif;
@@ -783,10 +783,8 @@ text-align: center;
     box-shadow: 0 0 10px -3px rgba(0,0,0,0.3);
 }
 .pricingTable .pricingTable-header{
-    background: linear-gradient(to right, #F37A21, #F5B259 20px, #F5B259 13px, #F37A21 38px, #F37A21 40%, #F8931F 60%);
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
- 
     margin: 0 20px 20px 0;
     clip-path: polygon(0 0, 0 100%, 85% 100%, 100% 50%, 85% 0);
 }
@@ -901,14 +899,14 @@ text-align: center;
 
 
 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
 
  .plan-submit-tbl {
        display: inline-block;
@@ -1023,7 +1021,7 @@ background:#123f78;
 
 .showcase {
 text-align:left;
- 
+
 }
 
 .showcase img {
@@ -1036,11 +1034,11 @@ text-align:left;
     margin-bottom: 1rem;
     font-size: 14.5px;
     text-align: justify;
-	
+
 
 }
 .showcase h3 {
- 
+
 }
 
 .showcase p {
@@ -1209,7 +1207,7 @@ padding: 4px 15px;
 
 
 
- 
+
 
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
  .top-box-main {
@@ -1251,11 +1249,11 @@ font-size: 16px!important;
     font-size: 15px!important;
 	padding:0px 5px!important;
 }
-	 
-	 
+
+
  }
 @media only screen and (min-width: 768px) and (max-width: 999px){
- 
+
 	.top-box-main {
     height: 260px;
     top: 0px;
@@ -1295,11 +1293,11 @@ font-size: 16px!important;
     font-size: 15px!important;
 	padding:0px 5px!important;
 }
-	
+
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px){
-	
+
 	 .top-box-main {
     height: 260px;
     top: 0px;
@@ -1339,7 +1337,7 @@ font-size: 16px!important;
     font-size: 15px!important;
 	padding:0px 5px!important;
 }
-	
+
 }
 
 
@@ -1383,5 +1381,5 @@ font-size: 16px!important;
     font-size: 15px!important;
 	padding:0px 5px!important;
 }
-	
+
 }

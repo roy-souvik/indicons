@@ -156,6 +156,7 @@ class AdminController extends Controller
         $sponsorship->title = data_get($request, 'title', $sponsorship->title);
         $sponsorship->amount = data_get($request, 'amount', $sponsorship->amount);
         $sponsorship->number = data_get($request, 'number', $sponsorship->number);
+        $sponsorship->color = data_get($request, 'color', $sponsorship->color);
 
         $sponsorship->save();
 

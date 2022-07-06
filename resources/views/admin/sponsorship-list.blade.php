@@ -13,6 +13,7 @@
                     <th class="border-top-0">Title</th>
                     <th class="border-top-0">Amount</th>
                     <th class="border-top-0">Number</th>
+                    <th class="border-top-0">Color</th>
                     <th class="border-top-0" style="text-align: center; width: 15rem;">Action</th>
                 </tr>
             </thead>
@@ -22,6 +23,9 @@
                     <td>{{$sponsorship->title}}</td>
                     <td>{{number_format($sponsorship->amount)}}</td>
                     <td>{{empty($sponsorship->number) ? 'N/A' : $sponsorship->number}}</td>
+                    <td>
+                        <div style="width: 3rem; height: 2rem; background-color: {{$sponsorship->color}};"></div>
+                    </td>
                     <td class="d-flex">
                         <a class="btn btn-link" href="{{route('admin.sponsorship.edit', $sponsorship->id)}}">Edit</a>
                         |

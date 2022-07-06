@@ -16,6 +16,7 @@ class Sponsorship extends Model
         'title',
         'currency',
         'amount',
+        'color',
     ];
 
     public function features(): HasMany

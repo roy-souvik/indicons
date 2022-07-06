@@ -31,6 +31,13 @@
                     </div>
 
                     <div class="form-group mb-4">
+                        <label class="col-md-12 p-0">Label Color</label>
+                        <div class="col-md-12 border-bottom p-0">
+                            <input type="color" name="color" value="{{$sponsorship->color}}" class="form-control p-0 border-0">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
                         <div class="col-sm-12">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
