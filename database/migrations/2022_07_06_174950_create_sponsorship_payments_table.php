@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSponsorshipFeaturesTable extends Migration
+class CreateSponsorshipPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateSponsorshipFeaturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sponsorship_features', function (Blueprint $table) {
+        Schema::create('sponsorship_payments', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->integer('sponsorship_id');
-            $table->string('title');
+            $table->string('transaction_id');
+            $table->string('status');
+            $table->string('amount');
+            $table->json('payment_response');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateSponsorshipFeaturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsorship_features');
+        Schema::dropIfExists('sponsorship_payments');
     }
 }
