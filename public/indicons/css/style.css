@@ -712,7 +712,7 @@ box-bottom-a-box p{color: #3a8a7d;
     color: #1b7063!important;
 }
 
-.box-bottom-last{      background: url(../images/banner2.png) no-repeat;
+.box-bottom-last{      background: url(../images/banner2.jpg) no-repeat;
     width: 100%;
     min-height: 250px;
     background-size: cover;
@@ -723,9 +723,6 @@ box-bottom-a-box p{color: #3a8a7d;
 
 .box-bottom-last ul{
 list-style-type:none;
-}
-
-.box-bottom-last ul li{
 }
 
 .box-bottom-last ul li a{
