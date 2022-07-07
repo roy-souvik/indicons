@@ -90,6 +90,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/accompanying-persons/{id}', [RegistrationController::class, 'deleteAccompanyingPerson'])
         ->name('accompanyingPersons.delete');
 
+    Route::post('/sponsorship-payments', [SponsorshipController::class, 'createSponsorshipPayment'])
+        ->name('sponsorship.payment');
 
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {

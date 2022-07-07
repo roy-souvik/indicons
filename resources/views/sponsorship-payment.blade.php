@@ -99,7 +99,7 @@
                         'payment_response': orderData,
                     };
 
-                    saveConferencePayment(responseData).then(() => {
+                    saveSponsorshipPayment(responseData).then(() => {
                         location.href = '/payment-success?transaction_id=' + transaction.id;
                     });
                 });
@@ -110,9 +110,9 @@
     });
 
 
-    function saveConferencePayment(data) {
+    function saveSponsorshipPayment(data) {
         return $.ajax({
-            url: '/save-payment',
+            url: '/sponsorship-payments',
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
