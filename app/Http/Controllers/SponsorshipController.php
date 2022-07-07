@@ -19,11 +19,18 @@ class SponsorshipController extends Controller
 
     public function sponsorshipBuyPage(Sponsorship $sponsorship)
     {
-        $sponsorship->load('features');
-
+        $sponsorship->load('features', 'payments');
         $role = Role::where('key', 'sponsor')->first();
 
-        return view('sponsorship-payment', compact('sponsorship', 'role'));
+        if (is_null($sponsorship->number)) {
+            $isSponsorshipAvailable = true;
+        } elseif ($sponsorship->number <= 0) {
+            $isSponsorshipAvailable = false;
+        } else {
+            $isSponsorshipAvailable = $sponsorship->number > $sponsorship->payments->count();
+        }
+
+        return view('sponsorship-payment', compact('sponsorship', 'role', 'isSponsorshipAvailable'));
     }
 
     public function createSponsorshipPayment(Request $request)

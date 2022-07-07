@@ -15,7 +15,19 @@
                         {{$sponsorship->currency}} {{number_format($sponsorship->amount)}}
                     </h6>
 
-                    <div id="paypal-button-container"></div>
+                    @if (!empty($sponsorship->features))
+                    <ul>
+                        @foreach ($sponsorship->features as $feature)
+                        <li>{{$feature->title}}</li>
+                        @endforeach
+                    </ul>
+                    @endif
+
+                    @if ($isSponsorshipAvailable)
+                        <div id="paypal-button-container"></div>
+                    @else
+                        <p>Sponsorship sold out!</p>
+                    @endif
                 </div>
             </div>
             @endauth

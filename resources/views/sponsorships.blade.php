@@ -9,7 +9,7 @@
             @if ($sponsorship->category == 'main')
             <div class="col-md-4 col-sm-6">
                 <div class="pricingTable">
-                    <div class="pricingTable-header" style="background-color: {{$sponsorship->color}};">
+                    <div class="pricingTable-header" style="background-color: {{data_get($sponsorship, 'color', '#cecece')}};">
                         <h3 class="title">{{$sponsorship->title}}</h3>
                     </div>
                     <div class="price-value">

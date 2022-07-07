@@ -23,4 +23,9 @@ class Sponsorship extends Model
     {
         return $this->hasMany(SponsorshipFeature::class);
     }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(SponsorshipPayment::class);
+    }
 }
