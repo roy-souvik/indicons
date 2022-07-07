@@ -5,7 +5,7 @@
           <div class="logo">
 
 
-            <a href="{{route('home')}}"> <img style="width:266px; margin:15px auto" src="indicons/images/logo.png"> </a>
+            <a href="{{route('home')}}"> <img style="width:266px; margin:15px auto;" src="indicons/images/logo.png"> </a>
           </div>
         </div>
         <div class="col-md-6">
