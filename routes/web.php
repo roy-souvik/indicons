@@ -59,6 +59,8 @@ Route::get('/abstract', function () {
 
 Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->name('sponsorship.show');
 
+Route::get('/sponsorships/{sponsorship}', [SponsorshipController::class, 'sponsorshipBuyPage'])->name('sponsorship.buy');
+
 Route::post('/registration', [RegistrationController::class, 'register']);
 
 // Route::get('/test', [PaymentController::class, 'saveConferencePayment']);

@@ -23,7 +23,7 @@
                     </ul>
 
                     <div class="pricingTable-signup">
-                        <a href="#">Sign Up</a>
+                        <a href="{{route('sponsorship.buy', $sponsorship->id)}}">Sign Up</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                             <td>{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</td>
                             <td>{{$sponsorship->number}}</td>
                             <td>
-                                <button class="btn btn-link" data-id={{$sponsorship->id}}>Buy</button>
+                                <a href="{{route('sponsorship.buy', $sponsorship->id)}}" class="btn btn-link" data-id={{$sponsorship->id}}>Buy</a>
                             </td>
                         </tr>
                     @endif

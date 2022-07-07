@@ -8,10 +8,10 @@
     <meta name="author" content="" />
     <title>{{ config('app.name', 'Indicons') }}</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="indicons/assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{url('indicons/assets/favicon.ico')}}" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="indicons/css/styles.css" rel="stylesheet" />
-    <link href="indicons/css/style.css" rel="stylesheet" />
+    <link href="{{url('indicons/css/styles.css')}}" rel="stylesheet" />
+    <link href="{{url('indicons/css/style.css')}}" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -5,7 +5,7 @@
           <div class="logo">
 
 
-            <a href="{{route('home')}}"> <img src="indicons/images/logo.png"> </a>
+            <a href="{{route('home')}}"> <img src="{{url('indicons/images/logo.png')}}"> </a>
           </div>
         </div>
         <div class="col-md-6">

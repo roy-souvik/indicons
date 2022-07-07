@@ -44,6 +44,11 @@ class RoleSeeder extends Seeder
                 'key' => 'accompanying_person',
                 'is_active' => false,
             ],
+            [
+                'name' => 'Sponsor',
+                'key' => 'sponsor',
+                'is_active' => false,
+            ],
         ];
 
         foreach ($roles as $role) {
