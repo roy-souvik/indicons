@@ -10,7 +10,7 @@
                          <i class='bx bx-x'></i>
                      </div>
                      <ul class="links">
-                         <li><a href="#">Congress</a></li>
+                         <li><a href="#">Conference</a></li>
                          <li>
                              <a href="#">Information</a>
                          </li>

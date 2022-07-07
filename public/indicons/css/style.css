@@ -1,16 +1,15 @@
 
  body{
-border-top: 10px solid #296dc4;
+border-top: 10px solid #00236a;
 }
 
  nav{
-
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   height: auto;
-  background: #296dc4;
+  background: #00236a;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   z-index: 99;
 }
@@ -84,7 +83,7 @@ nav .navbar .links li .sub-menu{
     top: 50px;
     left: 0;
     line-height: 40px;
-    background: #296dc4;
+    background:#00236a;
     box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
     border-radius: 0 0 4px 4px;
     display: none;
@@ -473,7 +472,7 @@ text-align: right;
 .social a{  color: #fff;
     text-decoration: none;
     font-size: 21px;
-    background: #296dc4;
+    background: #00236a;
     margin: 0px 6px;
     padding: 2px 8px;
     text-align: center;
@@ -490,8 +489,10 @@ text-align: right;
 
 }
 
-.inner-page{    width: 100%;
-    padding-top: 30px;
+.inner-page{      width: 100%;
+    padding-top: 12px;
+    padding-bottom: 50px;
+    overflow: hidden;
 }
 
 
@@ -777,7 +778,8 @@ text-align: center;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 20px 0 35px;
-    box-shadow: 0 0 10px -3px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px -3px rgb(0 0 0 / 30%);
+    margin-bottom: 30px;
 }
 .pricingTable .pricingTable-header{
     text-align: left;
@@ -787,10 +789,11 @@ text-align: center;
 }
 .pricingTable .title{
     color: #fff;
-    font-size: 35px;
+    font-size: 27px;
     font-weight: 500;
-    line-height: 65px;
-    margin: 0;
+    line-height: 52px;
+    margin: auto;
+    text-align: center;
 }
 .pricingTable .price-value{
     color: #000;
@@ -798,7 +801,7 @@ text-align: center;
     margin: 0 0 20px;
 }
 .pricingTable .price-value .amount{
-    font-size: 40px;
+  font-size: 28px;
     font-weight: 600;
     line-height: 40px;
 }
@@ -808,14 +811,15 @@ text-align: center;
     text-transform: lowercase;
 }
 .pricingTable .pricing-content{
-    text-align: left;
-    padding: 25px 15px;
+       text-align: left;
+    padding: 11px 2px;
     margin: 0 0 30px;
     border: 1px solid #e7e7e7;
     border-left: none;
     border-right: none;
     list-style: none;
     display: inline-block;
+    width: 90%;
 }
 .pricingTable .pricing-content li{
     color: #777;
@@ -850,8 +854,8 @@ text-align: center;
     background: #ED1925;
 }
 .pricingTable .pricingTable-signup a{
-    color: #fff;
-    background: linear-gradient(#FAAF3C, #F89923);
+       color: #fff;
+    background: #296dc4;
     font-size: 22px;
     font-weight: 500;
     text-transform: uppercase;
@@ -860,6 +864,7 @@ text-align: center;
     border-radius: 10px;
     display: inline-block;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 .pricingTable .pricingTable-signup a:hover{
     text-shadow: 4px 4px 1px rgba(0, 0, 0, 0.2);
@@ -1197,14 +1202,200 @@ padding: 4px 15px;
 
 
 
+.inner-page{
+}
+
+.inner-page h1{font-size: 27px;
+    margin-bottom: 20px;
+    color: #002c64;
+	text-transform:uppercase;
+}
+
+.inner-page h2{font-size: 25px;
+    margin-bottom: 20px;
+    color: #002c64;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.inner-page p{     font-size: 18px;
+    color: #000;
+}
+.inner-page ul{    padding-left: 22px;
+}
+
+.inner-page ul li{font-weight: 600;
+    width: 100%;
+    padding-bottom: 10px;
+    color: #002c64;
+    font-size: 18px;
+}
+.inner-page table{    border: 1px solid #e2e2e2;
+}
+
+.inner-page th{    padding: 20px;
+    text-align: center;
+    background: #001b3e;
+    color: #fff;
+}
+
+.inner-page p th{
+text-align: center;
+    padding: 15px;
+    background: #00224e;
+    color: #fff;
+}
+
+.inner-page p  td {
+padding-bottom:0px;
+margin-bottom:0px;
+}
+.inner-page tr:nth-child(even) {background: #ffffff;}
+.inner-page tr:nth-child(odd) {background: #ecf4ff;}
+
+
+.inner-page td{padding: 10px;
+    border: 1px solid #a7a7a7;
+    font-weight: 600;
+}
+.inner-page td strong{font-weight: 700;
+}
+
+
+
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  margin-top: 50px;
+}
+.wrapper h2{    margin-top: 10px;
+    font-size: 33px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 40px!important;
+}
+#formContent {
+-webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 69%;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 30px 60px 0 rgb(0 0 0 / 30%);
+    text-align: center;
+    padding: 40px 0px;
+}
+
+#formContent .btn-primary{background-color: #00236a;
+    border-color: #00236a;
+    width: 45%;
+    margin: 20px auto;
+    display: table;
+}
+
+#formFooter {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
 
 
 
 
+/* ANIMATIONS */
 
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
 
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
 
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
 
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
  .top-box-main {

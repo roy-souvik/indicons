@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -533,7 +533,12 @@ VAICON2023, Kolkata.</strong>
                             <p>ITC Sonar, Kolkata<br>
                                 </p>
  
-                            <p style="margin:0px 20px;"> <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14737.410466522097!2d88.4108412!3d22.5659114!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb24c98f0b227ce0b!2sAMRI%20HOSPITAL%2C%20SALT%20LAKE!5e0!3m2!1sen!2suk!4v1656835744232!5m2!1sen!2suk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                            <p style="margin:0px 20px;">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.922876184476!2d88.39543941443351!3d22.544561639681884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02769ebe32dca3%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2suk!4v1657100924686!5m2!1sen!2suk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>	
+							
+							
+							
+							</p>
 							
 							
 		 
@@ -583,15 +588,14 @@ VAICON2023, Kolkata.</strong>
                     <div class="col-md-3">
                         <ul>
                             <li> <a href="#"> <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    Congress </a> </li>
+                              Conference </a> </li>
                             <li> <a href="#"> <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Information </a> </li>
                             <li> <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Scientific </a> </li>
                             <li> <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Abstracts </a> </li>
-                            <li> <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    Late Abstracts </a> </li>
+                         
                             <li> <a href="#"> <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Registration </a> </li>
                         </ul>
@@ -603,10 +607,9 @@ VAICON2023, Kolkata.</strong>
                         <ul>
                             <li> <a href="#">Accommodation </a> </li>
                             <li> <a href="#"> Travel </a> </li>
-                            <li> <a href="#"> UIP </a> </li>
+                            <li> <a href="#"> VAI </a> </li>
                             <li> <a href="#"> Sponsorship </a> </li>
-                            <li> <a href="#"> Press </a> </li>
-                            <li> <a href="#"> Contact </a> </li>
+                    
                         </ul>
 
                     </div>
