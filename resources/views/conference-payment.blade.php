@@ -12,7 +12,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
-                    <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - intval($paymentSlabItem->early_bird_member_discount)}}</label>
+                    <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - $discounts['early_bird']}}</label>
                 @else
                 Expired!
                 @endif
@@ -24,7 +24,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
-                    <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - intval($paymentSlabItem->standard_member_discount)}}</label>
+                    <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - $discounts['standard']}}</label>
                 @else
                 Expired!
                 @endif
@@ -35,7 +35,7 @@
             <td>Spot Registration</td>
             <td>
                 <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem->spot_amount}}">
-                <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - intval($paymentSlabItem->spot_member_discount)}}</label>
+                <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - $discounts['spot']}}</label>
             </td>
         </tr>
     </tbody>
@@ -44,7 +44,7 @@
 @if ($accompanyingPersons->count() < 2) <br>
     <h5>Enter accompanying person details</h5>
     @php
-        $amt = intval($accompanyingPersonFees->early_bird_amount) - intval($accompanyingPersonFees->early_bird_member_discount);
+        $amt = intval($accompanyingPersonFees->early_bird_amount);
 
         $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
             ? intval($amt / 75)
@@ -52,9 +52,7 @@
     @endphp
     <p>
         Fees for each person is
-        <u>
-            {{$paymentSlabItem->currency}} {{$companionAmount}}
-        </u>
+        <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
     </p>
 
     @php

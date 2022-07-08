@@ -32,11 +32,18 @@ class PaymentController extends Controller
             ->limit(2)
             ->get();
 
+        $discounts = [
+            'early_bird' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->early_bird_member_discount) : 0,
+            'standard' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->standard_member_discount) : 0,
+            'spot' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->spot_member_discount) : 0,
+        ];
+
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationTypeAuth',
             'accompanyingPersonFees',
             'accompanyingPersons',
+            'discounts',
         ));
     }
 
