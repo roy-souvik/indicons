@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SponsorshipPaymentSuccess;
 use App\Models\Role;
 use App\Models\Sponsorship;
 use App\Models\SponsorshipPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class SponsorshipController extends Controller
 {
@@ -45,6 +47,8 @@ class SponsorshipController extends Controller
         $payment->payment_response = json_encode($request->payment_response);
 
         $payment->save();
+
+        Mail::to(Auth::user())->send(new SponsorshipPaymentSuccess($request->transaction_id));
 
         return $payment;
     }
