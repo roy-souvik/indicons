@@ -20,6 +20,15 @@
             </thead>
             <tbody>
                 @foreach ($fees as $fee)
+
+                @php
+                    $readonly = '';
+
+                    if ($fee->role->isCompanion()) {
+                        $readonly = 'readonly="readonly"';
+                    }
+                @endphp
+
                 <tr>
                     <td>{{$fee->role->name}}</td>
                     <td>{{$fee->currency}}</td>
@@ -29,7 +38,7 @@
                         </label>
 
                         <label for="early_bird_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="early_bird_member_discount_{{$fee->id}}" value="{{$fee->early_bird_member_discount}}" />
+                            Member Discount: <input type="number" id="early_bird_member_discount_{{$fee->id}}" value="{{$fee->early_bird_member_discount}}" {{$readonly}}/>
                         </label>
                     </td>
                     <td>
@@ -38,7 +47,7 @@
                         </label>
 
                         <label for="standard_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="standard_member_discount_{{$fee->id}}" value="{{$fee->standard_member_discount}}" />
+                            Member Discount: <input type="number" id="standard_member_discount_{{$fee->id}}" value="{{$fee->standard_member_discount}}" {{$readonly}}/>
                         </label>
                     </td>
                     <td>
@@ -47,7 +56,7 @@
                         </label>
 
                         <label for="spot_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="spot_member_discount_{{$fee->id}}" value="{{$fee->spot_member_discount}}" />
+                            Member Discount: <input type="number" id="spot_member_discount_{{$fee->id}}" value="{{$fee->spot_member_discount}}" {{$readonly}}/>
                         </label>
                     </td>
                     <td style="vertical-align: middle;">

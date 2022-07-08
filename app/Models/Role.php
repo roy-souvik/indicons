@@ -15,4 +15,9 @@ class Role extends Model
     {
         $query->where('is_active', 1);
     }
+
+    public function isCompanion(): bool
+    {
+        return $this->key === 'accompanying_person';
+    }
 }
