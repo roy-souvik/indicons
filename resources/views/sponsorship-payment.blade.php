@@ -24,9 +24,9 @@
                     @endif
 
                     @if ($isSponsorshipAvailable)
-                        <div id="paypal-button-container"></div>
+                    <div id="paypal-button-container"></div>
                     @else
-                        <p>Sponsorship sold out!</p>
+                    <p>Sponsorship sold out!</p>
                     @endif
                 </div>
             </div>
@@ -34,47 +34,56 @@
 
             @guest
 
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
+            <div class="card p-4" style="width: 40rem;">
+                <h1 class="display-6">Register to buy sponsorship</h1>
+                <p class="text-secondary">Buy: <ins>{{$sponsorship->title}}</ins></p>
 
-                <!-- Name -->
-                <div>
-                    <x-label for="name" :value="__('Name')" />
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
 
-                    <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-                </div>
+                    <div>
+                        <x-label for="name" :value="__('Name')" class="form-label"/>
 
-                <!-- Email Address -->
-                <div class="mt-4">
-                    <x-label for="email" :value="__('Email')" />
+                        <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus />
+                    </div>
 
-                    <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                </div>
+                    <!-- Email Address -->
+                    <div class="mt-4">
+                        <x-label for="email" :value="__('Email')" class="form-label"/>
 
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-label for="password" :value="__('Password')" />
+                        <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
+                    </div>
 
-                    <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                </div>
+                    <!-- Password -->
+                    <div class="mt-4">
+                        <x-label for="password" :value="__('Password')" class="form-label"/>
 
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                        <x-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
+                    </div>
 
-                    <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-                </div>
+                    <!-- Confirm Password -->
+                    <div class="mt-4">
+                        <x-label for="password_confirmation" :value="__('Confirm Password')" class="form-label"/>
 
-                <div>
-                    <input type="hidden" name="role_id" value={{$role->id}}>
-                </div>
+                        <x-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required />
+                    </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    <x-button class="ml-4 btn btn-primary">
-                        {{ __('Register') }}
-                    </x-button>
-                </div>
-            </form>
+                    <div>
+                        <input type="hidden" name="role_id" value={{$role->id}}>
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        <x-button class="ml-4 btn btn-primary">
+                            {{ __('Register') }}
+                        </x-button>
+                    </div>
+                </form>
+
+
+                <p class="mt-4">Already Registered?</p>
+                <a class="btn btn-link" href="/login">Login to continue</a>
+
+            </div>
 
             @endguest
 
