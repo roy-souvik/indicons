@@ -53,6 +53,26 @@ Route::post('/registration', function () {
     return view('conference-register');
 })->name('conference-register.save');
 
+Route::get('/conference', function () {
+    return view('conference');
+})->name('conference.home');
+
+Route::get('/information', function () {
+    return view('information');
+})->name('information.home');
+
+Route::get('/scientific', function () {
+    return view('scientific');
+})->name('scientific.home');
+
+Route::get('/accommodation', function () {
+    return view('accommodation');
+})->name('accommodation.home');
+
+Route::get('/travel', function () {
+    return view('travel');
+})->name('travel.home');
+
 Route::get('/abstract', function () {
     return view('abstract');
 })->name('abstract.show');

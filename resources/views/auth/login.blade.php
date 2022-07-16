@@ -19,22 +19,22 @@
                     @csrf
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="">Email address</label>
-                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter email address" value="{{old('email')}}" />
+                        <label class="form-label" for="">Email or Mobile</label>
+                        <input type="text" name="username" class="form-control form-control-lg" placeholder="Enter email or mobile number" value="{{old('username')}}" required/>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-3">
                         <label class="form-label" for="">Password</label>
-                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter password" />
+                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter password" required/>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <!-- <div class="d-flex justify-content-between align-items-center">
                         <label for="remember_me" class="inline-flex items-center">
                             <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                             <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                         </label>
-                    </div>
+                    </div> -->
 
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <x-button class="ml-3 btn btn-primary">

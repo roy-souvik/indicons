@@ -6,17 +6,13 @@
 
                  <div class="nav-links">
                      <div class="sidebar-logo">
-
                          <i class='bx bx-x'></i>
                      </div>
+
                      <ul class="links">
-                         <li><a href="#">Conference</a></li>
-                         <li>
-                             <a href="#">Information</a>
-                         </li>
-                         <li>
-                             <a href="#">Scientific</a>
-                         </li>
+                         <li><a href="{{route('conference.home')}}">Conference</a></li>
+                         <li><a href="{{route('information.home')}}">Information</a></li>
+                         <li><a href="{{route('scientific.home')}}">Scientific</a></li>
                          <li>
                             <a href="#"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow '></i>
 
@@ -30,10 +26,8 @@
                          </li>
 
                          <li><a href="{{route('conference-register.show')}}">Registration</a></li>
-                         <li><a href="#">Accommodation</a></li>
-
-                         <li><a href="#">Travel </a></li>
-
+                         <li><a href="{{route('accommodation.home')}}">Accommodation</a></li>
+                         <li><a href="{{route('travel.home')}}">Travel </a></li>
                          <li><a href="https://venous.in"> VAI</a></li>
                          <li><a href="{{route('sponsorship.show')}}"> Sponsorship </a></li>
 

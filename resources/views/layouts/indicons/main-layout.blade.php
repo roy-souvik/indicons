@@ -30,6 +30,8 @@
 
     </div>
 
+    @include('layouts.indicons.footer')
+
     @include('layouts.indicons.scripts')
 </body>
 
