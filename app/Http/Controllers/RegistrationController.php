@@ -24,7 +24,7 @@ class RegistrationController extends Controller
             'title' => ['required', 'string', 'max:10', 'alpha'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required'],
+            'phone' => ['required', 'max:20', 'unique:users'],
             'company' => ['required'],
             'postal_code' => ['required'],
             'city' => ['required'],

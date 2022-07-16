@@ -40,9 +40,9 @@ class AuthenticatedSessionController extends Controller
             ]);
 
             // Get user record
-            $user = User::where('phone', $request->get('phone'))->first();
+            $user = User::where('phone', $request->username)->first();
 
-            if ($request->get('phone') != $user->phone) {
+            if ($request->username != $user->phone) {
                 Session::put('errors', 'Your mobile number does not match!');
 
                 return back();
@@ -60,7 +60,8 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-        $request->merge(['email' => $request->email]);
+
+        $request->merge(['email' => $request->username]);
 
         $request->authenticate();
 
