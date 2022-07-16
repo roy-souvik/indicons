@@ -1,8 +1,164 @@
+@font-face {
+    font-family: 'Ariata Stencil';
+    src: url('AriataStencil-Bold.eot');
+    src: url('AriataStencil-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AriataStencil-Bold.woff2') format('woff2'),
+        url('AriataStencil-Bold.woff') format('woff'),
+        url('AriataStencil-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Display';
+    src: url('AriataDisplay-Regular.eot');
+    src: url('AriataDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AriataDisplay-Regular.woff2') format('woff2'),
+        url('AriataDisplay-Regular.woff') format('woff'),
+        url('AriataDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Stencil';
+    src: url('AriataStencil-Black.eot');
+    src: url('AriataStencil-Black.eot?#iefix') format('embedded-opentype'),
+        url('AriataStencil-Black.woff2') format('woff2'),
+        url('AriataStencil-Black.woff') format('woff'),
+        url('AriataStencil-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Display';
+    src: url('AriataDisplay-Medium.eot');
+    src: url('AriataDisplay-Medium.eot?#iefix') format('embedded-opentype'),
+        url('AriataDisplay-Medium.woff2') format('woff2'),
+        url('AriataDisplay-Medium.woff') format('woff'),
+        url('AriataDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Display';
+    src: url('AriataDisplay-Black.eot');
+    src: url('AriataDisplay-Black.eot?#iefix') format('embedded-opentype'),
+        url('AriataDisplay-Black.woff2') format('woff2'),
+        url('AriataDisplay-Black.woff') format('woff'),
+        url('AriataDisplay-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Display';
+    src: url('AriataDisplay-Bold.eot');
+    src: url('AriataDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AriataDisplay-Bold.woff2') format('woff2'),
+        url('AriataDisplay-Bold.woff') format('woff'),
+        url('AriataDisplay-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Text';
+    src: url('AriataText-Bold.eot');
+    src: url('AriataText-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AriataText-Bold.woff2') format('woff2'),
+        url('AriataText-Bold.woff') format('woff'),
+        url('AriataText-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Text';
+    src: url('AriataText-Black.eot');
+    src: url('AriataText-Black.eot?#iefix') format('embedded-opentype'),
+        url('AriataText-Black.woff2') format('woff2'),
+        url('AriataText-Black.woff') format('woff'),
+        url('AriataText-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Stencil';
+    src: url('AriataStencil-Regular.eot');
+    src: url('AriataStencil-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AriataStencil-Regular.woff2') format('woff2'),
+        url('AriataStencil-Regular.woff') format('woff'),
+        url('AriataStencil-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Stencil';
+    src: url('AriataStencil-Medium.eot');
+    src: url('AriataStencil-Medium.eot?#iefix') format('embedded-opentype'),
+        url('AriataStencil-Medium.woff2') format('woff2'),
+        url('AriataStencil-Medium.woff') format('woff'),
+        url('AriataStencil-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Text';
+    src: url('AriataText-Medium.eot');
+    src: url('AriataText-Medium.eot?#iefix') format('embedded-opentype'),
+        url('AriataText-Medium.woff2') format('woff2'),
+        url('AriataText-Medium.woff') format('woff'),
+        url('AriataText-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ariata Text';
+    src: url('AriataText-Regular.eot');
+    src: url('AriataText-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AriataText-Regular.woff2') format('woff2'),
+        url('AriataText-Regular.woff') format('woff'),
+        url('AriataText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 
  body{
 border-top: 10px solid #00236a;
 }
 
+header{
+    background: url(https://indicons.in/indicons/images/header-bg-new.jpg) no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.inner-page{
+
+    background: url(https://indicons.in/indicons/images/inner-bg.png) no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
  nav{
   top: 0;
   left: 0;
@@ -428,7 +584,7 @@ background:#b50303;
     margin-bottom: 80px;
     border-radius: 50px;
     box-shadow: rgb(0 0 0 / 25%) 0px 14px 28px, rgb(0 0 0 / 22%) 0px 10px 10px;
-    min-height: 400px;
+    min-height: 420px;
 }
 
 .top-box-bottom-main a{      text-decoration: none;
@@ -502,9 +658,10 @@ text-align: right;
 
 
 .container .title {
-  font-size: 28px;
-    font-weight: 500;
+font-size: 24px;
+    font-weight: 700;
     position: relative;
+    text-transform: uppercase;
 }
 
 .container .title::before {
@@ -693,6 +850,7 @@ position:relative;
 
 .box-bottom-a-box h3{font-size: 24px;
     margin-top: 15px;
+    color: #296dc4;
 }
 
 box-bottom-a-box p{color: #3a8a7d;
@@ -708,9 +866,10 @@ box-bottom-a-box p{color: #3a8a7d;
     padding: 20px 0px;
     background: #fff;
 }
-.box-bottom-a-box p{       margin-bottom: 8px;
+.box-bottom-a-box p{          margin-bottom: 8px;
     padding-top: 0px!important;
-    color: #1b7063!important;
+    color: #296dc4!important;
+    font-size: 19px;
 }
 
 .box-bottom-last{      background: url(../images/banner2.jpg) no-repeat;
@@ -1261,7 +1420,11 @@ margin-bottom:0px;
 .inner-page td strong{font-weight: 700;
 }
 
+#countdown li{       font-family: 'Ariata Display';
+                                                                   
+                                                
 
+}
 
 /* STRUCTURE */
 
@@ -1313,7 +1476,9 @@ margin-bottom:0px;
 }
 
 
-
+.demo{
+margin-top:20px;
+}
 
 /* ANIMATIONS */
 
@@ -1397,6 +1562,45 @@ margin-bottom:0px;
   animation-delay: 1s;
 }
 
+
+.reg-table td{
+text-align:center;
+}
+
+.reg-table td{
+    border: 1px solid #ffffff;
+}
+.reg-table table{
+    margin-top: 20px;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%), 0 3px 5px -1px rgb(0 0 0 / 20%);
+ 
+ }
+.sponsor-table .btn{
+    color: #fff;
+    background: #296dc4;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    width: 142px;
+    padding: 6px 22px 5px 22px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: table;
+    margin: auto;
+    float: none;
+    height: 35px;
+    line-height: 35px;
+	}
+
+.sponsor-table th{    padding: 10px;
+    font-size: 19px;
+    font-weight: 500;
+    border: 1px solid #001b3e;
+}
+.sponsor-table td{font-size: 19px;
+    color: #000;
+}
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
  .top-box-main {
     height: 260px;

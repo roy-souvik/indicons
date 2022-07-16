@@ -216,18 +216,30 @@ font-size:16px;
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+  
+     <div class="col-md-4">
+	  <div class="single-video" style="padding: 30px 0px;">
+	           <div class="post-slide">
+	  <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  </div> </div>
+	 </div>
+  
+    <div class="col-md-8">
       <div id="news-slider" class="owl-carousel">
       
          
                 <div class="post-slide">
-         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				
+		<iframe width="100%" height="315" src="https://www.youtube.com/embed/fX-9EfYFsJI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>		
+				
+				
+ 
         
          
              </div>   
          
 <div class="post-slide">
-         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/w7wXcR8xIcY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         
          
              </div>
@@ -242,27 +254,15 @@ font-size:16px;
 			 
 			 
 			 
-			 <div class="post-slide">
-         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-         
-             </div>
+			  
 			 
 			 
 			 
-			 <div class="post-slide">
-         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-         
-             </div>
+			  
 			 
 			 
 			 
-		 <div class="post-slide">
-         <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-         
-             </div>		 
+		  		 
 			 
 			 
 			 
@@ -333,7 +333,7 @@ font-size:16px;
 
                     <div class="col-md-4">
                         <div class="top-box-bottom-main">
-                            <div class="top-bpx-bottom-img"><img src="indicons/images/Mask1.png"> </div>
+                            <div class="top-bpx-bottom-img"><img src="indicons/images/dr3.jpg"> </div>
                             <h3>Message from<br>
  VAI President</h3>
 
@@ -379,7 +379,7 @@ The President, Venous Association of India.</strong>
 
 		<div class="col-md-4">
                         <div class="top-box-bottom-main">
-                            <div class="top-bpx-bottom-img"><img src="indicons/images/Mask1.png"> </div>
+                            <div class="top-bpx-bottom-img"><img src="indicons/images/dr2.jpg"> </div>
                             <h3>Message from <br>
  Organising Chairman</h3>
 
@@ -423,7 +423,7 @@ VAICON2023, Kolkata.</strong>
 
 <div class="col-md-4">
                         <div class="top-box-bottom-main">
-                            <div class="top-bpx-bottom-img"><img src="indicons/images/Mask1.png"> </div>
+                            <div class="top-bpx-bottom-img"><img src="indicons/images/dr1.jpg"> </div>
                             <h3>Message from<br>
  Organising Secretary</h3>
 
@@ -647,7 +647,7 @@ VAICON2023, Kolkata.</strong>
 <script>
 $(document).ready(function() {
     $("#news-slider").owlCarousel({
-        items : 4,
+        items : 3,
         itemsDesktop:[1199,3],
         itemsDesktopSmall:[980,2],
         itemsMobile : [600,1],
