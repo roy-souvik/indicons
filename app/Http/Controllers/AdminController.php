@@ -48,6 +48,7 @@ class AdminController extends Controller
             'early_bird_member_discount',
             'standard_member_discount',
             'spot_member_discount',
+            'saarc_discount'
         ]);
 
         $fees = Fee::where('id', data_get($requestData, 'id'))->firstOrFail();
@@ -59,6 +60,7 @@ class AdminController extends Controller
         $fees->early_bird_member_discount = data_get($requestData, 'early_bird_member_discount');
         $fees->standard_member_discount = data_get($requestData, 'standard_member_discount');
         $fees->spot_member_discount = data_get($requestData, 'spot_member_discount');
+        $fees->saarc_discount = data_get($requestData, 'saarc_discount', 0);
 
         $fees->save();
 

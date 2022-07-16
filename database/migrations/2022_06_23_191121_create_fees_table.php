@@ -24,6 +24,7 @@ class CreateFeesTable extends Migration
             $table->string('standard_member_discount', 20)->default(0);
             $table->string('spot_amount', 20)->nullable();
             $table->string('spot_member_discount', 20)->default(0);
+            $table->string('saarc_discount', 20)->default(0);
         });
     }
 

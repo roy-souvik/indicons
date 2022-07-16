@@ -1,13 +1,19 @@
 @extends('layouts.indicons-admin.main-layout')
 @section('content')
 
+<style>
+    .table-inputs {
+        width: 6rem;
+    }
+</style>
+
 <div class="white-box">
     <h3 class="box-title">Fees Structure</h3>
 
     @include('admin.flash-message')
 
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th class="border-top-0">Registration Type</th>
@@ -15,6 +21,7 @@
                     <th class="border-top-0">Early Bird</th>
                     <th class="border-top-0">Standard</th>
                     <th class="border-top-0">Spot</th>
+                    <th class="border-top-0">SAARC Discount</th>
                     <th class="border-top-0">Action</th>
                 </tr>
             </thead>
@@ -22,11 +29,11 @@
                 @foreach ($fees as $fee)
 
                 @php
-                    $readonly = '';
+                $readonly = '';
 
-                    if ($fee->role->isCompanion()) {
-                        $readonly = 'readonly="readonly"';
-                    }
+                if ($fee->role->isCompanion()) {
+                $readonly = 'readonly="readonly"';
+                }
                 @endphp
 
                 <tr>
@@ -34,29 +41,35 @@
                     <td>{{$fee->currency}}</td>
                     <td>
                         <label for="early_bird_{{$fee->id}}">
-                            Regular Amount: <input type="number" id="early_bird_{{$fee->id}}" value="{{$fee->early_bird_amount}}" />
+                            Regular Amount: <input type="number" id="early_bird_{{$fee->id}}" value="{{$fee->early_bird_amount}}" class="table-inputs"/>
                         </label>
 
                         <label for="early_bird_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="early_bird_member_discount_{{$fee->id}}" value="{{$fee->early_bird_member_discount}}" {{$readonly}}/>
+                            Member Discount: <input type="number" id="early_bird_member_discount_{{$fee->id}}" value="{{$fee->early_bird_member_discount}}" {{$readonly}} class="table-inputs"/>
                         </label>
                     </td>
                     <td>
                         <label for="standard_{{$fee->id}}">
-                            Regular Amount: <input type="number" id="standard_{{$fee->id}}" value="{{$fee->standard_amount}}" />
+                            Regular Amount: <input type="number" id="standard_{{$fee->id}}" value="{{$fee->standard_amount}}" class="table-inputs"/>
                         </label>
 
                         <label for="standard_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="standard_member_discount_{{$fee->id}}" value="{{$fee->standard_member_discount}}" {{$readonly}}/>
+                            Member Discount: <input type="number" id="standard_member_discount_{{$fee->id}}" value="{{$fee->standard_member_discount}}" {{$readonly}} class="table-inputs"/>
                         </label>
                     </td>
                     <td>
                         <label for="spot_{{$fee->id}}">
-                            Regular Amount: <input type="number" id="spot_{{$fee->id}}" value="{{$fee->spot_amount}}" />
+                            Regular Amount: <input type="number" id="spot_{{$fee->id}}" value="{{$fee->spot_amount}}" class="table-inputs"/>
                         </label>
 
                         <label for="spot_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="spot_member_discount_{{$fee->id}}" value="{{$fee->spot_member_discount}}" {{$readonly}}/>
+                            Member Discount: <input type="number" id="spot_member_discount_{{$fee->id}}" value="{{$fee->spot_member_discount}}" {{$readonly}} class="table-inputs"/>
+                        </label>
+                    </td>
+
+                    <td>
+                        <label for="saarc_discount_{{$fee->id}}">
+                            Discount: <input type="number" id="saarc_discount_{{$fee->id}}" value="{{$fee->saarc_discount}}" class="table-inputs"/>
                         </label>
                     </td>
                     <td style="vertical-align: middle;">
@@ -73,7 +86,7 @@
     $(function() {
         const token = "{{ csrf_token() }}";
 
-        $('.save-fees').click(function () {
+        $('.save-fees').click(function() {
             const feesId = $(this).attr('data-feesid');
             const earlyBirdAmount = $(`#early_bird_${feesId}`).val();
             const earlyBirdMemberDiscount = $(`#early_bird_member_discount_${feesId}`).val();
@@ -81,6 +94,7 @@
             const standardMemberDiscount = $(`#standard_member_discount_${feesId}`).val();
             const spotAmount = $(`#spot_${feesId}`).val();
             const spotMemberDiscount = $(`#spot_member_discount_${feesId}`).val();
+            const saarcDiscount = $(`#saarc_discount_${feesId}`).val();
 
             const requestData = {
                 '_token': token,
@@ -91,11 +105,12 @@
                 'standard_member_discount': standardMemberDiscount,
                 'spot_amount': spotAmount,
                 'spot_member_discount': spotMemberDiscount,
+                'saarc_discount': saarcDiscount,
             };
 
-            saveFees(requestData).then(function () {
+            saveFees(requestData).then(function() {
                 location.reload();
-            }, function () {
+            }, function() {
                 alert('Unable to save');
             });
         });

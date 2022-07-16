@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'email' => 'contact@indicons.com',
                 'email_verified_at' => now()->timestamp,
                 'password' => Hash::make(env('INDICONS_ADMIN_PASS')),
-                'phone' => '9876543212',
+                'phone' => '8910142514',
                 'role_id' => Role::firstWhere('key', 'super_admin')->id,
                 'company' => 'admin',
                 'postal_code' => '122234',
