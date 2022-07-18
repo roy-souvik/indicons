@@ -583,8 +583,8 @@
             @if ($sponsorship->category == 'main')
             <div class="col-md-4 col-sm-6">
                 <div class="pricingTable">
-                    <div class="pricingTable-header" style="background-color: {{data_get($sponsorship, 'color', '#cecece')}};">
-                        <img style="width: 3rem;float:left" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.jpg" alt="">
+                    <div class="pricingTable-header d-flex" style="background-color: {{data_get($sponsorship, 'color', '#cecece')}};">
+                        <img style="width: 3rem" class="rounded" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.jpg" alt="{{strtolower($sponsorship->title)}}">
                         <h3 class="title">{{$sponsorship->title}}</h3>
                     </div>
                     <div class="price-value">
