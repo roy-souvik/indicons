@@ -148,16 +148,25 @@ border-top: 10px solid #00236a;
 }
 
 header{
-    background: url(https://indicons.in/indicons/images/header-bg-new.jpg) no-repeat;
+    background: url(../images/header-bg-new.jpg) no-repeat;
     background-position: top center;
     background-size: cover;
 }
 
+footer{
+    background: url(../images/footer-bg.jpg) no-repeat;
+    background-position: top center;
+    background-size: cover;      padding-top: 13px;
+	padding-bottom:13px; box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%), 0 3px 5px -1px rgb(0 0 0 / 20%);
+} 
+
+
 .inner-page{
 
-    background: url(https://indicons.in/indicons/images/inner-bg.png) no-repeat;
+    background: url(../images/inner-bg.png) repeat;
     background-position: top center;
-    background-size: cover;
+ 
+	min-height:600px;
 }
  nav{
   top: 0;
@@ -933,12 +942,21 @@ text-align: center;
 
 
  .pricingTable{
-    background: #fff;
-    font-family: 'Roboto', sans-serif;
+ background: #00236a;
     text-align: center;
     padding: 20px 0 35px;
     box-shadow: 0 0 10px -3px rgb(0 0 0 / 30%);
     margin-bottom: 30px;
+    color: #fff;
+	position:relative;
+	min-height: 1460px;
+}
+
+.pricingTable-signup{
+position: absolute;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
 }
 .pricingTable .pricingTable-header{
     text-align: left;
@@ -947,12 +965,13 @@ text-align: center;
     clip-path: polygon(0 0, 0 100%, 85% 100%, 100% 50%, 85% 0);
 }
 .pricingTable .title{
-    color: #fff;
+    color: #000!important;
     font-size: 27px;
     font-weight: 500;
     line-height: 52px;
     margin: auto;
     text-align: center;
+	background:#fff!important;
 }
 .pricingTable .price-value{
     color: #000;
@@ -963,6 +982,7 @@ text-align: center;
   font-size: 28px;
     font-weight: 600;
     line-height: 40px;
+	color:#fff;
 }
 .pricingTable .price-value .duration{
     font-size: 30px;
@@ -981,8 +1001,8 @@ text-align: center;
     width: 90%;
 }
 .pricingTable .pricing-content li{
-    color: #777;
-    font-size: 17px;
+    color: #fff;
+    font-size: 15px;
     font-weight: 400;
     line-height: 25px;
     letter-spacing: 0.5px;
@@ -1601,6 +1621,34 @@ text-align:center;
 .sponsor-table td{font-size: 19px;
     color: #000;
 }
+
+
+.footer-left{
+}
+.footer-left img{
+object-fit: cover;
+}
+.footer-right span{color: #296dc4;
+}
+
+.footer-right{      text-align: center;
+    display: flex;
+    width: 100%;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    flex-flow: wrap;
+    padding-top: 10px;
+    justify-content: end;
+}
+.footer-right p{
+}
+.footer-btm{font-size: 14px;
+}
+
+
+
+
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
  .top-box-main {
     height: 260px;

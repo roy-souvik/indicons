@@ -14,7 +14,7 @@
     <link href="indicons/css/style.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> 
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
  
 	
@@ -220,7 +220,7 @@ font-size:16px;
      <div class="col-md-4">
 	  <div class="single-video" style="padding: 30px 0px;">
 	           <div class="post-slide">
-	  <iframe width="100%" height="315" src="https://www.youtube.com/embed/TdhkUPFcN0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<iframe width="100%" height="315" src="https://www.youtube.com/embed/h3IxP_JDCnM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	  </div> </div>
 	 </div>
   
@@ -285,7 +285,7 @@ font-size:16px;
 
                 <div class="col-md-3">
                     <a href="#" class="top-box-main">
-                        <img src="indicons/images/im4.png">
+                        <img src="indicons/images/sponsor-im1.jpg" style="height:312px; width:253px;">
                         <h2> ACCOMMODATION </h2>
                     </a>
                 </div>
@@ -587,16 +587,16 @@ VAICON2023, Kolkata.</strong>
                     <div class="col-md-1"> </div>
                     <div class="col-md-3">
                         <ul>
-                            <li> <a href="#"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li> <a href="{{route('conference.home')}}"> <i class="fa fa-angle-right" aria-hidden="true"></i>
                               Conference </a> </li>
-                            <li> <a href="#"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li> <a href="{{route('information.home')}}"> <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Information </a> </li>
-                            <li> <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li> <a href="{{route('scientific.home')}}"><i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Scientific </a> </li>
-                            <li> <a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li> <a href="{{route('abstract.submitpage')}}"><i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Abstracts </a> </li>
                          
-                            <li> <a href="#"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li> <a href="{{route('conference-register.show')}}"> <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     Registration </a> </li>
                         </ul>
 
@@ -605,10 +605,10 @@ VAICON2023, Kolkata.</strong>
 
                     <div class="col-md-3">
                         <ul>
-                            <li> <a href="#">Accommodation </a> </li>
-                            <li> <a href="#"> Travel </a> </li>
-                            <li> <a href="#"> VAI </a> </li>
-                            <li> <a href="#"> Sponsorship </a> </li>
+                            <li> <a href="{{route('accommodation.home')}}">Accommodation </a> </li>
+                            <li> <a href="{{route('travel.home')}}"> Travel </a> </li>
+                            <li> <a  target="_blank" href="https://venous.in"> VAI </a> </li>
+                            <li> <a  href="{{route('sponsorship.show')}}"> Sponsorship </a> </li>
                     
                         </ul>
 
