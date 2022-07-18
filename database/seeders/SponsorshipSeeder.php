@@ -68,6 +68,76 @@ class SponsorshipSeeder extends Seeder
                 'amount' => '100000',
                 'number' => 1,
             ],
+            [
+                'category' => 'other',
+                'title' => 'Best paper presenter award',
+                'amount' => '100000',
+                'number' => 3,
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Named breakfast sessions',
+                'amount' => '100000',
+                'number' => 3,
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Named lunch sessions',
+                'amount' => '250000',
+                'number' => 3,
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Named tea stations',
+                'amount' => '100000',
+                'number' => 3,
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Named dinner events',
+                'amount' => '500000',
+                'number' => 2,
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Sponsorship ad during scientific session',
+                'amount' => '100000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'In hall branding',
+                'amount' => '100000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Branded Souvenirs',
+                'amount' => '150000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Photo zone branding with logo',
+                'amount' => '150000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Named Mobile charging station',
+                'amount' => '150000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Conference bag',
+                'amount' => '250000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Notepad and pen sponsorship',
+                'amount' => '100000',
+            ],
+            [
+                'category' => 'other',
+                'title' => 'Volunteers dress',
+                'amount' => '100000',
+            ],
         ];
 
         foreach ($sponsorships as $sponsorship) {
