@@ -29,6 +29,18 @@ Route::get('/registration', function () {
     return view('conference-register', compact('roles'));
 })->name('conference-register.show');
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacypolicy');
+
+Route::get('/tnd', function () {
+    return view('tnd');
+})->name('tnd');
+
+Route::get('/refund', function () {
+    return view('refund');
+})->name('refund');
+
 Route::get('/abstracts-importnant-dates', function () {
     return view('abstract-dates');
 })->name('abstract.dates');

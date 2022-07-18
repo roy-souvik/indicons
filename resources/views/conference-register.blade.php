@@ -412,7 +412,7 @@
 
             <p class="agree">
                 <input style="width: 20px; height: 20px; position: relative;top: 4px;" name="privacy_policy_check" type="checkbox" required>
-                I agree to the <a href="#"> Privacy Policy</a>
+                I agree to the <a href="{{route('privacypolicy')}}" target="_blank"> Privacy Policy</a>
             </p>
 
         </div>
