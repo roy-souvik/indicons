@@ -32,10 +32,22 @@ class PaymentController extends Controller
             ->limit(2)
             ->get();
 
-        $discounts = [
+        $vaiMemberDiscounts = [
             'early_bird' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->early_bird_member_discount) : 0,
             'standard' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->standard_member_discount) : 0,
             'spot' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->spot_member_discount) : 0,
+        ];
+
+        $saarcDiscounts = [
+            'early_bird' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
+            'standard' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
+            'spot' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
+        ];
+
+        $discounts = [
+            'early_bird' => $vaiMemberDiscounts['early_bird'] + $saarcDiscounts['early_bird'],
+            'standard' => $vaiMemberDiscounts['standard'] + $saarcDiscounts['standard'],
+            'spot' => $vaiMemberDiscounts['spot'] + $saarcDiscounts['spot'],
         ];
 
         return view('conference-payment', compact(

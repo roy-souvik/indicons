@@ -126,4 +126,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(AccompanyingPerson::class);
     }
+
+    public function isSaarcResident(): bool
+    {
+        $saarcCountries = [
+            'Bangladesh',
+            'Bhutan',
+            // 'India',
+            'Maldives',
+            'Nepal',
+            'Pakistan',
+            'Sri Lanka',
+            'Afghanistan',
+        ];
+
+        return in_array($this->country, $saarcCountries);
+    }
 }
