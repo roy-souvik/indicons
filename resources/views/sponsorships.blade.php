@@ -227,10 +227,6 @@
 </div>
 
 
-
-<div class="container">
-    <div class="title"> Sponsorship </div>
-</div>
 <div class="demo">
     <div class="container">
 
@@ -241,7 +237,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="pricingTable">
                     <div class="pricingTable-header d-flex" style="background-color: {{data_get($sponsorship, 'color', '#ffffff')}};">
-                        <img style="width: 3rem" class="rounded" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.jpg" alt="{{strtolower($sponsorship->title)}}">
+                        <img style="width: 3rem" class="rounded" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.png" alt="{{strtolower($sponsorship->title)}}">
                         <h3 class="title" style="color: black;">{{$sponsorship->title}}</h3>
                     </div>
                     <div class="price-value">
