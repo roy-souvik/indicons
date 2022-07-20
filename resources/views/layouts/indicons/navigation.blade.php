@@ -29,8 +29,8 @@
                          <li><a href="{{route('conference-register.show')}}">Registration</a></li>
                          <li><a href="{{route('accommodation.home')}}">Accommodation</a></li>
                          <li><a href="{{route('travel.home')}}">Travel </a></li>
-                         <li><a  target="_blank" href="https://venous.in"> VAI</a></li>
-                         <li><a href="{{route('sponsorship.show')}}"> Sponsorship </a></li>
+                         <li><a  target="_blank" href="https://venous.in">VAI</a></li>
+                         <li><a href="{{route('sponsorship.show')}}">Sponsorship</a></li>
 
                          @if (Auth::user())
                          <li>
@@ -41,8 +41,9 @@
                                  </a>
                              </form>
                          </li>
+                         @else
+                         <li><a href="/login">Login</a></li>
                          @endif
-
                      </ul>
                  </div>
                  <div class="search-box">
