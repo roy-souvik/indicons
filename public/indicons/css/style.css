@@ -176,7 +176,7 @@ footer{
   height: auto;
   background: #00236a;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  z-index: 99;
+  z-index: 12;
 }
 nav .navbar{
   height: 100%;
@@ -189,7 +189,7 @@ nav .navbar{
   /* background: red; */
   padding: 0 0px;
   position: relative;
-    z-index: 99999;
+    z-index: 111;
 }
 .navbar .logo a{
   font-size: 30px;
@@ -1649,6 +1649,63 @@ object-fit: cover;
 
 
 
+.sponsor-list-bx{height: 337px;
+    overflow-y: auto;
+}
+
+.sponsor-list-bx .btn{
+}
+
+.btn-reg-table{    display: table;
+    margin: 20px auto;
+    background: #f89923;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: 1px solid #c56d00;
+}
+ 
+
+.modal{
+}
+
+.modal table{
+}
+
+.modal td{    font-weight: 600!important;
+    font-size: 12px!important; padding: 3px!important;
+}
+
+.modal-header{     padding: 5px 1rem!important;
+}
+
+.modal-body{
+padding:0px;
+margin:0px;
+}
+
+.accordion-item{
+background:none!important;
+}
+
+.user-reg{    text-align: right;
+    padding-right: 160px;
+    padding-top: 8px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.user-reg span{color: #0138a7;
+}
+.fa-user-check{background: #ed383d;
+    color: #fff;
+    padding: 6px;
+    border-radius: 100px;
+    height: 30px;
+    width: 30px;
+}
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
  .top-box-main {
     height: 260px;
