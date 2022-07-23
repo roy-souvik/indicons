@@ -15,7 +15,7 @@
                          <li><a href="{{route('information.home')}}">Information</a></li>
                          <li><a href="{{route('scientific.home')}}">Scientific</a></li>
                          <li>
-                            <a href="#"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow '></i>
+                            <a href="#"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow'></i>
 
                              <ul class="js-sub-menu sub-menu">
                                  <li><a href="{{route('abstract.dates')}}">Important Dates</a></li>
