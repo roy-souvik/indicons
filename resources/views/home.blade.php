@@ -477,7 +477,7 @@
                        <div class="col-md-3">
                            <ul>
                                <li> <a href="{{route('accommodation.home')}}">Accommodation </a> </li>
-                               <li> <a href="{{route('travel.home')}}"> Travel </a> </li>
+                               <li> <a href="{{route('nurses.home')}}">Nurses</a> </li>
                                <li> <a target="_blank" href="https://venous.in"> VAI </a> </li>
                                <li> <a href="{{route('sponsorship.show')}}"> Sponsorship </a> </li>
 
