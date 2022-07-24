@@ -15,7 +15,7 @@
                          <li><a href="{{route('information.home')}}">Information</a></li>
                          <li><a href="{{route('scientific.home')}}">Scientific</a></li>
                          <li>
-                            <a href="#"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow'></i>
+                            <a href="#"> Abstracts </a> <i class='bx bxs-chevron-down js-arrow arrow '></i>
 
                              <ul class="js-sub-menu sub-menu">
                                  <li><a href="{{route('abstract.dates')}}">Important Dates</a></li>
@@ -28,7 +28,7 @@
 
                          <li><a href="{{route('conference-register.show')}}">Registration</a></li>
                          <li><a href="{{route('accommodation.home')}}">Accommodation</a></li>
-                         <li><a href="{{route('travel.home')}}">Travel </a></li>
+                         <li><a href="{{route('nurses.home')}}">Nurses </a></li>
                          <li><a  target="_blank" href="https://venous.in">VAI</a></li>
                          <li><a href="{{route('sponsorship.show')}}">Sponsorship</a></li>
 

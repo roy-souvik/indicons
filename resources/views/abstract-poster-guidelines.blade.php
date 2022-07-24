@@ -22,7 +22,7 @@
     <td valign="top">&nbsp;Place  your e-mail address, phone, and fax numbers in the upper right-hand corner of  the poster board.</td>
   </tr>
   <tr>
-    <td valign="top"><p>It is suggested that you place multiple  copies of a reproduction of the abstract in the upper left-hand side of the  poster, written with the headings &quot;Introduction/Background,&quot; Methods,&quot; &quot;Results,” and “Conclusions&quot;. Include your contact information on these copies for attendees who desire further information.</p></td>
+    <td valign="top"><p>It is suggested that you place multiple  copies of a reproduction of the abstract in the upper left-hand side of the  poster, written with the headings &quot;Introduction/Background,&quot; Methods,&quot; &quot;Results," and "Conclusions&quot;. Include your contact information on these copies for attendees who desire further information.</p></td>
   </tr>
   <tr>
     <td valign="top"><p>It is recommended that you hand-carry your  poster to the conference, using tubular packaging or a portfolio case. Costs  associated with creating and<br>

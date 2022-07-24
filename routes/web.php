@@ -5,7 +5,6 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
 use App\Models\Role;
-use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,21 +80,19 @@ Route::get('/accommodation', function () {
     return view('accommodation');
 })->name('accommodation.home');
 
-Route::get('/travel', function () {
-    return view('travel');
-})->name('travel.home');
-
 Route::get('/abstract', function () {
     return view('abstract');
 })->name('abstract.show');
+
+Route::get('/nurses', function () {
+    return view('nurses');
+})->name('nurses.home');
 
 Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->name('sponsorship.show');
 
 Route::get('/sponsorships/{sponsorship}', [SponsorshipController::class, 'sponsorshipBuyPage'])->name('sponsorship.buy');
 
 Route::post('/registration', [RegistrationController::class, 'register']);
-
-// Route::get('/test', [PaymentController::class, 'saveConferencePayment']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])

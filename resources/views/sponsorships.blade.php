@@ -1,27 +1,27 @@
   @extends('layouts.indicons.main-layout')
 @section('content')
 
- 
 
 
 
 
- 
+
+
 
 
 
 <div class="reg-table">
     <div class="title"> SPONSORSHIP </div>
-	
-	 
-	
-	
-	
+
+
+
+
+
 	<div class="sponsor-list-bx">
-	
-	 
-	
-	
+
+
+
+
     <table cellspacing="0" cellpadding="0" style="width:100%">
         <tr style="background:#002878; color:#fff;">
             <td width="359" colspan="2" valign="top"><strong>&nbsp;</strong></td>
@@ -222,7 +222,7 @@
             <td width="38" valign="top"><strong>y</strong></td>
             <td width="44" valign="top"><strong>y</strong></td>
         </tr>
-  
+
 
     </table>
 
@@ -232,9 +232,9 @@
 </div>
 
     <button type="button"   class="btn-reg-table" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrows-from-line"></i>  Compact View </button>
- 
 
- 
+
+
     <div id="exampleModal" class="modal">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
@@ -245,8 +245,8 @@
                 </div>
                 <div class="modal-body">
  <div class="reg-table">
- 
- 
+
+
     <table cellspacing="0" cellpadding="0" style="width:100%; margin-top:0px;">
         <tbody><tr style="background:#002878; color:#fff;">
             <td colspan="2" valign="top"><strong>&nbsp;</strong></td>
@@ -467,23 +467,23 @@
             <td width="86" valign="top"><strong>y</strong></td>
             <td width="86" valign="top"><strong>y</strong></td>
         </tr>
-         
-         
+
+
 
     </tbody></table>
- 
+
 </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
+
                 </div>
             </div>
         </div>
     </div>
-     
-    
-    
+
+
+
 
 
 <div class="demo">
@@ -500,20 +500,13 @@
     float: right;
     display: block;
     height: 43px;
-    margin-top: 2px;
+    margin-top: 6px;
     margin-left: 55px;" class="rounded" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.png" alt="{{strtolower($sponsorship->title)}}">
                         <h3 class="title" style="color: black;">{{$sponsorship->title}}</h3>
                     </div>
                     <div class="price-value">
                         <span class="amount">{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</span>
                     </div>
-
-
-
-
-
-
-
 
                     <ul class="pricing-content">
                         @foreach ($sponsorship->features as $feature)
@@ -559,5 +552,19 @@
         </div>
     </div>
 </div>
+
+<script>
+$(function() {
+  $('.showbutton').on('click', function() {
+    $(this).siblings('.showcase p').slideToggle();
+   //this is for change text
+    $(this).text(function(i, v){
+      return v === 'less' ? 'Read More' : 'less'
+       });
+    //end
+  });
+});
+
+</script>
 
 @stop

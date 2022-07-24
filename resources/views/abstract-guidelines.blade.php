@@ -14,12 +14,12 @@
   <tr>
     <td valign="top"> <strong>Language</strong></td>
     <td valign="top"> Abstracts MUST be submitted in English.
-•	Mode of Presentation. The Programme Committee reserves the right to select and assign the abstracts relevant to the sessions for oral or poster presentation. </td>
+ 	Mode of Presentation. The Programme Committee reserves the right to select and assign the abstracts relevant to the sessions for oral or poster presentation. </td>
   </tr>
   <tr>
     <td  valign="top">  <strong>Acknowledgement of Receipt</strong></td>
     <td valign="top"> Upon submission, authors will receive a confirmation by email. Otherwise, please contact the Congress Secretariat.
-•	Review and Selection. Abstracts will be double-blind and peer reviewed by an international panel of eminent experts. Selection will be based upon: relevance to theme, originality and interest, clinical and research content, and state of completeness. </td>
+ 	Review and Selection. Abstracts will be double-blind and peer reviewed by an international panel of eminent experts. Selection will be based upon: relevance to theme, originality and interest, clinical and research content, and state of completeness. </td>
   </tr>
   <tr>
     <td valign="top"> 	<strong>Notifications </strong></td>
@@ -28,7 +28,7 @@
   <tr>
     <td valign="top"> <strong>Registration </strong></td>
     <td valign="top">All presenting authors of abstracts (either oral or poster) are required to register and pay the registration fee by the deadline. Failure to do so will result in exclusion from the final programme.
-•	Publication. All accepted abstracts will be published in the Scientific Proceedings of the congress in electronic format upon receipt of registration fees in full. Authors will be required to sign copyright transfers to Organising committee. </td>
+ 	Publication. All accepted abstracts will be published in the Scientific Proceedings of the congress in electronic format upon receipt of registration fees in full. Authors will be required to sign copyright transfers to Organising committee. </td>
   </tr>
   <tr>
     <td  valign="top"> <strong>Publication </strong></td>
