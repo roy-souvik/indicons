@@ -7,10 +7,13 @@ use App\Models\AccompanyingPerson;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
 use App\Models\Role;
+use App\Models\User;
+use App\Models\VaiMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
@@ -32,10 +35,12 @@ class PaymentController extends Controller
             ->limit(2)
             ->get();
 
+        $isVaiMember = $this->isVaiMember($user);
+
         $vaiMemberDiscounts = [
-            'early_bird' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->early_bird_member_discount) : 0,
-            'standard' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->standard_member_discount) : 0,
-            'spot' => !empty($user->vaicon_member_id) ? intval($paymentSlabItem->spot_member_discount) : 0,
+            'early_bird' => $isVaiMember ? intval($paymentSlabItem->early_bird_member_discount) : 0,
+            'standard' => $isVaiMember ? intval($paymentSlabItem->standard_member_discount) : 0,
+            'spot' => $isVaiMember ? intval($paymentSlabItem->spot_member_discount) : 0,
         ];
 
         $saarcDiscounts = [
@@ -56,6 +61,7 @@ class PaymentController extends Controller
             'accompanyingPersonFees',
             'accompanyingPersons',
             'discounts',
+            'isVaiMember',
         ));
     }
 
@@ -106,5 +112,16 @@ class PaymentController extends Controller
         $transactionId = $request->transaction_id;
 
         return view('payment-success', compact('transactionId'));
+    }
+
+    private function isVaiMember(User $user): bool
+    {
+        $vaiMember = VaiMember::where('vai_number', $user->vaicon_member_id)->first();
+
+        if (empty($vaiMember)) {
+            return false;
+        }
+
+        return Str::contains($vaiMember->name, $user->getDisplayName());
     }
 }
