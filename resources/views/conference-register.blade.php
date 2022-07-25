@@ -90,7 +90,7 @@
                 <span class="details">Salutation</span>
                 <select name="title" id="title" class="form-control" required>
                     <option value="">-- choose one --</option>
-                    @foreach (['Dr', 'Mr', 'Mrs', 'Ms'] as $title)
+                    @foreach (['Dr', 'Prof', 'Mr', 'Mrs', 'Ms'] as $title)
                     <option value="{{$title}}" {{old('title') == $title ? 'selected' : ''}}>{{$title}}</option>
                     @endforeach
                 </select>
