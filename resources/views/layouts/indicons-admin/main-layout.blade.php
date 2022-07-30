@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Indicons') }} Admin</title>
+    <title>{{ config('app.name', 'Vaicon') }} Admin</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{url('admin/plugins/images/favicon.png')}}">
     <!-- Custom CSS -->

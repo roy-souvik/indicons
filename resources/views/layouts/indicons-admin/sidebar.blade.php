@@ -38,8 +38,14 @@
                         <span class="hide-menu">Manage Sponsorship</span>
                     </a>
                 </li>
-            </ul>
 
+                <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.config.show')}}" aria-expanded="false">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span class="hide-menu">Configurations</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
         <!-- End Sidebar navigation -->
     </div>

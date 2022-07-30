@@ -167,6 +167,12 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/sponsorship-features/{feature}', [AdminController::class, 'sponsorshipFeaturesDelete'])
             ->name('admin.sponsorship.features.delete');
+
+        Route::get('/configurations', [AdminController::class, 'configShow'])
+            ->name('admin.config.show');
+
+        Route::put('/configurations/{config}', [AdminController::class, 'configUpdate'])
+            ->name('admin.config.update');
     });
 });
 

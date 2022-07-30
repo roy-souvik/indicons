@@ -6,6 +6,7 @@ use App\Mail\AbstractUpdated;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
+use App\Models\SiteConfig;
 use App\Models\Sponsorship;
 use App\Models\SponsorshipFeature;
 use Illuminate\Support\Facades\Mail;
@@ -165,5 +166,25 @@ class AdminController extends Controller
         return redirect(route('admin.sponsorship.show'))->with([
             'success' => 'Sponsorship updated successfully',
         ]);
+    }
+
+    public function configShow()
+    {
+        $configList = SiteConfig::all();
+
+        return view('admin.config', compact('configList'));
+    }
+
+    public function configUpdate(SiteConfig $config, Request $request)
+    {
+        $request->validate([
+            'config_value' => ['required', 'string', 'nullable'],
+        ]);
+
+        $config->value = $request->input('config_value');
+
+        $config->save();
+
+        return $config;
     }
 }

@@ -50,7 +50,7 @@ class RegistrationController extends Controller
             'country' => $request->country,
             'department' => $request->department,
             'address' => $request->address,
-            'vaicon_member_id' => $request->input('vaicon_member_id'), // TODO: Get the DB auto ID if member id matches
+            'vaicon_member_id' => $request->input('vaicon_member_id'),
         ]);
 
         event(new Registered($user));

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FeeSeeder::class,
             SponsorshipSeeder::class,
+            ConfigSeeder::class,
         ]);
     }
 }
