@@ -398,7 +398,7 @@
             </div>
 
             <div class="input__box" style="margin-left: 2.2rem;">
-                <span class="details">Vaicon Member</span>
+                <span class="details">Are you an existing VAI Member?</span>
                 <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
                     <option value="">-- choose one --</option>
                     <option value="yes" {{old('is_vaicon_member') == 'yes' ? 'selected' : ''}}>Yes</option>
@@ -410,10 +410,10 @@
 
             <div style="clear:both;"> </div>
 
-            <p class="agree">
-                <input style="width: 20px; height: 20px; position: relative;top: 4px;" name="privacy_policy_check" type="checkbox" required>
+            <label class="agree" id="privacy_policy_check" style="width: 15rem;">
+                <input style="width: 20px; height: 20px; position: relative;top: 4px;" id="privacy_policy_check" name="privacy_policy_check" type="checkbox" required>
                 I agree to the <a href="{{route('privacypolicy')}}" target="_blank"> Privacy Policy</a>
-            </p>
+            </label>
 
         </div>
 
