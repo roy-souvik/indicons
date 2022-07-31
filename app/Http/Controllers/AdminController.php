@@ -9,6 +9,7 @@ use App\Models\Fee;
 use App\Models\SiteConfig;
 use App\Models\Sponsorship;
 use App\Models\SponsorshipFeature;
+use App\Models\SponsorshipPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -186,5 +187,12 @@ class AdminController extends Controller
         $config->save();
 
         return $config;
+    }
+
+    public function sponsorshipPaymentsShow()
+    {
+        $sponsorshipPayments = SponsorshipPayment::with(['sponsorship', 'user'])->get();
+
+        return view('admin.sponsorship-payments', compact('sponsorshipPayments'));
     }
 }

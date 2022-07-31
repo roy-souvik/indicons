@@ -165,6 +165,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/sponsorships/{sponsorship}/features', [AdminController::class, 'sponsorshipFeaturesShow'])
             ->name('admin.sponsorship.features.show');
 
+        Route::get('/sponsorship-payments', [AdminController::class, 'sponsorshipPaymentsShow'])
+            ->name('admin.sponsorship.payments.show');
+
         Route::delete('/sponsorship-features/{feature}', [AdminController::class, 'sponsorshipFeaturesDelete'])
             ->name('admin.sponsorship.features.delete');
 

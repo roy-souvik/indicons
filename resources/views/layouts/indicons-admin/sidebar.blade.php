@@ -35,7 +35,14 @@
                 <li class="sidebar-item pt-2">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.sponsorship.show')}}" aria-expanded="false">
                         <i class="far fa-clock" aria-hidden="true"></i>
-                        <span class="hide-menu">Manage Sponsorship</span>
+                        <span class="hide-menu">Sponsorships</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.sponsorship.payments.show')}}" aria-expanded="false">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span class="hide-menu">Sponsorship Payments</span>
                     </a>
                 </li>
 
