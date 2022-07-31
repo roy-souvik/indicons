@@ -125,7 +125,11 @@
     <br>
 
     <div class="d-flex">
-        <h2>Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span></h2>
+        <h2>
+            Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
+
+            <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
+        </h2>
 
         <button class="btn btn-primary ms-5" id="proceed-payment">Proceed to payment</button>
     </div>
@@ -243,7 +247,9 @@
                 ? parseInt($('input[name="pick_drop_price"]').val())
                 : 0;
 
-            const totalAmount = payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10) + pickUpDropPrice;
+            let totalAmount = payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10) + pickUpDropPrice;
+
+            totalAmount = addGst(totalAmount);
 
             $('#total-amount').text(totalAmount);
 
@@ -305,6 +311,10 @@
                     return error;
                 },
             });
+        }
+
+        function addGst(amount, gstPercent = 18) {
+            return amount + ((amount*gstPercent)/100);
         }
     </script>
     @stop
