@@ -113,12 +113,12 @@
         <label for="pickup_drop_check">
             <input type="hidden" name="pick_drop_price" value="{{$pickupDropPrice->value}}">
             <input name="pickup_drop_check" id="pickup_drop_check" type="checkbox">
-            I need pickup and drop facility at INR {{$pickupDropPrice->value}}
+            I need pickup and drop facility at INR {{$pickupDropPrice->value}}.
         </label>
 
         <label for="airplane_booking_check">
             <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
-            I want to avail airplane tickets booking
+            I want to avail airplane tickets booking. (<em class="text-muted" style="font-size: 0.8rem;">Our team will contact you for furthur details.</em>)
         </label>
     </div>
 
