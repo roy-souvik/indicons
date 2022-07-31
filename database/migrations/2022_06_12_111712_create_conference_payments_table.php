@@ -21,6 +21,8 @@ class CreateConferencePaymentsTable extends Migration
             $table->string('amount');
             $table->string('registration_type')->nullable();
             $table->json('payment_response');
+            $table->boolean('pickup_drop')->default(false);
+            $table->boolean('airplane_booking')->default(false);
             $table->timestamps();
         });
     }

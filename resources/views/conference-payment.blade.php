@@ -12,7 +12,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
-                    <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - $discounts['early_bird']}}</label>
+                <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - $discounts['early_bird']}}</label>
                 @else
                 Expired!
                 @endif
@@ -24,7 +24,7 @@
             <td>
                 @if ($registrationTypeAuth['is_early_bird'])
                 <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
-                    <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - $discounts['standard']}}</label>
+                <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - $discounts['standard']}}</label>
                 @else
                 Expired!
                 @endif
@@ -44,11 +44,11 @@
 @if ($accompanyingPersons->count() < 2) <br>
     <h5>Enter accompanying person details</h5>
     @php
-        $amt = intval($accompanyingPersonFees->early_bird_amount);
+    $amt = intval($accompanyingPersonFees->early_bird_amount);
 
-        $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-            ? intval($amt / 75)
-            : $amt;
+    $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+    ? intval($amt / 75)
+    : $amt;
     @endphp
     <p>
         Fees for each person is
@@ -56,7 +56,7 @@
     </p>
 
     @php
-        $numbers = $accompanyingPersons->count() == 0 ? [1, 2] : [2];
+    $numbers = $accompanyingPersons->count() == 0 ? [1, 2] : [2];
     @endphp
 
     <table class="table">
@@ -109,6 +109,21 @@
 
     <br>
 
+    <div class="d-flex" style="flex-direction: column;">
+        <label for="pickup_drop_check">
+            <input type="hidden" name="pick_drop_price" value="{{$pickupDropPrice->value}}">
+            <input name="pickup_drop_check" id="pickup_drop_check" type="checkbox">
+            I need pickup and drop facility at INR {{$pickupDropPrice->value}}
+        </label>
+
+        <label for="airplane_booking_check">
+            <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
+            I want to avail airplane tickets booking
+        </label>
+    </div>
+
+    <br>
+
     <div class="d-flex">
         <h2>Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span></h2>
 
@@ -125,6 +140,10 @@
 
         $(function() {
             updateAmount();
+
+            $('input[name="pickup_drop_check"]').change(function () {
+                updateAmount();
+            });
 
             var ppButtonConfig = {
                 createOrder: function(data, actions) {
@@ -150,6 +169,8 @@
                             'payment_response': orderData,
                             'payer_amount': updateAmount().payer_amount,
                             'member_registration_type': $('input[name="payment"]:checked').attr('id'),
+                            'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
+                            'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
                         };
 
                         saveConferencePayment(responseData).then(() => {
@@ -215,11 +236,14 @@
         });
 
         function updateAmount() {
-            var payerAmount = parseInt(document.querySelector('input[name="payment"]:checked')?.value ?? 0, 10);
-            var person1Amount = $('#person_1_fees_payable').val() ?? 0;
-            var person2Amount = $('#person_2_fees_payable').val() ?? 0;
+            const payerAmount = parseInt(document.querySelector('input[name="payment"]:checked')?.value ?? 0, 10);
+            const person1Amount = $('#person_1_fees_payable').val() ?? 0;
+            const person2Amount = $('#person_2_fees_payable').val() ?? 0;
+            const pickUpDropPrice = $('input[name="pickup_drop_check"]:checked').val()
+                ? parseInt($('input[name="pick_drop_price"]').val())
+                : 0;
 
-            var totalAmount = payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10);
+            const totalAmount = payerAmount + parseInt(person1Amount, 10) + parseInt(person2Amount, 10) + pickUpDropPrice;
 
             $('#total-amount').text(totalAmount);
 

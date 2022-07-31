@@ -7,6 +7,7 @@ use App\Models\AccompanyingPerson;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
 use App\Models\Role;
+use App\Models\SiteConfig;
 use App\Models\User;
 use App\Models\VaiMember;
 use Illuminate\Http\Request;
@@ -55,6 +56,8 @@ class PaymentController extends Controller
             'spot' => $vaiMemberDiscounts['spot'] + $saarcDiscounts['spot'],
         ];
 
+        $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
+
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationTypeAuth',
@@ -62,6 +65,7 @@ class PaymentController extends Controller
             'accompanyingPersons',
             'discounts',
             'isVaiMember',
+            'pickupDropPrice',
         ));
     }
 
@@ -76,6 +80,8 @@ class PaymentController extends Controller
         $payment->amount = $request->amount;
         $payment->payment_response = json_encode($request->payment_response);
         $payment->registration_type = $request->member_registration_type;
+        $payment->pickup_drop = $request->input('pickup_drop', false);
+        $payment->airplane_booking = $request->input('airplane_booking', false);
 
         $payment->save();
 
