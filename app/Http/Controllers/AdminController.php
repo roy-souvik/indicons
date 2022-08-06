@@ -10,6 +10,7 @@ use App\Models\SiteConfig;
 use App\Models\Sponsorship;
 use App\Models\SponsorshipFeature;
 use App\Models\SponsorshipPayment;
+use App\Models\VaiMember;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -194,5 +195,12 @@ class AdminController extends Controller
         $sponsorshipPayments = SponsorshipPayment::with(['sponsorship', 'user'])->get();
 
         return view('admin.sponsorship-payments', compact('sponsorshipPayments'));
+    }
+
+    public function vaiMembersShow()
+    {
+        $members = VaiMember::all();
+
+        return view('admin.vai-members', compact('members'));
     }
 }

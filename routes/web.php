@@ -171,6 +171,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/sponsorship-features/{feature}', [AdminController::class, 'sponsorshipFeaturesDelete'])
             ->name('admin.sponsorship.features.delete');
 
+        Route::get('/members', [AdminController::class, 'vaiMembersShow'])
+            ->name('admin.members.show');
+
         Route::get('/configurations', [AdminController::class, 'configShow'])
             ->name('admin.config.show');
 
