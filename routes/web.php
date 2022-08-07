@@ -122,6 +122,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/sponsorship-payments', [SponsorshipController::class, 'createSponsorshipPayment'])
         ->name('sponsorship.payment');
 
+    Route::post('/user-sponsorships', [SponsorshipController::class, 'saveUserSponsorship'])
+        ->name('user.sponsorships.save');
+
+
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {

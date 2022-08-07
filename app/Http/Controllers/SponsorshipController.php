@@ -52,4 +52,11 @@ class SponsorshipController extends Controller
 
         return $payment;
     }
+
+    public function saveUserSponsorship(Request $request)
+    {
+        $request->validate([
+            'sponsorship_id' => ['required', 'integer', ],
+        ]);
+    }
 }
