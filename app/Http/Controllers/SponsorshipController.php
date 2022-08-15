@@ -6,6 +6,7 @@ use App\Mail\SponsorshipPaymentSuccess;
 use App\Models\Role;
 use App\Models\Sponsorship;
 use App\Models\SponsorshipPayment;
+use App\Models\UserSponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -56,7 +57,27 @@ class SponsorshipController extends Controller
     public function saveUserSponsorship(Request $request)
     {
         $request->validate([
-            'sponsorship_id' => ['required', 'integer', ],
+            'sponsorship_id' => ['required', 'integer'],
         ]);
+
+        $userSponsorship = tap(new UserSponsorship, function ($userSponsorship) use ($request) {
+            $userSponsorship->user_id = auth()->user()->id;
+            $userSponsorship->sponsorship_id = $request->sponsorship_id;
+            $userSponsorship->save();
+        });
+
+        return response()->json([
+            'data' => $userSponsorship,
+            'message' => 'Data saved successfully',
+        ]);
+    }
+
+    public function removeUserSponsorship(Sponsorship $sponsorship)
+    {
+        UserSponsorship::where('user_id', auth()->user()->id)
+            ->where('sponsorship_id', $sponsorship->id)
+            ->delete();
+
+        return response()->json(['message' => 'Sponsorship deleted successfully']);
     }
 }
