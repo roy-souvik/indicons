@@ -42,7 +42,7 @@
                     @csrf
 
                     <div>
-                        <x-label for="name" :value="__('Name')" class="form-label"/>
+                        <label for="name" class="form-label">Authorized Person Name</label>
 
                         <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus />
                     </div>
@@ -52,6 +52,18 @@
                         <x-label for="email" :value="__('Email')" class="form-label"/>
 
                         <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
+                    </div>
+
+                    <div>
+                        <label for="company" class="form-label">Company</label>
+
+                        <input type="text" name="company" class="form-control" id="company" />
+                    </div>
+
+                    <div>
+                        <label for="phone" class="form-label">Phone</label>
+
+                        <input type="text" name="phone" class="form-control" id="phone" />
                     </div>
 
                     <!-- Password -->

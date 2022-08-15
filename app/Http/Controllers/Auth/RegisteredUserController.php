@@ -37,6 +37,8 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required', 'max:20', 'unique:users'],
+            'company' => ['required'],
         ]);
 
         $user = User::create([
@@ -44,6 +46,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $request->input('role_id'),
+            'phone' => $request->input('phone'),
+            'company' => $request->input('company'),
         ]);
 
         event(new Registered($user));
@@ -51,9 +55,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect()->back()->with([
-            'success' => 'User registered',
+            'success' => 'Registration successful',
         ]);
-
-        // return redirect(RouteServiceProvider::HOME);
     }
 }
