@@ -20,20 +20,14 @@ class SponsorshipController extends Controller
         return view('sponsorships', compact('sponsorships'));
     }
 
-    public function sponsorshipBuyPage(Sponsorship $sponsorship)
+    public function sponsorshipBuyPage()
     {
-        $sponsorship->load('features', 'payments');
-        $role = Role::where('key', 'sponsor')->first();
+        $userSponsorships = UserSponsorship::with(['user', 'sponsorship'])
+            ->where('user_id', auth()->user()->id)
+            ->where('is_active', 0)
+            ->get();
 
-        if (is_null($sponsorship->number)) {
-            $isSponsorshipAvailable = true;
-        } elseif ($sponsorship->number <= 0) {
-            $isSponsorshipAvailable = false;
-        } else {
-            $isSponsorshipAvailable = $sponsorship->number > $sponsorship->payments->count();
-        }
-
-        return view('sponsorship-payment', compact('sponsorship', 'role', 'isSponsorshipAvailable'));
+        return view('sponsorship-payment', compact('userSponsorships'));
     }
 
     public function createSponsorshipPayment(Request $request)
@@ -54,21 +48,32 @@ class SponsorshipController extends Controller
         return $payment;
     }
 
-    public function saveUserSponsorship(Request $request)
+    public function saveUserSponsorship(Sponsorship $sponsorship)
     {
-        $request->validate([
-            'sponsorship_id' => ['required', 'integer'],
-        ]);
+        /*
+            $sponsorship->load('features', 'payments');
+            $role = Role::where('key', 'sponsor')->first();
 
-        $userSponsorship = tap(new UserSponsorship, function ($userSponsorship) use ($request) {
+            if (is_null($sponsorship->number)) {
+                $isSponsorshipAvailable = true;
+            } elseif ($sponsorship->number <= 0) {
+                $isSponsorshipAvailable = false;
+            } else {
+                $isSponsorshipAvailable = $sponsorship->number > $sponsorship->payments->count();
+            }
+
+            return view('sponsorship-payment', compact('sponsorship', 'role', 'isSponsorshipAvailable'));
+        */
+
+        $userSponsorship = tap(new UserSponsorship, function ($userSponsorship) use ($sponsorship) {
             $userSponsorship->user_id = auth()->user()->id;
-            $userSponsorship->sponsorship_id = $request->sponsorship_id;
+            $userSponsorship->sponsorship_id = $sponsorship->id;
             $userSponsorship->save();
         });
 
         return response()->json([
             'data' => $userSponsorship,
-            'message' => 'Data saved successfully',
+            'success' => 'Sponsorship added successfully',
         ]);
     }
 

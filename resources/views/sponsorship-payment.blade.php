@@ -3,103 +3,33 @@
 
 <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
 
+@php
+    $sponsorships = $userSponsorships->pluck('sponsorship');
+@endphp
+
 <div class="demo">
     <div class="container">
         <div class="row">
+            <table class="table">
+                <tr>
+                    <th style="text-align:left;">Title</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
 
-            @auth
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{$sponsorship->title}}</h5>
-                    <h6 class="card-subtitle mb-4 text-muted">
-                        {{$sponsorship->currency}} {{number_format($sponsorship->amount)}}
-                    </h6>
-
-                    @if (!empty($sponsorship->features))
-                    <ul>
-                        @foreach ($sponsorship->features as $feature)
-                        <li>{{$feature->title}}</li>
-                        @endforeach
-                    </ul>
-                    @endif
-
-                    @if ($isSponsorshipAvailable)
-                    <div id="paypal-button-container"></div>
-                    @else
-                    <p>Sponsorship sold out!</p>
-                    @endif
-                </div>
-            </div>
-            @endauth
-
-            @guest
-
-            <div class="card p-4" style="width: 40rem;">
-                <h1 class="display-6">Register to buy sponsorship</h1>
-                <p class="text-secondary">Buy: <ins>{{$sponsorship->title}}</ins></p>
-
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-
-                    <div>
-                        <label for="name" class="form-label">Authorized Person Name</label>
-
-                        <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus />
-                    </div>
-
-                    <!-- Email Address -->
-                    <div class="mt-4">
-                        <x-label for="email" :value="__('Email')" class="form-label"/>
-
-                        <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
-                    </div>
-
-                    <div>
-                        <label for="company" class="form-label">Company</label>
-
-                        <input type="text" name="company" class="form-control" id="company" />
-                    </div>
-
-                    <div>
-                        <label for="phone" class="form-label">Phone</label>
-
-                        <input type="text" name="phone" class="form-control" id="phone" />
-                    </div>
-
-                    <!-- Password -->
-                    <div class="mt-4">
-                        <x-label for="password" :value="__('Password')" class="form-label"/>
-
-                        <x-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="mt-4">
-                        <x-label for="password_confirmation" :value="__('Confirm Password')" class="form-label"/>
-
-                        <x-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required />
-                    </div>
-
-                    <div>
-                        <input type="hidden" name="role_id" value={{$role->id}}>
-                    </div>
-
-                    <div class="flex items-center justify-end mt-4">
-                        <x-button class="ml-4 btn btn-primary">
-                            {{ __('Register') }}
-                        </x-button>
-                    </div>
-                </form>
-
-
-                <p class="mt-4">Already Registered?</p>
-                <a class="btn btn-link" href="/login">Login to continue</a>
-
-            </div>
-
-            @endguest
-
+                @foreach ($sponsorships as $sponsorship)
+                <tr>
+                    <td>{{$sponsorship->title}}</td>
+                    <td style="text-align:center">{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</td>
+                    <td style="text-align:center">
+                        <button class="btn btn-link remove-sponsorship" data-id="{{$sponsorship->id}}">Delete</button>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
         </div>
+
+        <div style="width: 10rem;" id="paypal-button-container"></div>
     </div>
 </div>
 
@@ -113,7 +43,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            'value': "{{$sponsorship->amount}}"
+                            'value': "100"
                         }
                     }]
                 });

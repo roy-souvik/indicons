@@ -485,13 +485,11 @@
   </div>
 
 
-
-
-
   <div class="demo">
       <div class="container">
 
           <div class="row">
+              @auth
               @foreach ($sponsorships as $sponsorship)
 
               @if ($sponsorship->category == 'main')
@@ -517,7 +515,7 @@
                       </ul>
 
                       <div class="pricingTable-signup">
-                          <a class="add-to-cart" href="{{route('sponsorship.buy', $sponsorship->id)}}">Book Now</a>
+                          <button class="add-to-cart" data-id="{{$sponsorship->id}}">Book Now</>
                       </div>
                   </div>
               </div>
@@ -526,9 +524,7 @@
 
               <h3 class="mt-4">Other Sponsorships</h3>
 
-
               <div class="sponsor-table">
-
                   <table class="table">
                       <tr>
                           <th style="text-align:left;">Title</th>
@@ -544,14 +540,85 @@
                           <td style="text-align:center">{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</td>
                           <td style="text-align:center">{{$sponsorship->number}}</td>
                           <td>
-                              <a href="{{route('sponsorship.buy', $sponsorship->id)}}" class="btn btn-link add-to-cart" data-id={{$sponsorship->id}}>Book Now</a>
+                              <button class="btn btn-link add-to-cart" data-id={{$sponsorship->id}}>Book Now</button>
                           </td>
                       </tr>
                       @endif
                       @endforeach
                   </table>
               </div>
+              @endauth
+
+              <div class="col-md-3">
+                  <a href="{{route('sponsorship.buy')}}" class="btn btn-primary">Proceed to payment</a>
+              </div>
           </div>
+
+          @guest
+          <div class="row">
+              <div class="card p-4" style="width: 40rem;">
+                  <h1 class="display-6">Register to buy sponsorship</h1>
+
+                  <form method="POST" action="{{ route('register') }}">
+                      @csrf
+
+                      <div>
+                          <label for="name" class="form-label">Authorized Person Name</label>
+
+                          <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus />
+                      </div>
+
+                      <!-- Email Address -->
+                      <div class="mt-4">
+                          <x-label for="email" :value="__('Email')" class="form-label" />
+
+                          <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
+                      </div>
+
+                      <div>
+                          <label for="company" class="form-label">Company</label>
+
+                          <input type="text" name="company" class="form-control" id="company" />
+                      </div>
+
+                      <div>
+                          <label for="phone" class="form-label">Phone</label>
+
+                          <input type="text" name="phone" class="form-control" id="phone" />
+                      </div>
+
+                      <!-- Password -->
+                      <div class="mt-4">
+                          <x-label for="password" :value="__('Password')" class="form-label" />
+
+                          <x-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
+                      </div>
+
+                      <!-- Confirm Password -->
+                      <div class="mt-4">
+                          <x-label for="password_confirmation" :value="__('Confirm Password')" class="form-label" />
+
+                          <x-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required />
+                      </div>
+
+                      <div>
+                          <input type="hidden" name="role_id" value={{$role->id}}>
+                      </div>
+
+                      <div class="flex items-center justify-end mt-4">
+                          <x-button class="ml-4 btn btn-primary">
+                              {{ __('Register') }}
+                          </x-button>
+                      </div>
+                  </form>
+
+                  <p class="mt-4">Already Registered?</p>
+                  <a class="btn btn-link" href="/login">Login to continue</a>
+
+              </div>
+          </div>
+
+          @endguest
       </div>
   </div>
 
@@ -559,8 +626,9 @@
       $(function() {
           const token = "{{ csrf_token() }}";
 
-          $('.add-to-cart').click(function() {
-              const sponsorshipId = $(this).arrt('data-id');
+          $('.add-to-cart').click(function(e) {
+              e.preventDefault();
+              const sponsorshipId = $(this).attr('data-id');
               const payload = {
                   '_token': token,
                   'sponsorship_id': sponsorshipId,
@@ -579,14 +647,19 @@
 
           function saveUserSponsorship(data) {
               return $.ajax({
-                  url: '/user-sponsorships',
+                  url: `/user-sponsorships/${data.sponsorship_id}`,
                   type: 'POST',
                   data: JSON.stringify(data),
                   contentType: 'application/json; charset=utf-8',
                   dataType: 'json',
                   processData: false,
                   success: function(result) {
+                      if (result?.success) {
+                          alert(result.success);
+                      }
+
                       return result;
+
                   },
                   error: function(xhr, status, error) {
                       return error;

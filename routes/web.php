@@ -90,8 +90,6 @@ Route::get('/nurses', function () {
 
 Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->name('sponsorship.show');
 
-Route::get('/sponsorships/{sponsorship}', [SponsorshipController::class, 'sponsorshipBuyPage'])->name('sponsorship.buy');
-
 Route::post('/registration', [RegistrationController::class, 'register']);
 
 Route::middleware('auth')->group(function () {
@@ -119,12 +117,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/accompanying-persons/{id}', [RegistrationController::class, 'deleteAccompanyingPerson'])
         ->name('accompanyingPersons.delete');
 
+    Route::get('/sponsorships-buy', [SponsorshipController::class, 'sponsorshipBuyPage'])
+        ->name('sponsorship.buy');
+
     Route::post('/sponsorship-payments', [SponsorshipController::class, 'createSponsorshipPayment'])
         ->name('sponsorship.payment');
 
-    Route::post('/user-sponsorships', [SponsorshipController::class, 'saveUserSponsorship'])
+    Route::post('/user-sponsorships/{sponsorship}', [SponsorshipController::class, 'saveUserSponsorship'])
         ->name('user.sponsorships.save');
 
+    Route::delete('/sponsorships/{sponsorship}', [SponsorshipController::class, 'removeUserSponsorship'])
+        ->name('sponsorships.delete');
 
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
