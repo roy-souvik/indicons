@@ -45,6 +45,8 @@ $totalAmount = 0;
                 @endforeach
             </table>
 
+            <a class="text-center" href="{{route('sponsorship.show')}}">Add More</a>
+
             @php
             $totalAmount = addGst($totalAmount);
             @endphp
