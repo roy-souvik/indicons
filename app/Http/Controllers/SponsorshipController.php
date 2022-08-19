@@ -17,7 +17,9 @@ class SponsorshipController extends Controller
     {
         $sponsorships = Sponsorship::with(['features'])->get();
 
-        return view('sponsorships', compact('sponsorships'));
+        $sponsorRole = $role = Role::where('key', 'sponsor')->first();
+
+        return view('sponsorships', compact('sponsorships', 'sponsorRole'));
     }
 
     public function sponsorshipBuyPage()

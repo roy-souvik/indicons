@@ -547,11 +547,12 @@
                       @endforeach
                   </table>
               </div>
-              @endauth
 
               <div class="col-md-3">
                   <a href="{{route('sponsorship.buy')}}" class="btn btn-primary">Proceed to payment</a>
               </div>
+
+              @endauth
           </div>
 
           @guest
@@ -602,7 +603,7 @@
                       </div>
 
                       <div>
-                          <input type="hidden" name="role_id" value={{$role->id}}>
+                          <input type="hidden" name="role_id" value={{$sponsorRole->id}}>
                       </div>
 
                       <div class="flex items-center justify-end mt-4">
