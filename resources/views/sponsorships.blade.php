@@ -515,7 +515,7 @@
                       </ul>
 
                       <div class="pricingTable-signup">
-                          <button class="add-to-cart" data-id="{{$sponsorship->id}}">Book Now</>
+                          <button class="btn btn-primary add-to-cart" data-id="{{$sponsorship->id}}">Book Now</>
                       </div>
                   </div>
               </div>
@@ -655,8 +655,8 @@
                   dataType: 'json',
                   processData: false,
                   success: function(result) {
-                      if (result?.success) {
-                          alert(result.success);
+                      if (result?.message) {
+                          alert(result.message);
                       }
 
                       return result;

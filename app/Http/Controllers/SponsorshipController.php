@@ -52,30 +52,31 @@ class SponsorshipController extends Controller
 
     public function saveUserSponsorship(Sponsorship $sponsorship)
     {
-        /*
-            $sponsorship->load('features', 'payments');
-            $role = Role::where('key', 'sponsor')->first();
+        $sponsorship->load('features', 'payments');
 
-            if (is_null($sponsorship->number)) {
-                $isSponsorshipAvailable = true;
-            } elseif ($sponsorship->number <= 0) {
-                $isSponsorshipAvailable = false;
-            } else {
-                $isSponsorshipAvailable = $sponsorship->number > $sponsorship->payments->count();
-            }
+        if (is_null($sponsorship->number)) {
+            $isSponsorshipAvailable = true;
+        } elseif ($sponsorship->number <= 0) {
+            $isSponsorshipAvailable = false;
+        } else {
+            $isSponsorshipAvailable = $sponsorship->number > $sponsorship->payments->count();
+        }
 
-            return view('sponsorship-payment', compact('sponsorship', 'role', 'isSponsorshipAvailable'));
-        */
+        if ($isSponsorshipAvailable) {
+            $userSponsorship = tap(new UserSponsorship, function ($userSponsorship) use ($sponsorship) {
+                $userSponsorship->user_id = auth()->user()->id;
+                $userSponsorship->sponsorship_id = $sponsorship->id;
+                $userSponsorship->save();
+            });
 
-        $userSponsorship = tap(new UserSponsorship, function ($userSponsorship) use ($sponsorship) {
-            $userSponsorship->user_id = auth()->user()->id;
-            $userSponsorship->sponsorship_id = $sponsorship->id;
-            $userSponsorship->save();
-        });
+            return response()->json([
+                'data' => $userSponsorship,
+                'message' => 'Sponsorship added successfully',
+            ]);
+        }
 
         return response()->json([
-            'data' => $userSponsorship,
-            'success' => 'Sponsorship added successfully',
+            'message' => 'Sponsorship is not available.',
         ]);
     }
 
