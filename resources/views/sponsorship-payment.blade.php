@@ -4,12 +4,19 @@
 <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
 
 @php
-    $sponsorships = $userSponsorships->pluck('sponsorship');
+function addGst($amount, $gstPercent = 18) {
+    return $amount + (($amount*$gstPercent)/100);
+}
+
+$sponsorships = $userSponsorships->pluck('sponsorship');
+
+$totalAmount = 0;
 @endphp
 
 <div class="demo">
     <div class="container">
         <div class="row">
+            @if ($sponsorships?->count() > 0)
             <table class="table">
                 <tr>
                     <th style="text-align:left;">Title</th>
@@ -18,18 +25,42 @@
                 </tr>
 
                 @foreach ($sponsorships as $sponsorship)
+
+                @php
+                    $totalAmount+= intval($sponsorship->amount)
+                @endphp
                 <tr>
                     <td>{{$sponsorship->title}}</td>
                     <td style="text-align:center">{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</td>
                     <td style="text-align:center">
-                        <button class="btn btn-link remove-sponsorship" data-id="{{$sponsorship->id}}">Delete</button>
+                        <form method="POST" action="{{ route('sponsorships.delete', $sponsorship->id)}}">
+                        @csrf
+                            <button class="btn btn-link remove-sponsorship" data-id="{{$sponsorship->id}}"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
             </table>
-        </div>
 
-        <div style="width: 10rem;" id="paypal-button-container"></div>
+            @php
+            $totalAmount = addGst($totalAmount);
+            @endphp
+
+            <h3>Total Amount: INR {{number_format($totalAmount)}}
+                <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
+            </h3>
+
+            <div style="width: 10rem;" id="paypal-button-container"></div>
+            @endif
+
+            @if ($sponsorships?->count() == 0)
+                <h3 class="text-center">No Data</h3>
+                <a class="text-center" href="{{route('sponsorship.show')}}">Sponsorships</a>
+            @endif
+        </div>
     </div>
 </div>
 
@@ -43,7 +74,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            'value': "100"
+                            'value': {{$totalAmount}}
                         }
                     }]
                 });

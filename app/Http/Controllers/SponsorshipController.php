@@ -86,6 +86,8 @@ class SponsorshipController extends Controller
             ->where('sponsorship_id', $sponsorship->id)
             ->delete();
 
-        return response()->json(['message' => 'Sponsorship deleted successfully']);
+        return redirect()->back()->with([
+            'message' => 'Sponsorship deleted successfully'
+        ]);
     }
 }

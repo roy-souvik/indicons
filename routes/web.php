@@ -126,7 +126,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user-sponsorships/{sponsorship}', [SponsorshipController::class, 'saveUserSponsorship'])
         ->name('user.sponsorships.save');
 
-    Route::delete('/sponsorships/{sponsorship}', [SponsorshipController::class, 'removeUserSponsorship'])
+    Route::post('/sponsorships-delete/{sponsorship}', [SponsorshipController::class, 'removeUserSponsorship'])
         ->name('sponsorships.delete');
 
     // Admin routes
