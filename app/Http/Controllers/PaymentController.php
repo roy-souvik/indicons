@@ -66,6 +66,7 @@ class PaymentController extends Controller
             'discounts',
             'isVaiMember',
             'pickupDropPrice',
+            'user',
         ));
     }
 

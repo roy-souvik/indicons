@@ -41,7 +41,7 @@
     </tbody>
 </table>
 
-@if ($accompanyingPersons->count() < 2) <br>
+@if (!$user->role->isStudent() && $accompanyingPersons->count() < 2) <br>
     <h5>Enter accompanying person details</h5>
     @php
     $amt = intval($accompanyingPersonFees->early_bird_amount);

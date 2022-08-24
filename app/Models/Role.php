@@ -20,4 +20,9 @@ class Role extends Model
     {
         return $this->key === 'accompanying_person';
     }
+
+    public function isStudent(): bool
+    {
+        return $this->key === 'student';
+    }
 }
