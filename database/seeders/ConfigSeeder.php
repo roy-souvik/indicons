@@ -22,6 +22,10 @@ class ConfigSeeder extends Seeder
                 'name' => 'pick_drop_price',
                 'value' => '3000',
             ],
+            [
+                'name' => 'workshop_price',
+                'value' => '3000',
+            ],
         ];
 
         SiteConfig::insert($configList);

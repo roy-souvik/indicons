@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Workshop;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
             FeeSeeder::class,
             SponsorshipSeeder::class,
             ConfigSeeder::class,
+            WorkshopSeeder::class,
         ]);
     }
 }

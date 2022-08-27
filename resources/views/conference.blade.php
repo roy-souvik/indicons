@@ -78,48 +78,30 @@
           </div>
       </div>
 
-
-
-      <h2>Work shops </h2>
+      <h2>Work shops</h2>
 
       <div class="inner-pg-box">
-
           <div class="row">
-
               <div class="col-md-3">
-
                   <div class="flex-cont">
-
                       <h1>ITC Sonar </h1>
                       <p> Luxury Hotel in Kolkata </p>
 
+                      <a href="{{route('workshop.register.show')}}" class="btn btn-primary">Register for workshop</a>
                   </div>
-
               </div>
 
               <div class="col-md-9">
-
                   <div id="news-slider" class="owl-carousel" style="margin-top:0px;">
-
-
                       <div class="post-slide">
-
                           <img src="indicons/images/sonar-1.webp" style="max-width:100%;">
-
                       </div>
                       <div class="post-slide">
                           <img src="indicons/images/sonar-2.webp" style="max-width:100%;">
-
-
                       </div>
-
                   </div>
-
               </div>
-
-
           </div>
-
       </div>
 
 

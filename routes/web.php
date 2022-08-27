@@ -92,6 +92,9 @@ Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->
 
 Route::post('/registration', [RegistrationController::class, 'register']);
 
+Route::get('/workshop-register', [RegistrationController::class, 'workshopRegisterShow'])
+    ->name('workshop.register.show');
+
 Route::middleware('auth')->group(function () {
     Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
         ->name('payment.show');
