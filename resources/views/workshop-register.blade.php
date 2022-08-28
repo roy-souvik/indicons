@@ -85,7 +85,7 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
     </div>
     @endguest
 
-    @if(!Auth::user())
+    @if(Auth::user())
     <div class="row">
         <div class="card p-4" style="width: 40rem;">
             <h4>Workshop Details</h4>
