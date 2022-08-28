@@ -22,10 +22,6 @@ class WorkshopSeeder extends Seeder
                 'name' => 'Workshop One',
                 'description' => 'Workshop one description',
             ],
-            [
-                'name' => 'Workshop Two',
-                'description' => 'Workshop two description',
-            ],
         ];
 
         Workshop::insert($workshopList);

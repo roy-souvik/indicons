@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\AbstractUpdated;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
+use App\Models\Role;
 use App\Models\User;
 use App\Rules\AlphaSpace;
 use Illuminate\Auth\Events\Registered;
@@ -132,5 +133,12 @@ class RegistrationController extends Controller
         $person = AccompanyingPerson::findOrFail($id);
 
         return $person->delete();
+    }
+
+    public function workshopRegisterShow()
+    {
+        $workshopAttendeeRole = Role::where('key', 'workshop_attendee')->firstOrFail();
+
+        return view('workshop-register', compact('workshopAttendeeRole'));
     }
 }

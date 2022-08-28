@@ -12,11 +12,7 @@
     </div>
     @endif
 
-
-
-
     <div class="reg-table">
-
         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
             <tr style="background:#5b8cef; color:#fff;">
                 <td colspan="5" scope="col">Physical Conference </td>
@@ -34,46 +30,39 @@
                     (up to 29.01.23)
                 </td>
             </tr>
-            <tr style="background: #002878;
-    color: #fff;">
+            <tr style="background: #002878;color: #fff;">
                 <td width="23%" rowspan="3" scope="col"> Full Registration&#13; </td>
                 <td width="19%" scope="col"> VAI members&#13; </td>
                 <td scope="col"> 8000 INR&#13; </td>
                 <td scope="col"> 10000 INR&#13; </td>
                 <td scope="col"> 12000 INR&#13; </td>
             </tr>
-            <tr style="background: #002878;
-    color: #fff;">
+            <tr style="background: #002878;color: #fff;">
                 <td scope="col"> Non VAI members &#13; </td>
                 <td scope="col"> 9000 INR&#13; </td>
                 <td scope="col"> 12000 INR&#13; </td>
                 <td scope="col"> 15000 INR&#13; </td>
             </tr>
-            <tr style="background: #002878;
-    color: #fff;">
+            <tr style="background: #002878;color: #fff;">
                 <td scope="col"> International Faculties&#13; </td>
                 <td scope="col"> 120 USD&#13; </td>
                 <td scope="col"> 135 USD&#13; </td>
                 <td scope="col"> 150 USD&#13; </td>
             </tr>
-            <tr style="background: #5b8cef;
-    color: #fff;">
+            <tr style="background: #5b8cef;color: #fff;">
                 <td scope="col"> Accompanying person <br />
                     (applied ONLY in case of full registration)&#13; </td>
                 <td colspan="4" scope="col"> 8000 INR or 120 USD&#13; </td>
             </tr>
 
-
-            <tr style="background: #002878;
-    color: #fff;">
+            <tr style="background: #002878;color: #fff;">
                 <td width="23%" rowspan="4" scope="col"> Subsidized Registration&#13; </td>
                 <td width="19%" scope="col"> Nurses / Paramedics </td>
                 <td scope="col"> 2000 INR&#13; </td>
                 <td scope="col"> 3000 INR&#13; </td>
                 <td scope="col"> 5000 INR&#13; </td>
             </tr>
-            <tr style="background: #002878;
-    color: #fff;">
+            <tr style="background: #002878;color: #fff;">
                 <td scope="col"> Students &#13; </td>
                 <td scope="col"> 2000 INR&#13; </td>
                 <td scope="col"> 3000 INR&#13; </td>
@@ -81,7 +70,6 @@
             </tr>
         </table>
     </div>
-
 
     <form method="POST" action="/registration">
         @csrf
@@ -412,7 +400,7 @@
 
             <label class="agree" id="privacy_policy_check" style="width: 15rem;">
                 <input style="width: 20px; height: 20px; position: relative;top: 4px;" id="privacy_policy_check" name="privacy_policy_check" type="checkbox" required>
-                I agree to the <a href="{{route('privacypolicy')}}" target="_blank"> Privacy Policy</a>
+                I agree to the <a href="{{route('privacypolicy')}}" target="_blank">Privacy Policy</a>
             </label>
 
         </div>

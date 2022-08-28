@@ -1,7 +1,151 @@
-  @extends('layouts.indicons.main-layout')
+@extends('layouts.indicons.main-layout')
   @section('content')
 
+<style>
+.pricingTable{
+min-height:inherit!important;
+margin-bottom:0px;
+}
+.pricingTable-header {
+text-align: left;
+    text-transform: uppercase;
+    margin: 0 20px 20px 0;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 1%), 0 3px 5px -1px rgb(0 0 0 / 10%);
+    padding: 10px 10px 10px 0px;
+    align-items: center;
+}
 
+.title {
+    color: #000!important;
+    font-size: 16px!important;
+    font-weight: 500;
+    line-height: 52px;
+    margin: auto auto auto 10px;
+    text-align: center;
+    background: #fff!important;
+}
+.sponsor-table{height: 530px;
+    overflow-x: auto;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 1%), 0 3px 5px -1px rgb(0 0 0 / 10%);
+}
+.sponsor-table td{font-size: 15px;
+    text-align: left;
+    border: 1px solid #e2e2e2;
+}
+
+.sponsor-table .btn {
+
+padding: 6px 12px 5px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: table;
+    margin: auto;
+    float: none;
+    height: 31px;
+    line-height: 19px;
+    font-size: 15px;
+    width: 104px;
+    text-transform: inherit;
+    background: #f32f30;
+}
+
+.sponsor-table th {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #001b3e;
+}
+.main-spons{
+
+    margin-top: 61px;
+}
+
+
+.btn {    padding: 6px 0px 5px 0px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: table;
+    float: none;
+    height: 31px;
+    line-height: 10px;
+    background: #296dc4;
+    color: #fff;
+    width: 95px;
+    margin: 0px 5px;
+
+}
+
+.btn:hover{
+background:#f32f30!important;
+color:#fff!important;
+}
+
+
+.log-box .btn{       width: auto;
+    padding: 19px 50px!important;
+    line-height: 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 240px;
+}
+
+.log-box .card{    margin: auto;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 1%), 0 3px 5px -1px rgb(0 0 0 / 10%);
+}
+
+.modal-content .title{     font-size: 21px!important;
+
+
+}
+.modal-content  mg{
+}
+
+.pricingTable-signup{
+position:static!important;
+}
+
+
+
+.pricingTable-signup .btn {
+    display: table;
+    margin: auto;
+    font-size: 21px;
+    width: 160px;
+    padding: 19px;
+    line-height: 6px;
+    height: 50px;
+	background: #f32f30!important;
+	    border: 1px solid #f32f30;
+}
+
+.pricingTable .pricing-content li{
+    border-bottom: 1px solid #828282;
+    font-weight: 600;
+	padding-bottom: 10px;
+}
+
+.pricingTable .pricing-content{
+border:none!important;
+}
+
+.pricingTable .pricingTable-header{     padding: 0px 10px 0px 0px!important;
+}
+
+.title span{color: #0053bc;
+}
+.pay-btn{    display: table;
+    margin: 30px auto 60px auto;
+    width: 260px;
+    height: 46px;
+    line-height: 32px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;<strong></strong>
+}
+</style>
 
 
 
@@ -11,13 +155,10 @@
 
 
   <div class="reg-table">
-      <div class="title"> SPONSORSHIP </div>
+      <div style="font-size: 24px!important; background:none!important;" class="title"> SPONSORSHIP </div>
 
 
-
-
-
-      <div class="sponsor-list-bx">
+	<div class="sponsor-list-bx">
 
 
 
@@ -229,9 +370,163 @@
 
 
       </div>
-  </div>
 
   <button type="button" class="btn-reg-table" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrows-from-line"></i> Compact View </button>
+
+	</div>
+
+
+
+
+
+<div>
+
+<div class="row">
+
+
+
+<div class="col-md-6">
+<div>
+   <h3 class="mt-4">Sponsorships</h3>
+
+<div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+   margin-left: 15px;" class="rounded" src="https://indicons.in/indicons/images/platinum +.png" alt="platinum +">
+                          <h3 class="title" style="color: black; font-size: 18px!important;">Platinum + <span> INR 1,000,000 </span> </h3>
+						   <button  data-bs-toggle="modal" data-bs-target="#exampleModal-price" class="btn btn-link add-to-cart">Details</button>   <button style="background:#f32f30!important;" class="btn btn-link add-to-cart">Book Now</button>
+ </div>
+
+
+
+<div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+   margin-left: 15px;" class="rounded" src="https://indicons.in/indicons/images/platinum.png" alt="platinum">
+                         <h3 class="title" style="color: black; font-size: 18px!important;">Platinum<span>  INR 700,000 </span>
+</h3> <button class="btn btn-link add-to-cart">Details</button>    <button style="background:#f32f30!important;"  class="btn btn-link add-to-cart">Book Now</button>
+                      </div>
+
+
+<div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+    margin-left: 15px;" class="rounded" src="https://indicons.in/indicons/images/diamond.png" alt="diamond">
+               <h3 class="title" style="color: black; font-size: 18px!important;">Diamond<span>  INR 700,000 </span></h3>
+						  <button class="btn btn-link add-to-cart">Details</button>    <button style="background:#f32f30!important;"  class="btn btn-link add-to-cart">Book Now</button>
+                      </div>
+
+
+
+<div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+    margin-left: 15px;" class="rounded" src="https://indicons.in/indicons/images/gold.png" alt="gold">
+      <h3 class="title" style="color: black; font-size: 18px!important;">Gold <span> INR 300,000 </span></h3>
+						  <button class="btn btn-link add-to-cart">Details</button>    <button style="background:#f32f30!important;"  class="btn btn-link add-to-cart">Book Now</button>
+                      </div>
+
+
+
+<div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+  margin-left: 15px;" class="rounded" src="https://indicons.in/indicons/images/silver.png" alt="silver">
+         <h3 class="title" style="color: black; font-size: 18px!important;">Silver <span> INR 200,000 </span></h3>
+						  <button class="btn btn-link add-to-cart">Details</button>  <button style="background:#f32f30!important;"  class="btn btn-link add-to-cart">Book Now</button>
+                      </div>
+
+
+
+	<div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+   margin-left: 15px;" class="rounded" src="https://indicons.in/indicons/images/bronze.png" alt="bronze">
+          <h3 class="title" style="color: black; font-size: 18px!important;">Bronze <span> INR 100,000 </span></h3>
+						  <button class="btn btn-link add-to-cart">Details</button>    <button style="background:#f32f30!important;"  class="btn btn-link add-to-cart">Book Now</button>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+<div class="col-md-6">
+
+   <h3 class="mt-4">Other Sponsorships</h3>
+
+              <div class="sponsor-table">
+                  <table class="table">
+                      <tr>
+                          <th style="text-align:left;">Title</th>
+                          <th>Amount</th>
+                          <th>Number</th>
+                          <th></th>
+                      </tr>
+
+                      @foreach ($sponsorships as $sponsorship)
+                      @if ($sponsorship->category !== 'main')
+                      <tr>
+                          <td>{{$sponsorship->title}}</td>
+                          <td style="text-align:center"><strong>{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</strong></td>
+                          <td style="text-align:center">{{$sponsorship->number}}</td>
+                          <td>
+                              <button class="btn btn-link add-to-cart" data-id={{$sponsorship->id}}>Book Now</button>
+                          </td>
+                      </tr>
+                      @endif
+                      @endforeach
+                  </table>
+              </div>
+
+
+
+</div>
+
+
+
+
+  </div>
+
+
 
 
 
@@ -485,6 +780,74 @@
   </div>
 
 
+
+
+
+
+
+  <div id="exampleModal-price" class="modal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">SPONSORSHIP
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                   <div class="pricingTable">
+                      <div class="pricingTable-header d-flex" style="background-color: #ffffff;">
+                          <img style="width: 43px;
+    float: right;
+    display: block;
+    height: 43px;
+    margin-top: 6px;
+    margin-left: 24px;" class="rounded" src="https://indicons.in/indicons/images/platinum +.png" alt="platinum +">
+                          <h3 class="title" style="color: black;">Platinum +</h3>
+                      </div>
+                      <div class="price-value">
+                          <span class="amount">INR 1,000,000</span>
+                      </div>
+
+                      <ul class="pricing-content">
+                                                    <li>Will be provided one large stall Inside the main hall</li>
+                                                    <li>6 company executives will be given free Registration</li>
+                                                    <li>One Dedicated lounge space will be provided for the company</li>
+                                                    <li>Company logo will be given in conference website with link</li>
+                                                    <li>Company logo will be given in all the fliers and newsletters</li>
+                                                    <li>Company name and logo will be given in Preliminary and final program</li>
+                                                    <li>In hall branding (electronic) will be provided</li>
+                                                    <li>Company name will be announced adequately in announcements</li>
+                                                    <li>Company logo will be given Separately in the Signage at entrance to the Main Hall and other halls</li>
+                                                    <li>Head of sponsor at meeting will be acknowledge with special thanks.</li>
+                                                    <li>Company logo will be given in Signage inside main conference hall</li>
+                                                    <li>Electronic registration data of attendees will be given 2 weeks before the VAICON2023.</li>
+                                                    <li>Electronic list of attendees (final) will be given 2 weeks after the VAICON2023. post conference</li>
+                                                    <li>Company name will be mentioned adequately mention during the lectures and in program</li>
+                                                    <li>Three dedicated scientific lectures will be in the name of the company</li>
+                                                    <li>Allowed to offer special souvenir of VAICON 2023 with logo, to the attendees.</li>
+                                                </ul>
+
+                      <div class="pricingTable-signup">
+                          <button class="btn btn-primary add-to-cart" data-id="1">Book Now
+                      </button></div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+       <a href="{{route('sponsorship.buy')}}" class="btn btn-primary pay-btn">Proceed to payment</a>
+
+
+
+
+
   <div class="demo">
       <div class="container">
 
@@ -515,7 +878,7 @@
                       </ul>
 
                       <div class="pricingTable-signup">
-                          <button class="btn btn-primary add-to-cart" data-id="{{$sponsorship->id}}">Book Now</>
+                          <button class="btn btn-primary add-to-cart" data-id="{{$sponsorship->id}}">Book Now</button>
                       </div>
                   </div>
               </div>
@@ -537,7 +900,7 @@
                       @if ($sponsorship->category !== 'main')
                       <tr>
                           <td>{{$sponsorship->title}}</td>
-                          <td style="text-align:center">{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</td>
+                          <td style="text-align:center">{{$sponsorship->currency}}<strong> {{number_format($sponsorship->amount)}}</strong></td>
                           <td style="text-align:center">{{$sponsorship->number}}</td>
                           <td>
                               <button class="btn btn-link add-to-cart" data-id={{$sponsorship->id}}>Book Now</button>
@@ -548,17 +911,16 @@
                   </table>
               </div>
 
-              <div class="col-md-3">
-                  <a href="{{route('sponsorship.buy')}}" class="btn btn-primary">Proceed to payment</a>
-              </div>
+
 
               @endauth
           </div>
 
           @guest
+		  <div class="log-box">
           <div class="row">
               <div class="card p-4" style="width: 40rem;">
-                  <h1 class="display-6">Register to buy sponsorship</h1>
+                  <h1 class="display-6"><strong>Register to buy sponsorship</strong></h1>
 
                   <form method="POST" action="{{ route('register') }}">
                       @csrf
@@ -610,17 +972,33 @@
                           <x-button class="ml-4 btn btn-primary">
                               {{ __('Register') }}
                           </x-button>
+
+
+
                       </div>
+
+
+					                   <div class="flex items-center justify-end mt-4">
+
+						  <p class="mt-4">Already Registered?</p>
+                  <a style="background: #f32f30!important;" class="btn btn-link" href="/login">Login to continue</a>
+
+				     </div>
+
+
+
                   </form>
 
-                  <p class="mt-4">Already Registered?</p>
-                  <a class="btn btn-link" href="/login">Login to continue</a>
+
 
               </div>
+			  </div>
           </div>
 
           @endguest
       </div>
+  </div>
+
   </div>
 
   <script>
