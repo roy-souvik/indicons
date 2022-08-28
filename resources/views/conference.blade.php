@@ -78,30 +78,49 @@
           </div>
       </div>
 
-      <h2>Work shops</h2>
+
+
+      <h2>Work shops </h2>
 
       <div class="inner-pg-box">
+
           <div class="row">
+
               <div class="col-md-3">
+
                   <div class="flex-cont">
+
                       <h1>ITC Sonar </h1>
-                      <p> Luxury Hotel in Kolkata </p>
+                      <p> 1, JBS Haldane Ave, Tangra, Kolkata, West Bengal 700046</p>
 
                       <a href="{{route('workshop.register.show')}}" class="btn btn-primary">Register for workshop</a>
                   </div>
+
               </div>
 
               <div class="col-md-9">
+
                   <div id="news-slider" class="owl-carousel" style="margin-top:0px;">
+
+
                       <div class="post-slide">
+
                           <img src="indicons/images/sonar-1.webp" style="max-width:100%;">
+
                       </div>
                       <div class="post-slide">
-                          <img src="indicons/images/sonar-2.webp" style="max-width:100%;">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14739.692032263614!2d88.3976281!3d22.5445567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2sin!4v1661106057036!5m2!1sen!2sin" width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
                       </div>
+
                   </div>
+
               </div>
+
+
           </div>
+
       </div>
 
 
@@ -135,6 +154,119 @@
       </div>
 
       <h2>Previous VAIcons </h2>
+
+
+	 <div class="inner-pg-box">
+
+    <div class="reg-table">
+  <table cellspacing="0" cellpadding="0" style="width:100%">
+
+  <tr style="background: #002878;  color: #fff;" height="20">
+    <td height="20" width="100"><strong>Conference</strong></td>
+    <td width="156"><strong>Date</strong></td>
+    <td width="175"><strong>City</strong></td>
+    <td width="342"><strong>Organising Chairman</strong></td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2008</td>
+    <td>19-20 Apr 2008</td>
+    <td>Chennai</td>
+    <td>Dr. Sunderaraj Saravanan</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2009</td>
+    <td>23-25 Jan 2009</td>
+    <td>Hyderabad</td>
+    <td>Dr. Ramakrishna Pinjala</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2010</td>
+    <td>22-23 Jan 2010</td>
+    <td>Bangalore</td>
+    <td>Dr. Vasudeva Rao</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2011</td>
+    <td>4-5 Feb 2011</td>
+    <td>Chandigarh</td>
+    <td>Dr.Ravul Jindal</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2012</td>
+    <td>27-28 Jan 2012</td>
+    <td>Cochin</td>
+    <td>Dr. Roy Varghese</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2013</td>
+    <td>24-26 Jan 2013</td>
+    <td>Goa</td>
+    <td>Dr. Shoaib Padaria</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2014</td>
+    <td>6-8 Feb 2014</td>
+    <td>Gurgaon</td>
+    <td>Dr. Rajiv Parakh</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2015</td>
+    <td>5-7 Feb 2015</td>
+    <td>Vellore</td>
+    <td>Dr. Sunil Agarwal</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2016</td>
+    <td>11-13 Feb 2016</td>
+    <td>Jaipur</td>
+    <td>Dr.Ravul Jindal &amp; Dr. Shoaib Padaria</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2017</td>
+    <td>2-4 March 2017</td>
+    <td>Varanasi</td>
+    <td>Dr. Ajay K Khanna</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2018</td>
+    <td>18-21 Jan 2018</td>
+    <td>Ba rod a</td>
+    <td>Dr. Vijay Thakore</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2019</td>
+    <td>17-19 Jan 2019</td>
+    <td>Hyderabad</td>
+    <td>Dr. Ramakrishna Pinjala</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2020</td>
+    <td>16-19 Jan 2020</td>
+    <td>Mumbai</td>
+    <td>Dr. Shoaib Padaria</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2021</td>
+    <td>23-25 Jan 2021</td>
+    <td>Chandigarh</td>
+    <td>Dr. H.S. Bedi</td>
+  </tr>
+  <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2022</td>
+    <td>25-26 March 2022</td>
+    <td>Mahabalipuram</td>
+    <td>Dr. Dheepak Selvaraj &amp; Dr. Vimalin Samuel</td>
+  </tr>
+
+</table> </div>
+
+      </div>
+
+
+
+
+
+
 
       <h2>Vaicon 2023 secretariate </h2>
   </div>
