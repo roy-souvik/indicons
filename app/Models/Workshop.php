@@ -29,4 +29,9 @@ class Workshop extends Model
         'end_date' => 'datetime',
         'is_active' => 'boolean',
     ];
+
+    public function scopeActive($query)
+    {
+        $query->where('is_active', 1);
+    }
 }

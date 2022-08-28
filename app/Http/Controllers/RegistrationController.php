@@ -7,7 +7,9 @@ use App\Mail\AbstractUpdated;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
 use App\Models\Role;
+use App\Models\SiteConfig;
 use App\Models\User;
+use App\Models\Workshop;
 use App\Rules\AlphaSpace;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -138,7 +140,13 @@ class RegistrationController extends Controller
     public function workshopRegisterShow()
     {
         $workshopAttendeeRole = Role::where('key', 'workshop_attendee')->firstOrFail();
+        $workshopPrice = SiteConfig::where('name', 'workshop_price')->firstOrFail();
+        $workshops = Workshop::active()->get();
 
-        return view('workshop-register', compact('workshopAttendeeRole'));
+        return view('workshop-register', compact(
+            'workshopAttendeeRole',
+            'workshopPrice',
+            'workshops',
+        ));
     }
 }
