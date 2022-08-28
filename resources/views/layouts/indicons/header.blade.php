@@ -20,7 +20,9 @@
 
                 @if (Auth::user())
                 <div class="user-reg">
-                    <i class="fa-solid fa-user-check"></i> Welcome <span>{{Auth::user()->name}}</span>
+                    <i class="fa-solid fa-user-check"></i> Welcome <a href="{{route('profile.show')}}">
+                        {{Auth::user()->name}}
+                    </a>
                 </div>
                 @endif
             </div>

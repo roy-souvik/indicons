@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
+use App\Http\Controllers\UserController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -96,6 +97,9 @@ Route::get('/workshop-register', [RegistrationController::class, 'workshopRegist
     ->name('workshop.register.show');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [UserController::class, 'showProfilePage'])
+        ->name('profile.show');
+
     Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
         ->name('payment.show');
 
