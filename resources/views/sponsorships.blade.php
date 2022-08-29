@@ -6,7 +6,6 @@
 <div class="reg-table">
     <div style="font-size: 24px!important; background:none!important;" class="title"> SPONSORSHIP </div>
 
-
     <div class="sponsor-list-bx">
         @include('partials.sponsorship-slab')
     </div>
@@ -19,6 +18,7 @@
     @guest
     <div class="row">
         <div class="col-md-6">
+            <h3 class="mt-4">Sponsorships</h3>
             <div>
                 @foreach ($sponsorships as $sponsorship)
 
@@ -31,9 +31,17 @@
                         <span> {{$sponsorship->currency}} {{number_format($sponsorship->amount)}} </span>
                     </h3>
 
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal-price" class="btn btn-link add-to-cart">Details</button>
+                    <button data-bs-toggle="modal" data-bs-target="#sponsorship-details-{{$sponsorship->id}}" class="btn btn-link add-to-cart">Details</button>
 
-                    <button style="background:#f32f30!important;" class="btn btn-link add-to-cart">Book Now</button>
+                    @auth
+                    <button style="background:#f32f30!important;" class="btn btn-link add-to-cart">
+                        Book Now
+                    </button>
+                    @endAuth
+
+                    @guest
+                        <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
+                    @endguest
                 </div>
                 @endif
                 @endforeach
@@ -73,7 +81,9 @@
 
     @include('partials.sponsorship-compact')
 
-    <div id="exampleModal-price" class="modal">
+    @foreach ($sponsorships as $sponsorship)
+    @if ($sponsorship->category == 'main')
+    <div id="sponsorship-details-{{$sponsorship->id}}" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -84,72 +94,7 @@
                 <div class="modal-body">
                     <div class="pricingTable">
                         <div class="pricingTable-header d-flex" style="background-color: #ffffff;">
-                            <img style="width: 43px;
-    float: right;
-    display: block;
-    height: 43px;
-    margin-top: 6px;
-    margin-left: 24px;" class="rounded" src="https://indicons.in/indicons/images/platinum +.png" alt="platinum +">
-                            <h3 class="title" style="color: black;">Platinum +</h3>
-                        </div>
-                        <div class="price-value">
-                            <span class="amount">INR 1,000,000</span>
-                        </div>
-
-                        <ul class="pricing-content">
-                            <li>Will be provided one large stall Inside the main hall</li>
-                            <li>6 company executives will be given free Registration</li>
-                            <li>One Dedicated lounge space will be provided for the company</li>
-                            <li>Company logo will be given in conference website with link</li>
-                            <li>Company logo will be given in all the fliers and newsletters</li>
-                            <li>Company name and logo will be given in Preliminary and final program</li>
-                            <li>In hall branding (electronic) will be provided</li>
-                            <li>Company name will be announced adequately in announcements</li>
-                            <li>Company logo will be given Separately in the Signage at entrance to the Main Hall and other halls</li>
-                            <li>Head of sponsor at meeting will be acknowledge with special thanks.</li>
-                            <li>Company logo will be given in Signage inside main conference hall</li>
-                            <li>Electronic registration data of attendees will be given 2 weeks before the VAICON2023.</li>
-                            <li>Electronic list of attendees (final) will be given 2 weeks after the VAICON2023. post conference</li>
-                            <li>Company name will be mentioned adequately mention during the lectures and in program</li>
-                            <li>Three dedicated scientific lectures will be in the name of the company</li>
-                            <li>Allowed to offer special souvenir of VAICON 2023 with logo, to the attendees.</li>
-                        </ul>
-
-                        <div class="pricingTable-signup">
-                            <button class="btn btn-primary add-to-cart" data-id="1">Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @auth
-    <a href="{{route('sponsorship.buy')}}" class="btn btn-primary pay-btn">Proceed to payment</a>
-    @endauth
-
-    <div class="demo">
-        <div class="container">
-
-            <div class="row">
-                @auth
-                @foreach ($sponsorships as $sponsorship)
-
-                @if ($sponsorship->category == 'main')
-                <div class="col-md-4 col-sm-6">
-                    <div class="pricingTable">
-                        <div class="pricingTable-header d-flex" style="background-color: {{data_get($sponsorship, 'color', '#ffffff')}};">
-                            <img style="width: 43px;
-    float: right;
-    display: block;
-    height: 43px;
-    margin-top: 6px;
-    margin-left: 55px;" class="rounded" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.png" alt="{{strtolower($sponsorship->title)}}">
+                            <img style="width: 43px;float: right;display: block;height: 43px;margin-top: 6px;margin-left: 24px;" class="rounded" src="{{url('indicons/images')}}/{{strtolower($sponsorship->title)}}.png" alt="{{strtolower($sponsorship->title)}}">
                             <h3 class="title" style="color: black;">{{$sponsorship->title}}</h3>
                         </div>
                         <div class="price-value">
@@ -163,43 +108,34 @@
                         </ul>
 
                         <div class="pricingTable-signup">
-                            <button class="btn btn-primary add-to-cart" data-id="{{$sponsorship->id}}">Book Now</button>
+                            @auth
+                            <button class="btn btn-primary add-to-cart" data-id="{{$sponsorship->id}}">
+                                Book Now
+                            </button>
+                            @endauth
+
+                            @guest
+                            <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
-                @endif
-                @endforeach
-
-                <h3 class="mt-4">Other Sponsorships</h3>
-
-                <div class="sponsor-table">
-                    <table class="table">
-                        <tr>
-                            <th style="text-align:left;">Title</th>
-                            <th>Amount</th>
-                            <th>Number</th>
-                            <th></th>
-                        </tr>
-
-                        @foreach ($sponsorships as $sponsorship)
-                        @if ($sponsorship->category !== 'main')
-                        <tr>
-                            <td>{{$sponsorship->title}}</td>
-                            <td style="text-align:center">{{$sponsorship->currency}}<strong> {{number_format($sponsorship->amount)}}</strong></td>
-                            <td style="text-align:center">{{$sponsorship->number}}</td>
-                            <td>
-                                <button class="btn btn-link add-to-cart" data-id={{$sponsorship->id}}>Book Now</button>
-                            </td>
-                        </tr>
-                        @endif
-                        @endforeach
-                    </table>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
-
-                @endauth
             </div>
+        </div>
+    </div>
+    @endif
+    @endforeach
 
-            @guest
+    @auth
+    <a href="{{route('sponsorship.buy')}}" class="btn btn-primary pay-btn">Proceed to payment</a>
+    @endauth
+
+    @guest
+    <div class="demo">
+        <div class="container">
             <div class="log-box">
                 <div class="row">
                     <div class="card p-4" style="width: 40rem;">
@@ -267,11 +203,9 @@
                     </div>
                 </div>
             </div>
-
-            @endguest
         </div>
     </div>
-
+    @endguest
 </div>
 
 <script>
