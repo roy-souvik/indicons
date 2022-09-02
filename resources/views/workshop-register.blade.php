@@ -144,7 +144,6 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
             paypal.Buttons(ppButtonConfig).render('#paypal-button-container');
         });
 
-
         function saveWorkshopPayment(data) {
             return $.ajax({
                 url: '/workshop-payments',

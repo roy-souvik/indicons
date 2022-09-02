@@ -5,6 +5,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkshopController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -135,6 +136,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/sponsorships-delete/{sponsorship}', [SponsorshipController::class, 'removeUserSponsorship'])
         ->name('sponsorships.delete');
+
+    Route::post('/workshop-payments', [WorkshopController::class, 'saveWorkshopPayment'])
+        ->name('workshop.payment.save');
 
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {

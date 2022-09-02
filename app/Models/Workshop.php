@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\WorkshopPayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Workshop extends Model
 {
@@ -33,5 +35,10 @@ class Workshop extends Model
     public function scopeActive($query)
     {
         $query->where('is_active', 1);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(WorkshopPayment::class);
     }
 }
