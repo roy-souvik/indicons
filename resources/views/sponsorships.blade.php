@@ -15,7 +15,6 @@
 </div>
 
 <div>
-    @guest
     <div class="row">
         <div class="col-md-6">
             <h3 class="mt-4">Sponsorships</h3>
@@ -34,13 +33,13 @@
                     <button data-bs-toggle="modal" data-bs-target="#sponsorship-details-{{$sponsorship->id}}" class="btn btn-link add-to-cart">Details</button>
 
                     @auth
-                    <button style="background:#f32f30!important;" class="btn btn-link add-to-cart">
+                    <button style="background:#f32f30!important;" data-id={{$sponsorship->id}} class="btn btn-link add-to-cart">
                         Book Now
                     </button>
                     @endAuth
 
                     @guest
-                        <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
+                    <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
                     @endguest
                 </div>
                 @endif
@@ -77,7 +76,6 @@
             </div>
         </div>
     </div>
-    @endguest
 
     @include('partials.sponsorship-compact')
 
