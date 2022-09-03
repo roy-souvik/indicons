@@ -33,7 +33,6 @@ class PaymentController extends Controller
         $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
         $accompanyingPersons = AccompanyingPerson::where('user_id', Auth::user()->id)
             ->orderBy('id', 'desc')
-            ->limit(2)
             ->get();
 
         $isVaiMember = $this->isVaiMember($user);
