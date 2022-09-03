@@ -25,4 +25,9 @@ class AccompanyingPerson extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeConfirmed($query)
+    {
+        $query->where('confirmed', 1);
+    }
 }

@@ -1,220 +1,350 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
+<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
+
 <style>
-.emp-profile{
-    padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    border-radius: 0.5rem;
-    background: #fff;
-}
-.profile-img{
-    text-align: center;
-}
-.profile-img img{
-    width: 70%;
-    height: 100%;
-}
-.profile-img .file {
-    position: relative;
-    overflow: hidden;
-    margin-top: -20%;
-    width: 70%;
-    border: none;
-    border-radius: 0;
-    font-size: 15px;
-    background: #212529b8;
-}
-.profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
-}
-.profile-head h5{
-    color: #333;
-}
-.profile-head h6{
-    color: #0062cc;
-}
-.profile-edit-btn{
-    border: none;
-    border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
-}
-.proile-rating{
-    font-size: 12px;
-    color: #818182;
-    margin-top: 5%;
-}
-.proile-rating span{
-    color: #495057;
-    font-size: 15px;
-    font-weight: 600;
-}
-.profile-head .nav-tabs{
-margin-bottom: 0%!important;
-    padding-left: 0px!important;
-    border: none!important;
-}
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
-    border: none;
-}
-.profile-head .nav-tabs .nav-link.active{
-    border: none;
-    border-bottom:2px solid #0062cc;
-}
-.profile-work{
-    padding: 14%;
-    margin-top: -15%;
-}
-.profile-work p{
-    font-size: 12px;
-    color: #818182;
-    font-weight: 600;
-    margin-top: 10%;
-}
-.profile-work a{
-    text-decoration: none;
-    color: #495057;
-    font-weight: 600;
-    font-size: 14px;
-}
-.profile-work ul{
-    list-style: none;
-}
-.profile-tab label{
-    font-weight: 600;
-}
-.profile-tab p{
-    font-weight: 600;
-    color: #0062cc;
-}
-.profile-head li{
-width:inherit!important;
-}
+    .emp-profile {
+        padding: 3%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        border-radius: 0.5rem;
+        background: #fff;
+    }
+
+    .profile-img {
+        text-align: center;
+    }
+
+    .profile-img img {
+        /* width: 70%;
+        height: 100%; */
+    }
+
+    .profile-img .file {
+        position: relative;
+        overflow: hidden;
+        margin-top: -20%;
+        width: 70%;
+        border: none;
+        border-radius: 0;
+        font-size: 15px;
+        background: #212529b8;
+    }
+
+    .profile-img .file input {
+        position: absolute;
+        opacity: 0;
+        right: 0;
+        top: 0;
+    }
+
+    .profile-head h5 {
+        color: #333;
+    }
+
+    .profile-head h6 {
+        color: #0062cc;
+    }
+
+    .profile-edit-btn {
+        border: none;
+        border-radius: 1.5rem;
+        width: 70%;
+        padding: 2%;
+        font-weight: 600;
+        color: #6c757d;
+        cursor: pointer;
+    }
+
+    .proile-rating {
+        font-size: 12px;
+        color: #818182;
+        margin-top: 5%;
+    }
+
+    .proile-rating span {
+        color: #495057;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .profile-head .nav-tabs {
+        margin-bottom: 0% !important;
+        padding-left: 0px !important;
+        border: none !important;
+    }
+
+    .profile-head .nav-tabs .nav-link {
+        font-weight: 600;
+        border: none;
+    }
+
+    .profile-head .nav-tabs .nav-link.active {
+        border: none;
+        border-bottom: 2px solid #0062cc;
+    }
+
+    .profile-work {
+        padding: 14%;
+        margin-top: -15%;
+    }
+
+    .profile-work p {
+        font-size: 12px;
+        color: #818182;
+        font-weight: 600;
+        margin-top: 10%;
+    }
+
+    .profile-work a {
+        text-decoration: none;
+        color: #495057;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .profile-work ul {
+        list-style: none;
+    }
+
+    .profile-tab label {
+        font-weight: 600;
+    }
+
+    .profile-tab p {
+        font-weight: 600;
+        color: #0062cc;
+    }
+
+    .profile-head li {
+        width: inherit !important;
+    }
 </style>
+
+@php
+$confirmedCompanions = $user->companions->where('confirmed', 1);
+$unconfirmedCompanions = $user->companions->where('confirmed', 0);
+
+$amt = intval($accompanyingPersonFees->early_bird_amount);
+
+$companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+? intval($amt / 75)
+: $amt;
+
+$totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $companion) {
+    return $carry + intval($companion->fees);
+}, 0);
+@endphp
 
 <h1>User Profile</h1>
 
-
-
-
-
-
 <div class="container emp-profile">
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                             
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                        Kshiti Ghelani
-                                    </h5>
-                            
-									
-									
-									
-							<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Add</button>
-  </li>
-   
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  
-  
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti123</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>123 456 7890</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Profession</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
-                                            </div>
-                                        </div>
-                            </div>
-  
-  
-  
-  
-  
-  
-  
-  </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Add</div>
- 
-</div>		
-									
-									
-									
-									
-									
-									
-									
-                             
-                        </div>
-                    </div>
-                    <div class="col-md-2">
- 
-                    </div>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" alt="" />
+
                 </div>
-                 
-            </form>           
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>{{$user->getDisplayName()}}</h5>
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                        </li>
+                        <!-- <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Add</button>
+                        </li> -->
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>User Id</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$user->getRegistrationIdAttribute()}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$user->name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$user->email}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$user->phone}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Profession</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$user->role->name}}</p>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Add</div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
+    </form>
 
+    @if ($confirmedCompanions->count() > 0)
+    <br>
+    <h5>Confirmed Accompanying Persons</h5>
+    <table class="table">
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Email</b></td>
+        </tr>
+        @foreach($confirmedCompanions as $key => $person)
+        <tr>
+            <td>{{$person->name}}</td>
+            <td>{{$person->email ?? 'N/A'}}</td>
+        </tr>
+        @endforeach
+    </table>
+    @endif
 
+    <br>
 
+    <h5>Add New Accompanying Person</h5>
+    <em>
+        Fees for each accompanying person is
+        <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
+    </em>
 
+    <table class="table" id="accompanying-person-table">
 
+    </table>
 
+    @if ($unconfirmedCompanions->count() > 0)
+    <br>
+    <h5>Unconfirmed Accompanying Persons</h5>
+    <table class="table" id="unconfirmed-companions-list">
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Email</b></td>
+            <td><b>Action</b></td>
+        </tr>
+        @foreach($unconfirmedCompanions as $key => $person)
+        <tr>
+            <td>{{$person->name}}</td>
+            <td>{{$person->email ?? 'N/A'}}</td>
+            <td>
+                <input type="hidden" class="person-fees" id="person_{{$key + 1}}_fees_payable" value="{{$person->fees}}">
+                <button class="btn btn-light delete-person" data-id="{{$person->id}}">Delete</button>
+            </td>
+        </tr>
+        @endforeach
+    </table>
 
+    <p class="text-end">Total amount payable: <b>{{$paymentSlabItem->currency}} {{$totalCompanionAmount}}</b></p>
+    @endif
+</div>
+
+<script>
+    const token = "{{ csrf_token() }}";
+
+    $(function() {
+        addCompanion(1);
+
+        $('#person_1_confirm').click(function() {
+            var title = $('#person_1_title').val();
+            var name = $('#person_1_name').val();
+            var email = $('#person_1_email').val();
+            var fees = $('#person_1_fees').val();
+
+            createAccompanyingPerson({
+                '_token': token,
+                title,
+                name,
+                email,
+                fees,
+            }).then(function() {
+                location.reload();
+            });
+        });
+
+        $('.delete-person').click(function() {
+            var id = $(this).attr('data-id');
+
+            deleteAccompanyingPerson(id);
+        });
+
+        function createAccompanyingPerson(data) {
+            return $.ajax({
+                url: '/accompanying-persons',
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                processData: false,
+                success: function(result) {
+                    return result;
+                },
+                error: function(xhr, status, error) {
+                    alert(xhr?.responseJSON?.message);
+
+                    return error;
+                },
+            });
+        }
+
+        function addCompanion(number) {
+            const markup = `
+            <tr id="person_${number}_row">
+                <td>
+                    <select name="person_${number}_title" id="person_${number}_title" class="form-control">
+                        <option value="">-- choose one --</option>
+                        <option value="Dr">Dr</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" placeholder="Name" class="form-control" name="person_${number}_name" id="person_${number}_name">
+                </td>
+                <td>
+                    <input type="email" placeholder="Email (optional)" class="form-control" name="person_${number}_email" id="person_${number}_email">
+                </td>
+                <td>
+                    <input type="hidden" name="person_${number}_fees" id="person_${number}_fees" value="{{$companionAmount}}">
+                    <button class="btn btn-primary" id="person_${number}_confirm">Confirm</button>
+                </td>
+            </tr>
+        `;
+
+            $('#accompanying-person-table').append(markup);
+        }
+    });
+</script>
 
 @stop

@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fee;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function showProfilePage()
     {
-        return view('user-profile');
+        $user = User::with(['companions', 'role'])->find(Auth::user()->id);
+        $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
+        $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
+        $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
+
+        return view('user-profile', compact(
+            'user',
+            'paymentSlabItem',
+            'accompanyingPersonFees',
+        ));
     }
 
     public function saveProfile(Request $request)

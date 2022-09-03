@@ -32,6 +32,7 @@ class PaymentController extends Controller
         $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
         $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
         $accompanyingPersons = AccompanyingPerson::where('user_id', Auth::user()->id)
+            ->where('is_active', 0)
             ->orderBy('id', 'desc')
             ->get();
 
