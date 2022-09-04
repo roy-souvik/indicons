@@ -194,7 +194,13 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 $('#person_1_fees_payable').val(fees);
                 updateAmount();
 
-                location.reload();
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Accompanying person added.',
+                    icon: 'success',
+                }).then(function() {
+                    location.reload();
+                });
             });
         });
 
@@ -232,7 +238,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
     function getCompanionsTotalAmount() {
         let amount = 0;
 
-        $('.person-fees').each(function () {
+        $('.person-fees').each(function() {
             amount = amount + parseInt($(this).val(), 10);
         });
 
@@ -251,7 +257,11 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 return result;
             },
             error: function(xhr, status, error) {
-                alert(xhr?.responseJSON?.message);
+                Swal.fire({
+                    title: 'Error!',
+                    text: xhr?.responseJSON?.message || 'Error',
+                    icon: 'error',
+                });
 
                 return error;
             },

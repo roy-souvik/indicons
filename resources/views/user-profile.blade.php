@@ -299,7 +299,13 @@ return $carry + intval($companion->fees);
                 email,
                 fees,
             }).then(function() {
-                location.reload();
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Accompanying person saved successfully',
+                    icon: 'success',
+                }).then(function () {
+                    location.reload();
+                });
             });
         });
 
@@ -355,7 +361,11 @@ return $carry + intval($companion->fees);
                     return result;
                 },
                 error: function(xhr, status, error) {
-                    alert(xhr?.responseJSON?.message);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: xhr?.responseJSON?.message || 'Saved successfully',
+                        icon: 'error',
+                    });
 
                     return error;
                 },

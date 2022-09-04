@@ -4,14 +4,15 @@
 @include('partials.sponsorship-styles')
 
 <div class="reg-table">
-    <div style="font-size: 24px!important; background:none!important;" class="title"> SPONSORSHIP </div>
+    <div style="font-size: 24px!important; background:none!important;" class="title">SPONSORSHIP</div>
 
     <div class="sponsor-list-bx">
         @include('partials.sponsorship-slab')
     </div>
 
-    <button type="button" class="btn-reg-table" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrows-from-line"></i> Compact View </button>
-
+    <button type="button" class="btn-reg-table" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa-solid fa-arrows-from-line"></i> Compact View
+    </button>
 </div>
 
 <div>
@@ -67,7 +68,13 @@
                         <td style="text-align:center"><strong>{{$sponsorship->currency}} {{number_format($sponsorship->amount)}}</strong></td>
                         <td style="text-align:center">{{$sponsorship->number}}</td>
                         <td>
+                            @auth
                             <button class="btn btn-link add-to-cart" data-id={{$sponsorship->id}}>Book Now</button>
+                            @endauth
+
+                            @guest
+                            <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
+                            @endguest
                         </td>
                     </tr>
                     @endif
@@ -195,9 +202,7 @@
                                 <p class="mt-4">Already Registered?</p>
                                 <a style="background: #f32f30!important;" class="btn btn-link" href="/login">Login to continue</a>
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -239,14 +244,22 @@
                 processData: false,
                 success: function(result) {
                     if (result?.message) {
-                        alert(result.message);
+                        Swal.fire({
+                            title: 'Success!',
+                            text: result.message,
+                            icon: 'success',
+                        });
                     }
 
                     return result;
-
                 },
                 error: function(xhr, status, error) {
                     return error;
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Unable to save sponsorship',
+                        icon: 'error',
+                    });
                 },
             });
         }

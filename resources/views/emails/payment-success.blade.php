@@ -35,9 +35,9 @@
                 $memberAmount = $fee->{$registrationTypeColumn};
 
                 $companionsAmount = $payment->user->companions->reduce(function ($carry, $companion) {
-                $fee = !empty($companion->confirmed) ? intval($companion->fees) : 0;
+                    $fee = !empty($companion->confirmed) ? intval($companion->fees) : 0;
 
-                return $carry + $fee;
+                    return $carry + $fee;
                 });
                 @endphp
 
