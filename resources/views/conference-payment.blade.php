@@ -159,6 +159,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                         'member_registration_type': $('input[name="payment"]:checked').attr('id'),
                         'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
                         'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
+                        'payment_title': 'conference_payment',
                     };
 
                     saveConferencePayment(responseData).then(() => {

@@ -75,7 +75,7 @@ class User extends Authenticatable
 
     public function isSuperAdmin(): bool
     {
-        return $this->role_id === 1;
+        return $this->role_id === Role::ROLE_SUPER_ADMIN;
     }
 
     public function getRoleShortNames(): array

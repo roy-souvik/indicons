@@ -9,6 +9,8 @@ class Role extends Model
 {
     use HasFactory;
 
+    const ROLE_SUPER_ADMIN = 1;
+
     public $timestamps = false;
 
     public function scopeActive($query)

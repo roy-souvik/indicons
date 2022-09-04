@@ -13,9 +13,15 @@ class UserController extends Controller
     public function showProfilePage()
     {
         $user = User::with(['companions', 'role'])->find(Auth::user()->id);
-        $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
-        $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
-        $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
+
+        $paymentSlabItem = null;
+        $accompanyingPersonFees = null;
+
+        if (!$user->isSuperAdmin()) {
+            $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
+            $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
+            $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
+        }
 
         return view('user-profile', compact(
             'user',

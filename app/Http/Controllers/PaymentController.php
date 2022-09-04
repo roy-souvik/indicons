@@ -77,19 +77,23 @@ class PaymentController extends Controller
 
         $payment->user_id = $authUser->id;
         $payment->transaction_id = $request->transaction_id;
-        $payment->status = $request->status;
-        $payment->amount = $request->amount;
+        $payment->status = $request->status ?? '';
+        $payment->amount = $request->amount ?? 0;
         $payment->payment_response = json_encode($request->payment_response);
-        $payment->registration_type = $request->member_registration_type;
+        $payment->registration_type = $request->input('member_registration_type');
         $payment->pickup_drop = $request->input('pickup_drop', false);
         $payment->airplane_booking = $request->input('airplane_booking', false);
+        $payment->payment_title = $request->input('payment_title');
 
         $payment->save();
 
         $companionRole = Role::firstWhere('key', 'accompanying_person');
-        $companionTotalAmount = intval($request->amount) - intval(data_get($request, 'payer_amount', 0));
+        $companionTotalAmount = $request->input('companion_amount')
+            ? intval($request->input('companion_amount'))
+            : intval($request->amount) - intval(data_get($request, 'payer_amount', 0));
         $companionFee = Fee::firstWhere('role_id', $companionRole->id)->spot_amount;
-        $companionCount = $companionTotalAmount / intval($companionFee);
+
+        $companionCount = floor($companionTotalAmount / intval($companionFee));
 
         $accompanyingPersons = AccompanyingPerson::where('user_id', $authUser->id)
             ->where('confirmed', 0)

@@ -126,6 +126,10 @@
 $confirmedCompanions = $user->companions->where('confirmed', 1);
 $unconfirmedCompanions = $user->companions->where('confirmed', 0);
 
+$companionAmount = 0;
+$totalCompanionAmount = 0;
+
+if ($accompanyingPersonFees && $paymentSlabItem) {
 $amt = intval($accompanyingPersonFees->early_bird_amount);
 
 $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
@@ -133,8 +137,10 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 : $amt;
 
 $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $companion) {
-    return $carry + intval($companion->fees);
+return $carry + intval($companion->fees);
 }, 0);
+}
+
 @endphp
 
 <h1>User Profile</h1>
@@ -232,17 +238,19 @@ $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $compan
     </table>
     @endif
 
+    @if(!$user->isSuperAdmin())
     <br>
 
     <h5>Add New Accompanying Person</h5>
     <em>
         Fees for each accompanying person is
-        <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
+        <u>{{$paymentSlabItem?->currency}} {{$companionAmount}}</u>
     </em>
 
     <table class="table" id="accompanying-person-table">
 
     </table>
+    @endif
 
     @if ($unconfirmedCompanions->count() > 0)
     <br>
@@ -266,6 +274,9 @@ $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $compan
     </table>
 
     <p class="text-end">Total amount payable: <b>{{$paymentSlabItem->currency}} {{$totalCompanionAmount}}</b></p>
+
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div>
     @endif
 </div>
 
@@ -276,10 +287,10 @@ $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $compan
         addCompanion(1);
 
         $('#person_1_confirm').click(function() {
-            var title = $('#person_1_title').val();
-            var name = $('#person_1_name').val();
-            var email = $('#person_1_email').val();
-            var fees = $('#person_1_fees').val();
+            const title = $('#person_1_title').val();
+            const name = $('#person_1_name').val();
+            const email = $('#person_1_email').val();
+            const fees = $('#person_1_fees').val();
 
             createAccompanyingPerson({
                 '_token': token,
@@ -293,10 +304,44 @@ $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $compan
         });
 
         $('.delete-person').click(function() {
-            var id = $(this).attr('data-id');
+            const id = $(this).attr('data-id');
 
             deleteAccompanyingPerson(id);
         });
+
+        var ppButtonConfig = {
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            'value': updateAmount().total_amount
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    const transaction = orderData.purchase_units[0].payments.captures[0];
+
+                    const responseData = {
+                        '_token': token,
+                        'transaction_id': transaction.id,
+                        'status': transaction.status,
+                        'amount': transaction.amount.value,
+                        'payment_response': orderData,
+                        'payer_amount': 0,
+                        'companion_amount': "{{$totalCompanionAmount}}",
+                        'payment_title': 'addon_companion_payment',
+                    };
+
+                    savePaymentDetails(responseData).then(() => {
+                        location.href = '/payment-success?transaction_id=' + transaction.id;
+                    });
+                });
+            },
+        };
 
         function createAccompanyingPerson(data) {
             return $.ajax({
@@ -312,6 +357,26 @@ $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $compan
                 error: function(xhr, status, error) {
                     alert(xhr?.responseJSON?.message);
 
+                    return error;
+                },
+            });
+        }
+
+        function deleteAccompanyingPerson(id) {
+            return $.ajax({
+                url: `/accompanying-persons/${id}`,
+                type: 'DELETE',
+                data: JSON.stringify({
+                    '_token': token,
+                }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                processData: false,
+                success: function(result) {
+                    location.reload();
+                    return result;
+                },
+                error: function(xhr, status, error) {
                     return error;
                 },
             });
@@ -343,6 +408,23 @@ $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $compan
         `;
 
             $('#accompanying-person-table').append(markup);
+        }
+
+        function savePaymentDetails(data) {
+            return $.ajax({
+                url: '/save-payment',
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                processData: false,
+                success: function(result) {
+                    return result;
+                },
+                error: function(xhr, status, error) {
+                    return error;
+                },
+            });
         }
     });
 </script>
