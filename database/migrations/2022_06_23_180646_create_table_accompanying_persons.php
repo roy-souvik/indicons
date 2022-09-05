@@ -21,6 +21,7 @@ class CreateTableAccompanyingPersons extends Migration
             $table->string('email')->nullable();
             $table->string('fees', 20)->default(0);
             $table->boolean('confirmed')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
