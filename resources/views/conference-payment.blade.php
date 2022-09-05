@@ -55,6 +55,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 <p>
     Fees for each person is
     <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
+    <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
 </p>
 
 <table class="table" id="accompanying-person-table">
@@ -310,6 +311,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
     }
 
     function addCompanion(number) {
+        const companionAmount = $('#companion-amount').val();
         const markup = `
             <tr id="person_${number}_row">
                 <td>
@@ -328,7 +330,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                     <input type="email" placeholder="Email (optional)" class="form-control" name="person_${number}_email" id="person_${number}_email">
                 </td>
                 <td>
-                    <input type="hidden" name="person_${number}_fees" id="person_${number}_fees" value="{{$companionAmount}}">
+                    <input type="hidden" name="person_${number}_fees" id="person_${number}_fees" value="${companionAmount}">
                     <button class="btn btn-primary" id="person_${number}_confirm">Confirm</button>
                 </td>
             </tr>

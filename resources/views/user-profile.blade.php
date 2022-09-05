@@ -245,6 +245,7 @@ return $carry + intval($companion->fees);
     <em>
         Fees for each accompanying person is
         <u>{{$paymentSlabItem?->currency}} {{$companionAmount}}</u>
+        <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
     </em>
 
     <table class="table" id="accompanying-person-table">
@@ -393,6 +394,7 @@ return $carry + intval($companion->fees);
         }
 
         function addCompanion(number) {
+            const companionAmount = $('#companion-amount').val();
             const markup = `
             <tr id="person_${number}_row">
                 <td>
@@ -411,7 +413,7 @@ return $carry + intval($companion->fees);
                     <input type="email" placeholder="Email (optional)" class="form-control" name="person_${number}_email" id="person_${number}_email">
                 </td>
                 <td>
-                    <input type="hidden" name="person_${number}_fees" id="person_${number}_fees" value="{{$companionAmount}}">
+                    <input type="hidden" name="person_${number}_fees" id="person_${number}_fees" value="${companionAmount}">
                     <button class="btn btn-primary" id="person_${number}_confirm">Confirm</button>
                 </td>
             </tr>
