@@ -24,13 +24,20 @@ class SponsorshipController extends Controller
 
     public function sponsorshipBuyPage()
     {
-        $userSponsorships = UserSponsorship::with(['user', 'sponsorship'])
-            ->where('user_id', auth()->user()->id)
-            ->where('is_active', 0)
-            ->get();
+        $userSponsorships = $this->getUserInactiveSponsorships();
 
         return view('sponsorship-payment', compact('userSponsorships'));
     }
+
+    public function getSponsorshipCart()
+    {
+        $userSponsorships = $this->getUserInactiveSponsorships();
+
+        return response()->json([
+            'data' => $userSponsorships,
+        ]);
+    }
+
 
     public function createSponsorshipPayment(Request $request)
     {
@@ -89,5 +96,13 @@ class SponsorshipController extends Controller
         return redirect()->back()->with([
             'message' => 'Sponsorship deleted successfully'
         ]);
+    }
+
+    private function getUserInactiveSponsorships()
+    {
+        return UserSponsorship::with(['user', 'sponsorship'])
+            ->where('user_id', auth()->user()->id)
+            ->where('is_active', 0)
+            ->get();
     }
 }

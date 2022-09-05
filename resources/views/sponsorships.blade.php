@@ -243,11 +243,17 @@
                 dataType: 'json',
                 processData: false,
                 success: function(result) {
+                    getSponsorshipCart();
                     if (result?.message) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: result.message,
-                            icon: 'success',
+                        getSponsorshipCart().then(result => {
+                            const markup = getCartMarkup(result.data);
+
+                            Swal.fire({
+                                title: 'Success!',
+                                html: markup,
+                                text: result.message,
+                                icon: 'success',
+                            });
                         });
                     }
 
@@ -260,6 +266,33 @@
                         text: 'Unable to save sponsorship',
                         icon: 'error',
                     });
+                },
+            });
+        }
+
+        function getCartMarkup(userSponsorships = []) {
+            let markup = '<ul class="list-group">';
+
+            userSponsorships.forEach(userSponsorship => {
+                markup += `<li class="list-group-item">${userSponsorship.sponsorship.title}</li>`;
+            });
+
+            markup += '</ul>';
+
+            return markup;
+        }
+
+        function getSponsorshipCart() {
+            return $.ajax({
+                url: '/sponsorships-cart',
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function(result) {
+                    return result;
+                },
+                error: function(xhr, status, error) {
+                    return error;
                 },
             });
         }

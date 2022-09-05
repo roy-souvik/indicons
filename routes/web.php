@@ -128,6 +128,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/sponsorships-buy', [SponsorshipController::class, 'sponsorshipBuyPage'])
         ->name('sponsorship.buy');
 
+    Route::get('/sponsorships-cart', [SponsorshipController::class, 'getSponsorshipCart'])
+        ->name('sponsorship.cart');
+
     Route::post('/sponsorship-payments', [SponsorshipController::class, 'createSponsorshipPayment'])
         ->name('sponsorship.payment');
 
