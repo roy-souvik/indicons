@@ -33,6 +33,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'image',
         'phone',
         'company',
         'postal_code',
@@ -86,9 +87,9 @@ class User extends Authenticatable
             $value = $key;
 
             if ($key === self::ROLE_KEYS[1]) {
-                $value = 'nur_para';
+                $value = 'nur_para'; // Nurses and paramedics
             } elseif ($key === self::ROLE_KEYS[3]) {
-                $value = 'int_del';
+                $value = 'int_del'; // international deligate
             } else {
                 $value = Str::substr($value, 0, 2);
             }

@@ -27,6 +27,7 @@ class RegistrationController extends Controller
             'title' => ['required', 'string', 'max:10', 'alpha'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:5120'],
             'phone' => ['required', 'max:20', 'unique:users'],
             'company' => ['required'],
             'postal_code' => ['required'],
@@ -40,11 +41,18 @@ class RegistrationController extends Controller
             'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
         ]);
 
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $filename);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'title' => $request->title,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'image' => $filename,
             'phone' => $request->phone,
             'role_id' => $request->registration_type,
             'company' => $request->company,

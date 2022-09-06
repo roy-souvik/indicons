@@ -2,16 +2,6 @@
     @section('content')
     <div class="title">Registration</div>
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
     <div class="reg-table">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
             <tr style="background:#5b8cef; color:#fff;">
@@ -71,7 +61,17 @@
         </table>
     </div>
 
-    <form method="POST" action="/registration">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <form method="POST" action="/registration" enctype="multipart/form-data">
         @csrf
         <div class="user__details">
             <div class="input__box">
@@ -88,10 +88,17 @@
                 <span class="details">Full Name</span>
                 <input type="text" name="name" value="{{ old('name') }}" placeholder="E.g: John Smith" required>
             </div>
+
             <div class="input__box">
                 <span class="details">Email</span>
                 <input type="email" name="email" value="{{ old('email') }}" placeholder="johnsmith@hotmail.com" required>
             </div>
+
+            <div class="input__box">
+                <span class="details">Image</span>
+                <input type="file" name="image" placeholder="Choose image" id="image">
+            </div>
+
             <div class="input__box">
                 <span class="details">Phone Number</span>
                 <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="012-345-6789" required>
@@ -385,7 +392,7 @@
                 </select>
             </div>
 
-            <div class="input__box" style="margin-left: 2.2rem;">
+            <div class="input__box">
                 <span class="details">Are you an existing VAI Member?</span>
                 <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
                     <option value="">-- choose one --</option>

@@ -11,6 +11,7 @@ use App\Models\Sponsorship;
 use App\Models\SponsorshipFeature;
 use App\Models\SponsorshipPayment;
 use App\Models\VaiMember;
+use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -195,6 +196,13 @@ class AdminController extends Controller
         $sponsorshipPayments = SponsorshipPayment::with(['sponsorship', 'user'])->get();
 
         return view('admin.sponsorship-payments', compact('sponsorshipPayments'));
+    }
+
+    public function workshopPaymentsShow()
+    {
+        $workshopPayments = WorkshopPayment::with(['workshop', 'user'])->get();
+
+        return view('admin.workshop-payments', compact('workshopPayments'));
     }
 
     public function vaiMembersShow()

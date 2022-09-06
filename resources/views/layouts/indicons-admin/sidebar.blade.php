@@ -46,10 +46,17 @@
                     </a>
                 </li>
 
+                <!-- <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.workshop.payments.show')}}" aria-expanded="false">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span class="hide-menu">Workshop Payments</span>
+                    </a>
+                </li> -->
+
                 <li class="sidebar-item pt-2">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.members.show')}}" aria-expanded="false">
                         <i class="far fa-clock" aria-hidden="true"></i>
-                        <span class="hide-menu">Members</span>
+                        <span class="hide-menu">VAI Members</span>
                     </a>
                 </li>
 

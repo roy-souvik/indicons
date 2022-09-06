@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="white-box">
-    <h3 class="box-title">Members</h3>
+    <h3 class="box-title">VAI Members</h3>
 
     @include('admin.flash-message')
 

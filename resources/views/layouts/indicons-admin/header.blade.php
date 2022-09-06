@@ -43,6 +43,12 @@
                 </li>
 
                 <li>
+                    <a class="profile-pic" href="/">
+                        <span class="text-white font-medium">Main Site</span>
+                    </a>
+                </li>
+
+                <li>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
