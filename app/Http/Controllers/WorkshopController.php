@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WorkshopPaymentSuccess;
 use App\Models\WorkshopPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class WorkshopController extends Controller
 {
@@ -20,7 +23,7 @@ class WorkshopController extends Controller
 
         $payment->save();
 
-        // Mail::to(Auth::user())->send(new WorkshopPaymentSuccess($request->transaction_id));
+        Mail::to(Auth::user())->send(new WorkshopPaymentSuccess($request->transaction_id));
 
         return $payment;
     }
