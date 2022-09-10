@@ -41,6 +41,8 @@ class RegistrationController extends Controller
             'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
         ]);
 
+        $filename = null;
+
         if ($request->file('image')) {
             $file = $request->file('image');
             $filename = date('YmdHi') . '_' . $file->getClientOriginalName();

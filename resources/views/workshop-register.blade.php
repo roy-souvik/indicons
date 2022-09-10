@@ -5,7 +5,7 @@
 
 @php
 function addGst($amount, $gstPercent = 18) {
-return $amount + (($amount*$gstPercent)/100);
+    return $amount + (($amount*$gstPercent)/100);
 }
 
 $totalWorkshopPrice = addGst($workshopPrice->value);
@@ -29,7 +29,7 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
     @guest
     <div class="row">
         <div class="card p-4" style="width: 40rem;">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div>
@@ -43,6 +43,11 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
                     <x-label for="email" :value="__('Email')" class="form-label" />
 
                     <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
+                </div>
+
+                <div class="mt-4 mb-4">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" name="image" placeholder="Choose image" id="image">
                 </div>
 
                 <div>

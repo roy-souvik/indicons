@@ -39,11 +39,21 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required', 'max:20', 'unique:users'],
             'company' => ['required'],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:5120'],
         ]);
+
+        $filename = null;
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $filename);
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'image' => $filename,
             'password' => Hash::make($request->password),
             'role_id' => $request->input('role_id'),
             'phone' => $request->input('phone'),
