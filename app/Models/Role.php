@@ -10,6 +10,8 @@ class Role extends Model
     use HasFactory;
 
     const ROLE_SUPER_ADMIN = 1;
+    const ROLE_SPONSOR = 7;
+    const ROLE_WORKSHOP_ATTENDEE = 8;
 
     public $timestamps = false;
 

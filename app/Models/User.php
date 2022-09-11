@@ -63,17 +63,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function getDisplayRoles(): array
-    {
-        $roles = [];
-
-        foreach (self::ROLE_KEYS as $key) {
-            $roles[$key] = ucwords(Str::replace('_', ' ', $key));
-        }
-
-        return $roles;
-    }
-
     public function isSuperAdmin(): bool
     {
         return $this->role_id === Role::ROLE_SUPER_ADMIN;
@@ -113,9 +102,11 @@ class User extends Authenticatable
         return "{$rolePrefix}_000{$this->id}";
     }
 
-    public function getDisplayName()
+    public function getDisplayName(): string
     {
-        return "{$this->title}. {$this->name}";
+        return !empty($this->title)
+            ? "{$this->title}. {$this->name}"
+            : $this->name;
     }
 
     public function role(): BelongsTo
@@ -142,5 +133,17 @@ class User extends Authenticatable
         ];
 
         return in_array($this->country, $saarcCountries);
+    }
+
+    /**
+     * For some roles the provison to add companions from the user-profile is not allowed
+     */
+    public function isCompanionsAllowed(): bool
+    {
+        return !in_array($this->role_id, [
+            Role::ROLE_SUPER_ADMIN,
+            Role::ROLE_SPONSOR,
+            Role::ROLE_WORKSHOP_ATTENDEE,
+        ]);
     }
 }

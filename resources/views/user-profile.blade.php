@@ -162,8 +162,11 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" alt="" />
-
+                    @if(!empty($user->image))
+                        <img src="/images/{{$user->image}}" class="img-thumbnail" alt="{{$user->name}}">
+                    @else
+                        <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" class="img-thumbnail" alt="no-image" />
+                    @endif
                 </div>
             </div>
             <div class="col-md-6">
@@ -250,7 +253,7 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
     </table>
     @endif
 
-    @if(!$user->isSuperAdmin())
+    @if($user->isCompanionsAllowed())
     <br>
 
     <h5>Add New Accompanying Person</h5>
@@ -286,7 +289,10 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
         @endforeach
     </table>
 
-    <p class="text-end">Total amount payable: <b>{{$paymentSlabItem->currency}} {{$totalCompanionAmount}}</b></p>
+    <p class="text-end">
+        Total amount payable: <b>{{$paymentSlabItem->currency}} {{$totalCompanionAmount}}</b>
+        <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
+    </p>
 
     <!-- Set up a container element for the button -->
     <div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div>

@@ -17,7 +17,7 @@ class UserController extends Controller
         $paymentSlabItem = null;
         $accompanyingPersonFees = null;
 
-        if (!$user->isSuperAdmin()) {
+        if ($user->isCompanionsAllowed()) {
             $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
             $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
             $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
