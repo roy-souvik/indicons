@@ -53,13 +53,13 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
                 <div>
                     <label for="company" class="form-label">Company</label>
 
-                    <input type="text" name="company" class="form-control" id="company" />
+                    <input type="text" name="company" value="{{ old('company') }}" class="form-control" id="company" />
                 </div>
 
                 <div>
                     <label for="phone" class="form-label">Phone</label>
 
-                    <input type="text" name="phone" class="form-control" id="phone" />
+                    <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone" />
                 </div>
 
                 <!-- Password -->

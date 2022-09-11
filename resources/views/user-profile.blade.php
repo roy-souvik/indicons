@@ -126,19 +126,25 @@
 $confirmedCompanions = $user->companions->where('confirmed', 1);
 $unconfirmedCompanions = $user->companions->where('confirmed', 0);
 
+function addGst($amount, $gstPercent = 18) {
+    return $amount + (($amount*$gstPercent)/100);
+}
+
 $companionAmount = 0;
 $totalCompanionAmount = 0;
 
 if ($accompanyingPersonFees && $paymentSlabItem) {
-$amt = intval($accompanyingPersonFees->early_bird_amount);
+    $amt = intval($accompanyingPersonFees->early_bird_amount);
 
-$companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-? intval($amt / 75)
-: $amt;
+    $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+        ? intval($amt / 75)
+        : $amt;
 
-$totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $companion) {
-return $carry + intval($companion->fees);
-}, 0);
+    $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $companion) {
+        return $carry + intval($companion->fees);
+    }, 0);
+
+    $totalCompanionAmount = addGst($totalCompanionAmount);
 }
 
 @endphp
