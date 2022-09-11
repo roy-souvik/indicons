@@ -1,4 +1,4 @@
-@extends('layouts.indicons.main-layout')
+ @extends('layouts.indicons.main-layout')
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
@@ -87,39 +87,39 @@
  
  <div class="row">
 
-<div class="col-md-3">
+              <div class="col-md-3">
 
-<div class="flex-cont">
+                  <div class="flex-cont">
 
-<h1>ITC Sonar </h1>
-<p> Luxury Hotel in Kolkata </p>
+                      <h1>ITC Sonar </h1>
+                      <p> 1, JBS Haldane Ave, Tangra, Kolkata, West Bengal 700046</p>
 
-</div>
+                  </div>
 
-</div>
+              </div>
 
-<div class="col-md-9">
+              <div class="col-md-9">
 
- <div id="news-slider" class="owl-carousel" style="margin-top:0px;">
-      
-         
-                <div class="post-slide">
-				
-  <img src="indicons/images/sonar-1.webp" style="max-width:100%;">		
-			 
-             </div>   
-                  <div class="post-slide">       
-  <img src="indicons/images/sonar-2.webp" style="max-width:100%;">
-        
-         
-             </div>
-		       
-      </div>
-	  
-	  </div>
-	  
-	  
-	  </div>
+                  <div id="news-slider" class="owl-carousel" style="margin-top:0px;">
+
+
+                      <div class="post-slide">
+
+                          <img src="indicons/images/sonar-1.webp" style="max-width:100%;">
+
+                      </div>
+                      <div class="post-slide">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14739.692032263614!2d88.3976281!3d22.5445567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2sin!4v1661106057036!5m2!1sen!2sin" width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                      </div>
+
+                  </div>
+
+              </div>
+
+
+          </div>
 
 </div>
 

@@ -1,4 +1,4 @@
-  @extends('layouts.indicons.main-layout')
+   @extends('layouts.indicons.main-layout')
   @section('content')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
@@ -159,7 +159,7 @@
 	 <div class="inner-pg-box">
 
     <div class="reg-table">
-  <table cellspacing="0" cellpadding="0" style="width:100%">
+   <table cellspacing="0" cellpadding="0" style="width:100%">
 
   <tr style="background: #002878;  color: #fff;" height="20">
     <td height="20" width="100"><strong>Conference</strong></td>
@@ -167,53 +167,44 @@
     <td width="175"><strong>City</strong></td>
     <td width="342"><strong>Organising Chairman</strong></td>
   </tr>
+  
   <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2008</td>
-    <td>19-20 Apr 2008</td>
-    <td>Chennai</td>
-    <td>Dr. Sunderaraj Saravanan</td>
+    <td height="20">VAICON 2022</td>
+    <td>25-26 March 2022</td>
+    <td>Mahabalipuram</td>
+    <td>Dr. Dheepak Selvaraj &amp; Dr. Vimalin Samuel</td>
   </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2009</td>
-    <td>23-25 Jan 2009</td>
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2021</td>
+    <td>23-25 Jan 2021</td>
+    <td>Chandigarh</td>
+    <td>Dr. H.S. Bedi</td>
+  </tr>
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2020</td>
+    <td>16-19 Jan 2020</td>
+    <td>Mumbai</td>
+    <td>Dr. Shoaib Padaria</td>
+  </tr>
+
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2019</td>
+    <td>17-19 Jan 2019</td>
     <td>Hyderabad</td>
     <td>Dr. Ramakrishna Pinjala</td>
   </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2010</td>
-    <td>22-23 Jan 2010</td>
-    <td>Bangalore</td>
-    <td>Dr. Vasudeva Rao</td>
-  </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2011</td>
-    <td>4-5 Feb 2011</td>
-    <td>Chandigarh</td>
-    <td>Dr.Ravul Jindal</td>
-  </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2012</td>
-    <td>27-28 Jan 2012</td>
-    <td>Cochin</td>
-    <td>Dr. Roy Varghese</td>
-  </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2013</td>
-    <td>24-26 Jan 2013</td>
-    <td>Goa</td>
-    <td>Dr. Shoaib Padaria</td>
-  </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2014</td>
-    <td>6-8 Feb 2014</td>
-    <td>Gurgaon</td>
-    <td>Dr. Rajiv Parakh</td>
-  </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2015</td>
-    <td>5-7 Feb 2015</td>
-    <td>Vellore</td>
-    <td>Dr. Sunil Agarwal</td>
+  
+   <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2018</td>
+    <td>18-21 Jan 2018</td>
+    <td>Ba rod a</td>
+    <td>Dr. Vijay Thakore</td>
+  </tr> 
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2017</td>
+    <td>2-4 March 2017</td>
+    <td>Varanasi</td>
+    <td>Dr. Ajay K Khanna</td>
   </tr>
   <tr style="background: #5b8cef;  color: #fff;"  height="20">
     <td height="20">VAICON 2016</td>
@@ -221,42 +212,63 @@
     <td>Jaipur</td>
     <td>Dr.Ravul Jindal &amp; Dr. Shoaib Padaria</td>
   </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2017</td>
-    <td>2-4 March 2017</td>
-    <td>Varanasi</td>
-    <td>Dr. Ajay K Khanna</td>
+ <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2015</td>
+    <td>5-7 Feb 2015</td>
+    <td>Vellore</td>
+    <td>Dr. Sunil Agarwal</td>
   </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2018</td>
-    <td>18-21 Jan 2018</td>
-    <td>Ba rod a</td>
-    <td>Dr. Vijay Thakore</td>
+   <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2014</td>
+    <td>6-8 Feb 2014</td>
+    <td>Gurgaon</td>
+    <td>Dr. Rajiv Parakh</td>
   </tr>
+ 
   <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2019</td>
-    <td>17-19 Jan 2019</td>
+    <td height="20">VAICON 2013</td>
+    <td>24-26 Jan 2013</td>
+    <td>Goa</td>
+    <td>Dr. Shoaib Padaria</td>
+  </tr>
+ 
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2012</td>
+    <td>27-28 Jan 2012</td>
+    <td>Cochin</td>
+    <td>Dr. Roy Varghese</td>
+  </tr>
+  
+  
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2011</td>
+    <td>4-5 Feb 2011</td>
+    <td>Chandigarh</td>
+    <td>Dr.Ravul Jindal</td>
+  </tr>
+
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2010</td>
+    <td>22-23 Jan 2010</td>
+    <td>Bangalore</td>
+    <td>Dr. Vasudeva Rao</td>
+  </tr>
+  
+    <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2009</td>
+    <td>23-25 Jan 2009</td>
     <td>Hyderabad</td>
     <td>Dr. Ramakrishna Pinjala</td>
   </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2020</td>
-    <td>16-19 Jan 2020</td>
-    <td>Mumbai</td>
-    <td>Dr. Shoaib Padaria</td>
+
+   <tr style="background: #5b8cef;  color: #fff;"  height="20">
+    <td height="20">VAICON 2008</td>
+    <td>19-20 Apr 2008</td>
+    <td>Chennai</td>
+    <td>Dr. Sunderaraj Saravanan</td>
   </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2021</td>
-    <td>23-25 Jan 2021</td>
-    <td>Chandigarh</td>
-    <td>Dr. H.S. Bedi</td>
-  </tr>
-  <tr style="background: #5b8cef;  color: #fff;"  height="20">
-    <td height="20">VAICON 2022</td>
-    <td>25-26 March 2022</td>
-    <td>Mahabalipuram</td>
-    <td>Dr. Dheepak Selvaraj &amp; Dr. Vimalin Samuel</td>
-  </tr>
+
+   
 
 </table> </div>
 

@@ -1,4 +1,4 @@
-@extends('layouts.indicons.main-layout')
+ @extends('layouts.indicons.main-layout')
 @section('content')
 
 @include('partials.sponsorship-styles')
@@ -31,7 +31,19 @@
                         <span> {{$sponsorship->currency}} {{number_format($sponsorship->amount)}} </span>
                     </h3>
 
-                    <button data-bs-toggle="modal" data-bs-target="#sponsorship-details-{{$sponsorship->id}}" class="btn btn-link add-to-cart">Details</button>
+                 
+
+<a href="#"   data-bs-toggle="modal" data-bs-target="#sponsorship-details-{{$sponsorship->id}}">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>
+
+</a>
+
+
+
+
+
+
 
                     @auth
                     <button style="background:#f32f30!important;" data-id={{$sponsorship->id}} class="btn btn-link add-to-cart">
@@ -40,7 +52,11 @@
                     @endAuth
 
                     @guest
-                    <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
+                    <a style="width: 145px;
+    margin-left: 13px;
+    line-height: 15px;
+    font-size: 14px;
+    font-weight: 500;" class="btn btn-primary" href="{{route('login')}}">Login to book</a>
                     @endguest
                 </div>
                 @endif
@@ -73,7 +89,12 @@
                             @endauth
 
                             @guest
-                            <a class="btn btn-primary" href="{{route('login')}}">Login to book</a>
+                            <a style="    border: 1px solid #296dc4!important;
+    width: 128px;
+    line-height: 27px;
+    border-radius: 3px!important;
+    background: #296dc4;
+    overflow: hidden;" class="btn btn-primary" href="{{route('login')}}">Login to book</a>
                             @endguest
                         </td>
                     </tr>

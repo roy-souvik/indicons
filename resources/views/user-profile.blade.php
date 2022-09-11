@@ -16,11 +16,6 @@
         text-align: center;
     }
 
-    .profile-img img {
-        /* width: 70%;
-        height: 100%; */
-    }
-
     .profile-img .file {
         position: relative;
         overflow: hidden;
@@ -120,6 +115,17 @@
     .profile-head li {
         width: inherit !important;
     }
+
+    .btn-primary {
+        background: #296dc4 !important;
+        color: #fff;
+
+    }
+
+    .delete-person {
+        background: red !important;
+        color: #fff !important;
+    }
 </style>
 
 @php
@@ -127,24 +133,24 @@ $confirmedCompanions = $user->companions->where('confirmed', 1);
 $unconfirmedCompanions = $user->companions->where('confirmed', 0);
 
 function addGst($amount, $gstPercent = 18) {
-    return $amount + (($amount*$gstPercent)/100);
+return $amount + (($amount*$gstPercent)/100);
 }
 
 $companionAmount = 0;
 $totalCompanionAmount = 0;
 
 if ($accompanyingPersonFees && $paymentSlabItem) {
-    $amt = intval($accompanyingPersonFees->early_bird_amount);
+$amt = intval($accompanyingPersonFees->early_bird_amount);
 
-    $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-        ? intval($amt / 75)
-        : $amt;
+$companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+? intval($amt / 75)
+: $amt;
 
-    $totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $companion) {
-        return $carry + intval($companion->fees);
-    }, 0);
+$totalCompanionAmount = $unconfirmedCompanions->reduce(function ($carry, $companion) {
+return $carry + intval($companion->fees);
+}, 0);
 
-    $totalCompanionAmount = addGst($totalCompanionAmount);
+$totalCompanionAmount = addGst($totalCompanionAmount);
 }
 
 @endphp
@@ -310,7 +316,7 @@ if ($accompanyingPersonFees && $paymentSlabItem) {
                     title: 'Success!',
                     text: 'Accompanying person saved successfully',
                     icon: 'success',
-                }).then(function () {
+                }).then(function() {
                     location.reload();
                 });
             });
