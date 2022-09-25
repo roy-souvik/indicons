@@ -50,11 +50,11 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
                     <input type="file" name="image" placeholder="Choose image" id="image">
                 </div>
 
-                <div>
+                <!-- <div>
                     <label for="company" class="form-label">Company</label>
 
                     <input type="text" name="company" value="{{ old('company') }}" class="form-control" id="company" />
-                </div>
+                </div> -->
 
                 <div>
                     <label for="phone" class="form-label">Phone</label>
