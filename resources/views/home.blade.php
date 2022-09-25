@@ -16,6 +16,8 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
+
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    </head>
 
    <body>
@@ -149,47 +151,7 @@
 
            <script>
                (function() {
-                   const second = 1000,
-                       minute = second * 60,
-                       hour = minute * 60,
-                       day = hour * 24;
 
-                   //I'm adding this section so I don't have to keep updating this pen every year :-)
-                   //remove this if you don't need it
-                   let today = new Date(),
-                       dd = String(today.getDate()).padStart(2, "0"),
-                       mm = String(today.getMonth() + 1).padStart(2, "0"),
-                       yyyy = today.getFullYear(),
-                       nextYear = yyyy + 1,
-                       dayMonth = "09/30/",
-                       birthday = dayMonth + yyyy;
-
-                   today = mm + "/" + dd + "/" + yyyy;
-                   if (today > birthday) {
-                       birthday = dayMonth + nextYear;
-                   }
-                   //end
-
-                   const countDown = new Date(birthday).getTime(),
-                       x = setInterval(function() {
-
-                           const now = new Date().getTime(),
-                               distance = countDown - now;
-
-                           document.getElementById("days").innerText = Math.floor(distance / (day)),
-                               document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-                               document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                               document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-
-                           //do something later when date is reached
-                           if (distance < 0) {
-                               document.getElementById("headline").innerText = "It's my birthday!";
-                               document.getElementById("countdown").style.display = "none";
-                               document.getElementById("content").style.display = "block";
-                               clearInterval(x);
-                           }
-                           //seconds
-                       }, 0)
                }());
            </script>
 
@@ -301,27 +263,18 @@
 
                            <p>
                                <strong>Dr.Dheepak Selvaraj<br>
-
                                    The President, Venous Association of India.</strong>
                            </p>
                        </div>
                    </div>
-
-
 
                    <div class="col-md-4">
                        <div class="top-box-bottom-main">
                            <div class="top-bpx-bottom-img"><img src="indicons/images/dr2.jpg"> </div>
                            <h3>Message from <br>
                                Organising Chairman</h3>
-
-
                            <p>
                                Dear Colleagues,<br>
-
-
-
-
                            <div class="showcase">
 
                                <span> It my honor and the greatest of pleasure to invite you to the&nbsp;<strong>16th VAICON2023</strong>, in the&nbsp;&lsquo;<em>city of joy</em>!,&nbsp;<strong>Kolkata</strong> <br>
@@ -330,41 +283,24 @@
                                <p> The&nbsp;<strong>VAICON2023</strong>, will be held on&nbsp;<strong>27 <sup>th </sup> to 29 <sup>th </sup> January 2023</strong>&nbsp;at ITC Sonar, Kolkata, India. In this international conference, many international specialists will come together and have the opportunity to discuss and exchange opinions on every possible aspect of venous diseases &amp; management along with related matters. I believe that the topics to be addressed in this conference and its impact will make great contributions to our profession, considering the opportunity of the conference and the level of participation.<br>
                                    Please make sure that you find the time to enjoy one of the most vibrant cities in the World, Kolkata.<br>
                                    Am confident that conference secretariate, headed by&nbsp;<strong>Dr. Jayanta Das</strong>, will provide you the best support to have a wonderful memory. </p>
-
                                <span class="showbutton">Read More </span>
-
                            </div>
 
-
-
                            <p>
-                               <strong>Dr. K. Mukherjee<br>
-
+                               <strong>Dr. K.Mukherjee<br>
                                    Chairman, Organising Committee.<br>
-
                                    VAICON2023, Kolkata.</strong>
-
                            </p>
                        </div>
                    </div>
-
-
-
-
-
 
                    <div class="col-md-4">
                        <div class="top-box-bottom-main">
                            <div class="top-bpx-bottom-img"><img src="indicons/images/dr1.jpg"> </div>
                            <h3>Message from<br>
                                Organising Secretary</h3>
-
-
                            <p>
                                Dear Colleagues,<br>
-
-
-
 
                            <div class="showcase">
 
@@ -421,12 +357,7 @@
                                    <p style="margin:0px 20px;">
                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.922876184476!2d88.39543941443351!3d22.544561639681884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02769ebe32dca3%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2suk!4v1657100924686!5m2!1sen!2suk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-
-
                                    </p>
-
-
-
 
                                    <!-- Modal -->
                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -496,27 +427,56 @@
        </div>
 
        @include('layouts.indicons.scripts')
-       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>
        <script>
            $(function() {
+               const second = 1000;
+               const minute = second * 60;
+               const hour = minute * 60;
+               const day = hour * 24;
+
+               let today = new Date();
+               let dd = String(today.getDate()).padStart(2, "0");
+               let mm = String(today.getMonth() + 1).padStart(2, "0");
+               let yyyy = today.getFullYear();
+               let nextYear = yyyy + 1;
+               let monthDay = "01/27/";
+               let birthday = monthDay + yyyy;
+
+               today = mm + "/" + dd + "/" + yyyy;
+
+               if (today > birthday) {
+                   birthday = monthDay + nextYear;
+               }
+
+                const countDown = new Date(birthday).getTime();
+
+                const x = setInterval(function() {
+                       const now = new Date().getTime(),
+                           distance = countDown - now;
+
+                       document.getElementById("days").innerText = Math.floor(distance / (day)),
+                           document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                           document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                           document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+                       //do something later when date is reached
+                       if (distance < 0) {
+                           document.getElementById("headline").innerText = "It's the conference day!";
+                           document.getElementById("countdown").style.display = "none";
+                           document.getElementById("content").style.display = "block";
+                           clearInterval(x);
+                       }
+                       //seconds
+                   }, 0);
+
                $('.showbutton').on('click', function() {
                    $(this).siblings('.showcase p').slideToggle();
-                   //this is for change text
                    $(this).text(function(i, v) {
                        return v === 'less' ? 'Read More' : 'less'
                    });
-                   //end
                });
-           });
-       </script>
 
-
-
-       <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
-       <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>
-
-       <script>
-           $(document).ready(function() {
                $("#news-slider").owlCarousel({
                    items: 3,
                    itemsDesktop: [1199, 3],
@@ -529,7 +489,6 @@
                });
            });
        </script>
-
    </body>
 
    </html>
