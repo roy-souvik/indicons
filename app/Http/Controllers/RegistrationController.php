@@ -205,10 +205,10 @@ class RegistrationController extends Controller
    <body>
        <p>Below are the details from the contatc us form.</p>
 
-       <p>Name: {{$data['name']}}</p>
-       <p>Email: {{$data['email']}}</p>
-       <p>Email: {{$data['phone']}}</p>
-       <p>Comment: {{$data['comment']}}</p>
+       <p>Name: {$data['name']}</p>
+       <p>Email: {$data['email']}</p>
+       <p>Email: {$data['phone']}</p>
+       <p>Comment: {$data['comment']}</p>
    </body>
    </html>
    ";

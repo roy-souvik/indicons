@@ -207,9 +207,17 @@
                @include('partials.countdown')
            </div>
 
+           @if (\Session::has('response'))
+           <div class="alert alert-info">
+               <ul>
+                   <li>{!! \Session::get('response') !!}</li>
+               </ul>
+           </div>
+           @endif
+
            <div class="login-form">
                <form action="/contact-us" method="POST">
-               @csrf
+                   @csrf
 
                    <h4 class="modal-title">Be in touch leave your detail</h4>
                    <div class="form-group">
