@@ -181,10 +181,46 @@ class RegistrationController extends Controller
             'comment',
         ]);
 
-        Mail::to('secretary@vaicon2023.com')->send(new ContactUs($requestData));
+        $response = $this->sendMail($requestData);
+
+        // Mail::to('secretary@vaicon2023.com')->send(new ContactUs($requestData));
 
         return redirect()->back()->with([
-            'success' => 'Sponsorship deleted successfully',
+            'response' => $response,
         ]);
+    }
+
+    private function sendMail(array $data)
+    {
+        $from = data_get($this->data, 'email', 'No Email');
+        $to = 'secretary@vaicon2023.com';
+        $subject = 'Someone contacted us';
+
+        $message = "
+   <html>
+   <head>
+       <title>This is a test HTML email</title>
+   </head>
+   <body>
+       <p>Below are the details from the contatc us form.</p>
+
+       <p>Name: {{$data['name']}}</p>
+       <p>Email: {{$data['email']}}</p>
+       <p>Email: {{$data['phone']}}</p>
+       <p>Comment: {{$data['comment']}}</p>
+   </body>
+   </html>
+   ";
+
+        // The content-type header must be set when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers = "From:" . $from;
+
+        if (mail($to, $subject, $message, $headers)) {
+            return "Message was sent.";
+        } else {
+            return "Message was not sent.";
+        }
     }
 }
