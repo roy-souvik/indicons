@@ -193,24 +193,14 @@ class RegistrationController extends Controller
     private function sendMail(array $data)
     {
         $from = data_get($data, 'email', 'No Email');
-        // $to = 'secretary@vaicon2023.com';
-        $to = 'souvik0789@gmail.com';
+        $to = 'secretary@vaicon2023.com';
         $subject = 'Someone contacted us';
 
-        $message = "
-   <html>
-   <head>
-       <title>This is a test HTML email</title>
-   </head>
-   <body>
-       <p>Below are the details from the contatc us form.</p>
-
-       <p>Name: {$data['name']}</p>
-       <p>Email: {$data['email']}</p>
-       <p>Email: {$data['phone']}</p>
-       <p>Comment: {$data['comment']}</p>
-   </body>
-   </html>
+        $message = "<p>Below are the details from the contact us form.</p>
+        <p>Name: {$data['name']}</p>
+        <p>Email: {$data['email']}</p>
+        <p>Email: {$data['phone']}</p>
+        <p>Comment: {$data['comment']}</p>
    ";
 
         // The content-type header must be set when sending HTML email
