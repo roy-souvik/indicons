@@ -11,6 +11,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "sendgrid/sendgrid": "^8.0",
         "srmklive/paypal": "^3.0"
     },
     "require-dev": {
