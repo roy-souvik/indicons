@@ -1,6 +1,106 @@
-    @extends('layouts.indicons.main-layout')
+       @extends('layouts.indicons.main-layout')
     @section('content')
+	
+	
+	<style>
+		.form-control:focus {
+		border-color: #4aba70; 
+	}
+	.login-form {
+ 
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+    .login-form form {
+border-radius: 1px;
+     background: #9152f8;
+    background: -webkit-linear-gradient(top,#7579ff,#b224ef);
+ 
+    border: 1px solid #f3f3f3;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+    padding: 30px;
+ 
+    color: #ffff;
+    width: 640px;
+    margin: auto;
+	}
+	
+	.login-form h4 {
+text-align: center;
+    font-size: 31px;
+    margin-bottom: 20px;
+	}
+    .login-form .avatar {
+        color: #fff;
+		margin: 0 auto 30px;
+        text-align: center;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #4aba70;
+		padding: 15px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+    .login-form .avatar i {
+        font-size: 62px;
+    }
+    .login-form .form-group {
+        margin-bottom: 20px;
+    }
+	.login-form .form-control, .login-form .btn {
+		min-height: 40px;
+		border-radius: 2px; 
+        transition: all 0.5s;
+	}
+	.login-form .close {
+        position: absolute;
+		top: 15px;
+		right: 15px;
+	}
+	.login-form .btn {
+    background: #000000;
+    border: none;
+    line-height: normal;
+    border-radius: 25px;
+    padding: 10px 60px;
+    margin: auto;
+    display: table;
+}
+	}
+	.login-form .btn:hover, .login-form .btn:focus {
+		background: #42ae68;
+	}
+    .login-form .checkbox-inline {
+        float: left;
+    }
+    .login-form input[type="checkbox"] {
+        margin-top: 2px;
+    }
+    .login-form .forgot-link {
+        float: right;
+    }
+    .login-form .small {
+        font-size: 13px;
+    }
+    .login-form a {
+        color: #4aba70;
+    }
+	
+	</style>
+	
     <div class="title">Registration</div>
+	
+	
+	<div style="background: #df0000;
+    color: #fff;
+    text-align: center;
+    display: table;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 21px;
+    border: 1px solid;;">Regristration will start 01.11.2022 </div>
+	
 
     <div class="reg-table">
         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
@@ -10,7 +110,7 @@
             </tr>
             <tr style="background:#5b8cef; color:#fff;">
                 <td colspan="2" scope="col"> Registration Category &#13; </td>
-                <td width="16%" scope="col"> Early bird Registration<br> (up to 30.11.22)&#13; </td>
+                <td width="16%" scope="col"> Early bird Registration<br> (up to 15.12.22)&#13; </td>
                 <td width="14%" scope="col">Late registration
                     <br>
                     (up to 15.01.23)
@@ -23,13 +123,13 @@
             <tr style="background: #002878;color: #fff;">
                 <td width="23%" rowspan="3" scope="col"> Full Registration&#13; </td>
                 <td width="19%" scope="col"> VAI members&#13; </td>
-                <td scope="col"> 8000 INR&#13; </td>
                 <td scope="col"> 10000 INR&#13; </td>
+                <td scope="col"> 11000 INR&#13; </td>
                 <td scope="col"> 12000 INR&#13; </td>
             </tr>
             <tr style="background: #002878;color: #fff;">
                 <td scope="col"> Non VAI members &#13; </td>
-                <td scope="col"> 9000 INR&#13; </td>
+                <td scope="col"> 11000 INR&#13; </td>
                 <td scope="col"> 12000 INR&#13; </td>
                 <td scope="col"> 15000 INR&#13; </td>
             </tr>
@@ -42,23 +142,44 @@
             <tr style="background: #5b8cef;color: #fff;">
                 <td scope="col"> Accompanying person <br />
                     (applied ONLY in case of full registration)&#13; </td>
-                <td colspan="4" scope="col"> 8000 INR or 120 USD&#13; </td>
+                <td colspan="4" scope="col"> 10000 INR or 120 USD&#13; </td>
             </tr>
 
             <tr style="background: #002878;color: #fff;">
                 <td width="23%" rowspan="4" scope="col"> Subsidized Registration&#13; </td>
                 <td width="19%" scope="col"> Nurses / Paramedics </td>
-                <td scope="col"> 2000 INR&#13; </td>
                 <td scope="col"> 3000 INR&#13; </td>
+                <td scope="col"> 4000 INR&#13; </td>
                 <td scope="col"> 5000 INR&#13; </td>
             </tr>
             <tr style="background: #002878;color: #fff;">
                 <td scope="col"> Students &#13; </td>
-                <td scope="col"> 2000 INR&#13; </td>
                 <td scope="col"> 3000 INR&#13; </td>
+                <td scope="col"> 4000 INR&#13; </td>
                 <td scope="col"> 5000 INR&#13; </td>
             </tr>
         </table>
+		
+		
+		<h2>FULL REGISTRATION INCLUDES </h2>
+		
+<ul>
+<li> Access to the congress sessions. </li>
+<li>Access to all workshops.</li>
+<li>Access to the industry exhibition and poster area.</li>
+<li>Congress bag.</li>
+
+ 
+<li>Access to congress abstracts.</li>
+<li>Electronic book</li>
+
+
+<li> <span style="text-transform: uppercase;
+    ">  <strong> Subsidised regristration :</strong> does not include  cultural events and gala dinner.  </span></li>
+</ul> 
+<br />
+
+		
     </div>
 
     @if ($errors->any())
@@ -70,8 +191,44 @@
         </ul>
     </div>
     @endif
+	
+	
+	
+	<div class="row">
+	
+	 <div class="login-form">    
+    <form action="" method="post">
+ 
+    	<h4 class="modal-title">Be in touch leave your detail</h4>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Name" required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Phone" required="required">
+        </div>
+		
+ 
+		        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email" required="required">
+        </div>
+		
+          
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Submit">              
+    </form>			
+ 
+</div>
+	
+ 
+	
+	 	</div>	
+	
+	
+	
+	
+		      <img  src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
+	
 
-    <form method="POST" action="/registration" enctype="multipart/form-data">
+    <?php /*?><form method="POST" action="/registration" enctype="multipart/form-data">
         @csrf
         <div class="user__details">
             <div class="input__box">
@@ -415,7 +572,7 @@
         <div class="button">
             <input type="submit" value="Register" />
         </div>
-    </form>
+    </form><?php */?>
 
     <script>
         $(function() {

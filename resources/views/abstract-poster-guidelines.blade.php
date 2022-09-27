@@ -69,15 +69,15 @@ included in your poster is necessary. </p>
 <li> Keep line spacing consistent.</li>
 <li>Keep the color, style, and thickness of borders the same.</li>
 <li>Keep shading consistent.</li>
-<li>Pick no more than 2–3 fonts</li>
-<li> Pick no more than 2–3 colors</li>
+<li>Pick no more than 2-3 fonts</li>
+<li> Pick no more than 2-3 colors</li>
 <li>Test readability</li>
 <li>Title banner should be legible from 20 feet away.</li>
 <li>Body text should legible from 6 feet away</li>
 </ul>
 
 
-
+	      <img  src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
 
 </div>
 

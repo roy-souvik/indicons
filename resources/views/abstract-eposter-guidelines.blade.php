@@ -57,6 +57,9 @@
     <td align="center" valign="top"><p>5 video</p></td>
   </tr>
 </table>
+
+
+	      <img  src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
 </div>
 
 @stop

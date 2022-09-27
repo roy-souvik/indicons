@@ -142,6 +142,14 @@ Organising committee will award a number of young investigators* in recognition 
 
 All accepted abstracts will be eligible for the <strong>Outstanding Abstract Awards</strong>. The organizing committee will identify a number of abstracts with the highest scores from all the submitted abstracts. There will be no age restriction.
 
+
+
+ 
+	      <img  src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
+ 
+
+
+
 </div>
 </div>
 

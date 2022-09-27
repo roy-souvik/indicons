@@ -1,4 +1,4 @@
-@extends('layouts.indicons.main-layout')
+     @extends('layouts.indicons.main-layout')
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
@@ -20,7 +20,27 @@
 <div class="flex-cont">
 
 <h1>ITC Sonar </h1>
-<p> Luxury Hotel in Kolkata </p>
+<p> 1, JBS Haldane Ave, Tangra, Kolkata, West Bengal 700046</p>
+
+ 
+ 
+
+
+
+
+
+
+
+
+<a  data-bs-toggle="modal" data-bs-target="#exampleModal"  style="    background: #eeeeee;
+    box-shadow: 0px 2px 3px rgb(0 0 0 / 40%);
+    color: #000;
+    border: none;
+    display: block;
+    width: 170px;
+    margin: 0px auto;
+    font-weight: 600;" href="#" class="btn btn-primary">View Map <svg style="width: 14px;
+    margin-left: 4px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 132.3"><path fill="#1a73e8" d="M60.2 2.2C55.8.8 51 0 46.1 0 32 0 19.3 6.4 10.8 16.5l21.8 18.3L60.2 2.2z"></path><path fill="#ea4335" d="M10.8 16.5C4.1 24.5 0 34.9 0 46.1c0 8.7 1.7 15.7 4.6 22l28-33.3-21.8-18.3z"></path><path fill="#4285f4" d="M46.2 28.5c9.8 0 17.7 7.9 17.7 17.7 0 4.3-1.6 8.3-4.2 11.4 0 0 13.9-16.6 27.5-32.7-5.6-10.8-15.3-19-27-22.7L32.6 34.8c3.3-3.8 8.1-6.3 13.6-6.3"></path><path fill="#fbbc04" d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3"></path><path fill="#34a853" d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2"></path></svg> </a>
 
 </div>
 
@@ -59,25 +79,131 @@
 
 	<div class="inner-pg-box">
 
-	<h4> Dates </h4>
+<table style="width:100%;" border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="301" valign="top"><p>Opening of    Registration</p></td>
+    <td width="301" valign="top"><p>01-11-2022</p></td>
+  </tr>
+  <tr>
+    <td width="301" valign="top"><p>Last date of    Early Bird Registration</p></td>
+    <td width="301" valign="top"><p>15-12-2022</p></td>
+  </tr>
+  
+    <tr>
+    <td width="301" valign="top"><p>Last date of Late Registration</p></td>
+    <td width="301" valign="top"><p>15-01-2023</p></td>
+  </tr>
+  
+  
+  <tr>
+    <td width="301" valign="top"><p>Spot Registration </p></td>
+    <td width="301" valign="top"><p>16-01-2023 onwards</p></td>
+  </tr>
+  <tr>
+    <td width="301" valign="top"><p>Beginning of    Abstract Submission</p></td>
+    <td width="301" valign="top"><p>20-10-2022</p></td>
+  </tr>
+  <tr>
+    <td width="301" valign="top"><p>Last date of    Abstract Submission</p></td>
+    <td width="301" valign="top"><p>25-12-2022</p></td>
+  </tr>
+  <tr>
+    <td width="301" valign="top"><p>Acceptance/Rejection    Notification </p></td>
+    <td width="301" valign="top"><p>31-12-2022</p></td>
+  </tr>
+  <tr>
+    <td width="301" valign="top"><p>Presentation/Poster    Presentation</p></td>
+    <td width="301" valign="top"><p>At Conference </p></td>
+  </tr>
+</table>
+ 
 	</div>
 
 
 <h2>About kolkata</h2>
  <div class="inner-pg-box">
 
- <p>Raja Rammohan Roy Smriti Mandir precincts Radhanagar, Hooghly, Residential Building of Raja Rammohan Roy and Precincts at Raghunathpur, Hooghly and Circarena Theatre Kolkata. </p>
+ <p> 
+ 
+ 
+ Kolkata, Bengali Kalikata, previously Calcutta, city, capital of West Bengal state, and previous capital (1772-1911) of English India. It is perhaps of India's biggest city and one of its significant ports. The city is focused on the east bank of the Hugli (Hooghly) Stream, when the principal channel of the Ganges (Ganga) Stream, around 96 miles (154 km) upstream from the top of the Narrows of Bengal; there the port city created as a place of parcel from water to land and from stream to the ocean. A city of trade, transport, and production, Kolkata is the prevailing metropolitan focus of eastern India. </p>
+ <p> 
+The city's previous name, Calcutta, is an Anglicized adaptation of the Bengali name Kalikata. From certain perspectives, Kalikata is gotten from the Bengali word Kalikshetra, signifying "Ground of (the goddess) Kali." Some say the city's name gets from the area of its unique settlement on the bank of a channel (khal). A third assessment follows it to the Bengali words for lime (calcium oxide; kali) and consumed shell (customized organization), since the area was noted for the production of shell lime. In 2001 the public authority of West Bengal authoritatively changed the name of the city to Kolkata. Region city, 40 square miles (104 square km); metropolitan agglom., 533 square miles (1,380 square km). Pop. (2011) 4,486,679; metropolitan agglom., 14,057,991.
+ 
+ </p>
 		</div>
 
 
 
 
 
-<h2>Travel to kolkata	</h2>
+<h2  id="travel">Travel to kolkata	</h2>
 
  <div class="inner-pg-box">
 
- <p>Raja Rammohan Roy Smriti Mandir precincts Radhanagar, Hooghly, Residential Building of Raja Rammohan Roy and Precincts at Raghunathpur, Hooghly and Circarena Theatre Kolkata. </p>
+<div class="row">
+
+
+<div class="col-md-5">
+<img src="indicons/images/plane.webp" style="max-width:100%;">
+</div>
+
+<div class="col-md-7">
+<h3> By Plane
+</h3>
+<p style="text-align:justify">
+Netaji Subhash Chandra Bose International Airport (IATA: CCU) connects Kolkata with South East Asia and receives some flights from Europe. Most of the traffic towards Western hemisphere is handled by Emirates(Twice Daily) and Qatar Airways. New operators are coming soon. The domestic terminal, on the other hand, is among the best in India. It has undergone a major face-lift and expansion including a swanky new terminal,night landing facilities,etc to cope with the expanding bulk of air traffic and new airline companies popping up almost every month.
+
+From the airport prepaid taxis, Ola and Uber are available.
+
+
+</p>
+</div>
+
+<hr />
+
+
+<div class="col-md-7">
+<h3>By Train
+</h3>
+<p style="text-align:justify">
+There are two major railway stations in Kolkata - Howrah (not in Kolkata actually, it's in the adjoining city Howrah) and Sealdah. A new terminus station called 'Kolkata' has also started functioning since 2005, but presently it accommodates very few trains.
+
+Kolkata is well connected by rail to almost all the big stations in India and also serves as the gateway to the North Eastern India. If you are coming to Kolkata by trains using Sealdah station, you may prefer taking a pre-paid taxi to enter the city. The pre-paid taxi stand is just outside the station's main entrance. The counter is under a tin shade. Pre-paid taxis are reliable and will save you money and also the bargaining hassle. However beware of touts who would claim themselves to be running pre-paid taxis. Always collect the receipt from the counter first. The receipt has two parts - one part is for your reference and the other part you will need to handover to the taxi driver only after you reach your desired destination. The Taxi driver will get his payment by submitting or producing this other part to the Pre-paid Taxi counter.
+
+
+</p>
+</div>
+
+<div class="col-md-5">
+<img src="indicons/images/train.jpg" style="max-width:100%;">
+</div>
+
+
+<hr />
+
+<div class="col-md-5">
+<img src="indicons/images/taxi.jpg" style="max-width:100%;">
+</div>
+
+<div class="col-md-7">
+<h3> By Car
+</h3>
+<p style="text-align:justify">
+You can find many cabs on the roads or you can always hire one from the numerous taxi stands strewn across the major cities. There are pre paid taxis also available at major railway stations and airports. You can also hire luxury vehicles from certain travel agencies
+
+
+</p>
+</div>
+
+<hr />
+
+
+</div>
+
+
+
+
 		</div>
 
 
@@ -336,8 +462,8 @@ Nicco Park is an amusement park located in JheelMeel, Sector - IV of Bidhannagar
 
 <h2>Vaicon 2023 secretariate	</h2>
   <div class="inner-pg-box">
-
-  </div>
+	      <img src="indicons/images/SECRETARIATE.png" style="width:100%">
+	  </div>
 
 	</div>
 
@@ -409,9 +535,23 @@ $(document).ready(function(){
 </script>
 
 
-
-
-
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ITC SONAR</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d58958.768000902324!2d88.397628!3d22.544557!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2sin!4v1663438237392!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+      </div>
+    </div>
+  </div>
+</div>
 
 
 @stop

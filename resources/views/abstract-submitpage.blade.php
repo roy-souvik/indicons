@@ -1,4 +1,4 @@
-@extends('layouts.indicons.main-layout')
+ @extends('layouts.indicons.main-layout')
 @section('content')
 
 @if (Auth::user())
@@ -103,16 +103,32 @@
 </form>
 
 @else
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
 
-    <!-- Icon -->
+
+
+<div style="background: #df0000;
+    color: #fff;
+    text-align: center;
+    display: table;
+    margin: 60px auto;
+    padding: 10px 20px;
+    font-size: 21px;
+    border: 1px solid;;">Abstract submission will begin from 20.10.2022 </div>
+
+
+
+
+	      <img  src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
+
+
+<div class="wrapper fadeInDown">
+  <?php /*?><div id="formContent">
+ 
     <div class="fadeIn first">
  <h2> Submit Abstract </h2>
     </div>
 
-    <!-- Login Form -->
+ 
    <a href="/registration" class="btn btn-primary btn-lg"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                 <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
@@ -126,13 +142,10 @@
             </svg> Login to submit an abstract</a>
 
 
+ 
 
 
-
-    <!-- Remind Passowrd -->
-
-
-  </div>
+  </div><?php */?>
 </div>
 
 

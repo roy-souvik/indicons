@@ -29,7 +29,7 @@ class RegistrationController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:5120'],
             'phone' => ['required', 'max:20', 'unique:users'],
-            // 'company' => [],
+            'company' => ['string', 'filled'],
             'postal_code' => ['required'],
             'city' => ['required'],
             'country' => ['required'],
@@ -69,6 +69,10 @@ class RegistrationController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        if ($request->input('module') === 'abstract') {
+            return redirect(route('abstract.dates'));
+        }
 
         return redirect(route('payment.show'));
     }

@@ -1,7 +1,13 @@
- @extends('layouts.indicons.main-layout')
+   @extends('layouts.indicons.main-layout')
 @section('content')
 
 @include('partials.sponsorship-styles')
+
+<style>
+.sponsor-table .btn{    background: #296dc4!important;
+
+}
+</style>
 
 <div class="reg-table">
     <div style="font-size: 24px!important; background:none!important;" class="title">SPONSORSHIP</div>
@@ -15,8 +21,8 @@
     </button>
 </div>
 
-<div>
-    <div class="row">
+ <div>
+<?php /*?>    <div class="row">
         <div class="col-md-6">
             <h3 class="mt-4">Sponsorships</h3>
             <div>
@@ -46,7 +52,7 @@
 
 
                     @auth
-                    <button style="background:#f32f30!important;" data-id={{$sponsorship->id}} class="btn btn-link add-to-cart">
+                    <button style="background:#296dc4!important;" data-id={{$sponsorship->id}} class="btn btn-link add-to-cart">
                         Book Now
                     </button>
                     @endAuth
@@ -103,7 +109,7 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div><?php */?>
 
     @include('partials.sponsorship-compact')
 
@@ -160,7 +166,7 @@
     @endauth
 
     @guest
-    <div class="demo">
+    <?php /*?><div class="demo">
         <div class="container">
             <div class="log-box">
                 <div class="row">
@@ -221,16 +227,20 @@
 
                             <div class="flex items-center justify-end mt-4">
                                 <p class="mt-4">Already Registered?</p>
-                                <a style="background: #f32f30!important;" class="btn btn-link" href="/login">Login to continue</a>
+                                <a style="background: #296dc4!important;" class="btn btn-link" href="/login">Login to continue</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div><?php */?>
+	
+	
+	      <img  src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
+	
     @endguest
-</div>
+</div> 
 
 <script>
     $(function() {

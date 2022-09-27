@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+      <!DOCTYPE html>
      <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
      <head>
@@ -166,7 +166,7 @@
                  <div class="row">
 
                      <div class="col-md-3">
-                         <a href="#" class="top-box-main">
+                         <a href="/accommodation" class="top-box-main">
                              <img src="indicons/images/sponsor-im1.jpg" style="height:312px; width:253px;">
                              <h2> ACCOMMODATION </h2>
                          </a>
@@ -180,14 +180,14 @@
                      </div>
 
                      <div class="col-md-3">
-                         <a href="#" class="top-box-main">
+                         <a  href="/conference"  class="top-box-main">
                              <img src="indicons/images/im2.png">
                              <h2> SPEAKERS </h2>
                          </a>
                      </div>
 
                      <div class="col-md-3">
-                         <a href="#" class="top-box-main">
+                         <a    href="/information#travel"  class="top-box-main">
                              <img src="indicons/images/im3.png">
                              <h2> TRAVEL TO KOLKATA </h2>
                          </a>
@@ -461,3 +461,4 @@
      </body>
 
      </html>
+
