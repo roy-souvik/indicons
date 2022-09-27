@@ -204,25 +204,29 @@
 
        <div class="row">
            <div style="position: relative;">
-           @include('partials.countdown')
+               @include('partials.countdown')
            </div>
 
            <div class="login-form">
-               <form action="" method="post">
+               <form action="/contact-us" method="POST">
+               @csrf
 
                    <h4 class="modal-title">Be in touch leave your detail</h4>
                    <div class="form-group">
-                       <input type="text" class="form-control" placeholder="Name" required="required">
+                       <input type="text" name="name" class="form-control" placeholder="Name" required="required">
                    </div>
-                   <div class="form-group">
-                       <input type="text" class="form-control" placeholder="Phone" required="required">
-                   </div>
-
 
                    <div class="form-group">
-                       <input type="text" class="form-control" placeholder="Email" required="required">
+                       <input type="text" name="phone" class="form-control" placeholder="Phone" required="required">
                    </div>
 
+                   <div class="form-group">
+                       <input type="email" name="email" class="form-control" placeholder="Email" required="required">
+                   </div>
+
+                   <div class="form-group">
+                       <textarea name="comment" class="form-control" cols="50" rows="5"></textarea>
+                   </div>
 
                    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
                </form>
@@ -580,7 +584,7 @@
 
        <script>
            $(function() {
-                addCountdownTimer();
+               addCountdownTimer();
                const $vaiconMemberInput = $('#vaicon_member_id');
 
                $('#is_vaicon_member').change(function() {

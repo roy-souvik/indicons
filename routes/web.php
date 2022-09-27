@@ -90,6 +90,8 @@ Route::get('/nurses', function () {
     return view('nurses');
 })->name('nurses.home');
 
+Route::post('/contact-us', [RegistrationController::class, 'contactUsEmail'])->name('contactus.send');
+
 Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->name('sponsorship.show');
 
 Route::post('/registration', [RegistrationController::class, 'register']);

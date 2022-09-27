@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AbstractUpdated;
+use App\Mail\ContactUs;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
 use App\Models\Role;
@@ -162,5 +163,28 @@ class RegistrationController extends Controller
             'workshopPrice',
             'workshops',
         ));
+    }
+
+    public function contactUsEmail(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:100', new AlphaSpace],
+            'email' => ['required', 'string', 'email', 'max:200'],
+            'phone' => ['required', 'max:20'],
+            'comment' => ['string', 'max:500'],
+        ]);
+
+        $requestData = $request->only([
+            'name',
+            'email',
+            'phone',
+            'comment',
+        ]);
+
+        Mail::to('secretary@vaicon2023.com')->send(new ContactUs($requestData));
+
+        return redirect()->back()->with([
+            'success' => 'Sponsorship deleted successfully',
+        ]);
     }
 }
