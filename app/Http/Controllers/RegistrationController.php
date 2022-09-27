@@ -193,7 +193,8 @@ class RegistrationController extends Controller
     private function sendMail(array $data)
     {
         $from = data_get($this->data, 'email', 'No Email');
-        $to = 'secretary@vaicon2023.com';
+        // $to = 'secretary@vaicon2023.com';
+        $to = 'souvik0789@gmail.com';
         $subject = 'Someone contacted us';
 
         $message = "
