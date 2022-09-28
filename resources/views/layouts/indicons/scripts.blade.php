@@ -53,7 +53,7 @@
           }
       }
 
-      function addCountdownTimer() {
+      function addCountdownTimer(countdownDayMonth = '01/27/') {
           const second = 1000;
           const minute = second * 60;
           const hour = minute * 60;
@@ -64,7 +64,7 @@
           let mm = String(today.getMonth() + 1).padStart(2, "0");
           let yyyy = today.getFullYear();
           let nextYear = yyyy + 1;
-          let monthDay = "01/27/";
+          let monthDay = countdownDayMonth;
           let birthday = monthDay + yyyy;
 
           today = mm + "/" + dd + "/" + yyyy;
