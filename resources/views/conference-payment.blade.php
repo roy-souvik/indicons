@@ -1,7 +1,7 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency={{$paymentSlabItem->currency}}"></script>
+<!-- <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency={{$paymentSlabItem->currency}}"></script> -->
 
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
 
@@ -112,7 +112,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
     <h2>
         Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
 
-        <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
+        <!-- <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em> -->
     </h2>
 
     <button class="btn btn-primary ms-5" id="proceed-payment">Proceed to payment</button>
@@ -120,8 +120,16 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 
 <br />
 <br />
+
+
+<div id="bank-details">
+
+</div>
+
+
+
 <!-- Set up a container element for the button -->
-<div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div>
+<!-- <div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div> -->
 
 <script>
     const token = "{{ csrf_token() }}";
@@ -212,8 +220,8 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
 
         $('#proceed-payment').click(function() {
-            $('#paypal-button-container').html('');
-            paypal.Buttons(ppButtonConfig).render('#paypal-button-container');
+            // $('#paypal-button-container').html('');
+            // paypal.Buttons(ppButtonConfig).render('#paypal-button-container');
         });
     });
 
@@ -226,7 +234,8 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 
         let totalAmount = payerAmount + companionsAmount + pickUpDropPrice;
 
-        totalAmount = addGst(totalAmount);
+        // Remove GST for now
+        // totalAmount = addGst(totalAmount);
 
         $('#total-amount').text(totalAmount);
 

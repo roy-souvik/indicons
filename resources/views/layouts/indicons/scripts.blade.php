@@ -65,15 +65,15 @@
           let yyyy = today.getFullYear();
           let nextYear = yyyy + 1;
           let monthDay = countdownDayMonth;
-          let birthday = monthDay + yyyy;
+          let eventDay = monthDay + yyyy;
 
           today = mm + "/" + dd + "/" + yyyy;
 
-          if (today > birthday) {
-              birthday = monthDay + nextYear;
+          if (today > eventDay) {
+              eventDay = monthDay + nextYear;
           }
 
-          const countDown = new Date(birthday).getTime();
+          const countDown = new Date(eventDay).getTime();
 
           const x = setInterval(function() {
               const now = new Date().getTime(),

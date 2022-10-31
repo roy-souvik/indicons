@@ -21,7 +21,7 @@ class PaymentController extends Controller
     public function showConferencePaymentPage()
     {
         $registrationTypeAuth = [
-            'is_early_bird' => !Carbon::createFromFormat('Y-m-d', '2022-10-31')->isPast(),
+            'is_early_bird' => !Carbon::createFromFormat('Y-m-d', '2022-12-15')->isPast(),
             'is_standard' => !Carbon::createFromFormat('Y-m-d', '2023-01-15')->isPast(),
             'is_spot' => true,
         ];
