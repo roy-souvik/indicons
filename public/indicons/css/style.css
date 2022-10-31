@@ -628,10 +628,14 @@ color: #296dc4;
     text-align: justify;
 }
 
+.logo{
+margin-top:6px;
+}
 
 .social{
 text-align: right;
     float: right;
+	margin-top:20px;
 }
 
 .social a{  color: #fff;
@@ -1766,6 +1770,7 @@ background:none!important;
 }
 #cards_landscape_wrap-2 .card-flyer .text-box .text-container{
   padding: 30px 18px;
+  position:relative;
 }
 #cards_landscape_wrap-2 .card-flyer{
   background: #FFFFFF;
@@ -1807,7 +1812,10 @@ background:none!important;
 }
 
 
-
+#cards_landscape_wrap-2 .card-flyer .text-box svg{    width: 20px;
+    position: absolute;
+    top: -45px;
+}
 
 
 
@@ -1969,12 +1977,129 @@ padding: 20px;
 
 
 
+ .accmd-box{
+   background: rgba(255,255,255,.7);
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 30px;    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+	position:relative;
+}
+ .accmd-box img{
+    max-width: 100%;
+    position: relative;
+    z-index: 99;
+ 
+ }
+
+  .accmd-box h2{margin: 0px;
+    font-size: 26px;
+    color: #000;
+  }	  
+    .accmd-box h5{
+  }	 
+  
+.accmd-box::before {
+    background: #FF9671;
+    width: 80px;
+    height: 120px;
+    bottom: 0;
+    clip-path: polygon(0 100%,40% 0,100% 100%);
+	    content: "";
+    position: absolute;
+    right: 0;
+}
 
 
+.accmd-box::after {
+    background: #FFC75F;
+    width: 100px;
+    height: 100%;
+    top: 0;
+    clip-path: polygon(0 0,100% 0,100% 100%,80% 100%);
+	    content: "";
+    position: absolute;
+    right: 0;
+}
+ .accmd-box table{ 
+  border: 1px solid #e2e2e2;
+    position: relative;
+    z-index: 99;
+	}
+ .accmd-box th{padding: 6px;
+    text-align: center;
+ } 
+ 
+  .accmd-box td{    font-size: 17px;
+    text-align: center;
+  }
+
+.btn-close-modal{position: absolute;
+    z-index: 99;
+    opacity: 12;
+    color: red;
+    top: 4px;
+    right: 6px;
+}
 
 
-
-
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.ticker-wrap {
+ 
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+background-color:#fff;
+  padding-left: 100%;
+  text-transform:uppercase;
+}
+.ticker-wrap  strong{color: #00236a!important;
+    font-weight: 800;
+}
+.ticker {
+  display: inline-block;
+  height: auto;
+  line-height:inherit;
+  white-space: nowrap;
+  padding-right: 100%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 30s;
+  animation-duration: 30s;
+    text-transform:uppercase;
+}
+.ticker_item {
+display: inline-block;
+    padding: 1px 2rem;
+    font-size: 20px;
+    color: #145300;
+    font-weight: 800;
+}
 
 
 
@@ -1982,7 +2107,12 @@ padding: 20px;
 
 
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
- .top-box-main {
+
+.reg-table br{
+display:none;
+}
+
+.top-box-main {
     height: 260px;
     top: 0px;
     margin: 10px auto;
@@ -1994,14 +2124,55 @@ padding: 20px;
 #countdown {
     text-align: center!important;
     margin-bottom: 40px!important;
-    background: #b50303!important;
+ 
     display: table!important;
     margin: 0px auto!important;
-    padding: 15px 20px!important;
+    padding: 15px 0px!important;
     border-radius: 0px!important;
     position: relative!important;
     top: 0px!important;
 }
+
+.top-box-bottom-main{ margin-top: 80px!important;
+padding: 30px 30px 20px 50px!important;
+
+}
+.top-bpx-bottom-img{
+position:static;
+}
+
+.box-bottom-a-box{
+position: relative;
+    top: 0px;
+}
+
+
+.top-box-bottom-main {
+    text-align: center;
+    background: #fff;
+    padding: 30px 30px 20px 50px!important;
+    position: relative;
+    margin-top: 20px!important;
+    margin-bottom: 0px;
+    border-radius: 50px;
+	
+}	
+
+.top-box-bottom {
+    padding: 0px 0px 30px 0px;
+}
+
+nav .navbar{ z-index: 99999;
+}
+
+.reg-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.inner-page td{font-size: 12px;
+}
+
 #countdown  ul{
 padding:0px!important;
 margin:0px!important;
@@ -2022,11 +2193,15 @@ font-size: 16px!important;
 	padding:0px 5px!important;
 }
 
-
  }
 @media only screen and (min-width: 768px) and (max-width: 999px){
 
-	.top-box-main {
+
+.reg-table br{
+display:none;
+}
+
+.top-box-main {
     height: 260px;
     top: 0px;
     margin: 10px auto;
@@ -2038,14 +2213,55 @@ font-size: 16px!important;
 #countdown {
     text-align: center!important;
     margin-bottom: 40px!important;
-    background: #b50303!important;
+ 
     display: table!important;
     margin: 0px auto!important;
-    padding: 15px 20px!important;
+    padding: 15px 0px!important;
     border-radius: 0px!important;
     position: relative!important;
     top: 0px!important;
 }
+
+.top-box-bottom-main{ margin-top: 80px!important;
+padding: 30px 30px 20px 50px!important;
+
+}
+.top-bpx-bottom-img{
+position:static;
+}
+
+.box-bottom-a-box{
+position: relative;
+    top: 0px;
+}
+
+
+.top-box-bottom-main {
+    text-align: center;
+    background: #fff;
+    padding: 30px 30px 20px 50px!important;
+    position: relative;
+    margin-top: 20px!important;
+    margin-bottom: 0px;
+    border-radius: 50px;
+	
+}	
+
+.top-box-bottom {
+    padding: 0px 0px 30px 0px;
+}
+
+nav .navbar{ z-index: 99999;
+}
+
+.reg-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.inner-page td{font-size: 12px;
+}
+
 #countdown  ul{
 padding:0px!important;
 margin:0px!important;
@@ -2070,7 +2286,11 @@ font-size: 16px!important;
 
 @media only screen and (min-width: 480px) and (max-width: 767px){
 
-	 .top-box-main {
+.reg-table br{
+display:none;
+}
+
+.top-box-main {
     height: 260px;
     top: 0px;
     margin: 10px auto;
@@ -2082,14 +2302,55 @@ font-size: 16px!important;
 #countdown {
     text-align: center!important;
     margin-bottom: 40px!important;
-    background: #b50303!important;
+ 
     display: table!important;
     margin: 0px auto!important;
-    padding: 15px 20px!important;
+    padding: 15px 0px!important;
     border-radius: 0px!important;
     position: relative!important;
     top: 0px!important;
 }
+
+.top-box-bottom-main{ margin-top: 80px!important;
+padding: 30px 30px 20px 50px!important;
+
+}
+.top-bpx-bottom-img{
+position:static;
+}
+
+.box-bottom-a-box{
+position: relative;
+    top: 0px;
+}
+
+
+.top-box-bottom-main {
+    text-align: center;
+    background: #fff;
+    padding: 30px 30px 20px 50px!important;
+    position: relative;
+    margin-top: 20px!important;
+    margin-bottom: 0px;
+    border-radius: 50px;
+	
+}	
+
+.top-box-bottom {
+    padding: 0px 0px 30px 0px;
+}
+
+nav .navbar{ z-index: 99999;
+}
+
+.reg-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.inner-page td{font-size: 12px;
+}
+
 #countdown  ul{
 padding:0px!important;
 margin:0px!important;
@@ -2114,6 +2375,18 @@ font-size: 16px!important;
 
 
 @media only screen and (max-width: 479px){
+#countdown ul {
+    padding: 0px!important;
+	}
+
+.inner-count{
+}
+
+
+.reg-table br{
+display:none;
+}
+
 .top-box-main {
     height: 260px;
     top: 0px;
@@ -2126,14 +2399,55 @@ font-size: 16px!important;
 #countdown {
     text-align: center!important;
     margin-bottom: 40px!important;
-    background: #b50303!important;
+ 
     display: table!important;
     margin: 0px auto!important;
-    padding: 15px 20px!important;
+    padding: 15px 0px!important;
     border-radius: 0px!important;
     position: relative!important;
     top: 0px!important;
 }
+
+.top-box-bottom-main{ margin-top: 80px!important;
+padding: 30px 30px 20px 50px!important;
+
+}
+.top-bpx-bottom-img{
+position:static;
+}
+
+.box-bottom-a-box{
+position: relative;
+    top: 0px;
+}
+
+
+.top-box-bottom-main {
+    text-align: center;
+    background: #fff;
+    padding: 30px 30px 20px 50px!important;
+    position: relative;
+    margin-top: 20px!important;
+    margin-bottom: 0px;
+    border-radius: 50px;
+	
+}	
+
+.top-box-bottom {
+    padding: 0px 0px 30px 0px;
+}
+
+nav .navbar{ z-index: 99999;
+}
+
+.reg-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.inner-page td{font-size: 12px;
+}
+
 #countdown  ul{
 padding:0px!important;
 margin:0px!important;
