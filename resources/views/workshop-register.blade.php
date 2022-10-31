@@ -117,14 +117,14 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
         $(function() {
             const ppButtonConfig = {
                 createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            'value': {{$totalWorkshopPrice}}
-                        }
-                    }]
-                });
-            },
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                'value': {{$totalWorkshopPrice}}
+                            }
+                        }]
+                    });
+                },
 
                 // Finalize the transaction
                 onApprove: function(data, actions) {

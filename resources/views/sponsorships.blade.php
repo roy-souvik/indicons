@@ -7,21 +7,205 @@
 .sponsor-table .btn{    background: #296dc4!important;
 
 }
+
+
+.arrowBox{
+      position: relative;
+    width: 100%;
+    background: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+    height: auto;
+    line-height: 40px;
+    margin-bottom: 21px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 14px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 1%), 0 3px 5px -1px rgb(0 0 0 / 10%);
+}
+.arrowBox span{
+}
+.arrowBox a{
+  color:#fff;
+}
+
+/*top arrow*/
+
+.arrow-top:before{
+  position: absolute;
+  top: -10px;
+  left:50%;
+  margin-left: -10px;
+  content:"";
+  display:block;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #0085D1; 
+}
+
+/*bottom arrow*/
+
+.arrow-bottom:after{
+  position: absolute;
+  bottom: -10px;
+  left:50%;
+  margin-left: -10px;
+  content:"";
+  display:block;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #0085D1; 
+}
+
+/*right arrow*/
+
+.arrow-right:after{
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 0;
+ 
+}
+
+/*left arrow*/
+
+.arrow-left:before{
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #0085D1; 
+}
+
+.spon-scl{
+}
+
+
+.spon-scl select{    background: linear-gradient(45deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+    color: #fff;
+    padding: 6px;
+}
+
+.spon-scl option{background: #002056;
+    color: #fff;
+}
 </style>
 
 <div class="reg-table">
-    <div style="font-size: 24px!important; background:none!important;" class="title">SPONSORSHIP</div>
+    <div style="font-size: 24px!important; background:none!important;" class="title">SPONSORSHIP PLANS</div>
 
-    <div class="sponsor-list-bx">
+<?php /*?>    <div class="sponsor-list-bx">
         @include('partials.sponsorship-slab')
-    </div>
+    </div><?php */?>
 
-    <button type="button" class="btn-reg-table" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<!--    <button type="button" class="btn-reg-table" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa-solid fa-arrows-from-line"></i> Compact View
-    </button>
+    </button>--><br />
+<br />
+<br />
+
 </div>
 
  <div>
+ 
+ 
+<div class="spon-scl"> 
+ 
+<div class="row">
+
+
+<div class="col-md-5">
+
+<div href="#" class="arrowBox arrow-right">TITANIUM  <span>INR  1,000,000 + GST </span></div>
+<div href="#" class="arrowBox arrow-right">PLATINUM  
+ <span>INR 700,000 + GST </span></div>
+ 
+ <div href="#" class="arrowBox arrow-right">DIAMOND  
+ <span>INR  500,000 + GST </span></div>
+ 
+  
+ <div href="#" class="arrowBox arrow-right">GOLD  
+ <span>INR  400,000 + GST </span></div>
+ 
+ 
+   
+ <div href="#" class="arrowBox arrow-right">SILVER   
+ <span>INR  300,000 + GST </span></div>
+ 
+  
+ <div href="#" class="arrowBox arrow-right">BRONZE    
+ <span>INR  200,000 + GST </span></div>
+ 
+ 
+  <p style="color: #000;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 2px;
+    font-weight: 600;">Other Sponsorships </p> 
+ <div href="#" class="arrowBox arrow-right" style="padding:0px;"> 
+
+ <select style="word-wrap: normal;
+    font-size: 15px;
+    width: 100%;
+    font-weight: 600;">
+ 
+ <option> Named hall (main hall) for the entire conference  INR 1,000,000 + GST </option>
+  <option> Named hall (small hall) for the entire conference  INR 500,000 + GST </option>
+    <option> Named poster presentation hall  INR 100,000 + GST </option>
+  
+     <option> Best paper presenter award  INR 100,000 + GST </option> 
+      <option> Named breakfast sessions INR 100,000 + GST </option>  
+	  
+      <option> Named lunch sessions INR 250,000 + GST </option>  	  
+	  
+      <option> Named tea stations INR 100,000 + GST </option>  	  
+      <option> Named dinner events INR 500,000 + GST </option> 	  
+	  
+      <option> Sponsorship ad during scientific session INR 100,000 + GST </option> 	  
+      <option> In hall branding  INR 100,000 + GST </option> 	 	  
+	       <option> Branded Souvenirs INR 150,000 + GST </option> 	 
+	  
+	       <option> Photo zone branding with logo INR 150,000 + GST </option> 	 	  
+	  
+	       <option> Named Mobile charging station INR 150,000 + GST </option> 	  
+	       <option> Conference bag INR 250,000 + GST </option> 	  	  
+	  
+		       <option> Notepad and pen sponsorship INR 100,000 + GST </option> 	  
+	  
+		       <option> Volunteers dress INR 100,000 + GST </option> 		  
+	  
+	  
+	  
+ </select>
+  </div>
+ 
+</div>
+
+<div class="col-md-1"> </div>
+<div class="col-md-6">
+
+
+    <a  target="_blank" href="indicons/images/A4-new-2.pdf"  style="position:relative; display:block;">    
+   <div style="position: absolute;
+    bottom: -1px;
+    background: black; text-decoration:none;
+    right: 10px;
+    padding: 7px;
+    font-weight: 600;" class="transition duration-500 border-0 text-lg h-12 w-36 bg-red-500 hover:bg-red-700 text-white mt-2 px-3 rounded-md">
+       <span>Download</span>
+       <i class='bx bx-down-arrow-alt animate-bounce text-xl'></i></div>
+	      <img  src="indicons/images/spon-pdf.jpg" style="width:100%; margin-top:0px; box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 1%), 0 3px 5px -1px rgb(0 0 0 / 10%);">
+</a></div>
+
+</div>
+
+</div>
+ 
 <?php /*?>    <div class="row">
         <div class="col-md-6">
             <h3 class="mt-4">Sponsorships</h3>

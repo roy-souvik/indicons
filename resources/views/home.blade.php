@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+       <!DOCTYPE html>
       <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
       <head>
@@ -18,6 +18,15 @@
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
 
           <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		  <style>
+		  .modal{
+		  z-index:9999;
+		  }
+		  
+		 .ticker_item{
+			 cursor:pointer;
+		 }
+		  </style>
       </head>
 
       <body>
@@ -61,8 +70,28 @@
           </div>
 
           </div>
+		  
+		 
+		  
 
           <div class="top-box">
+		  
+		  
+		  <div class="ticker-wrap">
+<div class="ticker">
+   <div class="ticker_item"  data-bs-toggle="modal" data-bs-target="#myModal"> <blink> <strong style="color:#FFFF00">Venous association of india  presents</strong> </blink> servier young researchers' award. </div>
+   
+   <div class="ticker_item" data-bs-toggle="modal" data-bs-target="#myModal"> <blink> <strong style="color:#FFFF00">Venous association of india  presents</strong> </blink> servier young researchers' award. </div>
+	  
+	  
+   <div class="ticker_item" data-bs-toggle="modal" data-bs-target="#myModal"> <blink> <strong style="color:#FFFF00">Venous association of india presents</strong> </blink>  servier young researchers' award. </div>
+		 
+		 
+   <div class="ticker_item" data-bs-toggle="modal" data-bs-target="#myModal"> <blink> <strong style="color:#FFFF00">Venous association of india presents</strong> </blink>  servier young researchers' award. </div>
+   
+
+  </div>
+</div>
 
               @include('partials.countdown')
 
@@ -98,7 +127,7 @@
                       </div>
 
                       <div class="col-md-3">
-                          <a href="#" class="top-box-main">
+                          <a href="https://vaicon2023.com/scientific" class="top-box-main">
                               <img src="indicons/images/im1.png">
                               <h2> PROGRAM </h2>
                           </a>
@@ -137,12 +166,12 @@
 
                               <div class="showcase">
 
-                                  <span>It is my great pleasure as the President of Venous Association (VAI) of India to invite you to the 16th annual conference of VAI,
+                                  <span>It is my great pleasure as the President of Venous Association (VAI) of India to invite you to the 16th annual conference of VAI.
                                   </span>
 
                                   <p>
                                       <br>
-                                      <strong>VAICON2023</strong>, which takes place&nbsp;<strong>27 <sup>th </sup> to 29<sup>th </sup> January 2023 at ITC Sonar, Kolkata, India.</strong>&nbsp;VAI as the apex professional body of India for venous and lymphatic diseases associated with other similar professional bodies across the world and having significant representation in UIP. The&nbsp;<strong>VAICON2023</strong>&nbsp;will bring the world&rsquo;s top professionals in venous and lymphatic disease at the same platform, while providing a great opportunity for young vascular specialists to meet, greet, be inspired, encouraged and energised.Kolkata is known for its historic, cultural and educational excellence. First medical college of Asia and city of five Nobel prises really made Kolkata &lsquo;<em>city of joy&rsquo;</em>! <strong>VAICON2023</strong>&nbsp;is a multi-disciplinary platform involving presence from vascular, general and plastic surgery, interventional radiology, vascular medicine and angiology, lymphology, cosmetic surgery, sonography, research and nursing. The<strong> VAICON2023</strong> will provide you a great opportunity to reach a wide range of professionals in all related fields, allowing you to expand into new markets.<br>
+                                      <strong>VAICON2023</strong>, which takes place&nbsp;<strong>27 <sup>th </sup> to 29<sup>th </sup> January 2023 at ITC Sonar, Kolkata, India.</strong>&nbsp;VAI as the apex professional body of India for venous and lymphatic diseases associated with other similar professional bodies across the world and having significant representation in UIP. The&nbsp;<strong>VAICON2023</strong>&nbsp;will bring the world&rsquo;s top professionals in venous and lymphatic disease at the same platform, while providing a great opportunity for young vascular specialists to meet, greet, be inspired, encouraged and energised.Kolkata is known for its historic, cultural and educational excellence. First medical college of Asia and city of five Nobel prizes really made Kolkata &lsquo;<em>city of joy&rsquo;</em>! <strong>VAICON2023</strong>&nbsp;is a multi-disciplinary platform involving presence from vascular, general and plastic surgery, interventional radiology, vascular medicine and angiology, lymphology, cosmetic surgery, sonography, research and nursing. The<strong> VAICON2023</strong> will provide you a great opportunity to reach a wide range of professionals in all related fields, allowing you to expand into new territories.<br>
                                       I have no doubts that the&nbsp;<strong>VAICON2023 </strong><strong>under</strong>&nbsp;the leaderships of&nbsp;<strong>Dr. K. Mukherjee and Dr. Jayanta Das</strong>&nbsp;will be a well-organised, well-attended, grand and glamorous event.<br>
                                       Kolkata is welcoming you with open arms.<br>
                                       See you all in <strong>VAICON2023</strong>, Kolkata.
@@ -170,12 +199,12 @@
                                   Dear Colleagues,<br>
                               <div class="showcase">
 
-                                  <span> It my honor and the greatest of pleasure to invite you to the&nbsp;<strong>16th VAICON2023</strong>, in the&nbsp;&lsquo;<em>city of joy</em>!,&nbsp;<strong>Kolkata</strong> <br>
+                                  <span>  It is my honour and privilege to invite you to <strong>VAICON 2023</strong>, the sixteenth annual conference of the Venous Association of India, in Kolkata. <br>
                                   </span>
 
-                                  <p> The&nbsp;<strong>VAICON2023</strong>, will be held on&nbsp;<strong>27 <sup>th </sup> to 29 <sup>th </sup> January 2023</strong>&nbsp;at ITC Sonar, Kolkata, India. In this international conference, many international specialists will come together and have the opportunity to discuss and exchange opinions on every possible aspect of venous diseases &amp; management along with related matters. I believe that the topics to be addressed in this conference and its impact will make great contributions to our profession, considering the opportunity of the conference and the level of participation.<br>
-                                      Please make sure that you find the time to enjoy one of the most vibrant cities in the World, Kolkata.<br>
-                                      Am confident that conference secretariate, headed by&nbsp;<strong>Dr. Jayanta Das</strong>, will provide you the best support to have a wonderful memory. </p>
+                                  <p> In this international conference many national and global stalwarts will come together. There will be opportunity to discuss and exchange opinions on every possible aspect of venous diseases &amp; management along with related matters. I believe that the topics to be addressed in this conference and its impact will make great contribution  to our profession, considering the opportunity of the conference and the level of participation.<br>
+                                      Please make sure that you find the time to enjoy one of the most vibrant cities in the world, Kolkata.<br>
+                                      Am confident that conference secretariat, headed by&nbsp;<strong>Dr. Jayanta Das</strong>, will provide you with the best support to have a wonderful memory. </p>
                                   <span class="showbutton">Read More </span>
                               </div>
 
@@ -197,11 +226,11 @@
 
                               <div class="showcase">
 
-                                  As the organising secretary, it&rsquo;s my privilege to invite you to the&nbsp;<strong>16 <sup>th </sup> VAICON2023</strong>, in the&nbsp;<strong>&lsquo;</strong><em>city of joy!&rsquo;</em>,&nbsp;<strong>Kolkata</strong> <br>
+                                  As the organising secretary, it&rsquo;s my privilege to invite you to the&nbsp;<strong>16 <sup>th </sup> VAICON2023</strong>,   </strong> Kolkata.</strong> <br>
                                   </span>
 
-                                  <p> The venue of&nbsp;<strong>VAICON2023</strong>&nbsp;is ITC Sonar, Kolkata, India.The <strong>VAICON2013</strong> is scheduled to be held on&nbsp;<strong>27 <sup>th </sup> to 29 <sup>th </sup> January 2023.</strong>&nbsp;In these three days international conference, all the stakeholders&rsquo; doctors, nurses, paramedics, administrators &amp; policy makers, academicians, researchers, industry partners and society in large, will be able to come closer and have the opportunity to discuss and exchange opinions and ideasfor a better future towards sustainable delivery of healthcare. I strongly believe that the confluence of divergent knowledgewill have a greater impact for the better tomorrow,through the great contributions of our profession, considering the opportunity of the conference and the level of participation in&nbsp;<strong>VAICON2023</strong>. Save your dates to enjoy one of the most vibrantconferences in the&nbsp;<strong>&lsquo;</strong><em>city of joy&rsquo;!,</em><strong> Kolkata</strong>. I can assure to make youfeel at home with memorable moments.&nbsp; Feel free to contact me for any assistance.&nbsp;<br>
-                                      Let&rsquo;s joint at<strong> VAICON2023, Kolkata.</strong></p>
+                                  <p> The venue of&nbsp;<strong>VAICON2023</strong>&nbsp;is ITC Sonar, Kolkata, India. The <strong>VAICON2023</strong> is scheduled to be held on&nbsp;<strong>27 <sup>th </sup> to 29 <sup>th </sup> January 2023.</strong>&nbsp;In these three days international conference, all the stakeholders doctors, nurses, paramedics, administrators &amp; policy makers, academicians, researchers, industry partners  will be able to come closer and have the opportunity to discuss and exchange opinions and ideas for a better tomorrow towards sustainable delivery of healthcare in Venous disease and lymphology. I strongly believe that the <strong>confluence of divergent knowledge</strong> will have a greater impact for a better tomorrow, through the great contributions of our profession, considering the opportunity of the conference and the level of participation in&nbsp;<strong>VAICON2023</strong>. Save your dates to enjoy one of the most vibrant conferences in  </em><strong>Kolkata</strong>. I can assure to make you feel at home with memorable moments.&nbsp; Feel free to contact me for any assistance.&nbsp;<br>
+                                      Let&rsquo;s join  at<strong> VAICON2023, Kolkata.</strong></p>
 
                                   <span class="showbutton">Read More </span>
 
@@ -232,10 +261,10 @@
 
                                       <h3>ORGANISING SECRETARY</h3>
                                       <h3> Dr. Jayanta Das </h3>
-                                      <p>Amri Hospital</p>
+                                      <p>AMRI Hospitals</p>
 
-                                      <p> Saltlake, Kolkata </p>
-                                      <h3>Suported By</h3>
+                                      <p> Salt lake, Kolkata </p>
+                                      <h3>Supported By</h3>
                                       <p><img style="height: auto;
     max-width: 214px;" src="indicons/images/AMRI-Hospital-logo.png"> </p>
 
@@ -319,6 +348,42 @@
               </div>
 
           </div>
+		  
+		  
+		  
+		  
+		  
+	<div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+            <div class="modal-header" style="height:auto; padding:0px!important; margin:0px!important;">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+	      <img src="indicons/images/pdf1-1.png" style="width:100%">
+		  	      <img src="indicons/images/pdf2-1.png" style="width:100%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+            </div>
+            </div>
+        </div>
+    </div>	  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 
           @include('layouts.indicons.scripts')
           <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>

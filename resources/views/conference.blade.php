@@ -485,6 +485,16 @@
 	  
 	  <div class="tab">Governing Body </div>
 <img style="max-width:100%"  src="indicons/images/Governing-Body.jpg">
+
+
+	  <div class="tab" style="margin-top: 50px;
+    margin-bottom: 20px;">Executive Body </div>
+<img style="max-width:100%; "  src="indicons/images/Executive-Body.jpg">
+
+
+	  <div class="tab" style="margin-top: 50px;
+    margin-bottom: 20px;">volunteer</div>
+<img style="max-width:100%"  src="indicons/images/volunteer.jpg">
       </div>
 
       <h2>Previous VAIcons </h2>
@@ -531,7 +541,7 @@
    <tr style="background: #5b8cef;  color: #fff;"  height="20">
     <td height="20">VAICON 2018</td>
     <td>18-21 Jan 2018</td>
-    <td>Ba rod a</td>
+    <td>Baroda</td>
     <td>Dr. Vijay Thakore</td>
   </tr> 
     <tr style="background: #5b8cef;  color: #fff;"  height="20">

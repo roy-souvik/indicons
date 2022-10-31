@@ -1,6 +1,13 @@
        @extends('layouts.indicons.main-layout')
        @section('content')
        <style>
+	   
+	   #countdown{
+	   position:static!important;
+	   }
+	   .inner-page ul li{
+	   width:auto;
+	   }
            .form-control:focus {
                border-color: #4aba70;
            }
@@ -21,7 +28,7 @@
                padding: 30px;
 
                color: #ffff;
-               width: 640px;
+               width: 100%;
                margin: auto;
            }
 
@@ -99,6 +106,10 @@
            .login-form a {
                color: #4aba70;
            }
+		   
+ 
+		   
+		   
        </style>
 
        <div class="title">Registration</div>
@@ -111,7 +122,37 @@
     margin: 10px auto;
     padding: 10px 20px;
     font-size: 21px;
-    border: 1px solid;;">Regristration will start 01.11.2022 </div>
+    border: 1px solid;;">Registration will start 01.11.2022 </div>
+	
+	
+ 
+	<div class="inner-count" style="position: relative;">
+               @include('partials.countdown')
+           </div>
+ 
+	
+	<div class="row">
+           
+
+           @if (\Session::has('response'))
+           <div class="alert alert-info">
+               <ul>
+                   <li>{!! \Session::get('response') !!}</li>
+               </ul>
+           </div>
+           @endif
+
+           
+       </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
        <div class="reg-table">
            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
                <tr style="background:#5b8cef; color:#fff;">
@@ -171,8 +212,11 @@
            </table>
 
 
-           <h2>FULL REGISTRATION INCLUDES </h2>
 
+		   
+		   <div class="row">
+		   <div class="col-md-6">
+           <h2>FULL REGISTRATION INCLUDES </h2>
            <ul>
                <li> Access to the congress sessions. </li>
                <li>Access to all workshops.</li>
@@ -182,44 +226,22 @@
 
                <li>Access to congress abstracts.</li>
                <li>Electronic book</li>
-
+    <li>Access to  CULTURAL EVENTS AND GALA DINNER.</li>
 
                <li> <span style="text-transform: uppercase;
     "> <strong> Subsidised regristration :</strong> does not include cultural events and gala dinner. </span></li>
            </ul>
-           <br />
-
-
-       </div>
-
-       @if ($errors->any())
-       <div class="alert alert-danger">
-           <ul>
-               @foreach ($errors->all() as $error)
-               <li>{{ $error }}</li>
-               @endforeach
-           </ul>
-       </div>
-       @endif
-
-       <div class="row">
-           <div style="position: relative;">
-               @include('partials.countdown')
-           </div>
-
-           @if (\Session::has('response'))
-           <div class="alert alert-info">
-               <ul>
-                   <li>{!! \Session::get('response') !!}</li>
-               </ul>
-           </div>
-           @endif
-
-           <div class="login-form">
+		   
+		   </div>
+		   
+		     <div class="col-md-6"> 
+		   
+		   <div class="login-form">
                <form action="/contact-us" method="POST">
                    @csrf
 
-                   <h4 class="modal-title">Be in touch leave your detail</h4>
+                   <h4 class="modal-title" style="margin-bottom:0px; font-size: 44px;">Be in touch </h4>
+				   <p style="text-align:center; color:#fff;"> Leave your details  </p>
                    <div class="form-group">
                        <input type="text" name="name" class="form-control" placeholder="Name" required="required">
                    </div>
@@ -238,8 +260,34 @@
 
                    <input type="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
                </form>
-           </div>
+           </div>   </div>
+		   
+		   </div>
+		   
+		   
+           <br />
+
+
        </div>
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+
+       @if ($errors->any())
+       <div class="alert alert-danger">
+           <ul>
+               @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+               @endforeach
+           </ul>
+       </div>
+       @endif
+
+       
 
        <img src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
 

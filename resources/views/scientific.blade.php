@@ -15,6 +15,25 @@ margin-bottom: 30px;
     min-height: 400px;
 }
 
+.tab {
+    -webkit-border-top-right-radius: 30px;
+    -webkit-border-bottom-right-radius: 30px;
+    -moz-border-radius-topright: 30px;
+    -moz-border-radius-bottomright: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: -webkit-linear-gradient(top,#7579ff,#b224ef);
+    color: #fff;
+    display: table;
+    padding: 9px 30px 9px 16px;
+    font-size: 19px;
+    position: relative;
+    left: -13px;
+    font-weight: 600;
+}
+
+
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
@@ -22,7 +41,7 @@ margin-bottom: 30px;
 
 
 
-<div class="inner-page-confr">
+<div style="background: #fff;" class="inner-page-confr">
 
 <h2>Scientific committee  </h2>
 
@@ -31,8 +50,18 @@ margin-bottom: 30px;
 	<div id="cards_landscape_wrap-2">
         <div class="container">
              
+	
+	
+		<img style="max-width:100%; display:block; margin:auto" src="indicons/images/jayanta-das.jpg" />		
+	
 				 
-	<img style="max-width:100%;" src="indicons/images/scientific-committee-national.jpg" />		 
+	 <div class="tab" style="margin-top: 50px;
+    margin-bottom: 20px;">National </div>		
+					 
+	<img style="max-width:100%;" src="indicons/images/scientific-committee-national_1.jpg" />		 
+			 		 
+		<div class="tab" style="margin-top: 50px;
+    margin-bottom: 20px;">International</div>		 
 			 		 
 			 
 			 
@@ -95,7 +124,7 @@ margin-bottom: 30px;
                                 <div class="text-container">
 								
 														<h5>Cadaveric Workshop  </h5>
-                                    <h6 class="work-head"> Exposure of major blood vessels <a href="#">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 132.3"><path fill="#1a73e8" d="M60.2 2.2C55.8.8 51 0 46.1 0 32 0 19.3 6.4 10.8 16.5l21.8 18.3L60.2 2.2z"/><path fill="#ea4335" d="M10.8 16.5C4.1 24.5 0 34.9 0 46.1c0 8.7 1.7 15.7 4.6 22l28-33.3-21.8-18.3z"/><path fill="#4285f4" d="M46.2 28.5c9.8 0 17.7 7.9 17.7 17.7 0 4.3-1.6 8.3-4.2 11.4 0 0 13.9-16.6 27.5-32.7-5.6-10.8-15.3-19-27-22.7L32.6 34.8c3.3-3.8 8.1-6.3 13.6-6.3"/><path fill="#fbbc04" d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3"/><path fill="#34a853" d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2"/></svg> </a> </h6>
+                                    <h6 class="work-head"> SFJ ligation <a href="#">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 132.3"><path fill="#1a73e8" d="M60.2 2.2C55.8.8 51 0 46.1 0 32 0 19.3 6.4 10.8 16.5l21.8 18.3L60.2 2.2z"/><path fill="#ea4335" d="M10.8 16.5C4.1 24.5 0 34.9 0 46.1c0 8.7 1.7 15.7 4.6 22l28-33.3-21.8-18.3z"/><path fill="#4285f4" d="M46.2 28.5c9.8 0 17.7 7.9 17.7 17.7 0 4.3-1.6 8.3-4.2 11.4 0 0 13.9-16.6 27.5-32.7-5.6-10.8-15.3-19-27-22.7L32.6 34.8c3.3-3.8 8.1-6.3 13.6-6.3"/><path fill="#fbbc04" d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3"/><path fill="#34a853" d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2"/></svg> </a> </h6>
                                    <p> Medical College  /  SSKM</p>
                                 </div>
                             </div>
