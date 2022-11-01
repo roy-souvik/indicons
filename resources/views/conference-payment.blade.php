@@ -1,8 +1,6 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<!-- <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency={{$paymentSlabItem->currency}}"></script> -->
-
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
 
 <table class="table">
@@ -115,17 +113,39 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         <!-- <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em> -->
     </h2>
 
-    <button class="btn btn-primary ms-5" id="proceed-payment">Proceed to payment</button>
+    <button class="btn btn-primary ms-5" id="proceed-payment">Place Order</button>
 </div>
 
-<br />
-<br />
 
-
-<div id="bank-details">
-
+<!-- <div id="bank-details">
+    <table>
+        <tr>
+            <td>Bank Name</td>
+            <td>CHANGE ME</td>
+        </tr>
+        <tr>
+            <td>Bank Address/Branch</td>
+            <td>CHANGE ME</td>
+        </tr>
+        <tr>
+            <td>Account Number</td>
+            <td>CHANGE ME</td>
+        </tr>
+        <tr>
+            <td>IFSC</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>UPI QR code</td>
+            <td>ADD QR code image</td>
+        </tr>
+    </table>
 </div>
 
+<br>
+<br>
+
+<a href="/" class="btn btn-primary">Back to home</a> -->
 
 
 <!-- Set up a container element for the button -->
@@ -220,8 +240,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
 
         $('#proceed-payment').click(function() {
-            // $('#paypal-button-container').html('');
-            // paypal.Buttons(ppButtonConfig).render('#paypal-button-container');
+            // generate order id for razor pay
         });
     });
 

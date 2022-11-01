@@ -6,10 +6,12 @@ use App\Mail\AbstractUpdated;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
+use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\Sponsorship;
 use App\Models\SponsorshipFeature;
 use App\Models\SponsorshipPayment;
+use App\Models\User;
 use App\Models\VaiMember;
 use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
@@ -210,5 +212,13 @@ class AdminController extends Controller
         $members = VaiMember::all();
 
         return view('admin.vai-members', compact('members'));
+    }
+
+    public function conferenceRegistrations()
+    {
+        $roles = Role::forConference()->active()->get();
+        $users = User::whereNotIn('role_id', $roles->pluck('id')->toArray())->get();
+
+        return view('admin.conference-registrations', compact('users'));
     }
 }

@@ -20,6 +20,16 @@ class Role extends Model
         $query->where('is_active', 1);
     }
 
+    public function scopeForConference($query)
+    {
+        $query->whereNotIn('key', [
+            'super_admin',
+            'accompanying_person',
+            'sponsor',
+            'workshop_attendee',
+        ]);
+    }
+
     public function isCompanion(): bool
     {
         return $this->key === 'accompanying_person';

@@ -1,8 +1,6 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
-
 <style>
     .emp-profile {
         padding: 3%;
@@ -295,7 +293,7 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
     </p>
 
     <!-- Set up a container element for the button -->
-    <div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div>
+    <!-- Add payment button here -->
     @endif
 </div>
 

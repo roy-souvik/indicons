@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
 
         $superAdmins = [
             [
-                'name' => 'Indicons Admin',
+                'name' => 'Vaicon Admin',
                 'title' => 'Mr',
                 'email' => 'contact@indicons.com',
                 'email_verified_at' => now()->timestamp,

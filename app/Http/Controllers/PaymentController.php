@@ -10,14 +10,22 @@ use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\User;
 use App\Models\VaiMember;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
+    private $api;
+
+    public function __construct()
+    {
+        $this->api = new Api($key_id, $key_secret);
+    }
+
     public function showConferencePaymentPage()
     {
         $registrationTypeAuth = [
@@ -123,6 +131,11 @@ class PaymentController extends Controller
         $transactionId = $request->transaction_id;
 
         return view('payment-success', compact('transactionId'));
+    }
+
+    public function createOrder(Request $request)
+    {
+        # code...
     }
 
     private function isVaiMember(User $user): bool
