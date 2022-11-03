@@ -109,47 +109,13 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 <div class="d-flex">
     <h2>
         Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
-
         <!-- <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em> -->
     </h2>
 
-    <button class="btn btn-primary ms-5" id="proceed-payment">Place Order</button>
+    <button id="proceed-payment" class="btn btn-primary">Proceed Payment</button>
+
+    <button id="rzp-button1" class="btn btn-primary ms-5 d-none">Pay</button>
 </div>
-
-
-<!-- <div id="bank-details">
-    <table>
-        <tr>
-            <td>Bank Name</td>
-            <td>CHANGE ME</td>
-        </tr>
-        <tr>
-            <td>Bank Address/Branch</td>
-            <td>CHANGE ME</td>
-        </tr>
-        <tr>
-            <td>Account Number</td>
-            <td>CHANGE ME</td>
-        </tr>
-        <tr>
-            <td>IFSC</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>UPI QR code</td>
-            <td>ADD QR code image</td>
-        </tr>
-    </table>
-</div>
-
-<br>
-<br>
-
-<a href="/" class="btn btn-primary">Back to home</a> -->
-
-
-<!-- Set up a container element for the button -->
-<!-- <div id="paypal-button-container" style="width: 3rem; margin-bottom: 10rem;"></div> -->
 
 <script>
     const token = "{{ csrf_token() }}";
@@ -162,42 +128,6 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             updateAmount();
         });
 
-        var ppButtonConfig = {
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            'value': updateAmount().total_amount
-                        }
-                    }]
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(orderData) {
-                    const transaction = orderData.purchase_units[0].payments.captures[0];
-
-                    const responseData = {
-                        '_token': token,
-                        'transaction_id': transaction.id,
-                        'status': transaction.status,
-                        'amount': transaction.amount.value,
-                        'payment_response': orderData,
-                        'payer_amount': updateAmount().payer_amount,
-                        'member_registration_type': $('input[name="payment"]:checked').attr('id'),
-                        'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
-                        'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
-                        'payment_title': 'conference_payment',
-                    };
-
-                    saveConferencePayment(responseData).then(() => {
-                        location.href = '/payment-success?transaction_id=' + transaction.id;
-                    });
-                });
-            },
-        };
-
         $('input[name="payment"]').change(function() {
             updateAmount();
         });
@@ -205,6 +135,21 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         $('#accompanying-person-btn-add').click(function() {
             const nextId = $(this).attr('data-nextid');
             addCompanion(nextId);
+        });
+
+        $('#proceed-payment').click(function() {
+            const amount = updateAmount().total_amount;
+
+            createOrder(amount).then(function(response) {
+                console.log('response: ', response);
+
+                $('#proceed-payment').addClass('d-none');
+                $('#rzp-button1').removeClass('d-none');
+
+                buildCheckoutLink(response.data.id);
+            }, function() {
+                console.log('Some error');
+            });
         });
 
         $('#person_1_confirm').click(function() {
@@ -238,10 +183,6 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 
             deleteAccompanyingPerson(id);
         });
-
-        $('#proceed-payment').click(function() {
-            // generate order id for razor pay
-        });
     });
 
     function updateAmount() {
@@ -272,6 +213,104 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
 
         return amount;
+    }
+
+    function createOrder(totalAmount) {
+        return $.ajax({
+            url: '/create-orders',
+            type: 'POST',
+            data: JSON.stringify({
+                '_token': token,
+                'amount': totalAmount,
+                'currency': 'INR',
+            }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            processData: false,
+            beforeSend: function() {
+                console.log('Show loader');
+            },
+            complete: function() {
+                console.log('Hide loader');
+            },
+            success: function(result) {
+                return result;
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: xhr?.responseJSON?.message || 'Error',
+                    icon: 'error',
+                });
+
+                return error;
+            },
+        });
+    }
+
+    function buildCheckoutLink(orderData) {
+        var options = {
+            "key": "{{$razorPayKey}}",
+            "amount": updateAmount().total_amount * 100,
+            "currency": "INR",
+            "name": "Acme Corp",
+            "description": "Test Transaction",
+            "image": "https://www.vaicon2023.com/indicons/images/logo.png",
+            "order_id": orderData.id,
+            "handler": function(response) {
+                console.log('Paid: ', response);
+                console.log(response.razorpay_payment_id);
+                console.log(response.razorpay_order_id);
+                console.log(response.razorpay_signature);
+
+                const transaction = orderData.purchase_units[0].payments.captures[0];
+
+                const responseData = {
+                    '_token': token,
+                    'transaction_id': transaction.id,
+                    'status': transaction.status,
+                    'amount': transaction.amount.value,
+                    'payment_response': response,
+                    'payer_amount': updateAmount().payer_amount,
+                    'member_registration_type': $('input[name="payment"]:checked').attr('id'),
+                    'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
+                    'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
+                    'payment_title': 'conference_payment',
+                };
+
+                saveConferencePayment(responseData).then(() => {
+                    location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
+                });
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Vaicon 2023 conference payment"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+
+        const razorPay = new Razorpay(options);
+
+        razorPay.on('payment.failed', function(response) {
+            console.log(response.error.code);
+            console.log(response.error.description);
+            console.log(response.error.source);
+            console.log(response.error.step);
+            console.log(response.error.reason);
+            console.log(response.error.metadata.order_id);
+            console.log(response.error.metadata.payment_id);
+        });
+
+        document.getElementById('rzp-button1').onclick = function(e) {
+            razorPay.open();
+            e.preventDefault();
+        }
     }
 
     function createAccompanyingPerson(data) {

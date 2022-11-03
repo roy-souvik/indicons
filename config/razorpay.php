@@ -11,6 +11,5 @@ return [
         'key_secret'     => env('RAZORPAY_LIVE_KEY_SECRET', ''),
     ],
     'currency' => env('RAZORPAY_CURRENCY', 'INR'),
-    'notify_url' => env('RAZORPAY_NOTIFY_URL', ''), // Change this accordingly for your application.
-    'locale' => env('RAZORPAY_LOCALE', 'en_US'), // force gateway language  i.e. it_IT, es_ES, en_US ... (for express checkout only)
+    'checkout_url' => 'https://checkout.razorpay.com/v1/checkout.js',
 ];

@@ -19,11 +19,15 @@ use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
-    private $api;
+    private Api $api;
 
     public function __construct()
     {
-        $this->api = new Api($key_id, $key_secret);
+        $paymentEnvironment = config('razorpay.mode');
+        $keyId = config("razorpay.{$paymentEnvironment}")['key_id'];
+        $keySecret = config("razorpay.{$paymentEnvironment}")['key_secret'];
+
+        $this->api = new Api($keyId, $keySecret);
     }
 
     public function showConferencePaymentPage()
@@ -66,6 +70,8 @@ class PaymentController extends Controller
 
         $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
 
+        $razorPayKey = $this->api->getKey();
+
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationTypeAuth',
@@ -75,6 +81,7 @@ class PaymentController extends Controller
             'isVaiMember',
             'pickupDropPrice',
             'user',
+            'razorPayKey',
         ));
     }
 
@@ -135,7 +142,38 @@ class PaymentController extends Controller
 
     public function createOrder(Request $request)
     {
-        # code...
+        $request->validate([
+            'amount' => ['required', 'numeric'],
+            // 'currency'
+        ]);
+
+        $orderData = [
+            'amount' => $request->amount,
+            'currency' => 'INR',
+            'notes' => [],
+        ];
+
+        try {
+            $order = $this->api->order->create($orderData);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'data' => null,
+                'message' => 'There is an error',
+            ], 400);
+        }
+
+        return response()->json([
+            'data' => [
+                'id' => $order->id,
+                'entity' => $order->entity,
+                'amount' =>$order->amount,
+                'currency' => $order->currency,
+                'status' => $order->status,
+                'attempts' => $order->attempts,
+                'notes' => $order->notes,
+            ],
+            'message' => 'Order created',
+        ]);
     }
 
     private function isVaiMember(User $user): bool

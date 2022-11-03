@@ -103,6 +103,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'showProfilePage'])
         ->name('profile.show');
 
+    Route::post('/create-orders', [PaymentController::class, 'createOrder'])
+        ->name('payment.orders.create');
+
     Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
         ->name('payment.show');
 
