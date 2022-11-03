@@ -148,7 +148,7 @@ class PaymentController extends Controller
         ]);
 
         $orderData = [
-            'amount' => $request->amount,
+            'amount' => $request->amount * 100,
             'currency' => 'INR',
             'notes' => [],
         ];
@@ -166,7 +166,7 @@ class PaymentController extends Controller
             'data' => [
                 'id' => $order->id,
                 'entity' => $order->entity,
-                'amount' =>$order->amount,
+                'amount' => $order->amount,
                 'currency' => $order->currency,
                 'status' => $order->status,
                 'attempts' => $order->attempts,

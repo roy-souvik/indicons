@@ -141,12 +141,10 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             const amount = updateAmount().total_amount;
 
             createOrder(amount).then(function(response) {
-                console.log('response: ', response);
-
                 $('#proceed-payment').addClass('d-none');
                 $('#rzp-button1').removeClass('d-none');
 
-                buildCheckoutLink(response.data.id);
+                buildCheckoutLink(response.data);
             }, function() {
                 console.log('Some error');
             });
@@ -251,26 +249,24 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
     function buildCheckoutLink(orderData) {
         var options = {
             "key": "{{$razorPayKey}}",
-            "amount": updateAmount().total_amount * 100,
+            "amount": parseInt(updateAmount().total_amount * 1000, 10),
             "currency": "INR",
-            "name": "Acme Corp",
-            "description": "Test Transaction",
+            "name": "Vaicon",
+            "description": "Vaicon 2023 conference registration payment",
             "image": "https://www.vaicon2023.com/indicons/images/logo.png",
             "order_id": orderData.id,
             "handler": function(response) {
                 console.log('Paid: ', response);
-                console.log(response.razorpay_payment_id);
-                console.log(response.razorpay_order_id);
-                console.log(response.razorpay_signature);
-
-                const transaction = orderData.purchase_units[0].payments.captures[0];
 
                 const responseData = {
                     '_token': token,
-                    'transaction_id': transaction.id,
-                    'status': transaction.status,
-                    'amount': transaction.amount.value,
-                    'payment_response': response,
+                    'transaction_id': response.razorpay_payment_id,
+                    'status': orderData.status,
+                    'amount': orderData.amount,
+                    'payment_response': {
+                        'checkout_response': response,
+                        'order_response': orderData,
+                    },
                     'payer_amount': updateAmount().payer_amount,
                     'member_registration_type': $('input[name="payment"]:checked').attr('id'),
                     'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
@@ -283,9 +279,9 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 });
             },
             "prefill": {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
-                "contact": "9999999999"
+                "name": "{{$user->getDisplayName()}}",
+                "email": "{{$user->email}}",
+                "contact": "{{$user->phone}}"
             },
             "notes": {
                 "address": "Vaicon 2023 conference payment"
