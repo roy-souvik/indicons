@@ -226,10 +226,10 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             dataType: 'json',
             processData: false,
             beforeSend: function() {
-                console.log('Show loader');
+                showLoader();
             },
             complete: function() {
-                console.log('Hide loader');
+                hideLoader();
             },
             success: function(result) {
                 return result;
@@ -249,15 +249,13 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
     function buildCheckoutLink(orderData) {
         var options = {
             "key": "{{$razorPayKey}}",
-            "amount": parseInt(updateAmount().total_amount * 1000, 10),
-            "currency": "INR",
-            "name": "Vaicon",
+            "amount": parseInt(updateAmount().total_amount * 100, 10),
+            "currency": "{{$paymentSlabItem->currency}}",
+            "name": "Vaicon 2023",
             "description": "Vaicon 2023 conference registration payment",
             "image": "https://www.vaicon2023.com/indicons/images/logo.png",
             "order_id": orderData.id,
             "handler": function(response) {
-                console.log('Paid: ', response);
-
                 const responseData = {
                     '_token': token,
                     'transaction_id': response.razorpay_payment_id,
@@ -301,6 +299,12 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             console.log(response.error.reason);
             console.log(response.error.metadata.order_id);
             console.log(response.error.metadata.payment_id);
+
+            Swal.fire({
+                title: `Error! ${response.error.code}`,
+                text: `Description: ${response.error.description} | Order ID: ${response.error.metadata.order_id}`,
+                icon: 'error',
+            });
         });
 
         document.getElementById('rzp-button1').onclick = function(e) {

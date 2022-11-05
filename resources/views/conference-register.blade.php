@@ -111,17 +111,6 @@
 
        <div class="title">Registration</div>
 
-
-       <div style="background: #df0000;
-    color: #fff;
-    text-align: center;
-    display: table;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 21px;
-    border: 1px solid;;">Registration will start 03.11.2022 </div>
-
-
        <div class="inner-count" style="position: relative;">
            @include('partials.countdown')
        </div>
