@@ -27,7 +27,7 @@
                         <td>{{$payment->user->name}}</td>
                         <td>{{$payment->user->email}}</td>
                         <td>{{$payment->user->phone}}</td>
-                        <td>{{$payment->user->role}}</td>
+                        <td>{{$payment->user?->role?->name ?? 'N/A'}}</td>
                         <td>{{$payment->amount}}</td>
                         <td>{{$payment->created_at}}</td>
                         <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>

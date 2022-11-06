@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             SponsorshipSeeder::class,
             ConfigSeeder::class,
             WorkshopSeeder::class,
+            HotelsSeeder::class,
+            RoomSeeder::class,
         ]);
     }
 }

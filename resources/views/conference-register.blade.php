@@ -601,7 +601,7 @@
 
        <script>
            $(function() {
-               addCountdownTimer('11/07/');
+               addCountdownTimer('11/09/');
                const $vaiconMemberInput = $('#vaicon_member_id');
 
                $('#is_vaicon_member').change(function() {

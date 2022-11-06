@@ -249,7 +249,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
     function buildCheckoutLink(orderData) {
         var options = {
             "key": "{{$razorPayKey}}",
-            "amount": parseInt(updateAmount().total_amount * 100, 10),
+            "amount": parseInt(updateAmount().total_amount, 10),
             "currency": "{{$paymentSlabItem->currency}}",
             "name": "Vaicon 2023",
             "description": "Vaicon 2023 conference registration payment",

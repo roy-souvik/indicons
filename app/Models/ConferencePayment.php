@@ -31,6 +31,6 @@ class ConferencePayment extends Model
 
     public function scopeCompleted($query)
     {
-        $query->where('status', 'COMPLETED');
+        $query->where('status', 'created');
     }
 }
