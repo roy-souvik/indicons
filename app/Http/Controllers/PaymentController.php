@@ -6,6 +6,7 @@ use App\Mail\PaymentSuccess;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
+use App\Models\Hotel;
 use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\User;
@@ -72,6 +73,8 @@ class PaymentController extends Controller
 
         $razorPayKey = $this->api->getKey();
 
+        $hotels = Hotel::with(['rooms'])->active()->get();
+
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationTypeAuth',
@@ -81,6 +84,7 @@ class PaymentController extends Controller
             'isVaiMember',
             'pickupDropPrice',
             'user',
+            'hotels',
             'razorPayKey',
         ));
     }

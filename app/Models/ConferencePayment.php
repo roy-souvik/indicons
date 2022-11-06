@@ -22,6 +22,7 @@ class ConferencePayment extends Model
         'pickup_drop',
         'airplane_booking',
         'payment_title',
+        'room_count',
     ];
 
     public function user(): BelongsTo

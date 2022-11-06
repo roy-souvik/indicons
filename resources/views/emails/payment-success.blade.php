@@ -55,7 +55,9 @@
                     <tr>
                         <td>Accompanying person</td>
                         <td>{{$payment->user->companions->count()}} Person(s)</td>
-                        <td>{{$fee->currency}} {{$companionsAmount}}</td>
+                        <td>
+                            {{$payment->user->companions->count() ? $fee->currency : ''}} {{$companionsAmount ?? 0}}
+                        </td>
                     </tr>
                     <tr>
                         <td></td>
