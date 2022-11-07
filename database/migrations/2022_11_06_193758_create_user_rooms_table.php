@@ -17,8 +17,10 @@ class CreateUserRoomsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('room_id');
+            $table->integer('room_count');
             $table->integer('amount');
             $table->string('transaction_id')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

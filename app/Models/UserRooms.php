@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class UserRooms extends Model
 {
     use HasFactory;
+
+    protected $table = 'user_rooms';
+
+    protected $fillable = [
+        'user_id',
+        'room_id',
+        'room_count',
+        'amount',
+        'transaction_id',
+        'is_active',
+    ];
 }

@@ -39,6 +39,41 @@
     </tbody>
 </table>
 
+<hr />
+
+@foreach($hotels as $hotel)
+<p>{{$hotel->name}}</p>
+<em style="font-size: 0.8rem;">{{$hotel->address}}</em>
+<table class="table">
+    <tbody>
+    @foreach($hotel->rooms as $room)
+        <tr>
+            <!-- <td><input type="checkbox" name="room" data-roomid="{{$room->id}}" data-amount="{{$room->amount}}"></td> -->
+            <td>{{$room->room_category}}</td>
+            <td style="text-align: right;">
+                Rooms:
+                <input
+                    type="number"
+                    name="room-count"
+                    value="0"
+                    id="room-{{$room->id}}"
+                    data-roomid="{{$room->id}}"
+                    min="0"
+                    max="10"
+                    data-amount="{{$room->amount}}"
+                    style="width: 4rem;"
+                />
+                <span>X</span>
+            </td>
+            <td>{{$room->currency}} {{$room->amount}}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+@endforeach
+
+<hr />
+
 @if (!$user->role->isStudent()) <br>
 <h5>Enter accompanying person details</h5>
 
@@ -119,6 +154,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 
 <script>
     const token = "{{ csrf_token() }}";
+    var roomDetails = {};
 
     $(function() {
         updateAmount();
@@ -129,6 +165,22 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
 
         $('input[name="payment"]').change(function() {
+            updateAmount();
+        });
+
+        $('input[name="room-count"]').change(function () {
+            const roomId = parseInt($(this).attr('data-roomid'), 10);
+            const roomAmount = parseInt($(this).attr('data-amount'), 10);
+            const roomCount = parseInt($(`#room-${roomId}`).val(), 10);
+
+            const selection = {
+                id: roomId,
+                count: roomCount,
+                amount: roomAmount,
+            };
+
+            roomDetails[roomId] = selection;
+
             updateAmount();
         });
 
@@ -183,14 +235,23 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
     });
 
+    function getRoomAmount(roomDetails) {
+        const rooms = Object.values(roomDetails);
+
+        return rooms.reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.amount), 0);
+    }
+
     function updateAmount() {
         const payerAmount = parseInt(document.querySelector('input[name="payment"]:checked')?.value ?? 0, 10);
         const companionsAmount = getCompanionsTotalAmount();
         const pickUpDropPrice = $('input[name="pickup_drop_check"]:checked').val() ?
             parseInt($('input[name="pick_drop_price"]').val()) :
             0;
+        const roomAmount = getRoomAmount(roomDetails);
 
-        let totalAmount = payerAmount + companionsAmount + pickUpDropPrice;
+        console.log({roomAmount});
+
+        let totalAmount = payerAmount + companionsAmount + pickUpDropPrice + roomAmount;
 
         // Remove GST for now
         // totalAmount = addGst(totalAmount);
