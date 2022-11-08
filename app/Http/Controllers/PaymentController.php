@@ -10,6 +10,7 @@ use App\Models\Hotel;
 use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\User;
+use App\Models\UserRoom;
 use App\Models\VaiMember;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -119,6 +120,17 @@ class PaymentController extends Controller
             ->orderBy('id', 'desc')
             ->limit($companionCount)
             ->get();
+
+        foreach ($request->rooms as $room) {
+            $userRoom = new UserRoom();
+            $userRoom->user_id = $authUser->id;
+            $userRoom->room_id = data_get($room, 'id');
+            $userRoom->room_count = data_get($room, 'count');
+            $userRoom->amount = data_get($room, 'amount');
+            $userRoom->transaction_id = $request->transaction_id;
+
+            $userRoom->save();
+        }
 
         if (!empty($request->status)) {
             foreach ($accompanyingPersons as $person) {

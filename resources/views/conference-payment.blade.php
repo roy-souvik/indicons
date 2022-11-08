@@ -41,10 +41,58 @@
 
 <hr />
 
+@if (!$user->role->isStudent()) <br>
+<h5>Enter accompanying person details</h5>
+
+@php
+$amt = intval($accompanyingPersonFees->early_bird_amount);
+
+$companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+? intval($amt / 75)
+: $amt;
+@endphp
+
+<p>
+    Fees for each person is
+    <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
+    <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
+</p>
+
+<table class="table" id="accompanying-person-table">
+
+</table>
+@endif
+
+@if ($accompanyingPersons->count() > 0)
+<br>
+<h5>Accompanying persons</h5>
+<table class="table" id="accompanying-persons-list">
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Email</b></td>
+        <td><b>Action</b></td>
+    </tr>
+    @foreach($accompanyingPersons as $key => $person)
+    <tr>
+        <td>{{$person->name}}</td>
+        <td>{{$person->email ?? 'N/A'}}</td>
+        <td>
+            <input type="hidden" class="person-fees" id="person_{{$key + 1}}_fees_payable" value="{{$person->fees}}">
+            <button class="btn btn-light delete-person" data-id="{{$person->id}}">Delete</button>
+        </td>
+    </tr>
+    @endforeach
+</table>
+
+<hr>
+@endif
+
+<h4>Accommodation</h4>
 @foreach($hotels as $hotel)
-<p>{{$hotel->name}}</p>
+<p style="margin-bottom: 0rem;">{{$hotel->name}}</p>
 <em style="font-size: 0.8rem;">{{$hotel->address}}</em>
-<table class="table">
+
+<table class="table mt-3">
     <tbody>
     @foreach($hotel->rooms as $room)
         <tr>
@@ -74,63 +122,13 @@
 
 <hr />
 
-@if (!$user->role->isStudent()) <br>
-<h5>Enter accompanying person details</h5>
-
-@php
-$amt = intval($accompanyingPersonFees->early_bird_amount);
-
-$companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-? intval($amt / 75)
-: $amt;
-@endphp
-
-<p>
-    Fees for each person is
-    <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
-    <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
-</p>
-
-<table class="table" id="accompanying-person-table">
-
-</table>
-
-<!-- <div>
-    <button class="btn btn-primary d-flex" id="accompanying-person-btn-add" data-nextid="2">
-        Add accoompanying person
-    </button>
-</div> -->
-@endif
-
-@if ($accompanyingPersons->count() > 0)
-<br>
-<h5>Accompanying persons</h5>
-<table class="table" id="accompanying-persons-list">
-    <tr>
-        <td><b>Name</b></td>
-        <td><b>Email</b></td>
-        <td><b>Action</b></td>
-    </tr>
-    @foreach($accompanyingPersons as $key => $person)
-    <tr>
-        <td>{{$person->name}}</td>
-        <td>{{$person->email ?? 'N/A'}}</td>
-        <td>
-            <input type="hidden" class="person-fees" id="person_{{$key + 1}}_fees_payable" value="{{$person->fees}}">
-            <button class="btn btn-light delete-person" data-id="{{$person->id}}">Delete</button>
-        </td>
-    </tr>
-    @endforeach
-</table>
-@endif
-
 <br>
 
 <div class="d-flex" style="flex-direction: column;">
     <label for="pickup_drop_check">
         <input type="hidden" name="pick_drop_price" value="{{$pickupDropPrice->value}}">
         <input name="pickup_drop_check" id="pickup_drop_check" type="checkbox">
-        I need pickup and drop facility at INR {{$pickupDropPrice->value}}.
+        I need pickup and drop facility at <strong>INR {{$pickupDropPrice->value}}</strong>.
     </label>
 
     <label for="airplane_booking_check">
@@ -147,7 +145,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         <!-- <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em> -->
     </h2>
 
-    <button id="proceed-payment" class="btn btn-primary">Proceed Payment</button>
+    <button id="proceed-payment" class="btn btn-primary ms-5">Proceed Payment</button>
 
     <button id="rzp-button1" class="btn btn-primary ms-5 d-none">Pay</button>
 </div>
@@ -179,7 +177,18 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 amount: roomAmount,
             };
 
-            roomDetails[roomId] = selection;
+            if (roomCount > 0 && roomCount <= 10) {
+                roomDetails[roomId] = selection;
+            } else {
+                $(`#room-${roomId}`).val(0);
+                delete roomDetails[roomId];
+
+                Swal.fire({
+                    title: 'Invalid room count!',
+                    text: 'Please select number of rooms from 1 to 10',
+                    icon: 'error',
+                });
+            }
 
             updateAmount();
         });
@@ -331,10 +340,12 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                     'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
                     'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
                     'payment_title': 'conference_payment',
+                    'rooms': Object.values(roomDetails),
                 };
 
                 saveConferencePayment(responseData).then(() => {
-                    location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
+                    console.log(responseData);
+                    // location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
                 });
             },
             "prefill": {
