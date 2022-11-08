@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ConfigSeeder::class,
             WorkshopSeeder::class,
             HotelsSeeder::class,
-            RoomSeeder::class,
+            RoomsSeeder::class,
         ]);
     }
 }
