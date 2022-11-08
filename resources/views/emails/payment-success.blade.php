@@ -54,10 +54,30 @@
                     </tr>
                     <tr>
                         <td>Accompanying person</td>
-                        <td>{{$payment->user->companions->count()}} Person(s)</td>
+                        <td>{{$payment->user?->companions->count() ?? 0}} Person(s)</td>
                         <td>
                             {{$payment->user->companions->count() ? $fee->currency : ''}} {{$companionsAmount ?? 0}}
                         </td>
+                    </tr>
+                    <tr>
+                        <td>Accommodation</td>
+                        <td>{{$payment->accommodations?->count() ?? 0}} Rooms(s)</td>
+
+                        @if ($payment->accommodations?->count())
+                            <td>
+                                <ul>
+                                    @foreach ($payment->accommodations as $userRoom)
+                                        <li>{{$userRoom->room->room_category}} {{$userRoom->room->currency}} {{$userRoom->room->amount}}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                        @endif
+                    </tr>
+
+                    <tr>
+                        <td>Pickup and Drop</td>
+                        <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>
+                        <td>{{$payment->pickup_drop ? 'INR ' . $pickupDropPrice : 0}}</td>
                     </tr>
                     <tr>
                         <td></td>

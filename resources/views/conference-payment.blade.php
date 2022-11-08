@@ -345,7 +345,13 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 
                 saveConferencePayment(responseData).then(() => {
                     console.log(responseData);
-                    // location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
+                    location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
+                }, (xhr) => {
+                    Swal.fire({
+                    title: 'Error!',
+                    text: xhr?.responseJSON?.message || 'Error while verifying your payment.',
+                    icon: 'error',
+                });
                 });
             },
             "prefill": {

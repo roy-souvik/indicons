@@ -95,53 +95,76 @@ class PaymentController extends Controller
         $authUser = Auth::user();
         $payment = new ConferencePayment();
 
-        $payment->user_id = $authUser->id;
-        $payment->transaction_id = $request->transaction_id;
-        $payment->status = $request->status ?? '';
-        $payment->amount = $request->amount ?? 0;
-        $payment->payment_response = json_encode($request->payment_response);
-        $payment->registration_type = $request->input('member_registration_type');
-        $payment->pickup_drop = $request->input('pickup_drop', false);
-        $payment->airplane_booking = $request->input('airplane_booking', false);
-        $payment->payment_title = $request->input('payment_title');
+        $isValidSignature = $this->verifySignature(
+            data_get($request->payment_response, 'order_response.id'),
+            data_get($request->payment_response, 'checkout_response')
+        );
 
-        $payment->save();
-
-        $companionRole = Role::firstWhere('key', 'accompanying_person');
-        $companionTotalAmount = $request->input('companion_amount')
-            ? intval($request->input('companion_amount'))
-            : intval($request->amount) - intval(data_get($request, 'payer_amount', 0));
-        $companionFee = Fee::firstWhere('role_id', $companionRole->id)->spot_amount;
-
-        $companionCount = floor($companionTotalAmount / intval($companionFee));
-
-        $accompanyingPersons = AccompanyingPerson::where('user_id', $authUser->id)
-            ->where('confirmed', 0)
-            ->orderBy('id', 'desc')
-            ->limit($companionCount)
-            ->get();
-
-        foreach ($request->rooms as $room) {
-            $userRoom = new UserRoom();
-            $userRoom->user_id = $authUser->id;
-            $userRoom->room_id = data_get($room, 'id');
-            $userRoom->room_count = data_get($room, 'count');
-            $userRoom->amount = data_get($room, 'amount');
-            $userRoom->transaction_id = $request->transaction_id;
-
-            $userRoom->save();
+        if (empty($isValidSignature)) {
+            return response()->json([
+                'data' => null,
+                'message' => 'There is an error while verifying your payment. Please contact admin.',
+            ], 400);
         }
 
-        if (!empty($request->status)) {
-            foreach ($accompanyingPersons as $person) {
-                $person->confirmed = 1;
-                $person->save();
+        try {
+            $payment->user_id = $authUser->id;
+            $payment->transaction_id = $request->transaction_id;
+            $payment->status = $request->status ?? '';
+            $payment->amount = $request->amount ? $request->amount / 100 : 0;
+            $payment->payment_response = json_encode($request->payment_response);
+            $payment->registration_type = $request->input('member_registration_type');
+            $payment->pickup_drop = $request->input('pickup_drop', false);
+            $payment->airplane_booking = $request->input('airplane_booking', false);
+            $payment->payment_title = $request->input('payment_title');
+
+            $payment->save();
+
+            $companionRole = Role::firstWhere('key', 'accompanying_person');
+            $companionTotalAmount = $request->input('companion_amount')
+                ? intval($request->input('companion_amount'))
+                : intval($request->amount) - intval(data_get($request, 'payer_amount', 0));
+            $companionFee = Fee::firstWhere('role_id', $companionRole->id)->spot_amount;
+
+            $companionCount = floor($companionTotalAmount / intval($companionFee));
+
+            $accompanyingPersons = AccompanyingPerson::where('user_id', $authUser->id)
+                ->where('confirmed', 0)
+                ->orderBy('id', 'desc')
+                ->limit($companionCount)
+                ->get();
+
+            $existingRoomCount = UserRoom::where('transaction_id', $request->transaction_id)->count();
+
+            if ($existingRoomCount === 0) {
+                foreach ($request->rooms as $room) {
+                    $userRoom = new UserRoom();
+                    $userRoom->user_id = $authUser->id;
+                    $userRoom->room_id = data_get($room, 'id');
+                    $userRoom->room_count = data_get($room, 'count');
+                    $userRoom->amount = data_get($room, 'amount');
+                    $userRoom->transaction_id = $request->transaction_id;
+
+                    $userRoom->save();
+                }
             }
+
+            if (!empty($request->status)) {
+                foreach ($accompanyingPersons as $person) {
+                    $person->confirmed = 1;
+                    $person->save();
+                }
+            }
+
+            Mail::to($authUser)->send(new PaymentSuccess($request->transaction_id));
+
+            return $payment;
+        } catch (\Throwable $th) {
+            return response()->json([
+                'data' => null,
+                'message' => 'There is an error while processing your payment details. Please contact admin.',
+            ], 500);
         }
-
-        Mail::to($authUser)->send(new PaymentSuccess($request->transaction_id));
-
-        return $payment;
     }
 
     public function paymentCancel()
@@ -160,7 +183,6 @@ class PaymentController extends Controller
     {
         $request->validate([
             'amount' => ['required', 'numeric'],
-            // 'currency'
         ]);
 
         $orderData = [
@@ -189,7 +211,7 @@ class PaymentController extends Controller
                 'notes' => $order->notes,
             ],
             'message' => 'Order created',
-        ]);
+        ], 201);
     }
 
     private function isVaiMember(User $user): bool
@@ -201,5 +223,25 @@ class PaymentController extends Controller
         }
 
         return Str::contains($vaiMember->name, $user->getDisplayName());
+    }
+
+    private function verifyPayment($checkoutResponse)
+    {
+        $attributes  = [
+            'razorpay_signature' => data_get($checkoutResponse, 'razorpay_signature'),
+            'razorpay_payment_id' => data_get($checkoutResponse, 'razorpay_payment_id'),
+            'razorpay_order_id' => data_get($checkoutResponse, 'razorpay_order_id'),
+        ];
+
+        $order = $this->api->utility->verifyPaymentSignature($attributes);
+
+        dd($order);
+    }
+
+    private function verifySignature($orderId, $checkoutResponse): bool
+    {
+        $generated_signature = hash_hmac('sha256', $orderId . "|" . data_get($checkoutResponse, 'razorpay_payment_id'), $this->api->getSecret());
+
+        return $generated_signature === data_get($checkoutResponse, 'razorpay_signature');
     }
 }

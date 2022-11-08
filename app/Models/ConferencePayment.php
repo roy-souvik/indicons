@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ConferencePayment extends Model
 {
@@ -32,5 +33,10 @@ class ConferencePayment extends Model
     public function scopeCompleted($query)
     {
         $query->where('status', 'created');
+    }
+
+    public function accommodations(): HasMany
+    {
+        return $this->hasMany(UserRoom::class, 'transaction_id', 'transaction_id');
     }
 }
