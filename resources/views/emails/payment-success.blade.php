@@ -61,7 +61,7 @@
                     </tr>
                     <tr>
                         <td>Accommodation</td>
-                        <td>{{$payment->accommodations?->count() ?? 0}} Rooms(s)</td>
+                        <td>{{$roomCount}} Rooms(s)</td>
 
                         @if ($payment->accommodations?->count())
                             <td>

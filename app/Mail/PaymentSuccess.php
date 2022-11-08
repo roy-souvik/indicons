@@ -41,11 +41,20 @@ class PaymentSuccess extends Mailable
 
         $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first()?->value;
 
+        $roomCount = 0;
+
+        if ($payment->accommodations->count()) {
+            $roomCount = $payment->accommodations->reduce(function ($carry, $accommodation) {
+                return $carry + intval($accommodation->room_count);
+            }, 0);
+        }
+
         return $this->view('emails.payment-success')
             ->with([
                 'payment' => $payment,
                 'fee' => $fee,
                 'pickupDropPrice' => $pickupDropPrice,
+                'roomCount' => $roomCount,
             ]);
     }
 }
