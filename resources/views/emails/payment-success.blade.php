@@ -26,7 +26,7 @@
                     Kolkata, India.
                 </p>
 
-                <h4>Your Abstract Details:</h4>
+                <h4>Your Registration Details:</h4>
 
                 <div style="clear:both"></div>
 
@@ -43,12 +43,7 @@
 
                 <table border="1" cellspacing="0" cellpadding="2">
                     <tr>
-                        <td>Registration Category</td>
                         <td>Registration type</td>
-                        <td>Amount</td>
-                    </tr>
-                    <tr>
-                        <td>VAI members</td>
                         <td>{{$payment->registration_type}}</td>
                         <td>{{$fee->currency}} {{$memberAmount}}</td>
                     </tr>
@@ -61,7 +56,7 @@
                     </tr>
                     <tr>
                         <td>Accommodation</td>
-                        <td>{{$roomCount}} Rooms(s)</td>
+                        <td>{{$roomCount}} Room(s)</td>
 
                         @if ($payment->accommodations?->count())
                             <td>
