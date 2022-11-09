@@ -21,7 +21,7 @@ class AdminController extends Controller
 {
     public function conferencePayments()
     {
-        $payments = ConferencePayment::with('user')->completed()->get();
+        $payments = ConferencePayment::with(['user.companions'])->completed()->get();
 
         return view('admin.conference-payments', compact('payments'));
     }

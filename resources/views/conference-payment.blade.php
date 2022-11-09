@@ -107,7 +107,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                     id="room-{{$room->id}}"
                     data-roomid="{{$room->id}}"
                     min="0"
-                    max="10"
+                    max="2"
                     data-amount="{{$room->amount}}"
                     style="width: 4rem;"
                 />
@@ -177,7 +177,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 amount: roomAmount,
             };
 
-            if (roomCount > 0 && roomCount <= 10) {
+            if (roomCount > 0 && roomCount <= 2) {
                 roomDetails[roomId] = selection;
             } else {
                 $(`#room-${roomId}`).val(0);
@@ -476,7 +476,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 </td>
                 <td>
                     <input type="hidden" name="person_${number}_fees" id="person_${number}_fees" value="${companionAmount}">
-                    <button class="btn btn-primary" id="person_${number}_confirm">Confirm</button>
+                    <button class="btn btn-primary" style="background: blue;" id="person_${number}_confirm">Confirm</button>
                 </td>
             </tr>
         `;

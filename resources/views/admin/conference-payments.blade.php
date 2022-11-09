@@ -17,10 +17,17 @@
                     <th class="border-top-0">Date</th>
                     <th class="border-top-0">Pickup + Drop</th>
                     <th class="border-top-0">Airplane Booking</th>
+                    <th class="border-top-0">Accompanying Persons</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $totalAmount = 0;
+                @endphp
                 @foreach ($payments as $payment)
+                    @php
+                        $totalAmount = $totalAmount + $payment->amount;
+                    @endphp
                     <tr>
                         <td>{{$payment->user->registration_id}}</td>
                         <td>{{$payment->user->vaicon_member_id ?? 'N/A'}}</td>
@@ -32,10 +39,22 @@
                         <td>{{$payment->created_at}}</td>
                         <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>
                         <td>{{$payment->airplane_booking ? 'Yes' : 'No'}}</td>
+                        <td>
+                            <ul>
+                                @foreach($payment->user->companions as $companion)
+                                    <li>
+                                        Name: {{$companion->getDisplayName()}}; {{$companion->email ?? 'N/A'}}
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <h3>Total Amount: INR {{number_format($totalAmount, 2)}}</h3>
     </div>
 </div>
 

@@ -230,7 +230,7 @@
                </div>
 
                <div class="input__box">
-                   <span class="details">Password</span>
+                   <span class="details">Password <em class="text-muted" style="font-size: 12px;">(min. 8 characters)</em></span>
                    <input type="password" name="password" placeholder="********" required>
                </div>
                <div class="input__box">
@@ -601,7 +601,7 @@
 
        <script>
            $(function() {
-               addCountdownTimer('11/09/');
+               addCountdownTimer('11/11/');
                const $vaiconMemberInput = $('#vaicon_member_id');
 
                $('#is_vaicon_member').change(function() {

@@ -30,4 +30,11 @@ class AccompanyingPerson extends Model
     {
         $query->where('confirmed', 1);
     }
+
+    public function getDisplayName(): string
+    {
+        return !empty($this->title)
+            ? "{$this->title}. {$this->name}"
+            : $this->name;
+    }
 }
