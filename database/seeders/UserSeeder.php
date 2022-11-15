@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Vaicon Admin',
                 'title' => 'Mr',
-                'email' => 'contact@indicons.com',
+                'email' => 'contact@vaicon2023.com',
                 'email_verified_at' => now()->timestamp,
                 'password' => Hash::make(env('INDICONS_ADMIN_PASS')),
                 'phone' => '8910142514',
