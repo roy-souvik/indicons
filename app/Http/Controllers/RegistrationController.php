@@ -18,9 +18,35 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
+use Carbon\Carbon;
 
 class RegistrationController extends Controller
 {
+    public function show()
+    {
+        $roles = Role::active()->get();
+
+        $config = SiteConfig::whereIn('name', ['early_bird', 'standard', 'spot'])->get();
+        $earlyBirdConfig = $config->where('name', 'early_bird')->first();
+        $standardConfig = $config->where('name', 'standard')->first();
+        $spotConfig = $config->where('name', 'spot')->first();
+
+        $earlyBirdDate = Carbon::createFromFormat('Y-m-d', $earlyBirdConfig->value);
+        $standardDate = Carbon::createFromFormat('Y-m-d', $standardConfig->value);
+
+        $registrationConfig = $spotConfig;
+
+        if (!$earlyBirdDate->isPast()) {
+            $registrationConfig = $earlyBirdConfig;
+        } elseif (!$standardDate->isPast()) {
+            $registrationConfig = $standardConfig;
+        }
+
+        $registrationDayMonth = Carbon::createFromFormat('Y-m-d', $registrationConfig->value)->format('m/d');
+
+        return view('conference-register', compact('roles', 'registrationConfig', 'registrationDayMonth'));
+    }
+
     public function register(Request $request)
     {
         $request->validate([

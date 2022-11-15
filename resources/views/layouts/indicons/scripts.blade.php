@@ -59,6 +59,9 @@
         $('#loader-container').fadeOut(300);
     }
 
+    /**
+     * Use the format month/day for the parameter
+     */
     function addCountdownTimer(countdownDayMonth = '01/27/') {
         const second = 1000;
         const minute = second * 60;

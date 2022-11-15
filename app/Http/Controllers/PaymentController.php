@@ -34,9 +34,13 @@ class PaymentController extends Controller
 
     public function showConferencePaymentPage()
     {
+        $config = SiteConfig::whereIn('name', ['early_bird', 'standard'])->get();
+        $earlyBirdConfig = $config->where('name', 'early_bird')->first();
+        $standardConfig = $config->where('name', 'standard')->first();
+
         $registrationTypeAuth = [
-            'is_early_bird' => !Carbon::createFromFormat('Y-m-d', '2022-12-15')->isPast(),
-            'is_standard' => !Carbon::createFromFormat('Y-m-d', '2023-01-15')->isPast(),
+            'is_early_bird' => !Carbon::createFromFormat('Y-m-d', $earlyBirdConfig->value)->isPast(),
+            'is_standard' => !Carbon::createFromFormat('Y-m-d', $standardConfig->value)->isPast(),
             'is_spot' => true,
         ];
 

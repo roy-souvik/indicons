@@ -112,6 +112,7 @@
        <div class="title">Registration</div>
 
        <div class="inner-count" style="position: relative;">
+           <h4 class="text-center">{{ucwords(str_replace('_', ' ', $registrationConfig->name))}} Registration</h4>
            @include('partials.countdown')
        </div>
 
@@ -601,7 +602,10 @@
 
        <script>
            $(function() {
-               addCountdownTimer('11/11/');
+               const monthDay = "{{$registrationDayMonth}}" + '/';
+
+               addCountdownTimer(monthDay);
+
                const $vaiconMemberInput = $('#vaicon_member_id');
 
                $('#is_vaicon_member').change(function() {

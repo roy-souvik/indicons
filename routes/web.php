@@ -7,6 +7,7 @@ use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkshopController;
 use App\Models\Role;
+use App\Models\SiteConfig;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,11 +25,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/registration', function () {
-    $roles = Role::active()->get();
-
-    return view('conference-register', compact('roles'));
-})->name('conference-register.show');
+Route::get('/registration', [RegistrationController::class, 'show'])->name('conference-register.show');
 
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
