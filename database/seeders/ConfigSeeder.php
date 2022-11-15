@@ -26,6 +26,18 @@ class ConfigSeeder extends Seeder
                 'name' => 'workshop_price',
                 'value' => '3000',
             ],
+            [
+                'name' => 'early_bird',
+                'value' => '2022-12-15',
+            ],
+            [
+                'name' => 'standard',
+                'value' => '2022-12-15',
+            ],
+            [
+                'name' => 'spot',
+                'value' => '2023-01-29',
+            ],
         ];
 
         SiteConfig::insert($configList);

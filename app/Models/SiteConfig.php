@@ -15,4 +15,9 @@ class SiteConfig extends Model
         'name',
         'value',
     ];
+
+    public function getDisplayName(): string
+    {
+        return ucfirst(str_replace('_', ' ', $this->name));
+    }
 }
