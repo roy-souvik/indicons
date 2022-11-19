@@ -151,9 +151,7 @@ Route::middleware('auth')->group(function () {
             return view('admin.home');
         })->name('admin');
 
-        Route::get('/home', function () {
-            return view('admin.home');
-        })->name('admin.home');
+        Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
 
         Route::get('/fees-structure', [AdminController::class, 'manageFeesStructure'])
             ->name('admin.manage.fees');

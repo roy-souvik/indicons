@@ -19,6 +19,15 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function index()
+    {
+        $registrationCount = ConferencePayment::completed()->count();
+        $abstractCount = ConferenceAbstract::count();
+        $workshopRegistrationCount = WorkshopPayment::completed()->count();
+
+        return view('admin.home', compact('registrationCount', 'abstractCount', 'workshopRegistrationCount'));
+    }
+
     public function conferencePayments()
     {
         $payments = ConferencePayment::with(['user.companions'])->completed()->orderBy('id', 'desc')->get();
