@@ -21,14 +21,21 @@ class AdminController extends Controller
 {
     public function conferencePayments()
     {
-        $payments = ConferencePayment::with(['user.companions'])->completed()->get();
+        $payments = ConferencePayment::with(['user.companions'])->completed()->orderBy('id', 'desc')->get();
 
         return view('admin.conference-payments', compact('payments'));
     }
 
+    public function workshopPayments()
+    {
+        $payments = WorkshopPayment::with(['user', 'workshop'])->completed()->orderBy('id', 'desc')->get();
+
+        return view('admin.workshop-payments', compact('payments'));
+    }
+
     public function abstractList()
     {
-        $abstracts = ConferenceAbstract::with('user')->get();
+        $abstracts = ConferenceAbstract::with('user')->orderBy('id', 'desc')->get();
 
         return view('admin.abstracts', compact('abstracts'));
     }
@@ -202,9 +209,9 @@ class AdminController extends Controller
 
     public function workshopPaymentsShow()
     {
-        $workshopPayments = WorkshopPayment::with(['workshop', 'user'])->get();
+        $payments = WorkshopPayment::with(['workshop', 'user'])->orderBy('id', 'desc')->get();
 
-        return view('admin.workshop-payments', compact('workshopPayments'));
+        return view('admin.workshop-payments', compact('payments'));
     }
 
     public function vaiMembersShow()

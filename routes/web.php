@@ -164,6 +164,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/conference-payments', [AdminController::class, 'conferencePayments'])
             ->name('admin.conference.payments');
 
+        Route::get('/workshop-payments', [AdminController::class, 'workshopPayments'])
+            ->name('admin.workshop.payments');
+
         Route::get('/conference-registrations', [AdminController::class, 'conferenceRegistrations'])
             ->name('admin.conference-registrations');
 

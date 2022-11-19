@@ -14,9 +14,10 @@
     @include('admin.flash-message')
 
     <div class="table-responsive">
-        <table class="table">
+        <table class="table text-nowrap table-bordered">
             <thead>
                 <tr>
+                    <th class="border-top-0">#</th>
                     <th class="border-top-0">ID</th>
                     <th class="border-top-0">User Name</th>
                     <th class="border-top-0">Image</th>
@@ -35,6 +36,7 @@
             <tbody>
                 @foreach ($abstracts as $abstract)
                 <tr>
+                    <td>{{$loop->index + 1}}</td>
                     <td>{{$abstract->abstract_id}}</td>
                     <td>{{$abstract->user->name}}</td>
                     <td><img src="/images/{{$abstract->image}}" class="img-thumbnail" alt=""></td>

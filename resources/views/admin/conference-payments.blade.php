@@ -4,9 +4,10 @@
 <div class="white-box">
     <h3 class="box-title">Payments</h3>
     <div class="table-responsive">
-        <table class="table text-nowrap">
+        <table class="table text-nowrap table-bordered">
             <thead>
                 <tr>
+                    <th class="border-top-0">#</th>
                     <th class="border-top-0">Reg. ID</th>
                     <th class="border-top-0">Member. ID</th>
                     <th class="border-top-0">Name</th>
@@ -29,6 +30,7 @@
                         $totalAmount = $totalAmount + $payment->amount;
                     @endphp
                     <tr>
+                        <td>{{$loop->index + 1}}</td>
                         <td>{{$payment->user->registration_id}}</td>
                         <td>{{$payment->user->vaicon_member_id ?? 'N/A'}}</td>
                         <td>{{$payment->user->name}}</td>

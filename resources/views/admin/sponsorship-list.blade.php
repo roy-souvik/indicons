@@ -6,7 +6,7 @@
 
     @include('admin.flash-message')
 
-    <div class="table-responsive">
+    <div class="table-responsive table-bordered">
         <table class="table">
             <thead>
                 <tr>

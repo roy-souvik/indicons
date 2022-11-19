@@ -4,7 +4,7 @@
 <div class="white-box">
     <h3 class="box-title">Payments</h3>
     <div class="table-responsive">
-        <table class="table text-nowrap">
+        <table class="table text-nowrap table-bordered">
             <thead>
                 <tr>
                     <th class="border-top-0">Reg. ID</th>

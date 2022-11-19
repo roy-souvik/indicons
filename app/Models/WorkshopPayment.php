@@ -30,4 +30,9 @@ class WorkshopPayment extends Model
     {
         return $this->belongsTo(Workshop::class);
     }
+
+    public function scopeCompleted($query)
+    {
+        $query->where('status', 'created');
+    }
 }

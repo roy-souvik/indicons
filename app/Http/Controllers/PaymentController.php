@@ -229,19 +229,6 @@ class PaymentController extends Controller
         return Str::contains($vaiMember->name, $user->getDisplayName());
     }
 
-    private function verifyPayment($checkoutResponse)
-    {
-        $attributes  = [
-            'razorpay_signature' => data_get($checkoutResponse, 'razorpay_signature'),
-            'razorpay_payment_id' => data_get($checkoutResponse, 'razorpay_payment_id'),
-            'razorpay_order_id' => data_get($checkoutResponse, 'razorpay_order_id'),
-        ];
-
-        $order = $this->api->utility->verifyPaymentSignature($attributes);
-
-        dd($order);
-    }
-
     private function verifySignature($orderId, $checkoutResponse): bool
     {
         $generated_signature = hash_hmac('sha256', $orderId . "|" . data_get($checkoutResponse, 'razorpay_payment_id'), $this->api->getSecret());

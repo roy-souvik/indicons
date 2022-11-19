@@ -13,7 +13,7 @@
     @include('admin.flash-message')
 
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th class="border-top-0">Registration Type</th>

@@ -94,6 +94,9 @@ $totalWorkshopPrice = $workshopPrice->value;
             <h4>Workshop Details</h4>
 
             <ul>
+                @php
+                    $firstWorkshopId = $workshops->first()->id;
+                @endphp
                 @foreach ($workshops as $workshop)
                 <li>{{$workshop->name}}</li>
                 @endforeach
@@ -180,6 +183,7 @@ $totalWorkshopPrice = $workshopPrice->value;
                                 'order_response': orderData,
                             },
                             'payment_title': 'workshop_register_payment',
+                            'workshop_id': "{{$firstWorkshopId}}"
                         };
 
                         saveWorkshopPayment(responseData).then(() => {
