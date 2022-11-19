@@ -3,10 +3,10 @@
 
 @php
 function addGst($amount, $gstPercent = 18) {
-    return $amount + (($amount*$gstPercent)/100);
+return $amount + (($amount*$gstPercent)/100);
 }
 
-$totalWorkshopPrice = addGst($workshopPrice->value);
+$totalWorkshopPrice = $workshopPrice->value;
 
 @endphp
 
@@ -26,7 +26,7 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
 
     @guest
     <div class="row">
-        <div class="card p-4" style="width: 40rem;">
+        <div class="card p-4" style="width: 40rem; min-height: 20rem;">
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
@@ -99,12 +99,11 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
                 @endforeach
             </ul>
 
-            <p>
-                Price: INR {{$totalWorkshopPrice}}
-                <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
-            </p>
-            <!-- <div style="width: 10rem;" id="paypal-button-container"></div> -->
-            <!-- Add payment button here -->
+            <p>Price: INR {{$totalWorkshopPrice}}</p>
+
+            <button id="proceed-payment" class="btn btn-primary ms-5" style="width: 14rem;">Proceed To Payment</button>
+
+            <button id="rzp-button1" class="btn btn-primary d-none" style="width: 10rem;">Pay, INR {{$totalWorkshopPrice}}</button>
         </div>
     </div>
     @endif
@@ -115,6 +114,120 @@ $totalWorkshopPrice = addGst($workshopPrice->value);
 
         $(function() {
 
+            $('#proceed-payment').click(function() {
+                const amount = "{{$totalWorkshopPrice}}";
+
+                createOrder(amount).then(function(response) {
+                    $('#proceed-payment').addClass('d-none');
+                    $('#rzp-button1').removeClass('d-none');
+
+                    buildCheckoutLink(response.data);
+                }, function() {
+                    console.log('Some error');
+                });
+            });
+
+            function createOrder(totalAmount) {
+                return $.ajax({
+                    url: '/create-orders',
+                    type: 'POST',
+                    data: JSON.stringify({
+                        '_token': token,
+                        'amount': totalAmount,
+                        'currency': 'INR',
+                    }),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    beforeSend: function() {
+                        showLoader();
+                    },
+                    complete: function() {
+                        hideLoader();
+                    },
+                    success: function(result) {
+                        return result;
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: xhr?.responseJSON?.message || 'Error',
+                            icon: 'error',
+                        });
+
+                        return error;
+                    },
+                });
+            }
+
+            function buildCheckoutLink(orderData) {
+                var options = {
+                    "key": "{{$razorPayKey}}",
+                    "amount": "{{$totalWorkshopPrice}}",
+                    "currency": "INR",
+                    "name": "Vaicon 2023, Workshop Payment",
+                    "description": "Vaicon 2023 conference workshop payment",
+                    "image": "https://www.vaicon2023.com/indicons/images/logo.png",
+                    "order_id": orderData.id,
+                    "handler": function(response) {
+                        const responseData = {
+                            '_token': token,
+                            'transaction_id': response.razorpay_payment_id,
+                            'status': orderData.status,
+                            'amount': orderData.amount,
+                            'payment_response': {
+                                'checkout_response': response,
+                                'order_response': orderData,
+                            },
+                            'payment_title': 'workshop_register_payment',
+                        };
+
+                        saveWorkshopPayment(responseData).then(() => {
+                            location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
+                        }, (xhr) => {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: xhr?.responseJSON?.message || 'Error while verifying your payment.',
+                                icon: 'error',
+                            });
+                        });
+                    },
+                    "prefill": {
+                        "name": "{{$user->getDisplayName()}}",
+                        "email": "{{$user->email}}",
+                        "contact": "{{$user->phone}}"
+                    },
+                    "notes": {
+                        "address": "Vaicon 2023 conference payment"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+
+                const razorPay = new Razorpay(options);
+
+                razorPay.on('payment.failed', function(response) {
+                    console.log(response.error.code);
+                    console.log(response.error.description);
+                    console.log(response.error.source);
+                    console.log(response.error.step);
+                    console.log(response.error.reason);
+                    console.log(response.error.metadata.order_id);
+                    console.log(response.error.metadata.payment_id);
+
+                    Swal.fire({
+                        title: `Error! ${response.error.code}`,
+                        text: `Description: ${response.error.description} | Order ID: ${response.error.metadata.order_id}`,
+                        icon: 'error',
+                    });
+                });
+
+                document.getElementById('rzp-button1').onclick = function(e) {
+                    razorPay.open();
+                    e.preventDefault();
+                }
+            }
 
         });
 

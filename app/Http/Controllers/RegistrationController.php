@@ -19,9 +19,21 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Carbon\Carbon;
+use Razorpay\Api\Api;
 
 class RegistrationController extends Controller
 {
+    private Api $api;
+
+    public function __construct()
+    {
+        $paymentEnvironment = config('razorpay.mode');
+        $keyId = config("razorpay.{$paymentEnvironment}")['key_id'];
+        $keySecret = config("razorpay.{$paymentEnvironment}")['key_secret'];
+
+        $this->api = new Api($keyId, $keySecret);
+    }
+
     public function show()
     {
         $roles = Role::active()->get();
@@ -429,6 +441,9 @@ class RegistrationController extends Controller
 
     public function workshopRegisterShow()
     {
+        $razorPayKey = $this->api->getKey();
+        $user = auth()->user();
+
         $workshopAttendeeRole = Role::where('key', 'workshop_attendee')->firstOrFail();
         $workshopPrice = SiteConfig::where('name', 'workshop_price')->firstOrFail();
         $workshops = Workshop::active()->get();
@@ -437,6 +452,8 @@ class RegistrationController extends Controller
             'workshopAttendeeRole',
             'workshopPrice',
             'workshops',
+            'razorPayKey',
+            'user',
         ));
     }
 

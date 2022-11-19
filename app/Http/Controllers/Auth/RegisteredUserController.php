@@ -38,8 +38,8 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required', 'max:20', 'unique:users'],
-            'company' => ['required'],
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:5120'],
+            'company' => ['string', 'filled'],
+            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:8120'],
         ]);
 
         $filename = null;
