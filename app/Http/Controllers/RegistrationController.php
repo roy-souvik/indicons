@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AbstractUpdated;
-use App\Mail\ContactUs;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
 use App\Models\Role;

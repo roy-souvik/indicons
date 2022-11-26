@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\UserRoom;
 use App\Models\VaiMember;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -80,6 +81,8 @@ class PaymentController extends Controller
 
         $hotels = Hotel::with(['rooms'])->active()->get();
 
+        $bookingPeriod = CarbonPeriod::create('2023-01-26', '2023-01-30');
+
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationTypeAuth',
@@ -91,6 +94,7 @@ class PaymentController extends Controller
             'user',
             'hotels',
             'razorPayKey',
+            'bookingPeriod'
         ));
     }
 

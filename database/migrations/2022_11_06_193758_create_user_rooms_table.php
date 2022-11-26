@@ -18,6 +18,7 @@ class CreateUserRoomsTable extends Migration
             $table->integer('user_id');
             $table->integer('room_id');
             $table->integer('room_count');
+            $table->date('booking_date');
             $table->integer('amount');
             $table->string('transaction_id')->nullable();
             $table->boolean('is_active')->default(true);

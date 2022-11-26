@@ -87,42 +87,61 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 <hr>
 @endif
 
-<h4>Accommodation</h4>
-@foreach($hotels as $hotel)
-<p style="margin-bottom: 0rem;">{{$hotel->name}}</p>
-<em style="font-size: 0.8rem;">{{$hotel->address}}</em>
+<div class="container" style="margin: 2rem 0 2rem 0;">
+    <div class="row">
 
-<table class="table mt-3">
-    <tbody>
-    @foreach($hotel->rooms as $room)
-        <tr>
-            <!-- <td><input type="checkbox" name="room" data-roomid="{{$room->id}}" data-amount="{{$room->amount}}"></td> -->
-            <td>{{$room->room_category}}</td>
-            <td style="text-align: right;">
-                Rooms:
-                <input
-                    type="number"
-                    name="room-count"
-                    value="0"
-                    id="room-{{$room->id}}"
-                    data-roomid="{{$room->id}}"
-                    min="0"
-                    max="2"
-                    data-amount="{{$room->amount}}"
-                    style="width: 4rem;"
-                />
-                <span>X</span>
-            </td>
-            <td>{{$room->currency}} {{$room->amount}}</td>
-        </tr>
-    @endforeach
-    </tbody>
-</table>
-@endforeach
+        <div class="col-8">
+            <h4>Accommodation</h4>
+            @foreach($hotels as $hotel)
+            <p style="margin-bottom: 0rem;">{{$hotel->name}}</p>
+            <em style="font-size: 0.8rem;">{{$hotel->address}}</em>
 
-<hr />
+            <table class="table mt-3">
+                <tbody>
+                    @foreach($hotel->rooms as $room)
+                    <tr>
+                        <!-- <td><input type="checkbox" name="room" data-roomid="{{$room->id}}" data-amount="{{$room->amount}}"></td> -->
+                        <td>{{$room->room_category}}</td>
+                        <td style="text-align: right;">
+                            Rooms:
+                            <input type="number" name="room-count" value="0" id="room-{{$room->id}}" data-roomid="{{$room->id}}" min="0" max="2" data-amount="{{$room->amount}}" style="width: 4rem;" />
+                            <span>X</span>
+                        </td>
+                        <td>{{$room->currency}} {{$room->amount}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @endforeach
+        </div>
 
-<br>
+        <div class="col">
+            <h4>Booking Dates</h4>
+            <div id="booking-days" style="width: 15rem;">
+                <ul class="list-group list-group-flush">
+                    @foreach ($bookingPeriod as $bookingDate)
+                    @php
+                        $isCheckedDate = in_array($loop->index, [1, 2])
+                    @endphp
+                    <li class="list-group-item">
+                        <input
+                            name="bookingDate"
+                            class="booking-date"
+                            type="checkbox"
+                            data-date="{{$bookingDate->format('Y-m-d')}}"
+                            id="booking_date_{{$bookingDate->format('d_m_Y')}}"
+                            {{$isCheckedDate ? 'checked' : ''}}
+                            />
+                        <label class="form-check-label" for="booking_date_{{$bookingDate->format('d_m_Y')}}">
+                            {{$bookingDate->format('d-m-Y')}}
+                        </label>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="d-flex" style="flex-direction: column;">
     <label for="pickup_drop_check">
@@ -153,6 +172,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 <script>
     const token = "{{ csrf_token() }}";
     var roomDetails = {};
+    const maxRoomCount = 2;
 
     $(function() {
         updateAmount();
@@ -166,7 +186,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             updateAmount();
         });
 
-        $('input[name="room-count"]').change(function () {
+        $('input[name="room-count"]').change(function() {
             const roomId = parseInt($(this).attr('data-roomid'), 10);
             const roomAmount = parseInt($(this).attr('data-amount'), 10);
             const roomCount = parseInt($(`#room-${roomId}`).val(), 10);
@@ -177,17 +197,19 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 amount: roomAmount,
             };
 
-            if (roomCount > 0 && roomCount <= 2) {
+            if (roomCount > 0 && roomCount <= maxRoomCount) {
                 roomDetails[roomId] = selection;
             } else {
                 $(`#room-${roomId}`).val(0);
                 delete roomDetails[roomId];
 
-                Swal.fire({
-                    title: 'Invalid room count!',
-                    text: 'Please select number of rooms from 1 to 10',
-                    icon: 'error',
-                });
+                if (roomCount > maxRoomCount) {
+                    Swal.fire({
+                        title: 'Invalid room count!',
+                        text: `You may select maximum of ${maxRoomCount} rooms.`,
+                        icon: 'error',
+                    });
+                }
             }
 
             updateAmount();
@@ -238,16 +260,39 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
 
         $('.delete-person').click(function() {
-            var id = $(this).attr('data-id');
+            const id = $(this).attr('data-id');
 
             deleteAccompanyingPerson(id);
         });
+
+        $('input.booking-date').click(function() {
+            updateAmount();
+        });
     });
+
+    function getBookingDates() {
+        const dates = [];
+
+        $('input.booking-date').each(function() {
+            if ($(this).is(':checked')) {
+                dates.push($(this).attr('data-date'));
+            }
+        });
+
+        return dates;
+    }
 
     function getRoomAmount(roomDetails) {
         const rooms = Object.values(roomDetails);
 
-        return rooms.reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.amount), 0);
+        const unitRoomAmount = rooms
+            .reduce((previousValue, currentValue) => previousValue + (currentValue.count * currentValue.amount), 0);
+
+        const bookingDates = getBookingDates();
+
+        return bookingDates.length
+            ? unitRoomAmount * bookingDates.length
+            : 0;
     }
 
     function updateAmount() {
@@ -348,10 +393,10 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                     location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
                 }, (xhr) => {
                     Swal.fire({
-                    title: 'Error!',
-                    text: xhr?.responseJSON?.message || 'Error while verifying your payment.',
-                    icon: 'error',
-                });
+                        title: 'Error!',
+                        text: xhr?.responseJSON?.message || 'Error while verifying your payment.',
+                        icon: 'error',
+                    });
                 });
             },
             "prefill": {
