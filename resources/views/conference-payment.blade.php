@@ -129,11 +129,8 @@ $maxRoomCount = 2;
                 <div id="booking-days" style="width: 15rem;">
                     <ul class="list-group list-group-flush">
                         @foreach ($bookingPeriod as $bookingDate)
-                        @php
-                        $isCheckedDate = in_array($loop->index, [1, 2])
-                        @endphp
                         <li class="list-group-item">
-                            <input name="bookingDate" class="booking-date" type="checkbox" data-date="{{$bookingDate->format('Y-m-d')}}" id="booking_date_{{$bookingDate->format('d_m_Y')}}" {{$isCheckedDate ? 'checked' : ''}} />
+                            <input name="bookingDate" class="booking-date" type="checkbox" data-date="{{$bookingDate->format('Y-m-d')}}" id="booking_date_{{$bookingDate->format('d_m_Y')}}" />
                             <label class="form-check-label" for="booking_date_{{$bookingDate->format('d_m_Y')}}">
                                 {{$bookingDate->format('d-m-Y')}}
                             </label>
@@ -245,6 +242,17 @@ $maxRoomCount = 2;
         });
 
         $('#proceed-payment').click(function() {
+
+            if (!validateRoomBooking()) {
+                Swal.fire({
+                    title: 'Booking date not selected!',
+                    text: 'Please select booking date for your rooms.',
+                    icon: 'error',
+                });
+
+                return false;
+            }
+
             Swal.fire({
                 title: 'Do you want to proceed for payment?',
                 text: 'Note: Booking can not be modified again.',
@@ -305,6 +313,12 @@ $maxRoomCount = 2;
             updateAmount();
         });
     });
+
+    function validateRoomBooking() {
+        return getBookingDates().length === 0 && getRoomCount() > 0 ?
+            false :
+            true
+    }
 
     function getRoomCount() {
         let count = 0;
