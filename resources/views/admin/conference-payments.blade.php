@@ -19,39 +19,53 @@
                     <th class="border-top-0">Pickup + Drop</th>
                     <th class="border-top-0">Airplane Booking</th>
                     <th class="border-top-0">Accompanying Persons</th>
+                    <th class="border-top-0">Accommodation</th>
                 </tr>
             </thead>
             <tbody>
                 @php
-                    $totalAmount = 0;
+                $totalAmount = 0;
                 @endphp
                 @foreach ($payments as $payment)
-                    @php
-                        $totalAmount = $totalAmount + $payment->amount;
-                    @endphp
-                    <tr>
-                        <td>{{$loop->index + 1}}</td>
-                        <td>{{$payment->user->registration_id}}</td>
-                        <td>{{$payment->user->vaicon_member_id ?? 'N/A'}}</td>
-                        <td>{{$payment->user->name}}</td>
-                        <td>{{$payment->user->email}}</td>
-                        <td>{{$payment->user->phone}}</td>
-                        <td>{{$payment->user?->role?->name ?? 'N/A'}}</td>
-                        <td>{{$payment->amount}}</td>
-                        <td>{{$payment->created_at}}</td>
-                        <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>
-                        <td>{{$payment->airplane_booking ? 'Yes' : 'No'}}</td>
-                        <td>
-                            <ul>
-                                @foreach($payment->user->companions as $companion)
-                                    <li>
-                                        Name: {{$companion->getDisplayName()}}; {{$companion->email ?? 'N/A'}}
-                                    </li>
-                                @endforeach
-                            </ul>
+                @php
+                $totalAmount = $totalAmount + $payment->amount;
+                @endphp
+                <tr>
+                    <td>{{$loop->index + 1}}</td>
+                    <td>{{$payment->user->registration_id}}</td>
+                    <td>{{$payment->user->vaicon_member_id ?? 'N/A'}}</td>
+                    <td>{{$payment->user->name}}</td>
+                    <td>{{$payment->user->email}}</td>
+                    <td>{{$payment->user->phone}}</td>
+                    <td>{{$payment->user?->role?->name ?? 'N/A'}}</td>
+                    <td>{{$payment->amount}}</td>
+                    <td>{{$payment->created_at}}</td>
+                    <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>
+                    <td>{{$payment->airplane_booking ? 'Yes' : 'No'}}</td>
+                    <td>
+                        <ul>
+                            @foreach($payment->user->companions as $companion)
+                            <li>
+                                Name: {{$companion->getDisplayName()}}; {{$companion->email ?? ''}}
+                            </li>
+                            @endforeach
+                        </ul>
 
-                        </td>
-                    </tr>
+                    </td>
+
+                    <td>
+                        <ul>
+                            @foreach ($payment->accommodations as $userRoom)
+                            <li>
+                                {{$userRoom->room->room_category}} - {{$userRoom->room->currency}} {{$userRoom->room->amount}}
+                                |
+                                Room(s): {{$userRoom->room_count}}
+                                |
+                                Date: {{$userRoom->booking_date}}
+                            </li>
+                            @endforeach
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

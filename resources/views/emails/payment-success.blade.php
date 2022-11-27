@@ -65,6 +65,7 @@
                                             {{$userRoom->room->room_category}} - {{$userRoom->room->currency}} {{$userRoom->room->amount}}
                                             |
                                             Room(s): {{$userRoom->room_count}}
+                                            |
                                             Date: {{$userRoom->booking_date}}
                                         </li>
                                     @endforeach

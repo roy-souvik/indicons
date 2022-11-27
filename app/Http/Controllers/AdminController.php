@@ -30,7 +30,13 @@ class AdminController extends Controller
 
     public function conferencePayments()
     {
-        $payments = ConferencePayment::with(['user.companions'])->completed()->orderBy('id', 'desc')->get();
+        $payments = ConferencePayment::with([
+            'user.companions',
+            'accommodations.room',
+        ])
+        ->completed()
+        ->orderBy('id', 'desc')
+        ->get();
 
         return view('admin.conference-payments', compact('payments'));
     }
