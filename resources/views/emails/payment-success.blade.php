@@ -56,17 +56,22 @@
                     </tr>
                     <tr>
                         <td>Accommodation</td>
-                        <td>{{$roomCount}} Room(s)</td>
 
                         @if ($payment->accommodations?->count())
                             <td>
                                 <ul>
                                     @foreach ($payment->accommodations as $userRoom)
-                                        <li>{{$userRoom->room->room_category}} {{$userRoom->room->currency}} {{$userRoom->room->amount}}</li>
+                                        <li>
+                                            {{$userRoom->room->room_category}} - {{$userRoom->room->currency}} {{$userRoom->room->amount}}
+                                            |
+                                            Room(s): {{$userRoom->room_count}}
+                                            Date: {{$userRoom->booking_date}}
+                                        </li>
                                     @endforeach
                                 </ul>
                             </td>
                         @endif
+                        <td></td>
                     </tr>
 
                     <tr>
