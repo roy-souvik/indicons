@@ -145,15 +145,18 @@ class PaymentController extends Controller
             $existingRoomCount = UserRoom::where('transaction_id', $request->transaction_id)->count();
 
             if ($existingRoomCount === 0) {
-                foreach ($request->rooms as $room) {
-                    $userRoom = new UserRoom();
-                    $userRoom->user_id = $authUser->id;
-                    $userRoom->room_id = data_get($room, 'id');
-                    $userRoom->room_count = data_get($room, 'count');
-                    $userRoom->amount = data_get($room, 'amount');
-                    $userRoom->transaction_id = $request->transaction_id;
+                foreach ($request->booking_dates as $date) {
+                    foreach ($request->rooms as $room) {
+                        $userRoom = new UserRoom();
+                        $userRoom->user_id = $authUser->id;
+                        $userRoom->room_id = data_get($room, 'id');
+                        $userRoom->room_count = data_get($room, 'count');
+                        $userRoom->booking_date = Carbon::createFromFormat('Y-m-d', $date);
+                        $userRoom->amount = data_get($room, 'amount');
+                        $userRoom->transaction_id = $request->transaction_id;
 
-                    $userRoom->save();
+                        $userRoom->save();
+                    }
                 }
             }
 

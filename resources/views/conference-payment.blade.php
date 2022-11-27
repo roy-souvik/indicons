@@ -1,159 +1,162 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
-
-<table class="table">
-    <tbody>
-        <tr>
-            <td>Early Bird Registration</td>
-            <td>
-                @if ($registrationTypeAuth['is_early_bird'])
-                <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
-                <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - $discounts['early_bird']}}</label>
-                @else
-                Expired!
-                @endif
-            </td>
-        </tr>
-
-        <tr>
-            <td>Standard Registration</td>
-            <td>
-                @if ($registrationTypeAuth['is_early_bird'])
-                <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
-                <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - $discounts['standard']}}</label>
-                @else
-                Expired!
-                @endif
-            </td>
-        </tr>
-
-        <tr>
-            <td>Spot Registration</td>
-            <td>
-                <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem->spot_amount}}">
-                <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - $discounts['spot']}}</label>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<hr />
-
-@if (!$user->role->isStudent()) <br>
-<h5>Enter accompanying person details</h5>
-
 @php
-$amt = intval($accompanyingPersonFees->early_bird_amount);
-
-$companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-? intval($amt / 75)
-: $amt;
+$maxRoomCount = 2;
 @endphp
 
-<p>
-    Fees for each person is
-    <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
-    <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
-</p>
+<h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
 
-<table class="table" id="accompanying-person-table">
+<div id="conference-attributes" style="position: relative;">
+    <div id="overlay" class="d-none" style="position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.05);"></div>
+    <table class="table">
+        <tbody>
+            @if ($registrationTypeAuth['is_early_bird'])
+            <tr>
+                <td>Early Bird Registration</td>
+                <td>
 
-</table>
-@endif
+                    <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
+                    <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - $discounts['early_bird']}}</label>
+                </td>
+            </tr>
+            @endif
 
-@if ($accompanyingPersons->count() > 0)
-<br>
-<h5>Accompanying persons</h5>
-<table class="table" id="accompanying-persons-list">
-    <tr>
-        <td><b>Name</b></td>
-        <td><b>Email</b></td>
-        <td><b>Action</b></td>
-    </tr>
-    @foreach($accompanyingPersons as $key => $person)
-    <tr>
-        <td>{{$person->name}}</td>
-        <td>{{$person->email ?? 'N/A'}}</td>
-        <td>
-            <input type="hidden" class="person-fees" id="person_{{$key + 1}}_fees_payable" value="{{$person->fees}}">
-            <button class="btn btn-light delete-person" data-id="{{$person->id}}">Delete</button>
-        </td>
-    </tr>
-    @endforeach
-</table>
+            @if ($registrationTypeAuth['is_standard'] && !$registrationTypeAuth['is_early_bird'])
+            <tr>
+                <td>Standard Registration</td>
+                <td>
+                    <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
+                    <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - $discounts['standard']}}</label>
+                </td>
+            </tr>
+            @endif
 
-<hr>
-@endif
+            @if ($registrationTypeAuth['is_standard'] && !$registrationTypeAuth['is_early_bird'])
+            <tr>
+                <td>Spot Registration</td>
+                <td>
+                    <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem->spot_amount}}">
+                    <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - $discounts['spot']}}</label>
+                </td>
+            </tr>
+            @endif
+        </tbody>
+    </table>
 
-<div class="container" style="margin: 2rem 0 2rem 0;">
-    <div class="row">
+    <hr />
 
-        <div class="col-8">
-            <h4>Accommodation</h4>
-            @foreach($hotels as $hotel)
-            <p style="margin-bottom: 0rem;">{{$hotel->name}}</p>
-            <em style="font-size: 0.8rem;">{{$hotel->address}}</em>
+    @if (!$user->role->isStudent()) <br>
+    <h5>Enter accompanying person details</h5>
 
-            <table class="table mt-3">
-                <tbody>
-                    @foreach($hotel->rooms as $room)
-                    <tr>
-                        <!-- <td><input type="checkbox" name="room" data-roomid="{{$room->id}}" data-amount="{{$room->amount}}"></td> -->
-                        <td>{{$room->room_category}}</td>
-                        <td style="text-align: right;">
-                            Rooms:
-                            <input type="number" name="room-count" value="0" id="room-{{$room->id}}" data-roomid="{{$room->id}}" min="0" max="2" data-amount="{{$room->amount}}" style="width: 4rem;" />
-                            <span>X</span>
-                        </td>
-                        <td>{{$room->currency}} {{$room->amount}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @endforeach
-        </div>
+    @php
+    $amt = intval($accompanyingPersonFees->early_bird_amount);
 
-        <div class="col">
-            <h4>Booking Dates</h4>
-            <div id="booking-days" style="width: 15rem;">
-                <ul class="list-group list-group-flush">
-                    @foreach ($bookingPeriod as $bookingDate)
-                    @php
+    $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
+    ? intval($amt / 75)
+    : $amt;
+    @endphp
+
+    <p>
+        Fees for each person is
+        <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
+        <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
+    </p>
+
+    <table class="table" id="accompanying-person-table">
+
+    </table>
+    @endif
+
+    @if ($accompanyingPersons->count() > 0)
+    <br>
+    <h5>Accompanying persons</h5>
+    <table class="table" id="accompanying-persons-list">
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Email</b></td>
+            <td><b>Action</b></td>
+        </tr>
+        @foreach($accompanyingPersons as $key => $person)
+        <tr>
+            <td>{{$person->name}}</td>
+            <td>{{$person->email ?? 'N/A'}}</td>
+            <td>
+                <input type="hidden" class="person-fees" id="person_{{$key + 1}}_fees_payable" value="{{$person->fees}}">
+                <button class="btn btn-light delete-person" data-id="{{$person->id}}">Delete</button>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+
+    <hr>
+    @endif
+
+    <div class="container" style="margin: 2rem 0 2rem 0;">
+        <div class="row">
+
+            <div class="col-8">
+                <h4>Accommodation</h4>
+                @foreach($hotels as $hotel)
+                <p style="margin-bottom: 0rem;">{{$hotel->name}}</p>
+                <em style="font-size: 0.8rem;">{{$hotel->address}}</em>
+
+                <table class="table mt-3">
+                    <tbody>
+                        @foreach($hotel->rooms as $room)
+                        <tr>
+                            <td>{{$room->room_category}}</td>
+                            <td style="text-align: right;">
+                                Rooms:
+                                <input type="number" name="room-count" value="0" id="room-{{$room->id}}" data-roomid="{{$room->id}}" min="0" max="{{$maxRoomCount}}" data-amount="{{$room->amount}}" style="width: 4rem;" />
+                                <span>X</span>
+                            </td>
+                            <td>{{$room->currency}} {{$room->amount}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @endforeach
+            </div>
+
+            <div class="col">
+                <h4>Booking Dates</h4>
+                <div id="booking-days" style="width: 15rem;">
+                    <ul class="list-group list-group-flush">
+                        @foreach ($bookingPeriod as $bookingDate)
+                        @php
                         $isCheckedDate = in_array($loop->index, [1, 2])
-                    @endphp
-                    <li class="list-group-item">
-                        <input
-                            name="bookingDate"
-                            class="booking-date"
-                            type="checkbox"
-                            data-date="{{$bookingDate->format('Y-m-d')}}"
-                            id="booking_date_{{$bookingDate->format('d_m_Y')}}"
-                            {{$isCheckedDate ? 'checked' : ''}}
-                            />
-                        <label class="form-check-label" for="booking_date_{{$bookingDate->format('d_m_Y')}}">
-                            {{$bookingDate->format('d-m-Y')}}
-                        </label>
-                    </li>
-                    @endforeach
-                </ul>
+                        @endphp
+                        <li class="list-group-item">
+                            <input name="bookingDate" class="booking-date" type="checkbox" data-date="{{$bookingDate->format('Y-m-d')}}" id="booking_date_{{$bookingDate->format('d_m_Y')}}" {{$isCheckedDate ? 'checked' : ''}} />
+                            <label class="form-check-label" for="booking_date_{{$bookingDate->format('d_m_Y')}}">
+                                {{$bookingDate->format('d-m-Y')}}
+                            </label>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="d-flex" style="flex-direction: column;">
-    <label for="pickup_drop_check">
-        <input type="hidden" name="pick_drop_price" value="{{$pickupDropPrice->value}}">
-        <input name="pickup_drop_check" id="pickup_drop_check" type="checkbox">
-        I need pickup and drop facility at <strong>INR {{$pickupDropPrice->value}}</strong>.
-    </label>
+    <div class="d-flex" style="flex-direction: column;">
+        <label for="pickup_drop_check">
+            <input type="hidden" name="pick_drop_price" value="{{$pickupDropPrice->value}}">
+            <input name="pickup_drop_check" id="pickup_drop_check" type="checkbox">
+            I need pickup and drop facility at <strong>INR {{$pickupDropPrice->value}}</strong>.
+        </label>
 
-    <label for="airplane_booking_check">
-        <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
-        I want to avail airplane tickets booking. (<em class="text-muted" style="font-size: 0.8rem;">Our team will contact you for furthur details.</em>)
-    </label>
+        <label for="airplane_booking_check">
+            <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
+            I want to avail airplane tickets booking. (<em class="text-muted" style="font-size: 0.8rem;">Our team will contact you for furthur details.</em>)
+        </label>
+    </div>
 </div>
 
 <br>
@@ -164,15 +167,15 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         <!-- <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em> -->
     </h2>
 
-    <button id="proceed-payment" class="btn btn-primary ms-5">Proceed Payment</button>
+    <button id="proceed-payment" class="btn btn-primary ms-5" style="z-index: 110;">Proceed Payment</button>
 
-    <button id="rzp-button1" class="btn btn-primary ms-5 d-none">Pay</button>
+    <button id="rzp-button1" class="btn btn-primary ms-5 d-none" style="z-index: 110;">Pay</button>
 </div>
 
 <script>
     const token = "{{ csrf_token() }}";
     var roomDetails = {};
-    const maxRoomCount = 2;
+    const maxRoomCount = parseInt("{{$maxRoomCount}}", 10);
 
     $(function() {
         updateAmount();
@@ -186,10 +189,30 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             updateAmount();
         });
 
-        $('input[name="room-count"]').change(function() {
+        $('input[name="room-count"]').change(function(e) {
+            e.preventDefault();
             const roomId = parseInt($(this).attr('data-roomid'), 10);
             const roomAmount = parseInt($(this).attr('data-amount'), 10);
             const roomCount = parseInt($(`#room-${roomId}`).val(), 10);
+
+            // Total number of rooms should not be more than `maxRoomCount`
+            if (getRoomCount() > maxRoomCount) {
+                Swal.fire({
+                    title: 'Invalid room count!',
+                    text: `
+                        You may select maximum of ${maxRoomCount} rooms.
+                        For more rooms please contact secratary@vaicon2023.com.
+                    `,
+                    icon: 'error',
+                });
+
+                $(this).val(0);
+                delete roomDetails[roomId];
+
+                updateAmount();
+
+                return;
+            }
 
             const selection = {
                 id: roomId,
@@ -197,6 +220,7 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                 amount: roomAmount,
             };
 
+            // User should not be able to select more than `maxRoomCount` rooms from each hotel
             if (roomCount > 0 && roomCount <= maxRoomCount) {
                 roomDetails[roomId] = selection;
             } else {
@@ -221,15 +245,27 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
 
         $('#proceed-payment').click(function() {
-            const amount = updateAmount().total_amount;
+            Swal.fire({
+                title: 'Do you want to proceed for payment?',
+                text: 'Note: Booking can not be modified again.',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const amount = updateAmount().total_amount;
 
-            createOrder(amount).then(function(response) {
-                $('#proceed-payment').addClass('d-none');
-                $('#rzp-button1').removeClass('d-none');
+                    createOrder(amount).then(function(response) {
+                        $('#overlay').removeClass('d-none');
+                        $('#proceed-payment').addClass('d-none');
+                        $('#rzp-button1').removeClass('d-none');
 
-                buildCheckoutLink(response.data);
-            }, function() {
-                console.log('Some error');
+                        buildCheckoutLink(response.data);
+                    }, function() {
+                        console.log('Some error');
+                    });
+                }
             });
         });
 
@@ -270,6 +306,16 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
         });
     });
 
+    function getRoomCount() {
+        let count = 0;
+
+        $('input[name="room-count"]').each(function() {
+            count += parseInt($(this).val());
+        });
+
+        return count;
+    }
+
     function getBookingDates() {
         const dates = [];
 
@@ -290,9 +336,9 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
 
         const bookingDates = getBookingDates();
 
-        return bookingDates.length
-            ? unitRoomAmount * bookingDates.length
-            : 0;
+        return bookingDates.length ?
+            unitRoomAmount * bookingDates.length :
+            0;
     }
 
     function updateAmount() {
@@ -302,8 +348,6 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
             parseInt($('input[name="pick_drop_price"]').val()) :
             0;
         const roomAmount = getRoomAmount(roomDetails);
-
-        console.log({roomAmount});
 
         let totalAmount = payerAmount + companionsAmount + pickUpDropPrice + roomAmount;
 
@@ -386,10 +430,11 @@ $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->curren
                     'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
                     'payment_title': 'conference_payment',
                     'rooms': Object.values(roomDetails),
+                    'booking_dates': getBookingDates(),
                 };
 
                 saveConferencePayment(responseData).then(() => {
-                    console.log(responseData);
+                    // console.log(responseData);
                     location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
                 }, (xhr) => {
                     Swal.fire({
