@@ -310,7 +310,7 @@
 
 
        <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-10">
                <h2>FULL REGISTRATION INCLUDES </h2>
                <ul>
                    <li> Access to the congress sessions. </li>
@@ -332,8 +332,8 @@
 
            </div>
 
+           <?php /*
            <div class="col-md-6">
-
                <div class="login-form">
                    <form action="/contact-us" method="POST">
                        @csrf
@@ -360,6 +360,7 @@
                    </form>
                </div>
            </div>
+           */ ?>
 
        </div>
 
