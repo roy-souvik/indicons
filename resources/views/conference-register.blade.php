@@ -332,36 +332,6 @@
 
            </div>
 
-           <?php /*
-           <div class="col-md-6">
-               <div class="login-form">
-                   <form action="/contact-us" method="POST">
-                       @csrf
-
-                       <h4 class="modal-title" style="margin-bottom:0px; font-size: 44px;">Be in touch </h4>
-                       <p style="text-align:center; color:#fff;"> Leave your details </p>
-                       <div class="form-group">
-                           <input type="text" name="name" class="form-control" placeholder="Name" required="required">
-                       </div>
-
-                       <div class="form-group">
-                           <input type="text" name="phone" class="form-control" placeholder="Phone" required="required">
-                       </div>
-
-                       <div class="form-group">
-                           <input type="email" name="email" class="form-control" placeholder="Email" required="required">
-                       </div>
-
-                       <div class="form-group">
-                           <textarea name="comment" class="form-control" cols="50" rows="5"></textarea>
-                       </div>
-
-                       <input type="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
-                   </form>
-               </div>
-           </div>
-           */ ?>
-
        </div>
 
        <img src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">

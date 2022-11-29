@@ -31,13 +31,17 @@ Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacypolicy');
 
-Route::get('/tnd', function () {
+Route::get('/terms-conditions', function () {
     return view('tnd');
 })->name('tnd');
 
 Route::get('/refund', function () {
     return view('refund');
 })->name('refund');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 Route::get('/abstracts-importnant-dates', function () {
     return view('abstract-dates');
@@ -86,6 +90,10 @@ Route::get('/abstract', function () {
 Route::get('/nurses', function () {
     return view('nurses');
 })->name('nurses.home');
+
+Route::get('/contact-us', function () {
+    return view('contact');
+})->name('contactus.show');
 
 Route::post('/contact-us', [RegistrationController::class, 'contactUsEmail'])->name('contactus.send');
 
