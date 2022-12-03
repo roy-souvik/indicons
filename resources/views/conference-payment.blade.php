@@ -448,7 +448,6 @@ $maxRoomCount = 2;
                 };
 
                 saveConferencePayment(responseData).then(() => {
-                    // console.log(responseData);
                     location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
                 }, (xhr) => {
                     Swal.fire({
@@ -459,7 +458,7 @@ $maxRoomCount = 2;
                 });
             },
             "prefill": {
-                "name": "{{$user->getDisplayName()}}",
+                "name": "",
                 "email": "{{$user->email}}",
                 "contact": "{{$user->phone}}"
             },
@@ -484,7 +483,7 @@ $maxRoomCount = 2;
 
             Swal.fire({
                 title: `Error! ${response.error.code}`,
-                text: `Description: ${response.error.description} | Order ID: ${response.error.metadata.order_id}`,
+                text: `Description: ${response.error.description}`,
                 icon: 'error',
             });
         });
