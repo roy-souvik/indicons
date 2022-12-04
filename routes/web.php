@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkshopController;
-use App\Models\Role;
-use App\Models\SiteConfig;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -158,6 +157,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', function () {
             return view('admin.home');
         })->name('admin');
+
+        Route::get('/coupons', CouponsController::class, 'index')->name('coupons.index');
+        Route::post('/coupons', CouponsController::class, 'create')->name('coupons.create');
+        Route::delete('/coupons/{coupon}', CouponsController::class, 'destroy')->name('coupons.index');
 
         Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
 
