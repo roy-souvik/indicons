@@ -62,10 +62,12 @@ class CouponsController extends Controller
     {
         $coupon = Coupon::findOrFail($id);
 
-        if (!empty($coupon->user_id)) {
-            throw ValidationException::withMessages([
-                'coupon' => 'Coupon is in use',
-            ]);
+        if (!empty($coupon->user_id) || empty($coupon->is_active)) {
+            // throw ValidationException::withMessages([
+            //     'coupon' => 'Coupon is in use',
+            // ]);
+
+            return back()->with('error', 'Coupon is in use');
         }
 
         $coupon->delete();

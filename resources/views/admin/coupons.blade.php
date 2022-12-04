@@ -3,6 +3,8 @@
 
 <div class="white-box">
 
+@include('admin.flash-message')
+
     <div>
         <form action="{{route('admin.coupons.create')}}" method="post" class="form-horizontal form-material">
             @csrf
