@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\PaymentSuccess;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferencePayment;
+use App\Models\Coupon;
 use App\Models\Fee;
 use App\Models\Hotel;
 use App\Models\Role;
@@ -33,8 +34,14 @@ class PaymentController extends Controller
         $this->api = new Api($keyId, $keySecret);
     }
 
-    public function showConferencePaymentPage()
+    public function showConferencePaymentPage(Request $request)
     {
+        $user = Auth::user();
+
+        $coupon = $request->session()->has(Coupon::storageKey($user->id))
+            ? Coupon::findByCode($request->session()->get(Coupon::storageKey($user->id)))
+            : null;
+
         $config = SiteConfig::whereIn('name', ['early_bird', 'standard'])->get();
         $earlyBirdConfig = $config->where('name', 'early_bird')->first();
         $standardConfig = $config->where('name', 'standard')->first();
@@ -45,8 +52,18 @@ class PaymentController extends Controller
             'is_spot' => true,
         ];
 
-        $user = Auth::user();
+
         $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
+
+        $couponDiscounts = [];
+
+        if (!empty($coupon)) {
+            $couponDiscounts = [
+                'early_bird' => intval($coupon->discount(($paymentSlabItem->early_bird_amount))),
+                'standard' => intval($coupon->discount(($paymentSlabItem->standard))),
+                'spot' => intval($coupon->discount(($paymentSlabItem->spot))),
+            ];
+        }
 
         $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
         $accompanyingPersonFees = Fee::where('role_id', $accompanyingPersonRole->id)->firstOrFail();
@@ -70,9 +87,9 @@ class PaymentController extends Controller
         ];
 
         $discounts = [
-            'early_bird' => $vaiMemberDiscounts['early_bird'] + $saarcDiscounts['early_bird'],
-            'standard' => $vaiMemberDiscounts['standard'] + $saarcDiscounts['standard'],
-            'spot' => $vaiMemberDiscounts['spot'] + $saarcDiscounts['spot'],
+            'early_bird' => $vaiMemberDiscounts['early_bird'] + $saarcDiscounts['early_bird'] + data_get($couponDiscounts, 'early_bird', 0),
+            'standard' => $vaiMemberDiscounts['standard'] + $saarcDiscounts['standard'] + data_get($couponDiscounts, 'standard', 0),
+            'spot' => $vaiMemberDiscounts['spot'] + $saarcDiscounts['spot'] + data_get($couponDiscounts, 'spot', 0),
         ];
 
         $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
@@ -94,7 +111,8 @@ class PaymentController extends Controller
             'user',
             'hotels',
             'razorPayKey',
-            'bookingPeriod'
+            'bookingPeriod',
+            'coupon',
         ));
     }
 

@@ -28,8 +28,8 @@ class CouponsController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'coupon_count' => ['required', 'integer'],
-            'percent_off' => ['required', 'integer'],
+            'coupon_count' => ['required', 'integer', 'min:1', 'max:20'],
+            'percent_off' => ['required', 'integer', 'min:1', 'max:90'],
         ]);
 
         $couponCodes = collect();
@@ -51,51 +51,6 @@ class CouponsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -114,5 +69,53 @@ class CouponsController extends Controller
         $coupon->delete();
 
         return redirect(route('admin.coupons.index'));
+    }
+
+    public function apply(Request $request)
+    {
+        $request->validate([
+            'coupon_code' => ['required', 'string'],
+        ]);
+
+        $couponCode = $request->coupon_code;
+
+        $coupon = Coupon::findByCode($couponCode);
+
+        if (empty($coupon)) {
+            throw ValidationException::withMessages([
+                'coupon' => 'Invalid Coupon code.',
+            ]);
+        }
+
+        if (!empty($coupon->user_id)) {
+            throw ValidationException::withMessages([
+                'coupon' => 'Coupon is in use.',
+            ]);
+        }
+
+        if (empty($coupon->is_active)) {
+            throw ValidationException::withMessages([
+                'coupon' => 'Coupon is not active.',
+            ]);
+        }
+
+        $userId = auth()->user()->id;
+
+        $request->session()->put(Coupon::storageKey($userId), $coupon->code);
+
+        return response()->json([
+            'data' => $coupon,
+        ]);
+    }
+
+    public function unapply(Request $request)
+    {
+        $userId = auth()->user()->id;
+
+        $request->session()->forget(Coupon::storageKey($userId));
+
+        return response()->json([
+            'data' => true,
+        ]);
     }
 }

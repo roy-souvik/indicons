@@ -21,7 +21,7 @@ class Coupon extends Model
         'user_id',
     ];
 
-    public static function findByCode($code)
+    public static function findByCode(string $code): Coupon | null
     {
         return self::where('code', $code)->first();
     }
@@ -35,6 +35,11 @@ class Coupon extends Model
         } else {
             return 0;
         }
+    }
+
+    public static function storageKey($identifier, $prefix = 'coupon_code')
+    {
+        return $prefix . '_' . $identifier;
     }
 
     public static function generateUniqueCode(): string

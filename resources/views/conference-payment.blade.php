@@ -3,6 +3,10 @@
 
 @php
 $maxRoomCount = 2;
+
+$earlyBirdPayable = intval($paymentSlabItem->early_bird_amount) - intval($discounts['early_bird']);
+$standardPayable = intval($paymentSlabItem->standard_amount) - intval($discounts['standard']);
+$spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']);
 @endphp
 
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
@@ -20,9 +24,8 @@ $maxRoomCount = 2;
             <tr>
                 <td>Early Bird Registration</td>
                 <td>
-
-                    <input type="radio" id="early_bird" name="payment" checked value="{{$paymentSlabItem['early_bird_amount']}}">
-                    <label for="early_bird">{{$paymentSlabItem->currency}} {{intval($paymentSlabItem->early_bird_amount) - $discounts['early_bird']}}</label>
+                    <input type="radio" id="early_bird" name="payment" checked value="{{$earlyBirdPayable}}">
+                    <label for="early_bird">{{$paymentSlabItem->currency}} {{$earlyBirdPayable}}</label>
                 </td>
             </tr>
             @endif
@@ -31,8 +34,8 @@ $maxRoomCount = 2;
             <tr>
                 <td>Standard Registration</td>
                 <td>
-                    <input type="radio" id="standard" name="payment" value="{{$paymentSlabItem->standard_amount}}">
-                    <label for="standard">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->standard_amount) - $discounts['standard']}}</label>
+                    <input type="radio" id="standard" name="payment" value="{{$standardPayable}}">
+                    <label for="standard">{{$paymentSlabItem['currency']}} {{$standardPayable}}</label>
                 </td>
             </tr>
             @endif
@@ -48,6 +51,24 @@ $maxRoomCount = 2;
             @endif
         </tbody>
     </table>
+
+    <div id="coupon-wrap" class="d-flex" style="justify-content: right; align-items: center;">
+        @if (empty($coupon))
+            Coupon code:
+            <input type="text" id="coupon_code" value="" class="ms-2 form-control" style="width: 10rem;">
+
+            <button class="btn btn-primary ms-2" id="apply_coupon">Apply</button>
+        @else
+            <div class="text-success" style="background: white;
+    padding: 0.4rem;
+    border-radius: 1rem;
+    font-weight: 700;">
+                Coupon code <u>{{$coupon->code}}</u> applied!
+            </div>
+
+            <div> <button id="unapply_coupon" class="btn btn-link" style="text-decoration: none; font-size: 1.2rem; font-weight: bold;">x</button></div>
+        @endif
+    </div>
 
     <hr />
 
@@ -194,14 +215,12 @@ $maxRoomCount = 2;
 
             // Total number of rooms should not be more than `maxRoomCount`
             if (getRoomCount() > maxRoomCount) {
-                Swal.fire({
-                    title: 'Invalid room count!',
-                    text: `
-                        You may select maximum of ${maxRoomCount} rooms.
-                        For more rooms please contact secratary@vaicon2023.com.
-                    `,
-                    icon: 'error',
-                });
+                const message = `
+                    You may select maximum of ${maxRoomCount} rooms.
+                    For more rooms please contact secratary@vaicon2023.com.
+                `;
+
+                showError(message, 'Invalid room count!');
 
                 $(this).val(0);
                 delete roomDetails[roomId];
@@ -225,11 +244,7 @@ $maxRoomCount = 2;
                 delete roomDetails[roomId];
 
                 if (roomCount > maxRoomCount) {
-                    Swal.fire({
-                        title: 'Invalid room count!',
-                        text: `You may select maximum of ${maxRoomCount} rooms.`,
-                        icon: 'error',
-                    });
+                    showError(`You may select maximum of ${maxRoomCount} rooms.`, 'Invalid room count!');
                 }
             }
 
@@ -244,11 +259,7 @@ $maxRoomCount = 2;
         $('#proceed-payment').click(function() {
 
             if (!validateRoomBooking()) {
-                Swal.fire({
-                    title: 'Booking date not selected!',
-                    text: 'Please select booking date for your rooms.',
-                    icon: 'error',
-                });
+                showError('Please select booking date for your rooms.', 'Booking date not selected!');
 
                 return false;
             }
@@ -312,7 +323,94 @@ $maxRoomCount = 2;
         $('input.booking-date').click(function() {
             updateAmount();
         });
+
+        $('#apply_coupon').click(function() {
+            const couponCode = $('#coupon_code').val();
+
+            if (!couponCode?.length || couponCode?.length !== 6) {
+                return;
+            }
+
+            applyCoupon(couponCode);
+        });
+
+        $('#unapply_coupon').click(function () {
+            Swal.fire({
+                title: 'Remove coupon',
+                text: 'Are you sure to remove the coupon?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    unapplyCoupon();
+                }
+            });
+
+        });
     });
+
+    function unapplyCoupon() {
+        $.ajax({
+            url: '/unapply-coupon',
+            type: 'POST',
+            data: JSON.stringify({
+                '_token': token,
+            }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            processData: false,
+            success: function(result) {
+                location.reload();
+
+                return result;
+            },
+            error: function(xhr, status, error) {
+                showError(`Unable to apply coupon. ${xhr?.responseJSON?.message}`);
+
+                return error;
+            },
+        });
+    }
+
+    function applyCoupon(couponCode) {
+        $.ajax({
+            url: '/apply-coupon',
+            type: 'POST',
+            data: JSON.stringify({
+                '_token': token,
+                coupon_code: couponCode,
+            }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            processData: false,
+            success: function(result) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Coupon code matched.',
+                    icon: 'success',
+                }).then(function() {
+                    location.reload();
+                });
+
+                return result;
+            },
+            error: function(xhr, status, error) {
+                showError(`Unable to apply coupon. ${xhr?.responseJSON?.message}`);
+
+                return error;
+            },
+        });
+    }
+
+    function showError(message = 'Error', title = 'Error!') {
+        Swal.fire({
+            title: title,
+            text: message || 'Error',
+            icon: 'error',
+        });
+    }
 
     function validateRoomBooking() {
         return getBookingDates().length === 0 && getRoomCount() > 0 ?
@@ -408,11 +506,7 @@ $maxRoomCount = 2;
                 return result;
             },
             error: function(xhr, status, error) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: xhr?.responseJSON?.message || 'Error',
-                    icon: 'error',
-                });
+                showError(xhr?.responseJSON?.message);
 
                 return error;
             },
@@ -450,11 +544,7 @@ $maxRoomCount = 2;
                 saveConferencePayment(responseData).then(() => {
                     location.href = '/payment-success?transaction_id=' + response.razorpay_payment_id;
                 }, (xhr) => {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: xhr?.responseJSON?.message || 'Error while verifying your payment.',
-                        icon: 'error',
-                    });
+                    showError(xhr?.responseJSON?.message);
                 });
             },
             "prefill": {
@@ -481,11 +571,7 @@ $maxRoomCount = 2;
             console.log(response.error.metadata.order_id);
             console.log(response.error.metadata.payment_id);
 
-            Swal.fire({
-                title: `Error! ${response.error.code}`,
-                text: `Description: ${response.error.description}`,
-                icon: 'error',
-            });
+            showError(`Description: ${response.error.description}`, `Error! ${response.error.code}`);
         });
 
         document.getElementById('rzp-button1').onclick = function(e) {
@@ -506,11 +592,7 @@ $maxRoomCount = 2;
                 return result;
             },
             error: function(xhr, status, error) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: xhr?.responseJSON?.message || 'Error',
-                    icon: 'error',
-                });
+                showError(xhr?.responseJSON?.message);
 
                 return error;
             },
