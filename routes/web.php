@@ -158,9 +158,9 @@ Route::middleware('auth')->group(function () {
             return view('admin.home');
         })->name('admin');
 
-        Route::get('/coupons', CouponsController::class, 'index')->name('coupons.index');
-        Route::post('/coupons', CouponsController::class, 'create')->name('coupons.create');
-        Route::delete('/coupons/{coupon}', CouponsController::class, 'destroy')->name('coupons.index');
+        Route::get('/coupons', [CouponsController::class, 'index'])->name('admin.coupons.index');
+        Route::post('/coupons', [CouponsController::class, 'create'])->name('admin.coupons.create');
+        Route::delete('/coupons/{coupon}', [CouponsController::class, 'destroy'])->name('admin.coupons.destroy');
 
         Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
 

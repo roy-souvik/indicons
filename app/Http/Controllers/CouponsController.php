@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CouponsController extends Controller
 {
@@ -13,7 +15,9 @@ class CouponsController extends Controller
      */
     public function index()
     {
-        //
+        $coupons = Coupon::all();
+
+        return view('admin.coupons', compact('coupons'));
     }
 
     /**
@@ -21,9 +25,29 @@ class CouponsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'coupon_count' => ['required', 'integer'],
+            'percent_off' => ['required', 'integer'],
+        ]);
+
+        $couponCodes = collect();
+
+        for ($i = 1; $i <= $request->coupon_count; $i++) {
+            $code = Coupon::generateUniqueCode();
+            $couponCodes->push($code);
+        }
+
+        foreach ($couponCodes as $couponCode) {
+            $coupon = new Coupon();
+            $coupon->code = $couponCode;
+            $coupon->percent_off = $request->input('percent_off', 0);
+
+            $coupon->save();
+        }
+
+        return redirect(route('admin.coupons.index'));
     }
 
     /**
@@ -79,6 +103,16 @@ class CouponsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coupon = Coupon::findOrFail($id);
+
+        if (!empty($coupon->user_id)) {
+            throw ValidationException::withMessages([
+                'coupon' => 'Coupon is in use',
+            ]);
+        }
+
+        $coupon->delete();
+
+        return redirect(route('admin.coupons.index'));
     }
 }

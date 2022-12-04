@@ -161,7 +161,7 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
             <div class="col-md-4">
                 <div class="profile-img">
                     @if(!empty($user->image))
-                        <img src="/images/{{$user->image}}" class="img-thumbnail" alt="{{$user->name}}">
+                        <img src="{{url('images/' . $user->image)}}" class="img-thumbnail" alt="{{$user->name}}">
                     @else
                         <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" class="img-thumbnail" alt="no-image" />
                     @endif
