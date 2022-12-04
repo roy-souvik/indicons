@@ -194,6 +194,8 @@ class PaymentController extends Controller
                 $coupon->user_id = $authUser->id;
                 $coupon->is_active = 0;
                 $coupon->save();
+
+                $request->session()->forget(Coupon::storageKey($authUser->id));
             }
 
             Mail::to($authUser)->send(new PaymentSuccess($request->transaction_id));
