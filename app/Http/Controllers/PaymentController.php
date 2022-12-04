@@ -133,6 +133,10 @@ class PaymentController extends Controller
             ], 400);
         }
 
+        $coupon = $request->session()->has(Coupon::storageKey($authUser->id))
+            ? Coupon::findByCode($request->session()->get(Coupon::storageKey($authUser->id)))
+            : null;
+
         try {
             $payment->user_id = $authUser->id;
             $payment->transaction_id = $request->transaction_id;
@@ -143,6 +147,7 @@ class PaymentController extends Controller
             $payment->pickup_drop = $request->input('pickup_drop', false);
             $payment->airplane_booking = $request->input('airplane_booking', false);
             $payment->payment_title = $request->input('payment_title');
+            $payment->coupon_id = !empty($coupon) ? $coupon->id : null;
 
             $payment->save();
 
@@ -183,6 +188,12 @@ class PaymentController extends Controller
                     $person->confirmed = 1;
                     $person->save();
                 }
+            }
+
+            if (!empty($coupon)) {
+                $coupon->user_id = $authUser->id;
+                $coupon->is_active = 0;
+                $coupon->save();
             }
 
             Mail::to($authUser)->send(new PaymentSuccess($request->transaction_id));

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ConferencePayment extends Model
 {
@@ -23,6 +24,7 @@ class ConferencePayment extends Model
         'pickup_drop',
         'airplane_booking',
         'payment_title',
+        'coupon_id',
     ];
 
     public function user(): BelongsTo
@@ -38,5 +40,10 @@ class ConferencePayment extends Model
     public function accommodations(): HasMany
     {
         return $this->hasMany(UserRoom::class, 'transaction_id', 'transaction_id');
+    }
+
+    public function coupon(): HasOne
+    {
+        return $this->hasOne(Coupon::class, 'id', 'coupon_id');
     }
 }

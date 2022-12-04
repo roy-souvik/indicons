@@ -34,8 +34,10 @@ class CouponsController extends Controller
 
         $couponCodes = collect();
 
+        $suffix = '_' . $request->percent_off;
+
         for ($i = 1; $i <= $request->coupon_count; $i++) {
-            $code = Coupon::generateUniqueCode();
+            $code = Coupon::generateUniqueCode($suffix);
             $couponCodes->push($code);
         }
 

@@ -75,6 +75,14 @@
                         <td></td>
                     </tr>
 
+                    @if (!empty($payment->coupon))
+                    <tr>
+                        <td>Coupon Code</td>
+                        <td>{{$payment->coupon->code}}</td>
+                        <td>{{$payment->percent_off}} % off</td>
+                    </tr>
+                    @endif
+
                     <tr>
                         <td>Pickup and Drop</td>
                         <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>

@@ -327,7 +327,7 @@ $spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']
         $('#apply_coupon').click(function() {
             const couponCode = $('#coupon_code').val();
 
-            if (!couponCode?.length || couponCode?.length !== 6) {
+            if (!couponCode?.length || couponCode?.length !== 9) {
                 return;
             }
 

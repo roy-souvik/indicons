@@ -24,6 +24,7 @@ class CreateConferencePaymentsTable extends Migration
             $table->boolean('pickup_drop')->default(false);
             $table->boolean('airplane_booking')->default(false);
             $table->string('payment_title')->nullable();
+            $table->integer('coupon_id')->nullable();
             $table->timestamps();
         });
     }

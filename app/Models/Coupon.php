@@ -42,11 +42,10 @@ class Coupon extends Model
         return $prefix . '_' . $identifier;
     }
 
-    public static function generateUniqueCode(): string
+    public static function generateUniqueCode(string $suffix = '', int $codeLength = 6): string
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersNumber = strlen($characters);
-        $codeLength = 6;
 
         $code = '';
 
@@ -55,6 +54,8 @@ class Coupon extends Model
             $character = $characters[$position];
             $code = $code . $character;
         }
+
+        $code = $code . $suffix;
 
         if (Coupon::where('code', $code)->exists()) {
             self::generateUniqueCode();

@@ -33,7 +33,7 @@ class PaymentSuccess extends Mailable
      */
     public function build()
     {
-        $payment = ConferencePayment::with(['user.companions', 'accommodations.room'])
+        $payment = ConferencePayment::with(['user.companions', 'accommodations.room', 'coupon'])
             ->where('transaction_id', $this->transactionId)
             ->first();
 
