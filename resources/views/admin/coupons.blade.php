@@ -3,7 +3,7 @@
 
 <div class="white-box">
 
-@include('admin.flash-message')
+    @include('admin.flash-message')
 
     <div>
         <form action="{{route('admin.coupons.create')}}" method="post" class="form-horizontal form-material">
@@ -48,7 +48,13 @@
                 @foreach ($coupons as $coupon)
                 <tr>
                     <td>{{$loop->index + 1}}</td>
-                    <td>{{$coupon->code}}</td>
+                    <td>
+                        <div class="d-flex" style="justify-content: space-between;">
+                            <span>{{$coupon->code}}</span>
+
+                            <button name="coupon_code" id="coupon_code{{$coupon->id}}" class="btn btn-link coupon-code" data-code="{{$coupon->code}}">Copy</button>
+                        </div>
+                    </td>
                     <td>{{$coupon->percent_off}}</td>
                     <td>{{$coupon->is_active ? 'Yes' : 'No'}}</td>
                     <td>{{$coupon->user_id}}</td>
@@ -58,7 +64,6 @@
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-warning">Delete</button>
                         </form>
-
                     </td>
                 </tr>
                 @endforeach
@@ -66,5 +71,25 @@
         </table>
     </div>
 </div>
+
+<script>
+    $(function() {
+        function copyContent(text) {
+            try {
+                navigator.clipboard.writeText(text);
+
+                alert('Coupon code copied!');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+
+        $('.coupon-code').click(function () {
+            const couponCode = $(this).attr('data-code');
+
+            copyContent(couponCode);
+        });
+    });
+</script>
 
 @stop

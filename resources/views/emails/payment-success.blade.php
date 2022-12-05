@@ -79,7 +79,7 @@
                     <tr>
                         <td>Coupon Code</td>
                         <td>{{$payment->coupon->code}}</td>
-                        <td>{{$payment->percent_off}} % off</td>
+                        <td>{{$payment->coupon->percent_off}} % off</td>
                     </tr>
                     @endif
 

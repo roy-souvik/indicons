@@ -550,7 +550,7 @@ $spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']
             "prefill": {
                 "name": "",
                 "email": "{{$user->email}}",
-                "contact": "{{$user->phone}}"
+                "contact": ""
             },
             "notes": {
                 "address": "Vaicon 2023 conference payment"
