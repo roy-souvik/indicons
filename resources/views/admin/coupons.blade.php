@@ -41,12 +41,12 @@
                     <th class="border-top-0">Percent Off (%)</th>
                     <th class="border-top-0">Active</th>
                     <th class="border-top-0">Used By</th>
-                    <th class="border-top-0">Delete</th>
+                    <th class="border-top-0">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($coupons as $coupon)
-                <tr>
+                <tr style="background-color: {{$coupon->is_active ? '' : '#eeeeee'}};">
                     <td>{{$loop->index + 1}}</td>
                     <td>
                         <div class="d-flex" style="justify-content: space-between;">
@@ -57,13 +57,15 @@
                     </td>
                     <td>{{$coupon->percent_off}}</td>
                     <td>{{$coupon->is_active ? 'Yes' : 'No'}}</td>
-                    <td>{{$coupon->user_id}}</td>
+                    <td>{{$coupon?->user->email ?? ''}}</td>
                     <td>
+                        @if (empty($coupon?->user->email))
                         <form name="delete-feature" action="{{route('admin.coupons.destroy', $coupon->id)}}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-warning">Delete</button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
