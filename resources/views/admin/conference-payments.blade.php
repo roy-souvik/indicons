@@ -1,6 +1,16 @@
 @extends('layouts.indicons-admin.main-layout')
 @section('content')
 
+<style>
+    .table tbody tr {
+        font-size: 0.8rem;
+    }
+    .table thead th {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+</style>
+
 <div class="white-box">
     <h3 class="box-title">Payments</h3>
     <div class="table-responsive">
