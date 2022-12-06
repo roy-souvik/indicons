@@ -314,7 +314,7 @@ class RegistrationController extends Controller
             'title' => ['required', 'string', 'max:10', 'alpha'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:8120'],
+            // 'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:8120'],
             'phone' => ['required', 'max:20', 'unique:users'],
             'company' => ['string', 'filled'],
             'postal_code' => ['required'],
@@ -324,7 +324,7 @@ class RegistrationController extends Controller
             'address' => ['required'],
             'registration_type' => ['required', 'integer'], // Considered as role as in Role Model
             'privacy_policy_check' => ['required'],
-            'is_vaicon_member' => ['required'],
+            // 'is_vaicon_member' => ['required'],
             'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
         ]);
 

@@ -160,11 +160,12 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    @if(!empty($user->image))
+                    <!-- @if(!empty($user->image))
                         <img src="{{url('images/' . $user->image)}}" class="img-thumbnail" alt="{{$user->name}}">
                     @else
                         <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" class="img-thumbnail" alt="no-image" />
-                    @endif
+                    @endif -->
+                    <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" class="img-thumbnail" alt="default image" />
                 </div>
             </div>
             <div class="col-md-6">
@@ -251,7 +252,8 @@ $totalCompanionAmount = addGst($totalCompanionAmount);
     </table>
     @endif
 
-    @if($user->isCompanionsAllowed())
+    <!-- Comment for now -->
+    @if($user->isCompanionsAllowed() && false)
     <br>
 
     <h5>Add New Accompanying Person</h5>

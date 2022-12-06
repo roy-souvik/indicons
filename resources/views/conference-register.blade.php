@@ -220,10 +220,10 @@
                    <input type="email" name="email" value="{{ old('email') }}" placeholder="johnsmith@hotmail.com" required>
                </div>
 
-               <div class="input__box">
+               <!-- <div class="input__box">
                    <span class="details">Image</span>
                    <input type="file" name="image" placeholder="Choose image" id="image">
-               </div>
+               </div> -->
 
                <div class="input__box">
                    <span class="details">Phone Number</span>
@@ -283,7 +283,7 @@
                    </select>
                </div>
 
-               <div class="input__box">
+               <!-- <div class="input__box">
                    <span class="details">Are you an existing VAI Member?</span>
                    <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
                        <option value="">-- choose one --</option>
@@ -292,7 +292,7 @@
                    </select>
 
                    <input type="text" class="d-none" placeholder="Enter valid VAICON member id" name="vaicon_member_id" id="vaicon_member_id" value="{{ old('vaicon_member_id') }}">
-               </div>
+               </div> -->
 
                <div style="clear:both;"> </div>
 
