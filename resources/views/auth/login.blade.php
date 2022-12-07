@@ -43,6 +43,11 @@
                         <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
                             <a href="{{route('conference-register.show')}}" class="link-danger">Register</a>
                         </p>
+
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Forgot password?
+                            <a href="{{url('forgot-password')}}" class="link-danger">Click here</a>
+                        </p>
+
                     </div>
 
                 </form>
