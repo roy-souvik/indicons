@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\AbstractUpdated;
+use App\Mail\PaymentSuccess;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
@@ -16,6 +17,8 @@ use App\Models\VaiMember;
 use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -34,9 +37,9 @@ class AdminController extends Controller
             'user.companions',
             'accommodations.room',
         ])
-        ->completed()
-        ->orderBy('id', 'desc')
-        ->get();
+            ->completed()
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('admin.conference-payments', compact('payments'));
     }
@@ -242,5 +245,33 @@ class AdminController extends Controller
         $users = User::whereNotIn('role_id', $roles->pluck('id')->toArray())->get();
 
         return view('admin.conference-registrations', compact('users'));
+    }
+
+    public function resendConferenceEmail(Request $request)
+    {
+        $request->validate([
+            'txn_id' => ['required', 'string'],
+            'user_id' => ['required', 'integer'],
+        ]);
+
+        $user = User::findOrFail($request->user_id);
+        $payment = ConferencePayment::where('transaction_id', $request->txn_id)->where('user_id', $user->id)->firstOrFail();
+
+        Mail::to($user)->send(new PaymentSuccess($payment->transaction_id));
+
+        return response()->json([
+            'data' => $payment,
+        ]);
+    }
+
+    public function paymentPdf(Request $request)
+    {
+        $transactionId = 'pay_Knwf5pyPfeqw8U';
+
+        $data = ConferencePayment::getPaymentReceiptData($transactionId);
+
+        $pdf = Pdf::loadView('emails.payment-success', $data);
+
+        return $pdf->download('invoice.pdf');
     }
 }

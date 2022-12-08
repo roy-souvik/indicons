@@ -5,6 +5,7 @@
     .table tbody tr {
         font-size: 0.8rem;
     }
+
     .table thead th {
         font-size: 0.9rem;
         text-align: center;
@@ -31,6 +32,7 @@
                     <th class="border-top-0">Airplane Booking</th>
                     <th class="border-top-0">Accompanying Persons</th>
                     <th class="border-top-0">Accommodation</th>
+                    <th class="border-top-0">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,6 +79,22 @@
                             </li>
                             @endforeach
                     </td>
+
+                    <td>
+                        @if(!empty($payment->transaction_id))
+                            <button
+                                class="btn btn-link resend-payment-email"
+                                data-transactionid="{{$payment->transaction_id}}"
+                                data-userid="{{$payment->user->id}}"
+                            >
+                                Email
+                            </button>
+                        @endif
+
+                        |
+
+                        <a href="{{route('admin.payment.pdf')}}" target="_blank">PDF</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -85,5 +103,64 @@
         <h3>Total Amount: INR {{number_format($totalAmount, 2)}}</h3>
     </div>
 </div>
+
+<script>
+    const token = "{{ csrf_token() }}";
+    $(function() {
+        $('.resend-payment-email').click(function() {
+            const transactionId = $(this).attr('data-transactionid');
+            const userId = $(this).attr('data-userid');
+
+            Swal.fire({
+                title: 'Do you want to resend payment confirmation?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    resendConfirmation(userId, transactionId)
+                    // const amount = updateAmount().total_amount;
+
+                    // createOrder(amount).then(function(response) {
+                    //     $('#overlay').removeClass('d-none');
+                    //     $('#proceed-payment').addClass('d-none');
+                    //     $('#rzp-button1').removeClass('d-none');
+
+                    //     buildCheckoutLink(response.data);
+                    // }, function() {
+                    //     console.log('Some error');
+                    // });
+                }
+            });
+        });
+
+        function resendConfirmation(userId, transactionId) {
+            $.ajax({
+                url: "{{route('admin.resend.paymentConfirmation')}}",
+                type: 'POST',
+                data: JSON.stringify({
+                    '_token': token,
+                    'txn_id': transactionId,
+                    'user_id': userId,
+                }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                processData: false,
+                success: function(result) {
+                    alert('Email will be sent shortly!');
+
+                    return result;
+                },
+                error: function(xhr, status, error) {
+                    alert ('Error');
+
+                    console.log(xhr);
+                    return error;
+                },
+            });
+        }
+    });
+</script>
 
 @stop

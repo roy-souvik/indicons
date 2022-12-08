@@ -46,4 +46,30 @@ class ConferencePayment extends Model
     {
         return $this->hasOne(Coupon::class, 'id', 'coupon_id');
     }
+
+    public static function getPaymentReceiptData(string $transactionId): array
+    {
+        $payment = ConferencePayment::with(['user.companions', 'accommodations.room', 'coupon'])
+            ->where('transaction_id', $transactionId)
+            ->first();
+
+        $fee = Fee::where('role_id', $payment->user->role_id)->first();
+
+        $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first()?->value;
+
+        $roomCount = 0;
+
+        if ($payment->accommodations->count()) {
+            $roomCount = $payment->accommodations->reduce(function ($carry, $accommodation) {
+                return $carry + intval($accommodation->room_count);
+            }, 0);
+        }
+
+        return [
+            'payment' => $payment,
+            'fee' => $fee,
+            'pickupDropPrice' => $pickupDropPrice,
+            'roomCount' => $roomCount,
+        ];
+    }
 }

@@ -2,7 +2,7 @@
     <tbody>
         <tr>
             <td style="font-size:19px;background:transparent;border:none">
-                <img style="display:block" src="https://indicons.in/email/im-mail.jpg" alt="image" width="700" data-image-whitelisted="">
+                <img style="display:block" src="{{url('email-images/email-banner.jpeg')}}" alt="image" width="700" data-image-whitelisted="">
             </td>
         </tr>
         <tr>
@@ -41,7 +41,7 @@
                 });
                 @endphp
 
-                <table border="1" cellspacing="0" cellpadding="2">
+                <table border="1" cellspacing="4" cellpadding="8" style="border: 1px solid black;">
                     <tr>
                         <td>Registration type</td>
                         <td>{{$payment->registration_type}}</td>
@@ -71,6 +71,8 @@
                                     @endforeach
                                 </ul>
                             </td>
+                        @else
+                        <td>N/A</td>
                         @endif
                         <td></td>
                     </tr>
@@ -90,8 +92,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td>Total</td>
-                        <td>{{$fee->currency}} {{$payment->amount}}</td>
+                        <td>Total:</td>
+                        <td><strong>{{$fee->currency}} {{$payment->amount}}</strong></td>
                     </tr>
                 </table>
 
@@ -120,8 +122,7 @@
                 <br>
                 Thanking you.<br><br>
                 <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.vaicon2023.com">www.vaicon2023.com </a> </p>
-                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:vaicon2023@gmail.com">vaicon2023@gmail.com</a></p>
-
+                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:secretary@vaicon2023.com">secretary@vaicon2023.com</a></p>
             </td>
         </tr>
     </tbody>

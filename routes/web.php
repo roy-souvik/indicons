@@ -223,6 +223,10 @@ Route::middleware('auth')->group(function () {
 
         Route::put('/configurations/{config}', [AdminController::class, 'configUpdate'])
             ->name('admin.config.update');
+
+        Route::post('/resend-confirmation', [AdminController::class, 'resendConferenceEmail'])->name('admin.resend.paymentConfirmation');
+
+        Route::get('/payment-pdf', [AdminController::class, 'paymentPdf'])->name('admin.payment.pdf');
     });
 });
 
