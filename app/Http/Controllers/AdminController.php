@@ -266,12 +266,12 @@ class AdminController extends Controller
 
     public function paymentPdf(Request $request)
     {
-        $transactionId = 'pay_Knwf5pyPfeqw8U';
+        $transactionId = $request->transaction_id;
 
         $data = ConferencePayment::getPaymentReceiptData($transactionId);
 
         $pdf = Pdf::loadView('emails.payment-success', $data);
 
-        return $pdf->download('invoice.pdf');
+        return $pdf->download($transactionId . '.pdf');
     }
 }

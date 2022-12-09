@@ -93,7 +93,7 @@
 
                         |
 
-                        <a href="{{route('admin.payment.pdf')}}" target="_blank">PDF</a>
+                        <a href="{{route('admin.payment.pdf', ['transaction_id' => $payment->transaction_id])}}" target="_blank">PDF</a>
                     </td>
                 </tr>
                 @endforeach
