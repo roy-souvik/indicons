@@ -13,7 +13,12 @@
 </style>
 
 <div class="white-box">
-    <h3 class="box-title">Payments</h3>
+    <div class="d-flex" style="justify-content: space-between;">
+        <h3 class="box-title">Payments</h3>
+
+        <a href="{{route('admin.payment.export')}}" target="_blank">Export Data</a>
+    </div>
+
     <div class="table-responsive">
         <table class="table text-nowrap table-bordered">
             <thead>

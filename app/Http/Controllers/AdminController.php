@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Exports\ConferencePaymentExport;
 use App\Mail\AbstractUpdated;
 use App\Mail\PaymentSuccess;
 use App\Models\ConferenceAbstract;
@@ -273,5 +274,10 @@ class AdminController extends Controller
         $pdf = Pdf::loadView('emails.payment-success', $data);
 
         return $pdf->download($transactionId . '.pdf');
+    }
+
+    public function exportPayments()
+    {
+        return (new ConferencePaymentExport())->export();
     }
 }
