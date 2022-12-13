@@ -16,7 +16,7 @@
     <div class="d-flex" style="justify-content: space-between;">
         <h3 class="box-title">Payments</h3>
 
-        <a href="{{route('admin.payment.export')}}" target="_blank">Export Data</a>
+        <a class="btn btn-primary mb-2" href="{{route('admin.payment.export')}}" target="_blank">Export Data</a>
     </div>
 
     <div class="table-responsive">
@@ -31,6 +31,7 @@
                     <th class="border-top-0">Email</th>
                     <th class="border-top-0">Phone</th>
                     <th class="border-top-0">Registration Type</th>
+                    <th class="border-top-0">Organization</th>
                     <th class="border-top-0">Amount</th>
                     <th class="border-top-0">Date</th>
                     <th class="border-top-0">Pickup + Drop</th>
@@ -57,6 +58,7 @@
                     <td>{{$payment->user->email}}</td>
                     <td>{{$payment->user->phone}}</td>
                     <td>{{$payment->user?->role?->name ?? 'N/A'}}</td>
+                    <td>{{$payment->user->company ?? 'N/A'}}</td>
                     <td>{{$payment->amount}}</td>
                     <td>{{$payment->created_at}}</td>
                     <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>
