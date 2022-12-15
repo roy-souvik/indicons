@@ -26,7 +26,13 @@
                              </ul>
                          </li>
 
-                         <li><a href="{{route('conference-register.show')}}">Registration</a></li>
+                        @if (Auth::user() && !Auth::user()->isSuperAdmin())
+                            <li><a href="/conference-payment">Conference Payment</a></li>
+                        @endif
+
+                        @if (!Auth::user())
+                            <li><a href="{{route('conference-register.show')}}">Registration</a></li>
+                        @endif
                          <li><a href="{{route('accommodation.home')}}">Accommodation</a></li>
                          <li><a href="{{route('nurses.home')}}">Nursing</a></li>
                          <li><a  target="_blank" href="https://venous.in">VAI</a></li>

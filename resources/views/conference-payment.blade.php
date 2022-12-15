@@ -7,6 +7,7 @@ $maxRoomCount = 2;
 $earlyBirdPayable = intval($paymentSlabItem->early_bird_amount) - intval($discounts['early_bird']);
 $standardPayable = intval($paymentSlabItem->standard_amount) - intval($discounts['standard']);
 $spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']);
+
 @endphp
 
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
@@ -34,17 +35,17 @@ $spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']
             <tr>
                 <td>Standard Registration</td>
                 <td>
-                    <input type="radio" id="standard" name="payment" value="{{$standardPayable}}">
+                    <input type="radio" id="standard" name="payment" checked value="{{$standardPayable}}">
                     <label for="standard">{{$paymentSlabItem['currency']}} {{$standardPayable}}</label>
                 </td>
             </tr>
             @endif
 
-            @if ($registrationTypeAuth['is_standard'] && !$registrationTypeAuth['is_early_bird'])
+            @if (!$registrationTypeAuth['is_standard'] && !$registrationTypeAuth['is_early_bird'] && $registrationTypeAuth['is_spot'])
             <tr>
                 <td>Spot Registration</td>
                 <td>
-                    <input type="radio" id="spot" name="payment" value="{{$paymentSlabItem->spot_amount}}">
+                    <input type="radio" id="spot" name="payment" checked value="{{$paymentSlabItem->spot_amount}}">
                     <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - $discounts['spot']}}</label>
                 </td>
             </tr>
