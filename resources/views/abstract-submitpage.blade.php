@@ -1,6 +1,15 @@
  @extends('layouts.indicons.main-layout')
  @section('content')
 
+ @php
+    $themes = [
+        'Lympho-Venous disease and management',
+        'Vascular disease and management',
+        'Society and healthcare',
+        'Research and sustainable healthcare',
+    ];
+ @endphp
+
  @if (Auth::user())
  <h2 class="title">Submit Abstract in the format below</h2>
  <p>Maximum 300 words for the abstract body/description</p>
@@ -33,11 +42,6 @@
              <input type="text" name="institution" value="{{ old('institution') }}" required>
          </div>
 
-         <!-- <div class="input__box">
-            <span class="details">Alternate Number</span>
-            <input type="text" name="alternate_number" value="{{ old('alternate_number') }}">
-        </div> -->
-
          <div class="input__box">
              <span class="details">Heading</span>
              <input type="text" name="heading" value="{{ old('heading') }}" required>
@@ -48,10 +52,9 @@
 
              <select name="theme" id="theme" required>
                  <option value="">-- choose one --</option>
-                 <option value="originality">Originality</option>
-                 <option value="clarity">Clarity</option>
-                 <option value="rigour">Rigour</option>
-                 <option value="practical relevance.">Practical relevance</option>
+                 @foreach ($themes as $theme)
+                 <option value="{{$theme}}">{{$theme}}</option>
+                 @endforeach
              </select>
          </div>
 
