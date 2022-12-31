@@ -37,15 +37,18 @@
 
       <div class="inner-page-confr">
 
-          <h2>Kye Note Speakers </h2>
-
-          <!-- Topic Cards -->
-          <div id="cards_landscape_wrap-2">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+          <h2>Key Note Speakers </h2>
+		  
+		  
+		  
+		  
+		  <div class="inner-pg-box">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="news-slider" class="owl-carousel" style="margin-top:0px;">
+  
+   
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Jayanta-Da.jpg" />
@@ -56,12 +59,10 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+   
+							          
+							  
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/dr2.jpg" />
@@ -73,11 +74,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/dr3.jpg" />
@@ -87,15 +84,8 @@
 
                                       </div>
                                   </div>
-                              </div>
-                          </a>
-                      </div>
-
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+                              </div>							  
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Devendra-Dekiwadia.jpg" />
@@ -106,14 +96,8 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
 
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Dr.-Ajay-Khanna.jpg" />
@@ -124,16 +108,9 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-
-
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							  
+							  
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Dr.-Pinjala-Ramakrishna.jpg" />
@@ -144,12 +121,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Dr.-Shoaib-F-Padaria.jpg" />
@@ -160,13 +132,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Gulshan-jeet-singh.jpg" />
@@ -177,30 +143,8 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
-                                  <div class="text-box">
-                                      <div class="image-box">
-                                          <img src="indicons/images/Gulshan-jeet-singh.jpg" />
-                                      </div>
-                                      <div class="text-container">
-                                          <h6>Dr. Gulshan Jit Singh</h6>
-
-                                      </div>
-                                  </div>
-                              </div>
-                          </a>
-                      </div>
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							          
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Malay-patel.jpg" />
@@ -211,12 +155,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Rahul-Zindal.jpg" />
@@ -227,17 +166,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-
-
-
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Robbie-George.jpg" />
@@ -248,16 +177,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-
-
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Roy-Bhargis.jpg" />
@@ -268,19 +188,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </a>
-                      </div>
-
-
-
-
-
-
-
-
-                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                          <a href="">
-                              <div class="card-flyer">
+							         <div class="card-flyer card-flyer-conference">
                                   <div class="text-box">
                                       <div class="image-box">
                                           <img src="indicons/images/Sanjay-Desai.jpg" />
@@ -290,14 +198,37 @@
 
                                       </div>
                                   </div>
-                              </div>
-                          </a>
-                      </div>
+                              </div>		  
+		
+		
+		
+		
 
 
-                  </div>
-              </div>
-          </div>
+
+		
+		    
+         
+         
+         
+         
+         
+         
+         
+         
+      </div>
+    </div>
+  </div>
+</div>
+		  
+		  
+		  
+		  
+		  
+		  
+
+          <!-- Topic Cards -->
+          
 
 
 
@@ -308,26 +239,17 @@
           <div class="inner-pg-box">
 
               <div class="row">
+			  
+		   
 
-                  <div class="col-md-3">
-
-                      <div class="flex-cont">
-
-                          <h1>AMRI HOSPITAL</h1>
-                          <p> 16, Broadway Rd, JC Block, Sector III, Kolkata - 700098</p>
-                      </div>
-
-                  </div>
-
-
-                  <div class="col-md-5">
+                  <div class="col-md-6">
 
                       <div style="margin-top:0px;">
 
 
                           <div class="post-slide">
 
-                              <img src="indicons/images/salt-amri.webp" style="max-width:100%;">
+                              <img src="indicons/images/AGMC.jpg" style="max-width:100%;">
 
                           </div>
 
@@ -336,42 +258,266 @@
 
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-6">
+				  
+				  <div class="flex-cont">
+
+                          <h1>AGMC</h1>
+                          <h3>  <strong>Agartala Govt Medical College</h3>
+
+<p>	22/01/2023 <br />
+( 9:00 am to 5:00 pm.)<br />
+
+<strong>	Venous Update :</strong> Master class and Workshop
+</p>
+                      </div>
+				  
+				  
+				  
+				  
+				  
+				  
                       <div class="post-slide">
-                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14737.174144638535!2d88.4114895!3d22.5681222!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb24c98f0b227ce0b!2sAMRI%20HOSPITAL!5e0!3m2!1sen!2sin!4v1664114696542!5m2!1sen!2sin" width="100%" height="290" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					  
+					  
+					  
+					  
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14595.51317142375!2d91.28183732198697!3d23.858455176744577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753f15385e1e7e7%3A0x217dff53bd03ee71!2sAgartala%20Government%20Medical%20College%20%26%20Govind%20Ballabh%20Pant%20Hospital!5e0!3m2!1sen!2sin!4v1672077440409!5m2!1sen!2sin" width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
                       </div>
                   </div>
+	  
+			  </div>
+			   
+
+
+                  <div style="clear:both;"> </div>
+				  
+				  <hr />
+		                  <div style="clear:both;"> </div>		  
+				  
+				  
+				  
+				  
+				  
+		              <div class="row">
+
+                  <div class="col-md-6">
+
+                      <div style="margin-top:0px;">
+
+
+                          <div class="post-slide">
+
+                              <img src="indicons/images/AMRI-Hospital-Saltlake.jpg" style="max-width:100%;">
+
+                          </div>
+
+
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+				  
+				  <div class="flex-cont">
+
+                          <h3> AMRI Hospital Saltlake</h3>
+                          <p>  
+
+26/01/2023 <br />
+( 9:00 am to 5:00 pm)<br />
+
+<strong>	Venous Update :</strong>  Master - Glue therapy (for varicose vein)<br />
+
+
+Supported By Medtronic
+
+</p>
+                      </div>
+				  
+				  
+				  
+				  
+				  
+				  
+                      <div class="post-slide">
+					  
+					  
+					  
+				  
+					  
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14737.174144638535!2d88.4114895!3d22.5681222!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb24c98f0b227ce0b!2sAMRI%20HOSPITAL!5e0!3m2!1sen!2sin!4v1672080606237!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
+
+
+                      </div>
+                  </div>
+				  
+				  </div>
+	  		  
+				  
+		
+                  <div style="clear:both;"> </div>
+				  
+				  <hr />
+		                  <div style="clear:both;"> </div>			  
+				  
+				  
+				  
+				  
+				  
+		    <div class="row">
+
+                  <div class="col-md-6">
+
+                      <div style="margin-top:0px;">
+
+
+                          <div class="post-slide">
+
+                              <img src="indicons/images/ITC-Sonar.jpg" style="max-width:100%;">
+
+                          </div>
+
+
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+				  
+				  <div class="flex-cont">
+
+                          <h3> ITC Sonar</h3>
+                          <p>  
+
+27/01/2023 <br />
+( 3:00 am to 5:00 pm)<br />
+
+<strong>	Master class :</strong>Proctology 
+
+ 
+
+</p>
+                      </div>
+				  
+				  
+				  
+				  
+				  
+				  
+                      <div class="post-slide">
+					  
+					  
+					  
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14739.719413955925!2d88.3981362!3d22.5443003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%2C%20Kolkata-%20LEED%20Platinum%20Certified%2C%20Luxury%20Business%20Resort!5e0!3m2!1sen!2sin!4v1672080709731!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>	  
+			  
+					  
+             
+
+
+                      </div>
+                  </div>
+				  
+				  </div>		  
+				  
+				  
+				  
+
+
+
+
+        
+                  <div style="clear:both;"> </div>
+				  
+				  <hr />
+		                  <div style="clear:both;"> </div>		           
+
+                   
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+                  <div class="col-md-6">
+
+                      <div style="margin-top:0px;">
+
+
+                          <div class="post-slide">
+
+                              <img src="indicons/images/ITC-Sonar2.jpg" style="max-width:100%;">
+
+                          </div>
+
+
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+				  
+				  <div class="flex-cont">
+
+                          <h3> ITC Sonar</h3>
+                          <p>  
+
+28/01/2023 <br />
+( 10:00 am to 11:00 pm)<br />
+
+<strong>	Master class and workshop  :</strong>3D printing in vascular surgery
+
+ 
+
+</p>
+                      </div>
+				  
+				  
+				  
+				  
+				  
+				  
+                      <div class="post-slide">
+					  
+					  
+					  
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14739.719413955925!2d88.3981362!3d22.5443003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%2C%20Kolkata-%20LEED%20Platinum%20Certified%2C%20Luxury%20Business%20Resort!5e0!3m2!1sen!2sin!4v1672080709731!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>	  
+			  
+					  
+             
+
+
+                      </div>
+                  </div>
+				  
+				  </div>
 
 
 
 
                   <div style="clear:both;"> </div>
+				  
+				  <hr />
+		                  <div style="clear:both;"> </div>		
 
 
+<div class="row">
 
-
-                  <div class="col-md-3">
-
-                      <div class="flex-cont">
-
-                          <h1>ITC Sonar </h1>
-                          <p> 1, JBS Haldane Ave, Tangra, Kolkata, West Bengal 700046</p>
-
-
-                      </div>
-
-                  </div>
-
-                  <div class="col-md-5">
+                  <div class="col-md-6">
 
                       <div style="margin-top:0px;">
 
 
                           <div class="post-slide">
 
-                              <img src="indicons/images/sonar-1.webp" style="max-width:100%;">
+                              <img src="indicons/images/ITC-Sonar3.jpg" style="max-width:100%;">
 
                           </div>
 
@@ -380,24 +526,48 @@
 
                   </div>
 
+                  <div class="col-md-6">
+				  
+				  <div class="flex-cont">
 
+                          <h3> ITC Sonar</h3>
+                          <p>  
 
+28/01/2023 <br />
+( 3:00 am to 5:00 pm)<br />
 
+<strong>	Master class and workshop  :</strong>Lymphology
 
+ 
 
-                  <div class="col-md-4">
+</p>
+                      </div>
+				  
+				  
+				  
+				  
+				  
+				  
                       <div class="post-slide">
-                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14739.692032263614!2d88.3976281!3d22.5445567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2sin!4v1661106057036!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					  
+					  
+					  
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14739.719413955925!2d88.3981362!3d22.5443003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0541395048f5723!2sITC%20Sonar%2C%20Kolkata-%20LEED%20Platinum%20Certified%2C%20Luxury%20Business%20Resort!5e0!3m2!1sen!2sin!4v1672080709731!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>	  
+			  
+					  
+             
 
 
                       </div>
-
                   </div>
+				  
+				  </div>
+                   
 
 
 
 
-              </div>
+ 
 
           </div>
 
@@ -578,41 +748,68 @@
       </div>
 
 
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>
+   
 
-      <script>
-          $(document).ready(function() {
-              $("#news-slider").owlCarousel({
-                  items: 2,
-                  itemsDesktop: [1199, 3],
-                  itemsDesktopSmall: [980, 2],
-                  itemsMobile: [600, 1],
-                  navigation: true,
-                  navigationText: ["", ""],
-                  pagination: true,
-                  autoPlay: false
-              });
 
-              $('.customer-logos').slick({
-                  slidesToShow: 6,
-                  slidesToScroll: 1,
-                  autoplay: true,
-                  autoplaySpeed: 1500,
-                  arrows: false,
-                  dots: false,
-                  pauseOnHover: false,
-                  responsive: [{
-                      breakpoint: 768,
-                      settings: {
-                          slidesToShow: 4
-                      }
-                  }, {
-                      breakpoint: 520,
-                      settings: {
-                          slidesToShow: 3
-                      }
-                  }]
-              });
-          });
-      </script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>
+
+<script>
+$(document).ready(function() {
+    $("#news-slider").owlCarousel({
+        items : 4,
+        itemsDesktop:[1199,3],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [600,1],
+        navigation:true,
+        navigationText:["",""],
+        pagination:true,
+        autoPlay:true
+    });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $("#news-slider-a").owlCarousel({
+        items : 2,
+        itemsDesktop:[1199,3],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [600,1],
+        navigation:true,
+        navigationText:["",""],
+        pagination:true,
+        autoPlay:false
+    });
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function(){
+    $('.customer-logos').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        arrows: false,
+        dots: false,
+        pauseOnHover: false,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 4
+            }
+        }, {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 3
+            }
+        }]
+    });
+});
+
+</script>
       @stop

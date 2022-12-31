@@ -1,7 +1,7 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<h1>Nursing Page</h1>
+<!--<h1>Nursing Page</h1>-->
 
 
 

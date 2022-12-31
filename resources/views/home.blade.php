@@ -20,16 +20,76 @@
            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
            <style>
                .modal {
-                   z-index: 9999;
+                   z-index: 999999;
                }
 
                .ticker_item {
                    cursor: pointer;
                }
+			   
+			   .blink-box{
+			   
+			   }
+			   
+		.blink-soft{       text-align: center;
+    padding-top: 20px;
+    font-size: 21px;
+    color: #000;
+    font-weight: 600;
+		}
+		
+		.blink-soft span{color: #00236a;
+    font-weight: 700;
+		}	
+			   
+			.blink-soft {
+  animation: blinker 2.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}   
+			   
+ 		   
+			   
+			   
+			   
            </style>
        </head>
 
        <body>
+	   
+	   
+	   
+	 <div id="myModal" class="modal fade" tabindex="-1" style="z-index:999999">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+            <div class="modal-header" style="height:auto; padding:0px!important; margin:0px!important;">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+	      <img src="indicons/images/guest1.jpg" style="width:100%">
+ 
+            </div>
+            <div class="modal-footer">
+                             <a target="_blank" href="indicons/images/guest1.jpg" class="btn btn-secondary">Download</a>   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+            </div>
+            </div>
+        </div>
+    </div>  
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
            @include('layouts.indicons.header')
 
            @include('layouts.indicons.navigation')
@@ -100,6 +160,18 @@
 
                    </div>
                </div>
+			   
+			   
+			   
+	<div class="container">
+	<div class="blink-box">
+	<div class="blink-soft"> The deadline for <span> ABSTRUCT SUBMISSIONS </span> has been extended till 10<sup>th</sup> january, 2023 </div> </div>		   </div>
+			   
+			   
+			   
+			   
+			   
+			   
 
                @include('partials.countdown')
 
@@ -431,10 +503,25 @@
                        navigation: true,
                        navigationText: ["", ""],
                        pagination: true,
-                       autoPlay: false
+                       autoPlay: true
                    });
                });
            </script>
+		   
+		   
+		   
+		  <script>
+$(document).ready(function(){
+    $("#myModal").modal('show');
+});
+
+</script>	  
+		  
+		   
+		   
+		   
+		   
+		   
        </body>
 
        </html>

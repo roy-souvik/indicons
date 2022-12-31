@@ -1713,12 +1713,15 @@ background:none!important;
     width: 30px;
 }
 
-.inner-page-confr h2{background:linear-gradient(to left, #ffb209, #f10000);
+.inner-page-confr h2{    background: linear-gradient(to left, #ffb209, #f10000);
     padding: 11px;
     font-size: 21px;
     border-radius: 3px;
     font-weight: 600;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -1944,15 +1947,20 @@ padding: 20px;
 }
 
 
-.flex-cont{display: flex;
-    flex-flow: column;
+.flex-cont{ 
+     height: auto;
+    margin-top: 26px;
     text-align: center;
-    justify-content: center;
-    height: 300px;
+    font-size: 21px;
 }
-
+.flex-cont h1{font-size: 43px;
+}
 .slide-cont-img{position: relative;
 }
+
+.flex-cont h2{font-size: 26px;
+    font-weight: normal;
+} 
 
 .slide-cont-img h3{    position: absolute;
     bottom: 0px;
@@ -2101,10 +2109,31 @@ display: inline-block;
     font-weight: 800;
 }
 
+.card-flyer-conference{    margin-top: 30px;
+}
 
 
+.card-flyer-conference img{ width: 220px;
+    height: 200px;
+    display: block;
+    margin: auto;
+    box-shadow: 0px 14px 22px -9px #bbcbd8;
+    border: 6px solid #fff;
 
+}
 
+.card-flyer-conference .text-container{    min-height: inherit;
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 10px;
+}
+
+.card-flyer-conference h6{    color: #000000;
+    display: table;
+    margin: auto;
+    padding: 7px 20px;
+    font-weight: 700;
+}
 
  @media only screen and (min-width: 960px) and (max-width: 1199px) {
 
