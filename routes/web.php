@@ -226,6 +226,9 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/resend-confirmation', [AdminController::class, 'resendConferenceEmail'])->name('admin.resend.paymentConfirmation');
 
+        Route::post('/send-abstract', [AdminController::class, 'sendAbstract'])
+            ->name('admin.send.abstract');
+
         Route::get('/payment-pdf', [AdminController::class, 'paymentPdf'])->name('admin.payment.pdf');
 
         Route::get('/export-payments', [AdminController::class, 'exportPayments'])->name('admin.payment.export');

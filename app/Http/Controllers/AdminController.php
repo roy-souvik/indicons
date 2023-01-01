@@ -280,4 +280,20 @@ class AdminController extends Controller
     {
         return (new ConferencePaymentExport())->export();
     }
+
+    public function sendAbstract(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+            'abstract_id' => ['required', 'numeric'],
+        ]);
+
+        $abstract = ConferenceAbstract::findOrFail($request->abstract_id);
+
+        $email = $request->input('email');
+
+        dd($abstract, $email);
+
+        // Mail::to($email)->send(new AbstractUpdated($abstract, 'submitted'));
+    }
 }
