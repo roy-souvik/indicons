@@ -15,9 +15,7 @@
                 <p>Venue: <b>PALA BALL ROOM, ITC SONAR 1, JBS HALDANE AVENUE,KOLKATA - 700 046, WEST BENGAL, INDIA</b></p>
                 <p>Dates: <b>27th, 28th and 29th January, 2023</b></p>
 
-                <p>Abstract ID: <b>{{$abstract->abstract_id}}</b></p>
-
-                <p>Please review the abstract added below.</p>
+                <h3>Please review the abstract.</h3>
 
                 <h4>Abstract Details:</h4>
 
@@ -46,6 +44,15 @@
                         </td>
                         <td width="469" valign="top">
                             <p><strong>{{ucfirst($abstract->theme)}}</strong></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="132" valign="top">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td width="469" valign="top">
+                            <p><strong>{{$abstract->description}}</strong></p>
                         </td>
                     </tr>
                 </table>

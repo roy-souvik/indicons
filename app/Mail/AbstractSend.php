@@ -32,7 +32,7 @@ class AbstractSend extends Mailable
      */
     public function build()
     {
-        $subject = "Vaicon 2023, review abstract [{$this->abstract->abstract_id}]";
+        $subject = "[Vaicon 2023], Abstract Review Request [{$this->abstract->abstract_id}]";
 
         return $this->view('emails.abstract-details')
             ->subject($subject)

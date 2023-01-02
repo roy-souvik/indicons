@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Exports\ConferencePaymentExport;
+use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
 use App\Mail\PaymentSuccess;
 use App\Models\ConferenceAbstract;
@@ -292,8 +293,12 @@ class AdminController extends Controller
 
         $email = $request->input('email');
 
-        dd($abstract, $email);
+        try {
+            Mail::to($email)->send(new AbstractSend($abstract));
 
-        // Mail::to($email)->send(new AbstractUpdated($abstract, 'submitted'));
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 }

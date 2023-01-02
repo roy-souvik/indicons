@@ -132,7 +132,7 @@
             dataType: 'json',
             processData: false,
             success: function(result) {
-                alert('Abstract sent');
+                alert('Abstract sent for review.');
 
                 location.reload();
 
