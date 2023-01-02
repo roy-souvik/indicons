@@ -9,7 +9,11 @@
 </style>
 
 <div class="white-box">
+    <div class="d-flex" style="justify-content: space-between;">
     <h3 class="box-title">Abstracts</h3>
+
+        <a class="btn btn-primary mb-2" href="{{route('admin.abstract.export')}}" target="_blank">Export Data</a>
+    </div>
 
     @include('admin.flash-message')
 
@@ -27,7 +31,6 @@
                     <th class="border-top-0">Qualification</th>
                     <th class="border-top-0">Profession</th>
                     <th class="border-top-0">Institution</th>
-                    <!-- <th class="border-top-0">Alternate Number</th> -->
                     <th class="border-top-0">Confirmed</th>
                     <th class="border-top-0">Created</th>
                     <th class="border-top-0">Action</th>
@@ -54,7 +57,6 @@
                     <td>{{$abstract->qualification}}</td>
                     <td>{{$abstract->profession}}</td>
                     <td>{{$abstract->institution}}</td>
-                    <!-- <td>{{$abstract->alternate_number}}</td> -->
                     <td>{{$abstract->confirmed ? 'Yes' : 'No'}}</td>
                     <td>{{$abstract->created_at->format('d-m-Y')}}</td>
                     <td>
@@ -104,7 +106,6 @@
             Swal.fire({
                 html: `
                     <p>${description}</p>
-                    <p style="font-weight: bold;">Co Author: {{$abstract->co_author ?? 'N/A'}}</p>
 
                     <a class="copy-description" style="float: right; margin-top: 1rem;" data-abstractid="${id}" href="javascript:void(0);">Copy Description</a>
                 `,

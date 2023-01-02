@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Exports\AbstractExport;
 use App\Http\Controllers\Exports\ConferencePaymentExport;
 use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
@@ -19,7 +20,6 @@ use App\Models\VaiMember;
 use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
@@ -280,6 +280,11 @@ class AdminController extends Controller
     public function exportPayments()
     {
         return (new ConferencePaymentExport())->export();
+    }
+
+    public function exportAbstracts()
+    {
+        return (new AbstractExport())->export();
     }
 
     public function sendAbstract(Request $request)
