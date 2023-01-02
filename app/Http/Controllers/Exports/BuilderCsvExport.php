@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Exports;
 
-use App\Traliant\Helpers\FileUtils;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
