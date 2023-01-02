@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer text-center"> 2022 © indicons.in</footer>
+            <footer class="footer text-center">© {{ config('app.name', 'Vaicon') }}</footer>
 
         </div>
     </div>

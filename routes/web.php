@@ -234,6 +234,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/export-payments', [AdminController::class, 'exportPayments'])->name('admin.payment.export');
 
         Route::get('/export-abstracts', [AdminController::class, 'exportAbstracts'])->name('admin.abstract.export');
+
+        Route::get('/registrations', [AdminController::class, 'showRegisterPage'])->name('admin.register.show');
+
+        Route::post('/create-users', [AdminController::class, 'createUsers'])->name('admin.user.create');
     });
 });
 

@@ -306,4 +306,14 @@ class AdminController extends Controller
             return false;
         }
     }
+
+    public function showRegisterPage()
+    {
+        return view('admin.registrations');
+    }
+
+    public function createUsers(Request $request)
+    {
+        dd($request->all());
+    }
 }
