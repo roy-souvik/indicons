@@ -21,6 +21,7 @@ use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -315,5 +316,47 @@ class AdminController extends Controller
     public function createUsers(Request $request)
     {
         dd($request->all());
+
+        try {
+            // TODO: use transaction
+            $user = User::create([
+                'name' => $request->name,
+                'title' => $request->title, // doctors only
+                'email' => $request->email,
+                'password' => Hash::make('Password@123456'),
+                'phone' => $request->phone,
+                'role_id' => $request->registration_type, // Doctors only
+                'company' => $request->input('company'),
+                'postal_code' => $request->postal_code,
+                'city' => $request->city,
+                'country' => $request->country,
+                'department' => $request->department,
+                'address' => $request->address,
+            ]);
+
+            $payment = ConferencePayment::create([
+                'user_id' => $user->id,
+                'transaction_id' => 'admin',
+                'status' => '',
+                'amount' => 0,
+                'payment_response' => null,
+                'registration_type' => null,
+                'pickup_drop' => 1,
+                'airplane_booking' => 1,
+                'payment_title' => 1,
+            ]);
+
+            return response()->json([
+                'data' => $user,
+                'message' => 'User created successfully.',
+            ], 201);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'data' => null,
+                'message' => 'Unable to create user.',
+            ], 400);
+        }
+
+
     }
 }
