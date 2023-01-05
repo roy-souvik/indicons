@@ -235,9 +235,10 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/export-abstracts', [AdminController::class, 'exportAbstracts'])->name('admin.abstract.export');
 
-        Route::get('/registrations', [AdminController::class, 'showRegisterPage'])->name('admin.register.show');
+        Route::get('/registrations', [AdminController::class, 'showRegistratons'])->name('admin.register.show');
 
-        Route::post('/create-users', [AdminController::class, 'createUsers'])->name('admin.user.create');
+        Route::get('/create-users', [AdminController::class, 'showCreateUsersPage'])->name('admin.register.page');
+        Route::post('/create-users', [AdminController::class, 'createUsers'])->name('admin.register.create');
     });
 });
 

@@ -9,90 +9,49 @@
 </style>
 
 <div class="white-box">
-    <div class="d-flex" style="justify-content: space-between;">
-        <h3 class="box-title">Register</h3>
+    <div class="d-flex" style="justify-content: space-between; margin-bottom: 1rem;">
+        <h3 class="box-title">Registations</h3>
+
+        <a href="{{route('admin.register.page')}}" class="btn btn-primary">Create New</a>
     </div>
 
     @include('admin.flash-message')
 
     <div class="container">
-        <form action="{{route('admin.user.create')}}" method="post" class="form-horizontal form-material">
-            @csrf
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Name</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <input type="text" name="name" class="form-control p-0 border-0" required>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Phone</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <input type="text" name="phone" class="form-control p-0 border-0" required>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Email</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <input type="text" name="email" class="form-control p-0 border-0" required>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Address</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <input type="text" name="address" class="form-control p-0 border-0" required>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Home Pickup + Drop</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <select name="home_pickup_drop" id="home_pickup_drop" class="form-control p-0 border-0" required>
-                        <option value="">Select</option>
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Conference City Pickup + Drop</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <select name="conference_city_pickup_drop" id="conference_city_pickup_drop" class="form-control p-0 border-0" required>
-                        <option value="">Select</option>
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Airplane Booking</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <select name="airplane_booking" id="airplane_booking" class="form-control p-0 border-0" required>
-                        <option value="">Select</option>
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Stay Dates</label>
-                <div class="col-md-12 border-bottom p-0">
-                    <input type="text" name="stay_dates" class="form-control p-0 border-0" required>
-                </div>
-            </div>
-
-            <div class="form-group mb-4">
-                <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </div>
-        </form>
+        <div class="table-responsive">
+            <table class="table text-nowrap table-bordered">
+                <thead>
+                    <tr>
+                        <th class="border-top-0">#</th>
+                        <th class="border-top-0">Reg. ID</th>
+                        <th class="border-top-0">Name</th>
+                        <th class="border-top-0">Phone</th>
+                        <th class="border-top-0">Email</th>
+                        <th class="border-top-0">Address</th>
+                        <th class="border-top-0">Home city pickup + drop</th>
+                        <th class="border-top-0">Kolkata pickup + drop</th>
+                        <th class="border-top-0">Airplane booking</th>
+                        <th class="border-top-0">Stay dates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($registrations as $registration)
+                    <tr>
+                        <td>{{$loop->index + 1}}</td>
+                        <td>{{$registration->registration_id}}</td>
+                        <td>{{$registration->name}}</td>
+                        <td>{{$registration->phone}}</td>
+                        <td>{{$registration->email}}</td>
+                        <td>{{$registration->address}}</td>
+                        <td>{{$registration->home_pickup_drop ? 'Yes' : 'No'}}</td>
+                        <td>{{$registration->conference_city_pickup_drop ? 'Yes' : 'No'}}</td>
+                        <td>{{$registration->airplane_booking ? 'Yes' : 'No'}}</td>
+                        <td>{{$registration->stay_dates}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

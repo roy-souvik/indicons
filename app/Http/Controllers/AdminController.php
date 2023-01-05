@@ -7,6 +7,7 @@ use App\Http\Controllers\Exports\ConferencePaymentExport;
 use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
 use App\Mail\PaymentSuccess;
+use App\Models\AdminRegistration;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
@@ -308,55 +309,52 @@ class AdminController extends Controller
         }
     }
 
-    public function showRegisterPage()
+    public function showRegistratons()
     {
-        return view('admin.registrations');
+        $registrations = AdminRegistration::all();
+
+        return view('admin.registrations', compact('registrations'));
+    }
+
+    public function showCreateUsersPage()
+    {
+        return view('admin.create-registration');
     }
 
     public function createUsers(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'name' => ['required', 'string', 'max:200'],
+            'phone' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'email', 'max:200', 'unique:admin_registrations'],
+            'address' => ['string', 'max:250'],
+            'home_pickup_drop' => ['required', 'boolean'],
+            'conference_city_pickup_drop' => ['required', 'boolean'],
+            'airplane_booking' => ['required', 'boolean'],
+            'stay_dates' => ['required'],
+        ]);
 
         try {
-            // TODO: use transaction
-            $user = User::create([
-                'name' => $request->name,
-                'title' => $request->title, // doctors only
-                'email' => $request->email,
-                'password' => Hash::make('Password@123456'),
-                'phone' => $request->phone,
-                'role_id' => $request->registration_type, // Doctors only
-                'company' => $request->input('company'),
-                'postal_code' => $request->postal_code,
-                'city' => $request->city,
-                'country' => $request->country,
-                'department' => $request->department,
-                'address' => $request->address,
-            ]);
+            $adminRegister = new AdminRegistration();
 
-            $payment = ConferencePayment::create([
-                'user_id' => $user->id,
-                'transaction_id' => 'admin',
-                'status' => '',
-                'amount' => 0,
-                'payment_response' => null,
-                'registration_type' => null,
-                'pickup_drop' => 1,
-                'airplane_booking' => 1,
-                'payment_title' => 1,
-            ]);
+            $adminRegister->name = $request->input('name');
+            $adminRegister->phone = $request->input('phone');
+            $adminRegister->email = $request->input('email');
+            $adminRegister->address = $request->input('address');
+            $adminRegister->home_pickup_drop = $request->input('home_pickup_drop');
+            $adminRegister->conference_city_pickup_drop = $request->input('conference_city_pickup_drop');
+            $adminRegister->airplane_booking = $request->input('airplane_booking');
+            $adminRegister->stay_dates = implode(',', $request->input('stay_dates'));
 
-            return response()->json([
-                'data' => $user,
-                'message' => 'User created successfully.',
-            ], 201);
+            $adminRegister->save();
+
+            return redirect(route('admin.register.show'))->with([
+                'success' => 'Registration added successfully.',
+            ]);
         } catch (\Throwable $th) {
-            return response()->json([
-                'data' => null,
-                'message' => 'Unable to create user.',
-            ], 400);
+            return redirect(route('admin.register.show'))->with([
+                'error' => 'Unable to create registration.',
+            ]);
         }
-
-
     }
 }

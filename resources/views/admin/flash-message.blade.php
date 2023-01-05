@@ -30,5 +30,13 @@
 <div class="alert alert-danger">
     <button type="button" class="btn btn-link close" data-dismiss="alert">×</button>
     Please check the form below for errors
+
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 </div>
 @endif
