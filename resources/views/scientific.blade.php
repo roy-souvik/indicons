@@ -89,7 +89,7 @@ margin-bottom: 30px;
 	
 	
 	
-	<h2>Workshops</h2>
+<?php /*?>	<h2>Workshops</h2>
 	
 	<div>
  
@@ -266,7 +266,7 @@ margin-bottom: 30px;
 
  
 
-</div></div>
+</div></div><?php */?>
 
 
 	<h2>Program schedule</h2>
@@ -307,6 +307,36 @@ margin-bottom: 30px;
 
 </div>
 	</div>
+
+
+
+
+
+
+
+<div id="myModal" class="modal fade" tabindex="-1" style="z-index:999999">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+            <div class="modal-header" style="height:auto; padding:0px!important; margin:0px!important;">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+	      <img src="indicons/images/Program-Hall.jpg" style="width:100%">
+ 
+            </div>
+            <div class="modal-footer">
+                             <a target="_blank" href="indicons/images/Program-Hall.jpg" class="btn btn-secondary">Download</a>   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 
 
@@ -361,5 +391,12 @@ $(document).ready(function(){
 </script>
 
  
- 
+ 	  <script>
+$(document).ready(function(){
+    $("#myModal").modal('show');
+});
+
+</script>	  
+		  
+		   
 @stop

@@ -32,6 +32,7 @@
                         <th class="border-top-0">Kolkata pickup + drop</th>
                         <th class="border-top-0">Airplane booking</th>
                         <th class="border-top-0">Stay dates</th>
+                        <th class="border-top-0">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,13 @@
                         <td>{{$registration->conference_city_pickup_drop ? 'Yes' : 'No'}}</td>
                         <td>{{$registration->airplane_booking ? 'Yes' : 'No'}}</td>
                         <td>{{$registration->stay_dates}}</td>
+                        <td>
+                            <form name="delete-registration" action="{{route('admin.register.delete', $registration->id)}}" method="post">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-link">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

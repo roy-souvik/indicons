@@ -357,4 +357,15 @@ class AdminController extends Controller
             ]);
         }
     }
+
+    public function deleteAdminRegistration(int $id)
+    {
+        $registeration = AdminRegistration::where('id', $id)->firstOrFail();
+
+        $registeration->delete();
+
+        return redirect()->back()->with([
+            'success' => 'Deleted successfully',
+        ]);
+    }
 }

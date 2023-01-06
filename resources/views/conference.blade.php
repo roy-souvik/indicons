@@ -40,9 +40,18 @@
           <h2>Key Note Speakers </h2>
 		  
 		  
-		  
+ 
 		  
 		  <div class="inner-pg-box">
+		  
+		  
+		  
+		<div class="tab">National</div>	 	  
+		  
+		  
+		  
+		  
+		  
   <div class="row">
     <div class="col-md-12">
       <div id="news-slider" class="owl-carousel" style="margin-top:0px;">
@@ -220,6 +229,294 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+ <div class="inner-pg-box">
+ 
+ <div class="tab">International</div>
+ 
+ 
+  <div class="row">
+    <div class="col-md-12">
+      <div id="news-slider1" class="owl-carousel" style="margin-top:0px;">
+  
+   
+							         <div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Sergio-Gianesini.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Prof. Sergio Gianesini - Italy </h6>
+
+                                      </div>
+                                  </div>
+                              </div>
+							  
+							  
+							  
+							  
+		<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Rashad-Bishara.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Rashad Bishara - Turkey</h6>
+
+                                      </div>
+                                  </div>
+                              </div>					  
+							  
+							  
+							  
+							  
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Suat-Malay.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Suat Malay Doganci - Turkey</h6>
+
+                                      </div>
+                                  </div>
+                              </div>
+							  
+							  
+							  
+							  
+<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Wassila-Taha.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Wassila Taha - Egypt</h6>
+
+                                      </div>
+                                  </div>
+                              </div>							  
+							  
+							  
+							  
+<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Sriram-Narayanan.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr Sriram Narayanan
+</h6>
+
+                                      </div>
+                                  </div>
+                              </div>	
+							  
+							  
+							  
+							  
+							  
+<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Denis-Borsuk---Russia.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Denis Borsuk - Russia</h6>
+
+                                      </div>
+                                  </div>
+                              </div>							  
+							  
+							  
+							  
+							  
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Elena-Conde-Montero.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Elena Conde Montero - Spain</h6>
+
+                                      </div>
+                                  </div>
+                              </div>						  
+							  						  						  
+							  
+		<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Jean-Patrick-Benigni.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Jean Patrick Benigni - France </h6>
+
+                                      </div>
+                                  </div>
+                              </div>
+							  
+							  
+							  
+							  
+							  
+<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Jean-Franois.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Jean François UHL - France</h6>
+
+                                      </div>
+                                  </div>
+                              </div>							  
+							  
+							  
+							  
+							  
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Jorge-Hernando-Ulloa.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Jorge Hernando Ulloa - Brazil</h6>
+
+                                      </div>
+                                  </div>
+                              </div>						  
+							  
+							  
+							  
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Jorge-Rios.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Jorge Rios - Argentina</h6>
+
+                                      </div>
+                                  </div>
+                              </div>	
+							  
+							  
+							  
+							  
+<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/pinar-borman.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>pinar borman</h6>
+
+                                      </div>
+                                  </div>
+                              </div>							  
+							  
+							  
+							  
+							  
+							  
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Marjeta-Zorc.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Prof. Marjeta Zorc - Slovenia</h6>
+
+                                      </div>
+                                  </div>
+                              </div>	
+							  
+							  
+							  
+							  
+			<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Elena-Goranova.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Elena Goranova - Bulgeria</h6>
+
+                                      </div>
+                                  </div>
+                              </div>						  
+							  					  
+							  
+							  
+							  
+							  
+							  
+							  					  
+							  
+							  
+							  					  
+							  
+							  
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/N-C-Liew.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. N C Liew - Malaysia</h6>
+
+                                      </div>
+                                  </div>
+                              </div>						  
+							  							  
+							  					  
+	
+	
+	
+	
+	
+	
+	<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Shantonu-Ghosh.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Shantonu Ghosh - Bangladesh</h6>
+
+                                      </div>
+                                  </div>
+                              </div>
+	
+	
+	
+	
+		<div class="card-flyer card-flyer-conference">
+                                  <div class="text-box">
+                                      <div class="image-box">
+                                          <img src="indicons/images/Sandeep-Raj.jpg" />
+                                      </div>
+                                      <div class="text-container">
+                                          <h6>Dr. Sandeep Raj Pandey - Nepal</h6>
+
+                                      </div>
+                                  </div>
+                              </div>
+	
+	
+	
+							  
+							  
+</div></div></div></div> 						  
+
+
+
 		  
 		  
 		  
@@ -233,8 +530,8 @@
 
 
           <h2 style="overflow:hidden;">Work shops
-               <a style="float:right;" href="{{route('workshop.register.show')}}" class="btn btn-primary">Register for workshop</a>
-          </h2>
+<?php /*?>               <a style="float:right;" href="{{route('workshop.register.show')}}" class="btn btn-primary">Register for workshop</a>
+<?php */?>          </h2>
 
           <div class="inner-pg-box">
 
@@ -768,7 +1065,20 @@ $(document).ready(function() {
 });
 </script>
 
-
+<script>
+$(document).ready(function() {
+    $("#news-slider1").owlCarousel({
+        items : 4,
+        itemsDesktop:[1199,3],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [600,1],
+        navigation:true,
+        navigationText:["",""],
+        pagination:true,
+        autoPlay:true
+    });
+});
+</script>
 <script>
 $(document).ready(function() {
     $("#news-slider-a").owlCarousel({
