@@ -49,11 +49,20 @@
                         <td>{{$registration->airplane_booking ? 'Yes' : 'No'}}</td>
                         <td>{{$registration->stay_dates}}</td>
                         <td>
-                            <form name="delete-registration" action="{{route('admin.register.delete', $registration->id)}}" method="post">
+                            <form
+                                name="delete-registration"
+                                action="{{route('admin.register.delete', $registration->id)}}"
+                                method="post"
+                                onsubmit="return confirm('Are you sure to delete this user?');"
+                            >
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-link">Delete</button>
                             </form>
+
+                            <button class="btn btn-primary send-registration-email" data-registrationid="{{$registration->id}}">
+                                Send Email
+                            </button>
                         </td>
                     </tr>
                     @endforeach
@@ -67,7 +76,46 @@
     const token = "{{ csrf_token() }}";
 
     $(function() {
+        $('.send-registration-email').click(function() {
+            const registrationId = $(this).attr('data-registrationid');
 
+            Swal.fire({
+                title: 'Do you want to send registration email?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sendRegistrationEmail(registrationId);
+                }
+            });
+        });
+
+        function sendRegistrationEmail(registrationId) {
+            $.ajax({
+                url: "{{route('admin.registration.email')}}",
+                type: 'POST',
+                data: JSON.stringify({
+                    '_token': token,
+                    'registration_id': registrationId,
+                }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                processData: false,
+                success: function(result) {
+                    alert('Email will be sent shortly!');
+
+                    return result;
+                },
+                error: function(xhr, status, error) {
+                    alert('Error');
+
+                    console.log(xhr);
+                    return error;
+                },
+            });
+        }
     });
 </script>
 

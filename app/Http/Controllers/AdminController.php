@@ -6,6 +6,7 @@ use App\Http\Controllers\Exports\AbstractExport;
 use App\Http\Controllers\Exports\ConferencePaymentExport;
 use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
+use App\Mail\AdminRegisterConfirmation;
 use App\Mail\PaymentSuccess;
 use App\Models\AdminRegistration;
 use App\Models\ConferenceAbstract;
@@ -367,5 +368,26 @@ class AdminController extends Controller
         return redirect()->back()->with([
             'success' => 'Deleted successfully',
         ]);
+    }
+
+    public function sendRegistrationEmail(Request $request)
+    {
+        $request->validate([
+            'registration_id' => ['required', 'integer'],
+        ]);
+
+        $registration = AdminRegistration::where('id', $request->registration_id)->firstOrFail();
+
+        try {
+            Mail::to($registration->email)->send(new AdminRegisterConfirmation($registration));
+
+            return response()->json([
+                'data' => true,
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage(),
+            ], 400);
+        }
     }
 }

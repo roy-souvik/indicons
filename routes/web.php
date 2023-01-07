@@ -241,6 +241,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/create-users', [AdminController::class, 'createUsers'])->name('admin.register.create');
         Route::delete('/create-users/{id}', [AdminController::class, 'deleteAdminRegistration'])
             ->name('admin.register.delete');
+
+        Route::post('/send-registration-email', [AdminController::class, 'sendRegistrationEmail'])->name('admin.registration.email');
     });
 });
 
