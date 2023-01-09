@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Exports\AbstractExport;
+use App\Http\Controllers\Exports\AdminRegistrationsExport;
 use App\Http\Controllers\Exports\ConferencePaymentExport;
 use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
@@ -389,5 +390,10 @@ class AdminController extends Controller
                 'message' => $th->getMessage(),
             ], 400);
         }
+    }
+
+    public function exportRegistrations()
+    {
+        return (new AdminRegistrationsExport())->export();
     }
 }

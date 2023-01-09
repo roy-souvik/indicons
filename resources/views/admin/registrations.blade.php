@@ -12,7 +12,12 @@
     <div class="d-flex" style="justify-content: space-between; margin-bottom: 1rem;">
         <h3 class="box-title">Registations</h3>
 
-        <a href="{{route('admin.register.page')}}" class="btn btn-primary">Create New</a>
+        <div class="d-flex" style="justify-content: space-between;">
+            <a href="{{route('admin.register.page')}}" class="btn btn-primary mx-2">Create New</a>
+
+            <a class="btn btn-primary" href="{{route('admin.registrations.export')}}" target="_blank">Export Data</a>
+        </div>
+
     </div>
 
     @include('admin.flash-message')
@@ -49,12 +54,7 @@
                         <td>{{$registration->airplane_booking ? 'Yes' : 'No'}}</td>
                         <td>{{$registration->stay_dates}}</td>
                         <td>
-                            <form
-                                name="delete-registration"
-                                action="{{route('admin.register.delete', $registration->id)}}"
-                                method="post"
-                                onsubmit="return confirm('Are you sure to delete this user?');"
-                            >
+                            <form name="delete-registration" action="{{route('admin.register.delete', $registration->id)}}" method="post" onsubmit="return confirm('Are you sure to delete this user?');">
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-link">Delete</button>

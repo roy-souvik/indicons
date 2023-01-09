@@ -243,6 +243,8 @@ Route::middleware('auth')->group(function () {
             ->name('admin.register.delete');
 
         Route::post('/send-registration-email', [AdminController::class, 'sendRegistrationEmail'])->name('admin.registration.email');
+
+        Route::get('/export-registrations', [AdminController::class, 'exportRegistrations'])->name('admin.registrations.export');
     });
 });
 
