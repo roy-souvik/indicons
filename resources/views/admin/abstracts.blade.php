@@ -33,6 +33,7 @@
                     <th class="border-top-0">Institution</th>
                     <th class="border-top-0">Confirmed</th>
                     <th class="border-top-0">Created</th>
+                    <th class="border-top-0">Email Count</th>
                     <th class="border-top-0">Action</th>
                 </tr>
             </thead>
@@ -59,6 +60,7 @@
                     <td>{{$abstract->institution}}</td>
                     <td>{{$abstract->confirmed ? 'Yes' : 'No'}}</td>
                     <td>{{$abstract->created_at->format('d-m-Y')}}</td>
+                    <td>{{$abstract->emailLogs->count()}}</td>
                     <td>
 
                         <form method="POST" action="{{ route('admin.abstracts.update') }}">

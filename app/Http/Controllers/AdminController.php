@@ -9,6 +9,7 @@ use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
 use App\Mail\AdminRegisterConfirmation;
 use App\Mail\PaymentSuccess;
+use App\Models\AbstractEmailLog;
 use App\Models\AdminRegistration;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
@@ -24,7 +25,6 @@ use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -59,7 +59,9 @@ class AdminController extends Controller
 
     public function abstractList()
     {
-        $abstracts = ConferenceAbstract::with('user')->orderBy('id', 'desc')->get();
+        $abstracts = ConferenceAbstract::with(['user', 'emailLogs'])
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('admin.abstracts', compact('abstracts'));
     }
@@ -304,6 +306,14 @@ class AdminController extends Controller
 
         try {
             Mail::to($email)->send(new AbstractSend($abstract));
+
+            $log = new AbstractEmailLog();
+            $log->abstract_id = $abstract->id;
+            $log->sender_id = auth()->user()->id;
+            $log->recipient_email = $email;
+            $log->sender_ip = $request->ip();
+
+            $log->save();
 
             return true;
         } catch (\Throwable $th) {

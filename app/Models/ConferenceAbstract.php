@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ConferenceAbstract extends Model
 {
@@ -40,5 +41,10 @@ class ConferenceAbstract extends Model
     public function getAbstractIdAttribute(): string
     {
         return "ABST_000{$this->id}";
+    }
+
+    public function emailLogs(): HasMany
+    {
+        return $this->hasMany(AbstractEmailLog::class, 'abstract_id', 'id');
     }
 }
