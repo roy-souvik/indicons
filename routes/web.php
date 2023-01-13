@@ -185,6 +185,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/abstracts', [AdminController::class, 'abstractList'])
             ->name('admin.abstracts.show');
 
+        Route::get('/abstracts/{abstract}/email-logs', [AdminController::class, 'abstractEmailLogs'])
+            ->name('admin.abstracts.showEmailLogs');
+
         Route::post('/abstracts', [AdminController::class, 'abstractUpdate'])
             ->name('admin.abstracts.update');
 

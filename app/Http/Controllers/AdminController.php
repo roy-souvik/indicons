@@ -406,4 +406,15 @@ class AdminController extends Controller
     {
         return (new AdminRegistrationsExport())->export();
     }
+
+    public function abstractEmailLogs(ConferenceAbstract $abstract)
+    {
+        $logs = AbstractEmailLog::where('abstract_id', $abstract->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return response()->json([
+            'data' => $logs,
+        ]);
+    }
 }

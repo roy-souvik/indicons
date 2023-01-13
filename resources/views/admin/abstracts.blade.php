@@ -10,7 +10,7 @@
 
 <div class="white-box">
     <div class="d-flex" style="justify-content: space-between;">
-    <h3 class="box-title">Abstracts</h3>
+        <h3 class="box-title">Abstracts</h3>
 
         <a class="btn btn-primary mb-2" href="{{route('admin.abstract.export')}}" target="_blank">Export Data</a>
     </div>
@@ -18,13 +18,12 @@
     @include('admin.flash-message')
 
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table no-wrap1 table-bordered">
             <thead>
                 <tr>
                     <th class="border-top-0">#</th>
                     <th class="border-top-0">ID</th>
                     <th class="border-top-0">User Name</th>
-                    <!-- <th class="border-top-0">Image</th> -->
                     <th class="border-top-0">Heading</th>
                     <th class="border-top-0">Theme</th>
                     <th class="border-top-0" style="width: 10rem;">Description</th>
@@ -43,7 +42,6 @@
                     <td>{{$loop->index + 1}}</td>
                     <td>{{$abstract->abstract_id}}</td>
                     <td>{{$abstract->user->name}}</td>
-                    <!-- <td><img src="/images/{{$abstract->image}}" class="img-thumbnail" alt=""></td> -->
                     <td>{{$abstract->heading}}</td>
                     <td>{{ucfirst($abstract->theme)}}</td>
                     <td>
@@ -60,7 +58,19 @@
                     <td>{{$abstract->institution}}</td>
                     <td>{{$abstract->confirmed ? 'Yes' : 'No'}}</td>
                     <td>{{$abstract->created_at->format('d-m-Y')}}</td>
-                    <td>{{$abstract->emailLogs->count()}}</td>
+                    <td style="text-align: center;">
+                        @php
+                            $emailLogCount = $abstract->emailLogs->count()
+                        @endphp
+
+                        @if ($emailLogCount > 0)
+                        <button class="btn btn-link show-log-details" data-abstractid={{$abstract->id}}>
+                            {{$emailLogCount}}
+                        </button>
+                        @else
+                        {{$emailLogCount}}
+                        @endif
+                    </td>
                     <td>
 
                         <form method="POST" action="{{ route('admin.abstracts.update') }}">
@@ -84,7 +94,7 @@
     const token = "{{ csrf_token() }}";
 
     $(function() {
-        $('.send-abstract').click(async function () {
+        $('.send-abstract').click(async function() {
             const id = $(this).attr('data-descid');
 
             const {
@@ -120,6 +130,13 @@
 
             copyContent(description);
         });
+
+        $('.show-log-details').click(async function () {
+            const id = $(this).attr('data-abstractid');
+            const logs = await getEmailLogs(id);
+
+            renderEmailLogs(logs.data);
+        });
     });
 
     function sendAbstract(id, email) {
@@ -147,6 +164,58 @@
                 return error;
             },
         });
+    }
+
+    function getEmailLogs(abstractId) {
+        return $.ajax({
+            url: `/admin/abstracts/${abstractId}/email-logs`,
+            type: 'GET',
+            data: JSON.stringify({
+                '_token': token
+            }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            processData: false,
+            success: function(result) {
+                return result;
+            },
+            error: function(xhr, status, error) {
+                alert('Error');
+                return error;
+            },
+        });
+    }
+
+    function renderEmailLogs(logs) {
+        let output = `
+            <div style="display: flex; justify-content: center;">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td style="border: 1px solid #cecece; font-weight: bold; padding: 5px;">Recipient</td>
+                        <td style="border: 1px solid #cecece; font-weight: bold; padding: 5px;">IP</td>
+                        <td style="border: 1px solid #cecece; font-weight: bold; padding: 5px;">Sent Date</td>
+                    </tr>
+                </thead>
+        `;
+
+        output += '<tbody>';
+
+        logs.forEach(log => {
+            const item = `
+                <tr>
+                    <td style="border: 1px solid #cecece; padding: 5px;">${log.recipient_email}</td>
+                    <td style="border: 1px solid #cecece; padding: 5px;">${log.sender_ip}</td>
+                    <td style="border: 1px solid #cecece; padding: 5px;">${log.created_at.substring(0, 10)}</td>
+                </tr>
+            `;
+
+            output += item;
+        });
+
+        output += '</tbody></table></div>';
+
+        Swal.fire({html: output});
     }
 
     function copyContent(text) {
