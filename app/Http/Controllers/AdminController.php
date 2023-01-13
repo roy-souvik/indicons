@@ -321,9 +321,21 @@ class AdminController extends Controller
         }
     }
 
-    public function showRegistratons()
+    public function showRegistratons(Request $request)
     {
-        $registrations = AdminRegistration::all();
+        $request->validate([
+            'st_dt' => ['date', 'date_format:Y-m-d', 'before_or_equal:end_dt'],
+            'end_dt' => ['date', 'date_format:Y-m-d', 'after_or_equal:st_dt'],
+        ]);
+
+        if ($request->input('st_dt') && $request->input('end_dt')) {
+            $registrations = AdminRegistration::whereBetween('created_at', [
+                $request->input('st_dt'),
+                $request->input('end_dt'),
+            ])->get();
+        } else {
+            $registrations = AdminRegistration::all();
+        }
 
         return view('admin.registrations', compact('registrations'));
     }

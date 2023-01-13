@@ -13,6 +13,15 @@
         <h3 class="box-title">Registations</h3>
 
         <div class="d-flex" style="justify-content: space-between;">
+
+            <input type="date" name="start_date" id="start_date" class="mx-2">
+
+            <input type="date" name="end_date" id="end_date" class="mx-2">
+
+            <button class="btn btn-primary mx-2" id="filter-dates">Filter</button>
+
+            <button class="btn btn-primary mx-2" id="clear-dates">Clear Filter</button>
+
             <a href="{{route('admin.register.page')}}" class="btn btn-primary mx-2">Create New</a>
 
             <a class="btn btn-primary" href="{{route('admin.registrations.export')}}" target="_blank">Export Data</a>
@@ -37,6 +46,7 @@
                         <th class="border-top-0">Kolkata pickup + drop</th>
                         <th class="border-top-0">Airplane booking</th>
                         <th class="border-top-0">Stay dates</th>
+                        <th class="border-top-0">Created date</th>
                         <th class="border-top-0">Actions</th>
                     </tr>
                 </thead>
@@ -53,6 +63,7 @@
                         <td>{{$registration->conference_city_pickup_drop ? 'Yes' : 'No'}}</td>
                         <td>{{$registration->airplane_booking ? 'Yes' : 'No'}}</td>
                         <td>{{$registration->stay_dates}}</td>
+                        <td>{{$registration->created_at->format('Y-m-d')}}</td>
                         <td>
                             <form name="delete-registration" action="{{route('admin.register.delete', $registration->id)}}" method="post" onsubmit="return confirm('Are you sure to delete this user?');">
                                 @csrf
@@ -90,6 +101,19 @@
                     sendRegistrationEmail(registrationId);
                 }
             });
+        });
+
+        $('#filter-dates').click(function () {
+            const startDate = $('#start_date').val();
+            const endDate = $('#end_date').val();
+
+            if (startDate.length && endDate.length) {
+                location.href = "{{route('admin.register.show')}}" + `?st_dt=${startDate}&end_dt=${endDate}`;
+            }
+        });
+
+        $('#clear-dates').click(function () {
+            location.href = "{{route('admin.register.show')}}";
         });
 
         function sendRegistrationEmail(registrationId) {
