@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\MediaCategoryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
@@ -248,6 +249,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/send-registration-email', [AdminController::class, 'sendRegistrationEmail'])->name('admin.registration.email');
 
         Route::get('/export-registrations', [AdminController::class, 'exportRegistrations'])->name('admin.registrations.export');
+
+        Route::resource('/media-categories', MediaCategoryController::class);
     });
 });
 
