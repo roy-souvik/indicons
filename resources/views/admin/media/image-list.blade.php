@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Category</th>
                             <th>Title</th>
                             <th>Image</th>
                             <th>Actions</th>
@@ -25,9 +26,10 @@
                         @foreach($images as $image)
                         <tr>
                             <td>{{ $loop->index + 1}}</td>
+                            <td>{{ $image->category->name }}</td>
                             <td>{{ $image->title }}</td>
                             <td>
-                                <img class="img-thumbnail" width="150" src="{{ '/indicons/images/media/' . $image->path}}" alt="">
+                                <img class="img-circle" width="120" src="{{ $image->getImagePath() }}" alt="">
                             </td>
                             <td>
                                 <form name="delete-media" action="{{route('admin.media.destroy', $image->id)}}" method="post">

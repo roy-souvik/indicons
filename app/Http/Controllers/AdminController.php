@@ -27,6 +27,7 @@ use App\Models\WorkshopPayment;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use File;
 
 class AdminController extends Controller
 {
@@ -434,7 +435,7 @@ class AdminController extends Controller
 
     public function imagesIndex()
     {
-        $images = Media::where('type_id', 1)->get();
+        $images = Media::with(['category'])->image()->get();
 
         return view('admin.media.image-list', compact('images'));
     }
@@ -460,6 +461,11 @@ class AdminController extends Controller
             $file = $request->file('image');
             $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
             $file->move(public_path(Media::STORE_PATH), $filename);
+
+            File::copy(
+                public_path(Media::STORE_PATH) . '/'. $filename,
+                $_SERVER['DOCUMENT_ROOT'] . '/' . Media::STORE_PATH . '/' . $filename,
+            );
         }
 
         $media = Media::create([
@@ -485,6 +491,7 @@ class AdminController extends Controller
     {
         if ($media->isImage()) {
             unlink(public_path(Media::STORE_PATH) . '/'. $media->path);
+            unlink($_SERVER['DOCUMENT_ROOT'] . '/' . Media::STORE_PATH . '/' . $media->path);
         }
 
         $media->delete();
