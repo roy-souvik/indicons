@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMediaCategoriesTable extends Migration
+class CreateMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateMediaCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('media_categories', function (Blueprint $table) {
+        Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->integer('parent_id')->default(0);
-            $table->string('name');
+            $table->integer('category_id');
+            $table->integer('type_id'); // 1: image, 2: video
+            $table->string('path');
+            $table->string('title')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ class CreateMediaCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media_categories');
+        Schema::dropIfExists('media');
     }
 }

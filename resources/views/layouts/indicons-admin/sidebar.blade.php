@@ -54,6 +54,13 @@
                 </li>
 
                 <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.images.index')}}" aria-expanded="false">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span class="hide-menu">Images</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item pt-2">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.sponsorship.show')}}" aria-expanded="false">
                         <i class="far fa-clock" aria-hidden="true"></i>
                         <span class="hide-menu">Sponsorships</span>

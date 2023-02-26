@@ -14,6 +14,8 @@ use App\Models\AdminRegistration;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
 use App\Models\Fee;
+use App\Models\Media;
+use App\Models\MediaCategory;
 use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\Sponsorship;
@@ -428,5 +430,67 @@ class AdminController extends Controller
         return response()->json([
             'data' => $logs,
         ]);
+    }
+
+    public function imagesIndex()
+    {
+        $images = Media::where('type_id', 1)->get();
+
+        return view('admin.media.image-list', compact('images'));
+    }
+
+    public function imagesCreate()
+    {
+        $categories = MediaCategory::active()->get();
+
+        return view('admin.media.image-create', compact('categories'));
+    }
+
+    public function saveImage(Request $request)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:150'],
+            'category_id' => ['required', 'integer'],
+            'image' => ['required', 'max:8120'],
+        ]);
+
+        $filename = null;
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+            $file->move(public_path(Media::STORE_PATH), $filename);
+        }
+
+        $media = Media::create([
+            'title' => $request->title,
+            'type_id' => Media::TYPE_IMAGE,
+            'path' => $filename,
+            'category_id' => $request->category_id,
+            'role_id' => $request->registration_type,
+        ]);
+
+        if ($media) {
+            return redirect()
+                ->route('admin.images.index')
+                ->with('success', 'Image uploaded successfully.');
+        }
+
+        return redirect()
+            ->back()
+            ->with('error', 'Unable to upload image.');
+    }
+
+    public function destroyMedia(Media $media)
+    {
+        if ($media->isImage()) {
+            unlink(public_path(Media::STORE_PATH) . '/'. $media->path);
+        }
+
+        $media->delete();
+
+        return redirect()
+            ->back()
+            ->with('success', 'Media deleted successfully.');
     }
 }

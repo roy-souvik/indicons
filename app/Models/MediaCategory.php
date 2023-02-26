@@ -9,5 +9,14 @@ class MediaCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = [
+        'name',
+        'parent_id',
+        'is_active',
+    ];
+
+    public function scopeActive($query)
+    {
+        $query->where('is_active', 1);
+    }
 }

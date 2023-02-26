@@ -250,6 +250,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/export-registrations', [AdminController::class, 'exportRegistrations'])->name('admin.registrations.export');
 
+        Route::get('/images', [AdminController::class, 'imagesIndex'])->name('admin.images.index');
+        Route::get('/images-create', [AdminController::class, 'imagesCreate'])->name('admin.images.createForm');
+        Route::post('/images', [AdminController::class, 'saveImage'])->name('admin.images.create');
+
+        Route::delete('/media/{media}', [AdminController::class, 'destroyMedia'])->name('admin.media.destroy');
+
         Route::resource('/media-categories', MediaCategoryController::class);
     });
 });
