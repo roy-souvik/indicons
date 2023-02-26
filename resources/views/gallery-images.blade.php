@@ -3,6 +3,12 @@
 
 <h1>Images of {{$category->name}}</h1>
 
+<style>
+    .swal2-popup {
+        width: auto !important;
+    }
+</style>
+
 <div style="background: #fff; padding: 1rem;" class="inner-page-confr">
     <div class="row">
         @foreach ($images as $image)

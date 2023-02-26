@@ -261,6 +261,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/images-create', [AdminController::class, 'imagesCreate'])->name('admin.images.createForm');
         Route::post('/images', [AdminController::class, 'saveImage'])->name('admin.images.create');
 
+        Route::get('/videos', [AdminController::class, 'videosIndex'])->name('admin.videos.index');
+        Route::get('/videos-create', [AdminController::class, 'videosCreate'])->name('admin.videos.createForm');
+        Route::post('/videos', [AdminController::class, 'saveVideo'])->name('admin.videos.create');
+
         Route::delete('/media/{media}', [AdminController::class, 'destroyMedia'])->name('admin.media.destroy');
 
         Route::resource('/media-categories', MediaCategoryController::class);

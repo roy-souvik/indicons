@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="white-box">
-    <h3 class="box-title">Add Image</h3>
+    <h3 class="box-title">Add Video</h3>
 
     @include('admin.flash-message')
 
@@ -10,10 +10,9 @@
         <div class="card">
             <div class="card-body">
                 <form
-                    name="image-create-form" method="POST"
-                    action="{{route('admin.images.create')}}"
+                    name="video-create-form" method="POST"
+                    action="{{route('admin.videos.create')}}"
                     class="form-horizontal form-material"
-                    enctype="multipart/form-data"
                 >
                     @csrf
 
@@ -39,19 +38,16 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label class="col-md-12 p-0">Image</label>
+                        <label class="col-md-12 p-0">Link</label>
                         <div class="col-md-12 border-bottom p-0">
-                            <input type="file" name="image" id="image" class="form-control p-0 border-0" required>
-                            @error('image')
-                            <span>{{ $message }}</span>
-                            @enderror
+                            <input type="text" name="video_link" placeholder="Enter link" value="{{ old('video_link') }}" class="form-control p-0 border-0" required>
                         </div>
                     </div>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </form>
 
-                <a class="btn btn-link my-4" href="/admin/images">Back</a>
+                <a class="btn btn-link my-4" href="/admin/videos">Back</a>
             </div>
         </div>
     </div>

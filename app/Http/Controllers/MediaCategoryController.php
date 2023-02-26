@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use App\Models\MediaCategory;
 use Illuminate\Http\Request;
 
@@ -52,6 +53,11 @@ class MediaCategoryController extends Controller
 
     public function destroy(MediaCategory $mediaCategory)
     {
+        if (Media::where('category_id', $mediaCategory->id)->count()) {
+            return redirect()->route('media-categories.index')
+                ->with('error', 'Unable to delete. Media category has media items present.');
+        }
+
         $mediaCategory->delete();
 
         return redirect()->route('media-categories.index')

@@ -473,7 +473,6 @@ class AdminController extends Controller
             'type_id' => Media::TYPE_IMAGE,
             'path' => $filename,
             'category_id' => $request->category_id,
-            'role_id' => $request->registration_type,
         ]);
 
         if ($media) {
@@ -485,6 +484,46 @@ class AdminController extends Controller
         return redirect()
             ->back()
             ->with('error', 'Unable to upload image.');
+    }
+
+    public function videosIndex()
+    {
+        $videos = Media::with(['category'])->video()->get();
+
+        return view('admin.media.video-list', compact('videos'));
+    }
+
+    public function videosCreate()
+    {
+        $categories = MediaCategory::active()->get();
+
+        return view('admin.media.video-create', compact('categories'));
+    }
+
+    public function saveVideo(Request $request)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:150'],
+            'category_id' => ['required', 'integer'],
+            'video_link' => ['required', 'url'],
+        ]);
+
+        $media = Media::create([
+            'title' => $request->title,
+            'type_id' => Media::TYPE_VIDEO,
+            'path' => $request->video_link,
+            'category_id' => $request->category_id,
+        ]);
+
+        if ($media) {
+            return redirect()
+                ->route('admin.videos.index')
+                ->with('success', 'Video saved successfully.');
+        }
+
+        return redirect()
+            ->back()
+            ->with('error', 'Unable to save video.');
     }
 
     public function destroyMedia(Media $media)
