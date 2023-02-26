@@ -19,4 +19,9 @@ class MediaCategory extends Model
     {
         $query->where('is_active', 1);
     }
+
+    public function isActive(): bool
+    {
+        return $this->is_active == 1;
+    }
 }

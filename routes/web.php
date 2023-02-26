@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaCategoryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
@@ -103,6 +104,12 @@ Route::post('/registration', [RegistrationController::class, 'register']);
 
 Route::get('/workshop-register', [RegistrationController::class, 'workshopRegisterShow'])
     ->name('workshop.register.show');
+
+Route::get('/image-categories', [GalleryController::class, 'showImageCategories'])
+    ->name('gallery.images.categories');
+
+Route::get('/images/{category}', [GalleryController::class, 'showImages'])
+    ->name('gallery.images');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'showProfilePage'])
