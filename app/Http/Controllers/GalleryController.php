@@ -25,4 +25,22 @@ class GalleryController extends Controller
 
         return view('gallery-images', compact('images', 'category'));
     }
+
+    public function showVideoCategories()
+    {
+        $videos = Media::with(['category'])->video()->get();
+        $categories = $videos->pluck('category')->unique();
+
+        return view('gallery-video-categories', compact('categories'));
+    }
+
+    public function showVideos(MediaCategory $category)
+    {
+        $videos = Media::video()
+            ->active()
+            ->where('category_id', $category->id)
+            ->get();
+
+        return view('gallery-videos', compact('videos', 'category'));
+    }
 }

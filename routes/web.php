@@ -111,6 +111,12 @@ Route::get('/image-categories', [GalleryController::class, 'showImageCategories'
 Route::get('/images/{category}', [GalleryController::class, 'showImages'])
     ->name('gallery.images');
 
+Route::get('/video-categories', [GalleryController::class, 'showVideoCategories'])
+    ->name('gallery.videos.categories');
+
+Route::get('/videos/{category}', [GalleryController::class, 'showVideos'])
+    ->name('gallery.videos');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'showProfilePage'])
         ->name('profile.show');

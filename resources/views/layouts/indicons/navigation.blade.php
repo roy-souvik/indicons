@@ -31,7 +31,7 @@
 
                             <ul class="js-sub-menu sub-menu">
                                 <li><a href="{{route('gallery.images.categories')}}">Images</a></li>
-                                <li><a href="/gallery-videos">Videos</a></li>
+                                <li><a href="{{route('gallery.videos.categories')}}">Videos</a></li>
                             </ul>
                         </li>
 
