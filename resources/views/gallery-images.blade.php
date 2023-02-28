@@ -7,6 +7,11 @@
     .swal2-popup {
         width: auto !important;
     }
+
+    .gallery-image-wrapper {
+        height: 230px;
+        overflow: hidden;
+    }
 </style>
 
 <div style="background: #fff; padding: 1rem;" class="inner-page-confr">
