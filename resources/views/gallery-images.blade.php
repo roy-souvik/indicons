@@ -12,15 +12,10 @@
 <div style="background: #fff; padding: 1rem;" class="inner-page-confr">
     <div class="row">
         @foreach ($images as $image)
-        <div class="col-md-4 text-center">
-            <img
-                src="{{ $image->getImagePath() }}"
-                class="img-thumbnail gallery-item"
-                style="max-width: 120px; cursor: pointer;"
-                alt="{{$image->title}}"
-            />
+        <div class="col-md-4 mb-4 text-center gallery-image-wrapper">
+            <img src="{{ $image->getImagePath() }}" class="img-thumbnail gallery-item" style="cursor: pointer;" alt="{{$image->title}}" />
             <br>
-            <span>{{$image->title}}</span>
+            <!-- <span>{{$image->title}}</span> -->
         </div>
         @endforeach
     </div>
@@ -37,6 +32,33 @@
                 imageAlt: imageAlt,
                 showCloseButton: true,
                 showConfirmButton: false,
+                footer: `
+                    <a
+                        href="#"
+                        data-imgurl="${imagePath}"
+                        data-imgalt="${imageAlt}"
+                        id="gallery-item-download-btn"
+                    >
+                        Download
+                    </a>
+                `,
+                didOpen: () => {
+                    $('#gallery-item-download-btn').on('click', function(e) {
+                        console.log('Test');
+                        const link = document.createElement('a');
+
+                        const url = $(this).attr('data-imgurl');
+                        const alt = $(this).attr('data-imgalt');
+
+                        link.href = url;
+                        link.download = alt;
+                        document.body.appendChild(link);
+                        link.click();
+
+                        document.body.removeChild(link);
+                        e.preventDefault();
+                    });
+                }
             });
         });
     });
