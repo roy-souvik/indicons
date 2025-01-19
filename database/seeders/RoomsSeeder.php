@@ -20,7 +20,11 @@ class RoomsSeeder extends Seeder
         $rooms = [
             [
                 'hotel_id' => 1,
-                'room_category' => 'ITC ONE (Smart Suite)',
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'INR',
                 'amount' => '12000',
             ],
             [
