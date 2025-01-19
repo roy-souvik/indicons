@@ -6,18 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Mail\AbstractUpdated;
 use App\Models\AccompanyingPerson;
 use App\Models\ConferenceAbstract;
+use App\Models\RegistrationCharge;
 use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\User;
 use App\Models\Workshop;
 use App\Rules\AlphaSpace;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
-use Carbon\Carbon;
 use Razorpay\Api\Api;
 
 class RegistrationController extends Controller
@@ -33,8 +35,17 @@ class RegistrationController extends Controller
         $this->api = new Api($keyId, $keySecret);
     }
 
-    public function show()
+    public function show(Request $request)
     {
+        $validated = $request->validate([
+            'type' => [Rule::in(['indian', 'saarc', 'international'])],
+        ]);
+
+        $registrationType = data_get($validated, 'type', 'indian');
+
+        // Fetch registration charges based on the type
+        $charges = RegistrationCharge::getByType($registrationType);
+
         $roles = Role::active()->get();
 
         $config = SiteConfig::whereIn('name', ['early_bird', 'standard', 'spot'])->get();
@@ -45,12 +56,12 @@ class RegistrationController extends Controller
         $earlyBirdDate = Carbon::createFromFormat('Y-m-d', $earlyBirdConfig->value);
         $standardDate = Carbon::createFromFormat('Y-m-d', $standardConfig->value);
 
-        $registrationConfig = $spotConfig;
-
         if (!$earlyBirdDate->isPast()) {
             $registrationConfig = $earlyBirdConfig;
         } elseif (!$standardDate->isPast()) {
             $registrationConfig = $standardConfig;
+        } else {
+            $registrationConfig = $spotConfig;
         }
 
         $registrationDayMonth = Carbon::createFromFormat('Y-m-d', $registrationConfig->value)->format('m/d');
@@ -304,7 +315,14 @@ class RegistrationController extends Controller
             'ZW' => 'Zimbabwe'
         ];
 
-        return view('conference-register', compact('roles', 'registrationConfig', 'registrationDayMonth', 'countries'));
+        return view('conference-register', compact(
+            'roles',
+            'registrationConfig',
+            'registrationDayMonth',
+            'countries',
+            'charges',
+            'registrationType',
+        ));
     }
 
     public function register(Request $request)
