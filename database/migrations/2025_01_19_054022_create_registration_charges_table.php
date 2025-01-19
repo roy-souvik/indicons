@@ -16,7 +16,7 @@ class CreateRegistrationChargesTable extends Migration
         Schema::create('registration_charges', function (Blueprint $table) {
             $table->id();
             $table->string('category'); // UG / Nurse, PG / MSc / PhD, Delegate
-            $table->string('type'); // INDIAN, SAARC, INTERNATIONAL
+            $table->integer('delegate_type_id'); // INDIAN, SAARC, INTERNATIONAL
             $table->string('registration_period'); // Early Bird, Standard, Late, Spot
             $table->integer('amount'); // The amount for that specific type
             $table->timestamps();

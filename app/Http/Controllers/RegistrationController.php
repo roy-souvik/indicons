@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
@@ -37,14 +38,19 @@ class RegistrationController extends Controller
 
     public function show(Request $request)
     {
+        $delegateTypes = DB::table('delegate_types')->where('is_active', 1)->get();
+
         $validated = $request->validate([
-            'type' => [Rule::in(['indian', 'saarc', 'international'])],
+            'type' => [Rule::in($delegateTypes->pluck('name')->all())],
         ]);
 
-        $registrationType = data_get($validated, 'type', 'indian');
+        $registrationTypeName = data_get($validated, 'type', $delegateTypes->pluck('name')->first());
+        $selectedDelegateType = $delegateTypes->where('name', $registrationTypeName)->first();
 
         // Fetch registration charges based on the type
-        $charges = RegistrationCharge::getByType($registrationType);
+        $charges = RegistrationCharge::getByTypeId(
+            $delegateTypes->where('name', $registrationTypeName)->pluck('id')->first()
+        );
 
         $roles = Role::active()->get();
 
@@ -321,7 +327,8 @@ class RegistrationController extends Controller
             'registrationDayMonth',
             'countries',
             'charges',
-            'registrationType',
+            'selectedDelegateType',
+            'delegateTypes',
         ));
     }
 

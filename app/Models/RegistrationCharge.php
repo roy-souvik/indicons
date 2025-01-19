@@ -18,8 +18,8 @@ class RegistrationCharge extends Model
         'amount',
     ];
 
-    public static function getByType(string $type)
+    public static function getByTypeId(int $typeId)
     {
-        return self::where('type', strtoupper($type))->orderBy('registration_period')->get();
+        return self::where('delegate_type_id', $typeId)->get();
     }
 }

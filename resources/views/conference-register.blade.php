@@ -131,23 +131,14 @@
            <div class="reg-table" style="display: flex; flex-direction: column;">
 
                <ul class="nav nav-pills nav-fill">
+                @foreach($delegateTypes as $type)
                    <li class="nav-item">
-                       <a class="nav-link {{ $registrationType === 'indian' ? 'active' : '' }}" aria-current="page"
-                           href="{{ route('conference-register.show', ['type' => 'indian']) }}">
-                           Indian (INR)
+                       <a class="nav-link {{ $selectedDelegateType->name === $type->name ? 'active' : '' }}" aria-current="page"
+                           href="{{ route('conference-register.show', ['type' => $type->name]) }}">
+                           {{ $type->description }}
                        </a>
                    </li>
-                   <li class="nav-item">
-                       <a class="nav-link {{ $registrationType === 'saarc' ? 'active' : '' }}" href="{{ route('conference-register.show', ['type' => 'saarc']) }}">
-                           SAARC (Non Indian) USD
-                       </a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link {{ $registrationType === 'international' ? 'active' : '' }}"
-                           href="{{ route('conference-register.show', ['type' => 'international']) }}">
-                           International(Non SAARC) USD
-                        </a>
-                   </li>
+                @endforeach
                </ul>
 
                <br>
@@ -311,25 +302,32 @@
 
            <div class="row">
                <div class="col-md-10">
-                   <h2>FULL REGISTRATION INCLUDES </h2>
+                   <h2>FULL REGISTRATION INCLUDES</h2>
                    <ul>
-                       <li> Access to the congress sessions. </li>
-                       <li>Access to all workshops.</li>
-                       <li>Access to the industry exhibition and poster area.</li>
-                       <li>Congress bag.</li>
-
-
-                       <li>Access to congress abstracts.</li>
-                       <li>Electronic book</li>
-                       <li>Access to CULTURAL EVENTS AND GALA DINNER.</li>
-
-                       <li>
-                           <span style="text-transform: uppercase;">
-                               <strong> Subsidised regristration :</strong> does not include cultural events and gala
-                               dinner.
-                           </span>
-                       </li>
+                       <li>Access to all conference halls / Poster presentation area and exhibition halls.</li>
+                       <li>Conference kit.</li>
+                       <li>Lunch and Tea & snacks for 3 days.</li>
+                       <li>Dinner 2 days: 1st day – Cultural Night and Dinner. 2nd day - Gala Dinner.</li>
+                       <li>Special surprises. Can join as participant in all the events. (18 % GST will be applicable as per GOI rules)</li>
                    </ul>
+
+                   <table>
+                    <tr>
+                        <td>UG Students / Nurses</td>
+                        <td>All facilities like Delegate. Except Gala dinner. (They may separately take passes on chargeable basis).
+                        All students to upload ID card / Letter from HOD as UG student.</td>
+                    </tr>
+                    <tr>
+                        <td>PG / MSc / PhD</td>
+                        <td>All facilities like Delegate.
+                            All PG / MSc / PhD students to upload ID card / Letter from HOD / authority.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Accompanying Person</td>
+                        <td>All facilities like Delegate. Except Conference kit.</td>
+                    </tr>
+                   </table>
 
                </div>
 
