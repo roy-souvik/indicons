@@ -172,7 +172,7 @@ Route::middleware('auth')->group(function () {
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {
-            return view('admin.home');
+            return redirect('admin/home');
         })->name('admin');
 
         Route::get('/coupons', [CouponsController::class, 'index'])->name('admin.coupons.index');

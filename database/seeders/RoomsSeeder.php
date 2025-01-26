@@ -18,6 +18,7 @@ class RoomsSeeder extends Seeder
         DB::table('rooms')->truncate();
 
         $rooms = [
+            // INDIAN: Early Bird
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 1,
@@ -29,13 +30,145 @@ class RoomsSeeder extends Seeder
             ],
             [
                 'hotel_id' => 1,
-                'room_category' => 'Towers',
-                'amount' => '11000',
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '13000',
             ],
             [
-                'hotel_id' => 2,
-                'room_category' => 'Superior Room',
-                'amount' => '7000',
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '23000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '25000',
+            ],
+
+            // Indian: Standard
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 2,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '13000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 2,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '14000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 2,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '25000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 2,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '27000',
+            ],
+
+            // Indian: Late
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 3,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '14000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 3,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '15000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 3,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '27000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 3,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '29000',
+            ],
+
+            // SAARC
+
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '12000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '13000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'INR',
+                'amount' => '23000',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 1,
+                'registration_period_id' => 1,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'INR',
+                'amount' => '25000',
             ],
         ];
 

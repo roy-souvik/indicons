@@ -112,7 +112,9 @@
            <div class="title">Registration</div>
 
            <div class="inner-count" style="position: relative;">
-               <h4 class="text-center">{{ ucwords(str_replace('_', ' ', $registrationConfig->name)) }} Registration</h4>
+               <h4 class="text-center">
+                {{ $registrationPeriod->name }} Registration
+                </h4>
                @include('partials.countdown')
            </div>
 
@@ -131,14 +133,14 @@
            <div class="reg-table" style="display: flex; flex-direction: column;">
 
                <ul class="nav nav-pills nav-fill">
-                @foreach($delegateTypes as $type)
-                   <li class="nav-item">
-                       <a class="nav-link {{ $selectedDelegateType->name === $type->name ? 'active' : '' }}" aria-current="page"
-                           href="{{ route('conference-register.show', ['type' => $type->name]) }}">
-                           {{ $type->description }}
-                       </a>
-                   </li>
-                @endforeach
+                   @foreach ($delegateTypes as $type)
+                       <li class="nav-item">
+                           <a class="nav-link {{ $selectedDelegateType->name === $type->name ? 'active' : '' }}"
+                               aria-current="page" href="{{ route('conference-register.show', ['type' => $type->name]) }}">
+                               {{ $type->description }}
+                           </a>
+                       </li>
+                   @endforeach
                </ul>
 
                <br>
@@ -205,9 +207,9 @@
                    </div>
 
                    <!-- <div class="input__box">
-                       <span class="details">Image</span>
-                       <input type="file" name="image" placeholder="Choose image" id="image">
-                   </div> -->
+                           <span class="details">Image</span>
+                           <input type="file" name="image" placeholder="Choose image" id="image">
+                       </div> -->
 
                    <div class="input__box">
                        <span class="details">Phone Number</span>
@@ -274,15 +276,15 @@
                    </div>
 
                    <!-- <div class="input__box">
-                       <span class="details">Are you an existing VAI Member?</span>
-                       <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
-                           <option value="">-- choose one --</option>
-                           <option value="yes" {{ old('is_vaicon_member') == 'yes' ? 'selected' : '' }}>Yes</option>
-                           <option value="no" {{ old('is_vaicon_member') == 'no' ? 'selected' : '' }}>No</option>
-                       </select>
+                           <span class="details">Are you an existing VAI Member?</span>
+                           <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
+                               <option value="">-- choose one --</option>
+                               <option value="yes" {{ old('is_vaicon_member') == 'yes' ? 'selected' : '' }}>Yes</option>
+                               <option value="no" {{ old('is_vaicon_member') == 'no' ? 'selected' : '' }}>No</option>
+                           </select>
 
-                       <input type="text" class="d-none" placeholder="Enter valid VAICON member id" name="vaicon_member_id" id="vaicon_member_id" value="{{ old('vaicon_member_id') }}">
-                   </div> -->
+                           <input type="text" class="d-none" placeholder="Enter valid VAICON member id" name="vaicon_member_id" id="vaicon_member_id" value="{{ old('vaicon_member_id') }}">
+                       </div> -->
 
                    <div style="clear:both;"> </div>
 
@@ -308,25 +310,27 @@
                        <li>Conference kit.</li>
                        <li>Lunch and Tea & snacks for 3 days.</li>
                        <li>Dinner 2 days: 1st day – Cultural Night and Dinner. 2nd day - Gala Dinner.</li>
-                       <li>Special surprises. Can join as participant in all the events. (18 % GST will be applicable as per GOI rules)</li>
+                       <li>Special surprises. Can join as participant in all the events. (18 % GST will be applicable as per
+                           GOI rules)</li>
                    </ul>
 
                    <table>
-                    <tr>
-                        <td>UG Students / Nurses</td>
-                        <td>All facilities like Delegate. Except Gala dinner. (They may separately take passes on chargeable basis).
-                        All students to upload ID card / Letter from HOD as UG student.</td>
-                    </tr>
-                    <tr>
-                        <td>PG / MSc / PhD</td>
-                        <td>All facilities like Delegate.
-                            All PG / MSc / PhD students to upload ID card / Letter from HOD / authority.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Accompanying Person</td>
-                        <td>All facilities like Delegate. Except Conference kit.</td>
-                    </tr>
+                       <tr>
+                           <td>UG Students / Nurses</td>
+                           <td>All facilities like Delegate. Except Gala dinner. (They may separately take passes on
+                               chargeable basis).
+                               All students to upload ID card / Letter from HOD as UG student.</td>
+                       </tr>
+                       <tr>
+                           <td>PG / MSc / PhD</td>
+                           <td>All facilities like Delegate.
+                               All PG / MSc / PhD students to upload ID card / Letter from HOD / authority.
+                           </td>
+                       </tr>
+                       <tr>
+                           <td>Accompanying Person</td>
+                           <td>All facilities like Delegate. Except Conference kit.</td>
+                       </tr>
                    </table>
 
                </div>

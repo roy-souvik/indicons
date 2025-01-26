@@ -19,13 +19,9 @@ class HotelsSeeder extends Seeder
 
         $hotels = [
             [
-               'name' => 'ITC SONAR',
+               'name' => 'THE WESTIN',
                'address' => '1, JBS Haldane Ave, Tangra, Kolkata, West Bengal 700046',
             ],
-            [
-                'name' => 'THE SONNET KOLKATA',
-                'address' => 'Plot No. 8, DD Block, Sector 1, Bidhannagar, Kolkata, West Bengal 700064',
-             ],
         ];
 
         foreach ($hotels as $hotel) {

@@ -17,7 +17,7 @@ class CreateRegistrationChargesTable extends Migration
             $table->id();
             $table->string('category'); // UG / Nurse, PG / MSc / PhD, Delegate
             $table->integer('delegate_type_id'); // INDIAN, SAARC, INTERNATIONAL
-            $table->string('registration_period'); // Early Bird, Standard, Late, Spot
+            $table->integer('registration_period_id'); // Early Bird, Standard, Late, Spot
             $table->integer('amount'); // The amount for that specific type
             $table->timestamps();
         });

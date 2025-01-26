@@ -54,23 +54,28 @@ class RegistrationController extends Controller
 
         $roles = Role::active()->get();
 
-        $config = SiteConfig::whereIn('name', ['early_bird', 'standard', 'spot'])->get();
-        $earlyBirdConfig = $config->where('name', 'early_bird')->first();
-        $standardConfig = $config->where('name', 'standard')->first();
-        $spotConfig = $config->where('name', 'spot')->first();
+        $registrationPeriods = DB::table('registration_periods')->where('is_active', 1)->get();
 
-        $earlyBirdDate = Carbon::createFromFormat('Y-m-d', $earlyBirdConfig->value);
-        $standardDate = Carbon::createFromFormat('Y-m-d', $standardConfig->value);
+        $earlyBirdPeriod = $registrationPeriods->where('id', 1)->first();
+        $standardPeriod = $registrationPeriods->where('id', 2)->first();
+        $latePeriod = $registrationPeriods->where('id', 3)->first();
+        $spotConfig = $registrationPeriods->where('id', 4)->first();
+
+        $earlyBirdDate = Carbon::createFromFormat('Y-m-d', $earlyBirdPeriod->date);
+        $standardDate = Carbon::createFromFormat('Y-m-d', $standardPeriod->date);
+        $lateDate = Carbon::createFromFormat('Y-m-d', $latePeriod->date);
 
         if (!$earlyBirdDate->isPast()) {
-            $registrationConfig = $earlyBirdConfig;
+            $registrationPeriod = $earlyBirdPeriod;
         } elseif (!$standardDate->isPast()) {
-            $registrationConfig = $standardConfig;
+            $registrationPeriod = $standardPeriod;
+        } elseif (!$latePeriod->isPast()) {
+            $registrationPeriod = $latePeriod;
         } else {
-            $registrationConfig = $spotConfig;
+            $registrationPeriod = $spotConfig;
         }
 
-        $registrationDayMonth = Carbon::createFromFormat('Y-m-d', $registrationConfig->value)->format('m/d');
+        $registrationDayMonth = Carbon::createFromFormat('Y-m-d', $registrationPeriod->date)->format('m/d');
 
         $countries = [
             'AF' => 'Afghanistan',
@@ -323,7 +328,7 @@ class RegistrationController extends Controller
 
         return view('conference-register', compact(
             'roles',
-            'registrationConfig',
+            'registrationPeriod',
             'registrationDayMonth',
             'countries',
             'charges',
