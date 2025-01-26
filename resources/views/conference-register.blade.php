@@ -275,17 +275,6 @@
                        </select>
                    </div>
 
-                   <!-- <div class="input__box">
-                           <span class="details">Are you an existing VAI Member?</span>
-                           <select class="form-control mb-2" id="is_vaicon_member" name="is_vaicon_member" required>
-                               <option value="">-- choose one --</option>
-                               <option value="yes" {{ old('is_vaicon_member') == 'yes' ? 'selected' : '' }}>Yes</option>
-                               <option value="no" {{ old('is_vaicon_member') == 'no' ? 'selected' : '' }}>No</option>
-                           </select>
-
-                           <input type="text" class="d-none" placeholder="Enter valid VAICON member id" name="vaicon_member_id" id="vaicon_member_id" value="{{ old('vaicon_member_id') }}">
-                       </div> -->
-
                    <div style="clear:both;"> </div>
 
                    <label class="agree" id="privacy_policy_check" style="width: 15rem;">
@@ -297,7 +286,8 @@
                </div>
 
                <div class="button">
-                   <input type="submit" value="Register" />
+                    <input type="hidden" name="delegate_type_id" value="{{$selectedDelegateType->id}}">
+                    <input type="submit" value="Register" />
                </div>
            </form>
 

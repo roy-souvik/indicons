@@ -8,6 +8,7 @@ use App\Models\ConferencePayment;
 use App\Models\Coupon;
 use App\Models\Fee;
 use App\Models\Hotel;
+use App\Models\RegistrationPeriod;
 use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\User;
@@ -46,11 +47,7 @@ class PaymentController extends Controller
         $earlyBirdConfig = $config->where('name', 'early_bird')->first();
         $standardConfig = $config->where('name', 'standard')->first();
 
-        $registrationTypeAuth = [
-            'is_early_bird' => !Carbon::createFromFormat('Y-m-d', $earlyBirdConfig->value)->isPast(),
-            'is_standard' => !Carbon::createFromFormat('Y-m-d', $standardConfig->value)->isPast(),
-            'is_spot' => true,
-        ];
+        $registrationPeriod = RegistrationPeriod::getCurrentPeriod();
 
         $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
 
@@ -71,13 +68,13 @@ class PaymentController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $isVaiMember = $this->isVaiMember($user);
+        // $isVaiMember = $this->isVaiMember($user);
 
-        $vaiMemberDiscounts = [
-            'early_bird' => $isVaiMember ? intval($paymentSlabItem->early_bird_member_discount) : 0,
-            'standard' => $isVaiMember ? intval($paymentSlabItem->standard_member_discount) : 0,
-            'spot' => $isVaiMember ? intval($paymentSlabItem->spot_member_discount) : 0,
-        ];
+        // $vaiMemberDiscounts = [
+        //     'early_bird' => $isVaiMember ? intval($paymentSlabItem->early_bird_member_discount) : 0,
+        //     'standard' => $isVaiMember ? intval($paymentSlabItem->standard_member_discount) : 0,
+        //     'spot' => $isVaiMember ? intval($paymentSlabItem->spot_member_discount) : 0,
+        // ];
 
         $saarcDiscounts = [
             'early_bird' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
@@ -86,9 +83,9 @@ class PaymentController extends Controller
         ];
 
         $discounts = [
-            'early_bird' => $vaiMemberDiscounts['early_bird'] + $saarcDiscounts['early_bird'] + data_get($couponDiscounts, 'early_bird', 0),
-            'standard' => $vaiMemberDiscounts['standard'] + $saarcDiscounts['standard'] + data_get($couponDiscounts, 'standard', 0),
-            'spot' => $vaiMemberDiscounts['spot'] + $saarcDiscounts['spot'] + data_get($couponDiscounts, 'spot', 0),
+            'early_bird' => $saarcDiscounts['early_bird'] + data_get($couponDiscounts, 'early_bird', 0),
+            'standard' => $saarcDiscounts['standard'] + data_get($couponDiscounts, 'standard', 0),
+            'spot' => $saarcDiscounts['spot'] + data_get($couponDiscounts, 'spot', 0),
         ];
 
         $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
@@ -97,10 +94,16 @@ class PaymentController extends Controller
 
         $hotels = Hotel::with(['rooms'])->active()->get();
 
-        $bookingPeriod = CarbonPeriod::create('2023-01-26', '2023-01-30');
+        $hotelBookingStartConfig = SiteConfig::where('name', 'hotel_booking_start')->first();
+        $hotelBookingEndConfig = SiteConfig::where('name', 'hotel_booking_end')->first();
+        $bookingPeriod = CarbonPeriod::create(
+            $hotelBookingStartConfig->date,
+            $hotelBookingEndConfig->date,
+        );
 
         return view('conference-payment', compact(
             'paymentSlabItem',
+            'registrationPeriod',
             'registrationTypeAuth',
             'accompanyingPersonFees',
             'accompanyingPersons',

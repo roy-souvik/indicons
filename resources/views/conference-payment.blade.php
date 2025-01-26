@@ -21,35 +21,13 @@ $spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']
     background: rgba(0, 0, 0, 0.05);"></div>
     <table class="table">
         <tbody>
-            @if ($registrationTypeAuth['is_early_bird'])
             <tr>
-                <td>Early Bird Registration</td>
+                <td>{{$registrationPeriod->name}} Registration</td>
                 <td>
                     <input type="radio" id="early_bird" name="payment" checked value="{{$earlyBirdPayable}}">
                     <label for="early_bird">{{$paymentSlabItem->currency}} {{$earlyBirdPayable}}</label>
                 </td>
             </tr>
-            @endif
-
-            @if ($registrationTypeAuth['is_standard'] && !$registrationTypeAuth['is_early_bird'])
-            <tr>
-                <td>Standard Registration</td>
-                <td>
-                    <input type="radio" id="standard" name="payment" checked value="{{$standardPayable}}">
-                    <label for="standard">{{$paymentSlabItem['currency']}} {{$standardPayable}}</label>
-                </td>
-            </tr>
-            @endif
-
-            @if (!$registrationTypeAuth['is_standard'] && !$registrationTypeAuth['is_early_bird'] && $registrationTypeAuth['is_spot'])
-            <tr>
-                <td>Spot Registration</td>
-                <td>
-                    <input type="radio" id="spot" name="payment" checked value="{{$paymentSlabItem->spot_amount}}">
-                    <label for="spot">{{$paymentSlabItem['currency']}} {{intval($paymentSlabItem->spot_amount) - $discounts['spot']}}</label>
-                </td>
-            </tr>
-            @endif
         </tbody>
     </table>
 

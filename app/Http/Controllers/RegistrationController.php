@@ -91,6 +91,7 @@ class RegistrationController extends Controller
             'privacy_policy_check' => ['required'],
             // 'is_vaicon_member' => ['required'],
             'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
+            'delegate_type_id' => ['number'],
         ]);
 
         $filename = null;
@@ -116,6 +117,7 @@ class RegistrationController extends Controller
             'department' => $request->department,
             'address' => $request->address,
             'vaicon_member_id' => $request->input('vaicon_member_id'),
+            'delegate_type_id' => $request->input('delegate_type_id'),
         ]);
 
         event(new Registered($user));

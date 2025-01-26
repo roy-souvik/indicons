@@ -42,6 +42,7 @@ class User extends Authenticatable
         'department',
         'address',
         'vaicon_member_id',
+        'delegate_type_id',
     ];
 
     /**

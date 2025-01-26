@@ -4,12 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
-
-use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -20,21 +16,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('users')->truncate();
-
         $superAdmins = [
             [
-                'name' => 'Vaicon Admin',
+                'name' => 'Inpalams Admin',
                 'title' => 'Mr',
-                'email' => 'contact@vaicon2023.com',
+                'email' => 'contact@inpalams2025.in',
                 'email_verified_at' => now()->timestamp,
                 'password' => Hash::make(env('INDICONS_ADMIN_PASS')),
                 'phone' => '8910142514',
                 'role_id' => Role::firstWhere('key', 'super_admin')->id,
+                'delegate_type_id' => 1,
                 'company' => 'admin',
-                'postal_code' => '122234',
+                'postal_code' => '700001',
                 'city' => 'city',
-                'country' => 'country',
+                'country' => 'India',
                 'department' => 'department',
                 'address' => 'address',
             ],

@@ -27,17 +27,13 @@ class ConfigSeeder extends Seeder
                 'value' => '3000',
             ],
             [
-                'name' => 'early_bird',
-                'value' => '2022-12-15',
+                'hotel_booking_start',
+                'value' => '2025-09-01',
             ],
             [
-                'name' => 'standard',
-                'value' => '2022-12-15',
-            ],
-            [
-                'name' => 'spot',
-                'value' => '2023-01-29',
-            ],
+                'hotel_booking_end',
+                'value' => '2025-09-05',
+            ]
         ];
 
         SiteConfig::insert($configList);
