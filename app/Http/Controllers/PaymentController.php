@@ -52,7 +52,6 @@ class PaymentController extends Controller
             'is_spot' => true,
         ];
 
-
         $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
 
         $couponDiscounts = [];
