@@ -75,7 +75,12 @@ class PaymentController extends Controller
 
         $razorPayKey = $this->api->getKey();
 
-        $hotels = Hotel::with(['rooms'])->active()->get();
+        $hotels = Hotel::with(['rooms' => function ($query) use ($registrationPeriod, $user) {
+            $query->where('delegate_type_id', $user->delegate_type_id)
+                  ->where('registration_period_id', $registrationPeriod->id);
+        }])
+            ->active()
+            ->get();
 
         $hotelBookingStartConfig = SiteConfig::where('name', 'hotel_booking_start')->first();
         $hotelBookingEndConfig = SiteConfig::where('name', 'hotel_booking_end')->first();

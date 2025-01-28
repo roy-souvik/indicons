@@ -99,7 +99,7 @@
                     <tbody>
                         @foreach($hotel->rooms as $room)
                         <tr>
-                            <td>{{$room->room_category}}</td>
+                            <td>{{$room->room_category}} <i class="text-muted">({{ $room->description }})</i></td>
                             <td style="text-align: right;">
                                 Rooms:
                                 <input type="number" name="room-count" value="0" id="room-{{$room->id}}" data-roomid="{{$room->id}}" min="0" max="{{$maxRoomCount}}" data-amount="{{$room->amount}}" style="width: 4rem;" />
