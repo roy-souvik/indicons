@@ -18,6 +18,7 @@ class RegistrationCharge extends Model
         'type',
         'registration_period',
         'amount',
+        'discount',
     ];
 
     public static function getByTypeId(int $typeId)
@@ -28,5 +29,10 @@ class RegistrationCharge extends Model
     public function registrationPeriod(): BelongsTo
     {
         return $this->belongsTo(RegistrationPeriod::class);
+    }
+
+    public function getPayableAmount(): int
+    {
+        return $this->amount - $this->discount;
     }
 }

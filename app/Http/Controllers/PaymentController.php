@@ -8,6 +8,7 @@ use App\Models\ConferencePayment;
 use App\Models\Coupon;
 use App\Models\Fee;
 use App\Models\Hotel;
+use App\Models\RegistrationCharge;
 use App\Models\RegistrationPeriod;
 use App\Models\Role;
 use App\Models\SiteConfig;
@@ -43,22 +44,19 @@ class PaymentController extends Controller
             ? Coupon::findByCode($request->session()->get(Coupon::storageKey($user->id)))
             : null;
 
-        $config = SiteConfig::whereIn('name', ['early_bird', 'standard'])->get();
-        $earlyBirdConfig = $config->where('name', 'early_bird')->first();
-        $standardConfig = $config->where('name', 'standard')->first();
-
         $registrationPeriod = RegistrationPeriod::getCurrentPeriod();
+
+        $registrationCharge = RegistrationCharge::where('role_id', $user->role_id)
+            ->where('delegate_type_id', $user->delegate_type_id)
+            ->where('registration_period', $registrationPeriod->id)
+            ->first();
 
         $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
 
-        $couponDiscounts = [];
+        $totalDiscount = 0;
 
         if (!empty($coupon)) {
-            $couponDiscounts = [
-                'early_bird' => intval($coupon->discount(($paymentSlabItem->early_bird_amount))),
-                'standard' => intval($coupon->discount(($paymentSlabItem->standard))),
-                'spot' => intval($coupon->discount(($paymentSlabItem->spot))),
-            ];
+            $totalDiscount = $coupon->discount($registrationCharge->getPayableAmount());
         }
 
         $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
@@ -76,17 +74,11 @@ class PaymentController extends Controller
         //     'spot' => $isVaiMember ? intval($paymentSlabItem->spot_member_discount) : 0,
         // ];
 
-        $saarcDiscounts = [
-            'early_bird' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
-            'standard' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
-            'spot' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
-        ];
-
-        $discounts = [
-            'early_bird' => $saarcDiscounts['early_bird'] + data_get($couponDiscounts, 'early_bird', 0),
-            'standard' => $saarcDiscounts['standard'] + data_get($couponDiscounts, 'standard', 0),
-            'spot' => $saarcDiscounts['spot'] + data_get($couponDiscounts, 'spot', 0),
-        ];
+        // $saarcDiscounts = [
+        //     'early_bird' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
+        //     'standard' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
+        //     'spot' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
+        // ];
 
         $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
 
@@ -104,10 +96,10 @@ class PaymentController extends Controller
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationPeriod',
+            'registrationCharge',
             'registrationTypeAuth',
             'accompanyingPersonFees',
             'accompanyingPersons',
-            'discounts',
             'isVaiMember',
             'pickupDropPrice',
             'user',

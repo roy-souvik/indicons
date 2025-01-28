@@ -33,7 +33,11 @@ class ConfigSeeder extends Seeder
             [
                 'hotel_booking_end',
                 'value' => '2025-09-05',
-            ]
+            ],
+            [
+                'max_allowed_rooms',
+                'value' => '2',
+            ],
         ];
 
         SiteConfig::insert($configList);

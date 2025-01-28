@@ -4,10 +4,6 @@
 @php
 $maxRoomCount = 2;
 
-$earlyBirdPayable = intval($paymentSlabItem->early_bird_amount) - intval($discounts['early_bird']);
-$standardPayable = intval($paymentSlabItem->standard_amount) - intval($discounts['standard']);
-$spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']);
-
 @endphp
 
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
@@ -24,8 +20,8 @@ $spotPayable = intval($paymentSlabItem->spot_amount) - intval($discounts['spot']
             <tr>
                 <td>{{$registrationPeriod->name}} Registration</td>
                 <td>
-                    <input type="radio" id="early_bird" name="payment" checked value="{{$earlyBirdPayable}}">
-                    <label for="early_bird">{{$paymentSlabItem->currency}} {{$earlyBirdPayable}}</label>
+                    <input type="radio" id="payable_amount" name="payment" checked value="{{$earlyBirdPayable}}">
+                    <label for="payable_amount">{{$registrationCharge->currency}} {{$earlyBirdPayable}}</label>
                 </td>
             </tr>
         </tbody>

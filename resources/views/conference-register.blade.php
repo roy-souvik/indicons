@@ -157,7 +157,7 @@
                        @forelse($charges as $charge)
                            <tr>
                                <td>{{ $charge->category }}</td>
-                               <td>{{ $charge->registration_period }}</td>
+                               <td>{{ $registrationPeriod->name }}</td>
                                <td>{{ $charge->amount }}</td>
                            </tr>
                        @empty

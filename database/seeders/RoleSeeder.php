@@ -24,20 +24,19 @@ class RoleSeeder extends Seeder
                 'is_active' => false,
             ],
             [
-                'name' => 'Doctor',
-                'key' => 'doctor',
+                'name' => 'PG / MSc / PhD',
+                'key' => 'pg_msc_phd',
+                'is_active' => true,
             ],
             [
-                'name' => 'Nurs and paramedic',
-                'key' => 'nur_para',
+                'name' => 'UG / Nurse',
+                'key' => 'ug_nurse',
+                'is_active' => true,
             ],
             [
-                'name' => 'Student',
-                'key' => 'student',
-            ],
-            [
-                'name' => 'International Deligate',
-                'key' => 'int_del',
+                'name' => 'Delegate',
+                'key' => 'delegate',
+                'is_active' => true,
             ],
             [
                 'name' => 'Accompanying Person',
