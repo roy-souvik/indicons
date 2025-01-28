@@ -87,11 +87,11 @@ class RegistrationController extends Controller
             'country' => ['required'],
             'department' => ['required'],
             'address' => ['required'],
-            'registration_type' => ['required', 'integer'], // Considered as role as in Role Model
+            'registration_type' => ['required', 'numeric'], // Considered as role as in Role Model
             'privacy_policy_check' => ['required'],
             // 'is_vaicon_member' => ['required'],
             'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
-            'delegate_type_id' => ['number'],
+            'delegate_type_id' => ['numeric'],
         ]);
 
         $filename = null;

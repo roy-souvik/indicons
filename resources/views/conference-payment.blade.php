@@ -1,11 +1,6 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-@php
-$maxRoomCount = 2;
-
-@endphp
-
 <h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
 
 <div id="conference-attributes" style="position: relative;">
@@ -20,8 +15,10 @@ $maxRoomCount = 2;
             <tr>
                 <td>{{$registrationPeriod->name}} Registration</td>
                 <td>
-                    <input type="radio" id="payable_amount" name="payment" checked value="{{$earlyBirdPayable}}">
-                    <label for="payable_amount">{{$registrationCharge->currency}} {{$earlyBirdPayable}}</label>
+                    <input type="radio" id="payable_amount" name="payment" checked value="{{$registrationCharge->amount}}">
+                    <label for="payable_amount">
+                        {{$registrationCharge->currency}} {{$registrationCharge->amount}}
+                    </label>
                 </td>
             </tr>
         </tbody>
@@ -51,17 +48,13 @@ $maxRoomCount = 2;
     <h5>Enter accompanying person details</h5>
 
     @php
-    $amt = intval($accompanyingPersonFees->early_bird_amount);
-
-    $companionAmount = $paymentSlabItem->currency != $accompanyingPersonFees->currency
-    ? intval($amt / 75)
-    : $amt;
+    $companionAmount = $companionCharge->amount;
     @endphp
 
     <p>
         Fees for each person is
-        <u>{{$paymentSlabItem->currency}} {{$companionAmount}}</u>
-        <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionAmount}}">
+        <u>{{$companionCharge->currency}} {{$companionCharge->amount}}</u>
+        <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionCharge->amount}}">
     </p>
 
     <table class="table" id="accompanying-person-table">

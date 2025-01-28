@@ -20,7 +20,7 @@ class HotelsSeeder extends Seeder
         $hotels = [
             [
                'name' => 'THE WESTIN',
-               'address' => '1, JBS Haldane Ave, Tangra, Kolkata, West Bengal 700046',
+               'address' => 'Plot No, 2, AA II, Newtown, New Town, West Bengal 700156',
             ],
         ];
 

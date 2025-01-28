@@ -48,7 +48,12 @@ class PaymentController extends Controller
 
         $registrationCharge = RegistrationCharge::where('role_id', $user->role_id)
             ->where('delegate_type_id', $user->delegate_type_id)
-            ->where('registration_period', $registrationPeriod->id)
+            ->where('registration_period_id', $registrationPeriod->id)
+            ->first();
+
+        $companionCharge = RegistrationCharge::where('role_id', 5)
+            ->where('delegate_type_id', $user->delegate_type_id)
+            ->where('registration_period_id', $registrationPeriod->id)
             ->first();
 
         $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
@@ -66,20 +71,6 @@ class PaymentController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        // $isVaiMember = $this->isVaiMember($user);
-
-        // $vaiMemberDiscounts = [
-        //     'early_bird' => $isVaiMember ? intval($paymentSlabItem->early_bird_member_discount) : 0,
-        //     'standard' => $isVaiMember ? intval($paymentSlabItem->standard_member_discount) : 0,
-        //     'spot' => $isVaiMember ? intval($paymentSlabItem->spot_member_discount) : 0,
-        // ];
-
-        // $saarcDiscounts = [
-        //     'early_bird' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
-        //     'standard' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
-        //     'spot' => !empty($user->isSaarcResident()) ? intval($paymentSlabItem->saarc_discount) : 0,
-        // ];
-
         $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
 
         $razorPayKey = $this->api->getKey();
@@ -88,25 +79,28 @@ class PaymentController extends Controller
 
         $hotelBookingStartConfig = SiteConfig::where('name', 'hotel_booking_start')->first();
         $hotelBookingEndConfig = SiteConfig::where('name', 'hotel_booking_end')->first();
+
         $bookingPeriod = CarbonPeriod::create(
-            $hotelBookingStartConfig->date,
-            $hotelBookingEndConfig->date,
+            $hotelBookingStartConfig->value,
+            $hotelBookingEndConfig->value,
         );
+
+        $maxRoomCount = intval(SiteConfig::where('name', 'pick_drop_price')->first()->value);
 
         return view('conference-payment', compact(
             'paymentSlabItem',
             'registrationPeriod',
             'registrationCharge',
-            'registrationTypeAuth',
             'accompanyingPersonFees',
             'accompanyingPersons',
-            'isVaiMember',
             'pickupDropPrice',
             'user',
             'hotels',
             'razorPayKey',
             'bookingPeriod',
             'coupon',
+            'maxRoomCount',
+            'companionCharge',
         ));
     }
 
