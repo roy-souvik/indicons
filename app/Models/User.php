@@ -8,19 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    const ROLE_KEYS = [
-        'doctor',
-        'nurs_and_paramedic',
-        'student',
-        'international_deligate',
-    ];
 
     /**
      * The attributes that are mass assignable.
@@ -67,27 +59,6 @@ class User extends Authenticatable
     public function isSuperAdmin(): bool
     {
         return $this->role_id === Role::ROLE_SUPER_ADMIN;
-    }
-
-    public function getRoleShortNames(): array
-    {
-        $shortNames = [];
-
-        foreach (self::ROLE_KEYS as $key) {
-            $value = $key;
-
-            if ($key === self::ROLE_KEYS[1]) {
-                $value = 'nur_para'; // Nurses and paramedics
-            } elseif ($key === self::ROLE_KEYS[3]) {
-                $value = 'int_del'; // international deligate
-            } else {
-                $value = Str::substr($value, 0, 2);
-            }
-
-            $shortNames[$key] = $value;
-        }
-
-        return $shortNames;
     }
 
     /**

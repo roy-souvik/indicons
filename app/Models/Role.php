@@ -10,8 +10,8 @@ class Role extends Model
     use HasFactory;
 
     const ROLE_SUPER_ADMIN = 1;
-    const ROLE_SPONSOR = 7;
-    const ROLE_WORKSHOP_ATTENDEE = 8;
+    const ROLE_SPONSOR = 6;
+    const ROLE_WORKSHOP_ATTENDEE = 7;
 
     public $timestamps = false;
 
@@ -37,6 +37,6 @@ class Role extends Model
 
     public function isStudent(): bool
     {
-        return $this->key === 'student';
+        return $this->key === 'ug_nurse';
     }
 }
