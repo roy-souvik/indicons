@@ -120,6 +120,11 @@ class User extends Authenticatable
         return $this->hasMany(AccompanyingPerson::class);
     }
 
+    public function isIndian(): bool
+    {
+        return $this->delegate_type_id === 1;
+    }
+
     public function isSaarcResident(): bool
     {
         $saarcCountries = [

@@ -132,13 +132,38 @@
     </div>
 
     <div class="d-flex" style="flex-direction: column;">
-        <label for="pickup_drop_check">
-            <input type="hidden" name="pick_drop_price" value="{{$pickupDropPrice->value}}">
-            <input name="pickup_drop_check" id="pickup_drop_check" type="checkbox">
-            I need pickup and drop facility at <strong>INR {{$pickupDropPrice->value}}</strong>.
-        </label>
+        <div id="airport-pickup-charges">
+            <p>I need pickup and drop facility</p>
+            @if ($user->isIndian())
+            <div class="form-check">
+                <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupSingle" value="2000">
+                <label class="form-check-label" for="airtportPickupSingle">
+                    Single: INR 2000
+                </label>
+                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupDouble" value="3000">
+                <label class="form-check-label" for="airtportPickupDouble">
+                    Double: INR 3000
+                </label>
+            </div>
+            @else
+            <div class="form-check">
+                <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupSingle" value="30">
+                <label class="form-check-label" for="airtportPickupSingle">
+                    Single: USD 30
+                </label>
+                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupDouble" value="40">
+                <label class="form-check-label" for="airtportPickupDouble">
+                    Double: USD 40
+                </label>
+            </div>
+            @endif
 
-        <label for="airplane_booking_check">
+        </div>
+        <label for="airplane_booking_check" class="mt-3">
             <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
             I want to avail airplane tickets booking. (<em class="text-muted" style="font-size: 0.8rem;">Our team will contact you for furthur details.</em>)
         </label>
@@ -150,7 +175,7 @@
 <div class="d-flex">
     <h2>
         Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
-        <!-- <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em> -->
+        <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
     </h2>
 
     <button id="proceed-payment" class="btn btn-primary ms-5" style="z-index: 110;">Proceed Payment</button>
@@ -167,7 +192,9 @@
         updateAmount();
         addCompanion(1);
 
-        $('input[name="pickup_drop_check"]').change(function() {
+        $('input[name="airportPickupPrice"]').on('change', function() {
+            const selectedValue = $(this).val();
+
             updateAmount();
         });
 
@@ -424,15 +451,15 @@
     function updateAmount() {
         const payerAmount = parseInt(document.querySelector('input[name="payment"]:checked')?.value ?? 0, 10);
         const companionsAmount = getCompanionsTotalAmount();
-        const pickUpDropPrice = $('input[name="pickup_drop_check"]:checked').val() ?
-            parseInt($('input[name="pick_drop_price"]').val()) :
+        const pickUpDropPrice = $('input[name="airportPickupPrice"]:checked').val() ?
+            parseInt($('input[name="airportPickupPrice"]:checked').val()) :
             0;
+
         const roomAmount = getRoomAmount(roomDetails);
 
         let totalAmount = payerAmount + companionsAmount + pickUpDropPrice + roomAmount;
 
-        // Remove GST for now
-        // totalAmount = addGst(totalAmount);
+        totalAmount = addGst(totalAmount);
 
         $('#total-amount').text(totalAmount);
 
@@ -486,8 +513,8 @@
             "key": "{{$razorPayKey}}",
             "amount": parseInt(updateAmount().total_amount, 10),
             "currency": "{{$paymentSlabItem->currency}}",
-            "name": "Vaicon 2023",
-            "description": "Vaicon 2023 conference registration payment",
+            "name": "Inpalams 2025",
+            "description": "Inpalams 2025 conference registration payment",
             "image": "https://www.vaicon2023.com/indicons/images/logo.png",
             "order_id": orderData.id,
             "handler": function(response) {
