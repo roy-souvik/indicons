@@ -163,10 +163,10 @@
             @endif
 
         </div>
-        <label for="airplane_booking_check" class="mt-3">
+        {{-- <label for="airplane_booking_check" class="mt-3">
             <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
             I want to avail airplane tickets booking. (<em class="text-muted" style="font-size: 0.8rem;">Our team will contact you for furthur details.</em>)
-        </label>
+        </label> --}}
     </div>
 </div>
 
@@ -190,7 +190,7 @@
 
     $(function() {
         updateAmount();
-        addCompanion(1);
+        addCompanionForm(1);
 
         $('input[name="airportPickupPrice"]').on('change', function() {
             const selectedValue = $(this).val();
@@ -204,6 +204,7 @@
 
         $('input[name="room-count"]').change(function(e) {
             e.preventDefault();
+
             const roomId = parseInt($(this).attr('data-roomid'), 10);
             const roomAmount = parseInt($(this).attr('data-amount'), 10);
             const roomCount = parseInt($(`#room-${roomId}`).val(), 10);
@@ -212,7 +213,7 @@
             if (getRoomCount() > maxRoomCount) {
                 const message = `
                     You may select maximum of ${maxRoomCount} rooms.
-                    For more rooms please contact secratary@vaicon2023.com.
+                    For more rooms please Inpalams Admin.
                 `;
 
                 showError(message, 'Invalid room count!');
@@ -248,7 +249,7 @@
 
         $('#accompanying-person-btn-add').click(function() {
             const nextId = $(this).attr('data-nextid');
-            addCompanion(nextId);
+            addCompanionForm(nextId);
         });
 
         $('#proceed-payment').click(function() {
@@ -481,8 +482,8 @@
 
     function createOrder(totalAmount) {
         return $.ajax({
-            url: '/create-orders',
-            type: 'POST',
+            url: "{{route('processTransaction')}}",
+            // type: 'POST',
             data: JSON.stringify({
                 '_token': token,
                 'amount': totalAmount,
@@ -515,7 +516,7 @@
             "currency": "{{$paymentSlabItem->currency}}",
             "name": "Inpalams 2025",
             "description": "Inpalams 2025 conference registration payment",
-            "image": "https://www.vaicon2023.com/indicons/images/logo.png",
+            "image": "https://www.inpalams2025.com/indicons/images/logo.png",
             "order_id": orderData.id,
             "handler": function(response) {
                 const responseData = {
@@ -530,7 +531,7 @@
                     'payer_amount': updateAmount().payer_amount,
                     'member_registration_type': $('input[name="payment"]:checked').attr('id'),
                     'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
-                    'airplane_booking': $('input[name="airplane_booking_check"]:checked').val() ? true : false,
+                    'airplane_booking': false,
                     'payment_title': 'conference_payment',
                     'rooms': Object.values(roomDetails),
                     'booking_dates': getBookingDates(),
@@ -635,7 +636,7 @@
         return amount + ((amount * gstPercent) / 100);
     }
 
-    function addCompanion(number) {
+    function addCompanionForm(number) {
         const companionAmount = $('#companion-amount').val();
         const markup = `
             <tr id="person_${number}_row">

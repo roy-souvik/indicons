@@ -90,7 +90,9 @@ class PaymentController extends Controller
             $hotelBookingEndConfig->value,
         );
 
-        $maxRoomCount = intval(SiteConfig::where('name', 'pick_drop_price')->first()->value);
+        $maxRoomCount = intval(SiteConfig::where('name', 'max_allowed_rooms')->first()->value);
+
+        $paypalConfig = "client-id=" . config('paypal.client_id');
 
         return view('conference-payment', compact(
             'paymentSlabItem',
@@ -106,6 +108,7 @@ class PaymentController extends Controller
             'coupon',
             'maxRoomCount',
             'companionCharge',
+            'paypalConfig',
         ));
     }
 
@@ -218,11 +221,12 @@ class PaymentController extends Controller
     {
         $request->validate([
             'amount' => ['required', 'numeric'],
+            'currency' => ['required', 'string'],
         ]);
 
         $orderData = [
             'amount' => $request->amount * 100,
-            'currency' => 'INR',
+            'currency' => $request->input('currency', 'USD'),
             'notes' => [],
         ];
 
