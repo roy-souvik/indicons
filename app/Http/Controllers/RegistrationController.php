@@ -195,7 +195,7 @@ class RegistrationController extends Controller
 
         $requestData['user_id'] = Auth::user()->id;
 
-        return AccompanyingPerson::create($requestData);
+        return AccompanyingPerson::create(array_merge($requestData, ['is_active' => 0]));
     }
 
     public function deleteAccompanyingPerson(int $id)
