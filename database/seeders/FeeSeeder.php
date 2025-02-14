@@ -22,7 +22,7 @@ class FeeSeeder extends Seeder
 
         $fees = [
             [
-                'role_id' => $roles->firstWhere('key', 'doctor')->id,
+                'role_id' => $roles->firstWhere('key', 'pg_msc_phd')->id,
                 'event' => 'physical_conference',
                 'currency' => 'INR',
                 'early_bird_amount' => 12000,
@@ -33,7 +33,7 @@ class FeeSeeder extends Seeder
                 'spot_member_discount' => 0,
             ],
             [
-                'role_id' => $roles->firstWhere('key', 'nur_para')->id,
+                'role_id' => $roles->firstWhere('key', 'ug_nurse')->id,
                 'event' => 'physical_conference',
                 'currency' => 'INR',
                 'early_bird_amount' => 3000,
@@ -44,7 +44,7 @@ class FeeSeeder extends Seeder
                 'spot_member_discount' => 0,
             ],
             [
-                'role_id' => $roles->firstWhere('key', 'student')->id,
+                'role_id' => $roles->firstWhere('key', 'ug_nurse')->id,
                 'event' => 'physical_conference',
                 'currency' => 'INR',
                 'early_bird_amount' => 3000,
@@ -55,7 +55,7 @@ class FeeSeeder extends Seeder
                 'spot_member_discount' => 0,
             ],
             [
-                'role_id' => $roles->firstWhere('key', 'int_del')->id,
+                'role_id' => $roles->firstWhere('key', 'delegate')->id,
                 'event' => 'physical_conference',
                 'currency' => 'USD',
                 'early_bird_amount' => 150,
