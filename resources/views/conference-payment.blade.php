@@ -1,7 +1,7 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<h4>Registration Fees in {{$paymentSlabItem['currency']}}</h4>
+<h4>Registration Fees in {{$registrationCharge->currency}}</h4>
 
 <div id="conference-attributes" style="position: relative;">
     <div id="overlay" class="d-none" style="position: fixed;
@@ -174,7 +174,7 @@
 
 <div class="d-flex">
     <h2>
-        Total: {{$paymentSlabItem->currency}} <span id="total-amount">0</span>
+        Total: {{$registrationCharge->currency}} <span id="total-amount">0</span>
         <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
     </h2>
 
@@ -513,7 +513,7 @@
         var options = {
             "key": "{{$razorPayKey}}",
             "amount": parseInt(updateAmount().total_amount, 10),
-            "currency": "{{$paymentSlabItem->currency}}",
+            "currency": "{{$registrationCharge->currency}}",
             "name": "Inpalams 2025",
             "description": "Inpalams 2025 conference registration payment",
             "image": "https://www.inpalams2025.com/indicons/images/logo.png",

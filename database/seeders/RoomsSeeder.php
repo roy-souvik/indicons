@@ -132,7 +132,7 @@ class RoomsSeeder extends Seeder
                 'amount' => '29000',
             ],
 
-            // SAARC & International: Early Bird
+            // SAARC: Early Bird
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 2,
@@ -170,8 +170,7 @@ class RoomsSeeder extends Seeder
                 'amount' => '325',
             ],
 
-            // SAARC & International: Standard
-
+            // SAARC: Standard
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 2,
@@ -209,7 +208,7 @@ class RoomsSeeder extends Seeder
                 'amount' => '350',
             ],
 
-            // SAARC & International: Late
+            // SAARC: Late
 
             [
                 'hotel_id' => 1,
@@ -241,6 +240,120 @@ class RoomsSeeder extends Seeder
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 2,
+                'registration_period_id' => 2,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'USD',
+                'amount' => '360',
+            ],
+
+            // SAARC: Early Bird
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 1,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'USD',
+                'amount' => '150',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 1,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'USD',
+                'amount' => '180',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 1,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'USD',
+                'amount' => '300',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 1,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'USD',
+                'amount' => '325',
+            ],
+
+            // SAARC: Standard
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'USD',
+                'amount' => '180',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'USD',
+                'amount' => '200',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'USD',
+                'amount' => '325',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'SUITE',
+                'description' => 'Double',
+                'currency' => 'USD',
+                'amount' => '350',
+            ],
+
+            // SAARC: Late
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'Delux',
+                'description' => 'Single',
+                'currency' => 'USD',
+                'amount' => '200',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'Delux',
+                'description' => 'Double',
+                'currency' => 'USD',
+                'amount' => '220',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
+                'registration_period_id' => 2,
+                'room_category' => 'SUITE',
+                'description' => 'Single',
+                'currency' => 'USD',
+                'amount' => '360',
+            ],
+            [
+                'hotel_id' => 1,
+                'delegate_type_id' => 3,
                 'registration_period_id' => 2,
                 'room_category' => 'SUITE',
                 'description' => 'Double',

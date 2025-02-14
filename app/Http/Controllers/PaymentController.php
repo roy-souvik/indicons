@@ -56,8 +56,6 @@ class PaymentController extends Controller
             ->where('registration_period_id', $registrationPeriod->id)
             ->first();
 
-        $paymentSlabItem = Fee::where('role_id', $user->role->id)->firstOrFail();
-
         $totalDiscount = 0;
 
         if (!empty($coupon)) {
@@ -95,7 +93,6 @@ class PaymentController extends Controller
         $paypalConfig = "client-id=" . config('paypal.client_id');
 
         return view('conference-payment', compact(
-            'paymentSlabItem',
             'registrationPeriod',
             'registrationCharge',
             'accompanyingPersonFees',
