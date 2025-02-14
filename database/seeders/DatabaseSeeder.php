@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             RoomsSeeder::class,
             RegistrationChargesSeeder::class,
             RegistrationPeriodSeeder::class,
+            DelegateTypeSeeder::class,
         ]);
     }
 }
