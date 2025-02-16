@@ -170,14 +170,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/apply-coupon', [CouponsController::class, 'apply'])->name('coupons.apply');
     Route::post('/unapply-coupon', [CouponsController::class, 'unapply'])->name('coupons.unapply');
 
-
-    // Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-    Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
-    Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
-    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
-
-
-
     // Admin routes
     Route::middleware(['auth.super_admin'])->prefix('admin')->group(function () {
         Route::get('/', function () {

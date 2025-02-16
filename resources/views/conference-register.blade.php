@@ -282,7 +282,6 @@
                            name="privacy_policy_check" type="checkbox" required>
                        I agree to the <a href="{{ route('privacypolicy') }}" target="_blank">Privacy Policy</a>
                    </label>
-
                </div>
 
                <div class="button">
