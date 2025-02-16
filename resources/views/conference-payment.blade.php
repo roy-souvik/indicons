@@ -482,12 +482,12 @@
 
     function createOrder(totalAmount) {
         return $.ajax({
-            url: "{{route('processTransaction')}}",
-            // type: 'POST',
+            url: '/create-orders',
+            type: 'POST',
             data: JSON.stringify({
                 '_token': token,
                 'amount': totalAmount,
-                'currency': 'INR',
+                'currency': "{{$registrationCharge->currency}}",
             }),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',

@@ -196,7 +196,7 @@ class PaymentController extends Controller
             return $payment;
         } catch (\Throwable $th) {
             return response()->json([
-                'data' => null,
+                'data' => $th->getMessage(),
                 'message' => 'There is an error while processing your payment details. Please contact admin.',
             ], 500);
         }
@@ -231,7 +231,7 @@ class PaymentController extends Controller
             $order = $this->api->order->create($orderData);
         } catch (\Throwable $th) {
             return response()->json([
-                'data' => null,
+                'data' => $th->getMessage(),
                 'message' => 'There is an error',
             ], 400);
         }
