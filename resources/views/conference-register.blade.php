@@ -158,7 +158,7 @@
                            <tr>
                                <td>{{ $charge->category }}</td>
                                <td>{{ $registrationPeriod->name }}</td>
-                               <td>{{ $charge->amount }}</td>
+                               <td>{{ $charge->display_amount }}</td>
                            </tr>
                        @empty
                            <tr>
@@ -196,14 +196,12 @@
 
                    <div class="input__box">
                        <span class="details">Full Name</span>
-                       <input type="text" name="name" value="{{ old('name') }}" placeholder="E.g: John Smith"
-                           required>
+                       <input type="text" name="name" value="{{ old('name') }}" required>
                    </div>
 
                    <div class="input__box">
                        <span class="details">Email</span>
-                       <input type="email" name="email" value="{{ old('email') }}" placeholder="johnsmith@hotmail.com"
-                           required>
+                       <input type="email" name="email" value="{{ old('email') }}" required>
                    </div>
 
                    <!-- <div class="input__box">
@@ -213,36 +211,39 @@
 
                    <div class="input__box">
                        <span class="details">Phone Number</span>
-                       <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="012-345-6789"
-                           required>
+                       <input type="tel" name="phone" value="{{ old('phone') }}" required>
                    </div>
 
                    <div class="input__box">
                        <span class="details">Password <em class="text-muted" style="font-size: 12px;">(min. 8
                                characters)</em></span>
-                       <input type="password" name="password" placeholder="********" required>
+                       <input type="password" name="password" required>
                    </div>
                    <div class="input__box">
                        <span class="details">Confirm Password</span>
-                       <input type="password" name="password_confirmation" placeholder="********" required>
+                       <input type="password" name="password_confirmation" required>
                    </div>
 
                    <div class="input__box">
-                       <span class="details">Position / Department</span>
-                       <input type="text" name="department" value="{{ old('department') }}" required>
+                       <span class="details">
+                            Position / Department <em class="text-muted" style="font-size: 12px;">(optional)</em>
+                        </span>
+                       <input type="text" name="department" value="{{ old('department') }}">
                    </div>
                    <div class="input__box">
-                       <span class="details">Organization / Company </span>
-                       <input type="text" name="company" value="{{ old('company') }}" required>
+                       <span class="details">
+                            Organization / Company <em class="text-muted" style="font-size: 12px;">(optional)</em>
+                        </span>
+                       <input type="text" name="company" value="{{ old('company') }}">
                    </div>
 
                    <div class="input__box">
-                       <span class="details">Address</span>
-                       <input type="text" name="address" value="{{ old('address') }}" required>
+                       <span class="details">Address <em class="text-muted" style="font-size: 12px;">(optional)</em></span>
+                       <input type="text" name="address" value="{{ old('address') }}">
                    </div>
                    <div class="input__box">
-                       <span class="details">Postal Code </span>
-                       <input type="text" name="postal_code" value="{{ old('postal_code') }}" required>
+                       <span class="details">Postal Code <em class="text-muted" style="font-size: 12px;">(optional)</em></span>
+                       <input type="text" name="postal_code" value="{{ old('postal_code') }}">
                    </div>
 
                    <div class="input__box">

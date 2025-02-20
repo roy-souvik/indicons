@@ -35,4 +35,14 @@ class RegistrationCharge extends Model
     {
         return $this->amount - $this->discount;
     }
+
+    /**
+     * Get the amount with currency symbol.
+     *
+     * @return string
+     */
+    public function getDisplayAmountAttribute(): string
+    {
+        return currencySymbol($this->currency) . ' ' . $this->amount;
+    }
 }

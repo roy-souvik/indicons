@@ -17,7 +17,7 @@
                 <td>
                     <input type="radio" id="payable_amount" name="payment" checked value="{{$registrationCharge->amount}}">
                     <label for="payable_amount">
-                        {{$registrationCharge->currency}} {{$registrationCharge->amount}}
+                        {{$registrationCharge->display_amount}}
                     </label>
                 </td>
             </tr>
@@ -45,7 +45,7 @@
     <hr />
 
     @if (!$user->role->isStudent()) <br>
-    <h5>Enter accompanying person details</h5>
+    <h5>Enter accompanying person details for <u>{{Auth::user()->name}}</u></h5>
 
     @php
     $companionAmount = $companionCharge->amount;
@@ -53,7 +53,7 @@
 
     <p>
         Fees for each person is
-        <u>{{$companionCharge->currency}} {{$companionCharge->amount}}</u>
+        <u>{{$companionCharge->display_amount}}</u>
         <input type="hidden" name="companion-amount" id="companion-amount" value="{{$companionCharge->amount}}">
     </p>
 
@@ -105,7 +105,7 @@
                                 <input type="number" name="room-count" value="0" id="room-{{$room->id}}" data-roomid="{{$room->id}}" min="0" max="{{$maxRoomCount}}" data-amount="{{$room->amount}}" style="width: 4rem;" />
                                 <span>X</span>
                             </td>
-                            <td>{{$room->currency}} {{$room->amount}}</td>
+                            <td>{{$room->display_amount}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -138,26 +138,26 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupSingle" value="2000">
                 <label class="form-check-label" for="airtportPickupSingle">
-                    Single: INR 2000
+                    Single: {{currencySymbol('INR')}} 2000
                 </label>
                 </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupDouble" value="3000">
                 <label class="form-check-label" for="airtportPickupDouble">
-                    Double: INR 3000
+                    Double: {{currencySymbol('INR')}} 3000
                 </label>
             </div>
             @else
             <div class="form-check">
                 <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupSingle" value="30">
                 <label class="form-check-label" for="airtportPickupSingle">
-                    Single: USD 30
+                    Single: {{currencySymbol('USD')}} 30
                 </label>
                 </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" class="airport-pickup-price" name="airportPickupPrice" id="airtportPickupDouble" value="40">
                 <label class="form-check-label" for="airtportPickupDouble">
-                    Double: USD 40
+                    Double: {{currencySymbol('USD')}} 40
                 </label>
             </div>
             @endif
@@ -174,7 +174,7 @@
 
 <div class="d-flex">
     <h2>
-        Total: {{$registrationCharge->currency}} <span id="total-amount">0</span>
+        Total: {{currencySymbol($registrationCharge->currency)}} <span id="total-amount">0</span>
         <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
     </h2>
 

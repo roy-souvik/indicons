@@ -81,16 +81,14 @@ class RegistrationController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             // 'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:8120'],
             'phone' => ['required', 'max:20', 'unique:users'],
-            'company' => ['string', 'filled'],
-            'postal_code' => ['required'],
+            'company' => ['string', 'nullable'],
+            'postal_code' => ['string', 'nullable'],
             'city' => ['required'],
             'country' => ['required'],
-            'department' => ['required'],
-            'address' => ['required'],
+            'department' => ['string', 'nullable'],
+            'address' => ['string', 'nullable'],
             'registration_type' => ['required', 'numeric'], // Considered as role as in Role Model
             'privacy_policy_check' => ['required'],
-            // 'is_vaicon_member' => ['required'],
-            'vaicon_member_id' => ['string', 'nullable'], // TODO: check exist from DB table
             'delegate_type_id' => ['numeric'],
         ]);
 

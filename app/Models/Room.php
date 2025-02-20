@@ -22,4 +22,14 @@ class Room extends Model
     {
         return $this->belongsTo(Hotel::class);
     }
+
+    /**
+     * Get the amount with currency symbol.
+     *
+     * @return string
+     */
+    public function getDisplayAmountAttribute(): string
+    {
+        return currencySymbol($this->currency) . ' ' . $this->amount;
+    }
 }

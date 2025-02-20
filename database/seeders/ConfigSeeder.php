@@ -28,11 +28,11 @@ class ConfigSeeder extends Seeder
             ],
             [
                 'hotel_booking_start',
-                'value' => '2025-11-09',
+                'value' => '2025-11-06',
             ],
             [
                 'hotel_booking_end',
-                'value' => '2025-11-11',
+                'value' => '2025-11-12',
             ],
             [
                 'max_allowed_rooms',
