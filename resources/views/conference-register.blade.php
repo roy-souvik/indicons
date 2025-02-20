@@ -113,8 +113,8 @@
 
            <div class="inner-count" style="position: relative;">
                <h4 class="text-center">
-                {{ $registrationPeriod->name }} Registration
-                </h4>
+                   {{ $registrationPeriod->name }} Registration
+               </h4>
                @include('partials.countdown')
            </div>
 
@@ -205,9 +205,9 @@
                    </div>
 
                    <!-- <div class="input__box">
-                           <span class="details">Image</span>
-                           <input type="file" name="image" placeholder="Choose image" id="image">
-                       </div> -->
+                                   <span class="details">Image</span>
+                                   <input type="file" name="image" placeholder="Choose image" id="image">
+                               </div> -->
 
                    <div class="input__box">
                        <span class="details">Phone Number</span>
@@ -215,9 +215,13 @@
                    </div>
 
                    <div class="input__box">
-                       <span class="details">Password <em class="text-muted" style="font-size: 12px;">(min. 8
-                               characters)</em></span>
-                       <input type="password" name="password" required>
+                       <span class="details">
+                           Password
+                           <em class="text-muted" style="font-size: 12px;">(min. 8characters)</em>
+
+                           <button class="btn btn-text" id="togglePassword">show</button>
+                       </span>
+                       <input type="password" id="password" name="password" required>
                    </div>
                    <div class="input__box">
                        <span class="details">Confirm Password</span>
@@ -226,14 +230,14 @@
 
                    <div class="input__box">
                        <span class="details">
-                            Position / Department <em class="text-muted" style="font-size: 12px;">(optional)</em>
-                        </span>
+                           Position / Department <em class="text-muted" style="font-size: 12px;">(optional)</em>
+                       </span>
                        <input type="text" name="department" value="{{ old('department') }}">
                    </div>
                    <div class="input__box">
                        <span class="details">
-                            Organization / Company <em class="text-muted" style="font-size: 12px;">(optional)</em>
-                        </span>
+                           Organization / Company <em class="text-muted" style="font-size: 12px;">(optional)</em>
+                       </span>
                        <input type="text" name="company" value="{{ old('company') }}">
                    </div>
 
@@ -242,7 +246,8 @@
                        <input type="text" name="address" value="{{ old('address') }}">
                    </div>
                    <div class="input__box">
-                       <span class="details">Postal Code <em class="text-muted" style="font-size: 12px;">(optional)</em></span>
+                       <span class="details">Postal Code <em class="text-muted"
+                               style="font-size: 12px;">(optional)</em></span>
                        <input type="text" name="postal_code" value="{{ old('postal_code') }}">
                    </div>
 
@@ -286,8 +291,8 @@
                </div>
 
                <div class="button">
-                    <input type="hidden" name="delegate_type_id" value="{{$selectedDelegateType->id}}">
-                    <input type="submit" value="Register" />
+                   <input type="hidden" name="delegate_type_id" value="{{ $selectedDelegateType->id }}">
+                   <input type="submit" value="Register" />
                </div>
            </form>
 
@@ -345,6 +350,16 @@
                        } else {
                            $vaiconMemberInput.addClass('d-none');
                        }
+                   });
+
+                   $('#togglePassword').click(function(event) {
+                       event.preventDefault();
+
+                       let passwordField = $('#password');
+                       let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+                       passwordField.attr('type', type);
+
+                       $(this).text(type === 'password' ? 'Show' : 'Hide');
                    });
                });
            </script>
