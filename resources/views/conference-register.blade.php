@@ -158,7 +158,19 @@
                            <tr>
                                <td>{{ $charge->category }}</td>
                                <td>{{ $registrationPeriod->name }}</td>
-                               <td>{{ $charge->display_amount }}</td>
+                               <td>
+                                    @php
+                                        $role = $roles->where('name', $charge->category)->first();
+                                    @endphp
+
+                                    @if (!empty($role?->id))
+                                        <button type="button" data-value="{{ $role?->id }}" class="btn btn-link select-role">
+                                            {{ $charge->display_amount }}
+                                        </button>
+                                    @else
+                                        {{ $charge->display_amount }}
+                                    @endif
+                                </td>
                            </tr>
                        @empty
                            <tr>
@@ -180,7 +192,7 @@
                </div>
            @endif
 
-           <form method="POST" action="/registration" enctype="multipart/form-data">
+           <form method="POST" id="conference-register-form" action="/registration" enctype="multipart/form-data">
                @csrf
                <div class="user__details">
                    <div class="input__box">
@@ -360,6 +372,15 @@
                        passwordField.attr('type', type);
 
                        $(this).text(type === 'password' ? 'Show' : 'Hide');
+                   });
+
+                   $('.select-role').click(function () {
+                        const roleId = $(this).data('value');
+                        $('#registration_type').val(roleId);
+
+                        $('html, body').animate({
+                            scrollTop: $('#conference-register-form').offset().top - 20
+                        }, 200);
                    });
                });
            </script>
