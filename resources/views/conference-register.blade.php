@@ -236,8 +236,12 @@
                        <input type="password" id="password" name="password" required>
                    </div>
                    <div class="input__box">
-                       <span class="details">Confirm Password</span>
-                       <input type="password" name="password_confirmation" required>
+                       <span class="details">
+                            Confirm Password
+
+                            <button class="btn btn-text" id="toggleConfirmPassword">show</button>
+                        </span>
+                       <input type="password" id="password_confirmation" name="password_confirmation" required>
                    </div>
 
                    <div class="input__box">
@@ -364,14 +368,24 @@
                        }
                    });
 
+                   function togglePassword($passwordElement, $triggerElement) {
+                       let type = $passwordElement.attr('type') === 'password' ? 'text' : 'password';
+
+                       $passwordElement.attr('type', type);
+
+                       $triggerElement.text(type === 'password' ? 'Show' : 'Hide');
+                   }
+
                    $('#togglePassword').click(function(event) {
                        event.preventDefault();
 
-                       let passwordField = $('#password');
-                       let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
-                       passwordField.attr('type', type);
+                       togglePassword($('#password'), $(this));
+                   });
 
-                       $(this).text(type === 'password' ? 'Show' : 'Hide');
+                   $('#toggleConfirmPassword').click(function(event) {
+                       event.preventDefault();
+
+                       togglePassword($('#password_confirmation'), $(this));
                    });
 
                    $('.select-role').click(function () {
