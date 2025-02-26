@@ -1,10 +1,10 @@
 <header>
     <div class="container">
-        <div class="row">
+        <div class="row" style="display:flex;     align-items: center;">
             <div class="col-md-6">
                 <div class="logo">
                     <a href="{{route('home')}}">
-                        <img style="width:266px; margin:15px auto;" src="{{url('indicons/images/logo.png')}}">
+                        <img class="logo-size" src="{{url('indicons/images/logo.png')}}">
                     </a>
                 </div>
             </div>
