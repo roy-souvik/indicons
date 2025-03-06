@@ -516,7 +516,7 @@
             "currency": "{{$registrationCharge->currency}}",
             "name": "Inpalams 2025",
             "description": "Inpalams 2025 conference registration payment",
-            "image": "https://www.inpalams2025.com/indicons/images/logo.png",
+            "image": "https://inpalms2025.com/indicons/images/logo.png",
             "order_id": orderData.id,
             "handler": function(response) {
                 const responseData = {
@@ -549,7 +549,9 @@
                 "contact": ""
             },
             "notes": {
-                "address": "INPALMS 2025 conference payment"
+                "address": "INPALMS 2025 conference payment",
+                "user_email": "{{$user->email}}",
+                "site_order_data": JSON.stringify(orderData),
             },
             "theme": {
                 "color": "#3399cc"
