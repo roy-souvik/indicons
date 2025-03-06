@@ -24,8 +24,6 @@
             <thead>
                 <tr>
                     <th class="border-top-0">#</th>
-                    <th class="border-top-0">Reg. ID</th>
-                    <th class="border-top-0">Member ID</th>
                     <th class="border-top-0">Transaction ID</th>
                     <th class="border-top-0">Name</th>
                     <th class="border-top-0">Email</th>
@@ -51,10 +49,8 @@
                 @endphp
                 <tr>
                     <td id="payment-{{$payment->id}}">{{$loop->index + 1}}</td>
-                    <td>{{$payment->user->registration_id}}</td>
-                    <td>{{$payment->user->vaicon_member_id ?? 'N/A'}}</td>
                     <td>{{$payment->transaction_id ?? 'N/A'}}</td>
-                    <td>{{$payment->user->name}}</td>
+                    <td>{{$payment->user?->name}}</td>
                     <td>{{$payment->user->email}}</td>
                     <td>{{$payment->user->phone}}</td>
                     <td>{{$payment->user?->role?->name ?? 'N/A'}}</td>
