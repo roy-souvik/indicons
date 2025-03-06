@@ -20,9 +20,9 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Inpalams Admin',
                 'title' => 'Mr',
-                'email' => 'contact@inpalams2025.in',
+                'email' => 'contact@inpalms2025.com',
                 'email_verified_at' => now()->timestamp,
-                'password' => Hash::make(env('INPALAMS_ADMIN_PASS')),
+                'password' => Hash::make(env('INPALMS_ADMIN_PASS')),
                 'phone' => '8910142514',
                 'role_id' => Role::firstWhere('key', 'super_admin')->id,
                 'delegate_type_id' => 1,
