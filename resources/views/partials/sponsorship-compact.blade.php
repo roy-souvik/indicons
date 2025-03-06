@@ -224,7 +224,7 @@
                                 <tr style="background:#4777d7; color:#fff;">
                                     <td style="text-align:left; padding-left:10px;" colspan="2" valign="top"><strong>
                                             <i style="color: #fff700;font-size: 16px;" class="fa-solid fa-circle-check">
-                                            </i> Permission for souvenir of VAICON 2023 with logo</strong>
+                                            </i> Permission for souvenir of {{config('site.app_title')}} with logo</strong>
                                     </td>
                                     <td width="116" valign="top"><strong>y</strong></td>
                                     <td colspan="2" valign="top"><strong>y</strong></td>

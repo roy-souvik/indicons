@@ -168,9 +168,9 @@ $totalWorkshopPrice = $workshopPrice->value;
                     "key": "{{$razorPayKey}}",
                     "amount": "{{$totalWorkshopPrice}}",
                     "currency": "INR",
-                    "name": "Vaicon 2023, Workshop Payment",
-                    "description": "Vaicon 2023 conference workshop payment",
-                    "image": "https://www.vaicon2023.com/indicons/images/logo.png",
+                    "name": "Inpalms 2025, Workshop Payment",
+                    "description": "Inpalms 2025 conference workshop payment",
+                    "image": "https://www.inpalms2025.com/indicons/images/logo.png",
                     "order_id": orderData.id,
                     "handler": function(response) {
                         const responseData = {
@@ -202,7 +202,7 @@ $totalWorkshopPrice = $workshopPrice->value;
                         "contact": "{{$user->phone}}"
                     },
                     "notes": {
-                        "address": "Vaicon 2023 conference payment"
+                        "address": config('site.app_title') . " conference payment"
                     },
                     "theme": {
                         "color": "#3399cc"

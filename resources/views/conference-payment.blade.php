@@ -549,7 +549,7 @@
                 "contact": ""
             },
             "notes": {
-                "address": "Vaicon 2023 conference payment"
+                "address": "INPALMS 2025 conference payment"
             },
             "theme": {
                 "color": "#3399cc"

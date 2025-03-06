@@ -31,7 +31,7 @@ class AdminRegisterConfirmation extends Mailable
      */
     public function build()
     {
-        $subject = "VAICON 2023 registration confirmation";
+        $subject = config('site.app_title') . " registration confirmation";
 
         return $this->view('emails.admin-registration-confirmation')
             ->subject($subject)

@@ -11,7 +11,7 @@
 
         <tr>
             <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
-                <p>Conference: <b>VAICON 2023.</b></p>
+                <p>Conference: <b>{{config('site.app_title')}}.</b></p>
                 <p>Venue: <b>PALA BALL ROOM, ITC SONAR 1, JBS HALDANE AVENUE,KOLKATA - 700 046, WEST BENGAL, INDIA</b></p>
                 <p>Dates: <b>27th, 28th and 29th January, 2023</b></p>
 

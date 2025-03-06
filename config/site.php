@@ -251,4 +251,5 @@ return [
         'ZW' => 'Zimbabwe'
     ],
 
+    'app_title' => 'INPALMS 2025',
 ];

@@ -11,7 +11,7 @@
 
         <tr>
             <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
-                <p>Conference: <b>VAICON 2023.</b></p>
+                <p>Conference: <b>INPALMS 2025.</b></p>
                 <p>Venue: <b>PALA BALL ROOM, ITC SONAR 1, JBS HALDANE AVENUE,KOLKATA - 700 046, WEST BENGAL, INDIA</b></p>
                 <p>Dates: <b>27th, 28th and 29th January, 2023</b></p>
 
@@ -22,7 +22,7 @@
                 <p>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata. </p>
 
                 <p>
-                    Thank you for registering for VAICON 2023, which takes place 27 th to 29 th January 2023 at ITC Sonar,
+                    Thank you for registering for INPALMS 2025, which takes place 27 th to 29 th January 2023 at ITC Sonar,
                     Kolkata, India.
                 </p>
 

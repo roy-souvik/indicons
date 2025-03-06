@@ -190,7 +190,7 @@
         <td width="44" valign="top"><strong>&nbsp;</strong></td>
     </tr>
     <tr style="background:#5b8cef; color:#fff;">
-        <td width="359" colspan="2" valign="top"><strong>Permission for souvenir of VAICON 2023 with logo</strong></td>
+        <td width="359" colspan="2" valign="top"><strong>Permission for souvenir of {{config('site.app_title')}} with logo</strong></td>
         <td width="47" valign="top"><strong>y</strong></td>
         <td width="38" colspan="2" valign="top"><strong>y</strong></td>
         <td width="38" valign="top"><strong>y</strong></td>
