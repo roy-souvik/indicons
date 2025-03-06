@@ -17,6 +17,7 @@ use App\Models\UserRoom;
 use App\Models\VaiMember;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -109,7 +110,7 @@ class PaymentController extends Controller
         ));
     }
 
-    public function saveConferencePayment(Request $request): ConferencePayment
+    public function saveConferencePayment(Request $request): ConferencePayment | JsonResponse
     {
         $authUser = Auth::user();
         $payment = new ConferencePayment();
