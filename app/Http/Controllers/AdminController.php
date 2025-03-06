@@ -24,10 +24,10 @@ use App\Models\SponsorshipPayment;
 use App\Models\User;
 use App\Models\VaiMember;
 use App\Models\WorkshopPayment;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -456,16 +456,24 @@ class AdminController extends Controller
         ]);
 
         $filename = null;
+        $storePath = public_path(Media::STORE_PATH);
+        $documentRootPath = $_SERVER['DOCUMENT_ROOT'] . '/' . Media::STORE_PATH;
+
+        // Ensure directories exist before storing files
+        if (!File::exists($storePath)) {
+            File::makeDirectory($storePath, 0755, true);
+        }
+
+        if (!File::exists($documentRootPath)) {
+            File::makeDirectory($documentRootPath, 0755, true);
+        }
 
         if ($request->file('image')) {
             $file = $request->file('image');
             $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
-            $file->move(public_path(Media::STORE_PATH), $filename);
+            $file->move($storePath, $filename);
 
-            File::copy(
-                public_path(Media::STORE_PATH) . '/'. $filename,
-                $_SERVER['DOCUMENT_ROOT'] . '/' . Media::STORE_PATH . '/' . $filename,
-            );
+            File::copy($storePath . '/' . $filename, $documentRootPath . '/' . $filename);
         }
 
         $media = Media::create([
@@ -485,6 +493,7 @@ class AdminController extends Controller
             ->back()
             ->with('error', 'Unable to upload image.');
     }
+
 
     public function videosIndex()
     {
@@ -529,7 +538,7 @@ class AdminController extends Controller
     public function destroyMedia(Media $media)
     {
         if ($media->isImage()) {
-            unlink(public_path(Media::STORE_PATH) . '/'. $media->path);
+            unlink(public_path(Media::STORE_PATH) . '/' . $media->path);
             unlink($_SERVER['DOCUMENT_ROOT'] . '/' . Media::STORE_PATH . '/' . $media->path);
         }
 
