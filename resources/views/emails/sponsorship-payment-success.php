@@ -2,7 +2,7 @@
     <tbody>
         <tr>
             <td style="font-size:19px;background:transparent;border:none">
-                <img style="display:block" src="https://indicons.in/email/im-mail.jpg" alt="image" width="700" data-image-whitelisted="">
+                <img style="display:block" src="https://inpalms2025.com/indicons/images/banner-1.jpg" alt="image" width="700" data-image-whitelisted="">
             </td>
         </tr>
         <tr>

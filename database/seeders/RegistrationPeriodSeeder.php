@@ -13,7 +13,7 @@ class RegistrationPeriodSeeder extends Seeder
     public function run(): void
     {
         $registrationPeriods = [
-            ['name' => 'Early Bird', 'date' => '2025-03-31', 'is_active' => true],
+            ['name' => 'Early Bird', 'date' => '2025-04-30', 'is_active' => true],
             ['name' => 'Standard', 'date' => '2025-06-30', 'is_active' => true],
             ['name' => 'Late', 'date' => '2025-08-31', 'is_active' => true],
             ['name' => 'Spot', 'date' => null, 'is_active' => true],
