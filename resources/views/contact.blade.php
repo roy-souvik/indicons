@@ -3,7 +3,7 @@
 
 <h1>Contact Us</h1>
 
-<div class="container">
+ <div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="login-form">
@@ -30,6 +30,24 @@
                 </form>
             </div>
         </div>
+		
+		
+        <div class="col-md-4">
+ 
+		<h4 style="margin-top: 37px;"> Dr. Jayanta Das </h4>
+		<p style="font-size: 14px;">KB 2/6
+SALT LAKE
+SECTOR - III
+KOLKATA - 700106 </p>
+		<h5>Phone : +91 98362 16494 </h5>		
+		<h5> Email : iivsdoc@gmail.com
+ </h5>			
+		</div>		
+		
+		
+		
+		
+		
     </div>
 </div>
 

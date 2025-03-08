@@ -1,4 +1,4 @@
-@extends('layouts.indicons.main-layout')
+ @extends('layouts.indicons.main-layout')
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
@@ -549,6 +549,10 @@
             </tr>
             <tr>
                <td width="601" colspan="9" valign="top">
+			   
+			   
+		<p style="font-size: 15px;" align="center"><strong>Check-in 2 pm check-out 12 noon breakfast included in this room tariff</strong></p>	   
+			   
                   <p align="center"><strong>18    % GST WILL BE APPLICABLE</strong></p>
                </td>
             </tr>

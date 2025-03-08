@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    <head>
       <meta charset="utf-8" />
@@ -145,8 +145,95 @@
                <div class="blink-soft"> <span>15th INPALMS 2025 </span> The Westin. New Town. Kolkata - INDIA<span> 9th 10th 11th November 2025</span> </div>
             </div>
          </div>
+ 
          @include('partials.countdown')
 
+ 
+            <section class="video-sec-bottom">
+                <div class="container">
+                    <div class="row partner-wrapper">
+                        <div class="col-md-2">
+                           <div class="partner-sec-bottom-inner">
+                             <img src="indicons/images/lgo1.png">
+                             <h2> INTERNATIONAL ASSOCIATION OF CLINICAL FORENSIC MEDICINE </h2>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                           <div class="partner-sec-bottom-inner">
+                             <img src="indicons/images/lgo2.png">
+                             <h2> INTERNATIONAL ASSOCIATION OF FORENSIC SCIENCES</h2>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                           <div class="partner-sec-bottom-inner">
+                             <img src="indicons/images/lgo3.png">
+                             <h2> WEST BENGAL NETIONAL UNIVERSITY OF JURIDICAL SCIENCES, KOLKATA</h2>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                           <div class="partner-sec-bottom-inner">
+                             <img src="indicons/images/lgo4.png">
+                             <h2> BRAZILIAN ASSOCIATION OF LEGAL MEDICINE AND MEDICAL EXPERTISE </h2>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                           <div class="partner-sec-bottom-inner">
+                             <img src="indicons/images/lgo5.png">
+                             <h2> ALL INDIA INSTITUTE OF MEDICAL SCIENCES, KALYANI</h2>
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            
+            <section class="doctor-sec-bottom">
+                <div class="container">
+                    <div class="row partner-wrapper">
+                        <div class="col-md-3">
+                           <div class="doctor-sec-bottom-inner">
+                             <img src="indicons/images/D-2.jpeg">
+                             <div class="main-name"> DR. ROHAN RUWANPURA <br><span>Sri Lanka</span></div>
+                             <p>The President, INPALMS</p>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                           <div class="doctor-sec-bottom-inner">
+                             <img src="indicons/images/D-1.jpeg">
+                             <div class="main-name"> DR. YANKO G. KOLEV <br><span>Bulgaria</span> </div>
+                             <p>The President, IAFS</p>
+                          </div>
+                        </div>
+                        
+                         
+                        
+                        <div class="col-md-3">
+                           <div class="doctor-sec-bottom-inner">
+                             <img src="indicons/images/D-4.jpeg">
+                             <div class="main-name"> PROF. P. ANURUDDHI S. EDIRISINGHE <br><span>Sri Lanka</span></div>
+                             <p>The President, IACFM</p>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <div class="doctor-sec-bottom-inner">
+                             <img src="indicons/images/D-3.jpeg">
+                             <div class="main-name"> DR. FLAVIA PEREIRA COSTA <br><span>Brazil</span></div>
+                             <p>The President, ABMLPM</p>
+                          </div>
+                        </div>
+                        
+                         
+                      
+                        
+                    </div>
+                </div>
+            </section>
+ 
          <section class="video-sec">
          <div class="container">
              <h2 class="video-sec-content">Our<span>&nbsp;Videos</span></h2>
@@ -257,24 +344,14 @@
 
                   <div class="col-md-2">
                      <ul>
-                        <li>
-                           <a href="{{route('conference.home')}}">
-                           <i class="fa fa-angle-right" aria-hidden="true"></i>
-                           Conference
-                           </a>
-                        </li>
+                        
                         <li>
                            <a href="{{route('information.home')}}">
                            <i class="fa fa-angle-right" aria-hidden="true"></i>
                            Information
                            </a>
                         </li>
-                        <li>
-                           <a href="{{route('scientific.home')}}">
-                           <i class="fa fa-angle-right" aria-hidden="true"></i>
-                           Scientific
-                           </a>
-                        </li>
+                        
                         <li> <a href="{{route('abstract.submitpage')}}"><i class="fa fa-angle-right" aria-hidden="true"></i>
                            Abstracts </a>
                         </li>
@@ -298,10 +375,8 @@
                   <div class="col-md-3">
                      <ul>
                         <li> <a href="{{route('accommodation.home')}}"> <i class="fa fa-angle-right" aria-hidden="true"></i> Accommodation </a> </li>
-                        <li> <a href="{{route('nurses.home')}}"><i class="fa fa-angle-right" aria-hidden="true"></i> Nurses</a> </li>
-                        <!--<li> <a target="_blank" href="https://venous.in"><i class="fa fa-angle-right" aria-hidden="true"></i> VAI </a> </li>-->
-                        <li> <a href="{{route('sponsorship.show')}}"><i class="fa fa-angle-right" aria-hidden="true"></i> Sponsorship </a> </li>
-                        <li> <a href="{{route('tnd')}}"><i class="fa fa-angle-right" aria-hidden="true"></i> Terms & Conditions</a> </li>
+                         <!--<li> <a target="_blank" href="https://venous.in"><i class="fa fa-angle-right" aria-hidden="true"></i> VAI </a> </li>-->
+                         <li> <a href="{{route('tnd')}}"><i class="fa fa-angle-right" aria-hidden="true"></i> Terms & Conditions</a> </li>
                         <li> <a href="{{route('refund')}}"><i class="fa fa-angle-right" aria-hidden="true"></i> Refund Policy</a> </li>
                         <li> <a href="{{route('privacypolicy')}}"><i class="fa fa-angle-right" aria-hidden="true"></i> Privacy policy</a> </li>
                      </ul>
@@ -322,8 +397,15 @@
                            <p>The Westin. New Town. Kolkata - INDIA<br>
                            </p>
                            <p>
-                              <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.922876184476!2d88.39543941443351!3d22.544561639681884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02769ebe32dca3%3A0xe0541395048f5723!2sITC%20Sonar%20A%20Luxury%20Collection%20Hotel%2C%20Kolkata!5e0!3m2!1sen!2suk!4v1657100924686!5m2!1sen!2suk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
-                              <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=The%20Westin,%20Action%20Area%20II,%20Newtown,%20New%20Town,%20West%20Bengal%20Kolkata+(The%20Westin)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='https://www.pferdeversicherung.at/pferdelebensversicherung/'>Lebensversicherung Pferd</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=97f96b96862c3fdede537c4496c10ea74cbfad27'></script>
+                             
+							 
+				
+							 
+							 
+							 
+							 
+							 
+							 
                            </p>
                            <!-- Modal -->
                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -344,6 +426,14 @@
                               </div>
                            </div>
                         </div>
+						
+						
+				<div class="col-md-12">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6529321601374!2d88.47183427435384!3d22.592080532257835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027549287696d5%3A0xbdd849b4c2cf930b!2sThe%20Westin%20Kolkata%20Rajarhat!5e0!3m2!1sen!2sin!4v1741446518704!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>			 
+				
+				</div>		
+						
+						
                      </div>
                   </div></div>
                </div>
