@@ -27,8 +27,6 @@
                             </ul>
                         </li>
 
-
-
                         @if (Auth::user() && !Auth::user()->isSuperAdmin())
                         <li><a href="/conference-payment">Conference Payment</a></li>
                         @endif

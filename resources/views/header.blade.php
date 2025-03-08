@@ -1,4 +1,4 @@
- <header>
+<header>
     <div class="container">
         <div class="row" style="display:flex;     align-items: center;">
             <div class="col-md-6">
@@ -9,16 +9,6 @@
                 </div>
             </div>
             <div class="col-md-6">
- 
-                <!--<div class="social">
-            <a target="_blank" href="#"><i class="fa-brands fa-facebook-f"></i> </a>
-            <a   target="_blank" href="#"><i class="fa-brands"> X </i>
-            </a>
-            <a  target="_blank" href="#"><i class="fa-brands fa-instagram"></i>
->>>>>>> Stashed changes
-
-            </a>
-          </div>-->
 
                 @if (Auth::user())
                 <div class="user-reg">
