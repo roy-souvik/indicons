@@ -12,8 +12,8 @@
         <tr>
             <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
                 <p>Conference: <b>INPALMS 2025.</b></p>
-                <p>Venue: <b>PALA BALL ROOM, ITC SONAR 1, JBS HALDANE AVENUE,KOLKATA - 700 046, WEST BENGAL, INDIA</b></p>
-                <p>Dates: <b>27th, 28th and 29th January, 2023</b></p>
+                <p>Venue: <b>THE WESTIN, KOLKATA, WEST BENGAL, INDIA</b></p>
+                <p>Dates: <b>9th, 10th and 11th November, 2025</b></p>
 
                 <h5>Registration ID: {{$payment->user->registration_id}}</h5>
                 <h5>Transaction ID: {{$payment->transaction_id}}</h5>
@@ -22,8 +22,7 @@
                 <p>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata. </p>
 
                 <p>
-                    Thank you for registering for INPALMS 2025, which takes place 27 th to 29 th January 2023 at ITC Sonar,
-                    Kolkata, India.
+                    Thank you for registering for INPALMS 2025, which takes place 9th to 11th November 2025 at The Westin, Kolkata, India.
                 </p>
 
                 <h4>Your Sponsorship Details:</h4>
@@ -66,8 +65,8 @@
 
                 <br>
                 Thanking you.<br><br>
-                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.vaicon2023.com">www.vaicon2023.com </a> </p>
-                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:vaicon2023@gmail.com">vaicon2023@gmail.com</a></p>
+                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.inpalms2025.com">www.inpalms2025.com </a> </p>
+                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:iivsdoc@gmail.com">iivsdoc@gmail.com</a></p>
 
             </td>
         </tr>

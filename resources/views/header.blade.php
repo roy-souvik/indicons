@@ -11,9 +11,9 @@
         <div class="col-md-6">
           <div class="social">
             <a target="_blank" href="https://www.facebook.com/profile.php?id=100086394986838"><i class="fa-brands fa-facebook-f"></i> ,m,m</a>
-            <a href="https://www.instagram.com/vaicon2023/"><i class="fa-brands fa-twitter"></i>
+            <a href="https://www.instagram.com/inpalms2025/"><i class="fa-brands fa-twitter"></i>
             </a>
-            <a  target="_blank"href="https://www.instagram.com/vaicon2023" href="#"><i class="fa-brands fa-instagram"></i>
+            <a  target="_blank"href="https://www.instagram.com/inpalms2025" href="#"><i class="fa-brands fa-instagram"></i>
 
             </a>
           </div>

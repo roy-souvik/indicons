@@ -16,7 +16,7 @@
                 <div class="footer-right">
 
                     <p>Developed designed and maintained by <span>Edumed infotech </span> </p>
-                    <p class="footer-btm"> &copy; 2022 - 2023 Vaicon All rights reserved. </p>
+                    <p class="footer-btm"> &copy; {{config('site.app_title')}} All rights reserved. </p>
 
                 </div>
             </div>

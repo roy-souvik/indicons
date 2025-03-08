@@ -12,8 +12,8 @@
         <tr>
             <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
                 <p>Conference: <b>{{config('site.app_title')}}.</b></p>
-                <p>Venue: <b>PALA BALL ROOM, ITC SONAR 1, JBS HALDANE AVENUE,KOLKATA - 700 046, WEST BENGAL, INDIA</b></p>
-                <p>Dates: <b>27th, 28th and 29th January, 2023</b></p>
+                <p>Venue: <b>THE WESTIN, KOLKATA, WEST BENGAL, INDIA</b></p>
+                <p>Dates: <b>9th, 10th and 11th November, 2025</b></p>
                 <p>Registration ID: <b>{{$abstract->user->registration_id}}</b></p>
 
                 <p>Abstract ID: <b>{{$abstract->abstract_id}}</b></p>
@@ -80,7 +80,7 @@
                             <p><strong>Presenting time</strong></p>
                         </td>
                         <td width="469" valign="top">
-                            <p><strong>5 min / 1 pm to 2 pm &ndash; on 27 and 28 January, 2022</strong></p>
+                            <p><strong>5 min / 1 pm to 2 pm &ndash; on 9th to 11th November, 2025</strong></p>
                         </td>
                     </tr>
                     @endif
@@ -88,8 +88,8 @@
 
                 <br>
                 Thanking you.<br><br>
-                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.vaicon2023.com">www.vaicon2023.com </a> </p>
-                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:vaicon2023@gmail.com">vaicon2023@gmail.com</a></p>
+                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.inpalms2025.com">www.inpalms2025.com </a> </p>
+                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:iivsdoc@gmail.com">iivsdoc@gmail.com</a></p>
 
             </td>
         </tr>

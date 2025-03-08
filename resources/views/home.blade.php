@@ -37,7 +37,7 @@
          .blink-soft span{color: #b91616;
          font-weight: 600;
          font-family: "Roboto", serif !important;
-         }	
+         }
          .blink-soft {
          animation: blinker 2.5s linear infinite;
          }
@@ -45,7 +45,7 @@
          50% {
          opacity: 0;
          }
-         }   
+         }
       </style>
    </head>
    <body>
@@ -65,8 +65,8 @@
       <!--      </div>-->
       <!--   </div>-->
       <!--</div>-->
-       <div class="ticker-wrap"> 
-            <div class="ticker">  
+       <div class="ticker-wrap">
+            <div class="ticker">
                <div class="ticker_item" data-bs-toggle="modal" data-bs-target="#myModal">
                15th INPALMS<blink> <strong style="color:#FFFF00"> jointly organized by Indo Pacific Association of Law Medicine and Science (INPALMS) & </strong> </blink>
                   Indian Academy of MedicoLegal Experts (IAMLE)
@@ -119,7 +119,7 @@
       </div>
       </div>
       </div>
-   
+
          <!--<div class="ticker-wrap">-->
          <!--   <div class="ticker">-->
          <!--      <div class="ticker_item" data-bs-toggle="modal" data-bs-target="#myModal">-->
@@ -142,19 +142,17 @@
          <!--</div>-->
          <div class="container">
             <div class="blink-box">
-               <!--<div class="blink-soft"> The deadline for <span> ABSTRUCT SUBMISSIONS </span> has been extended till 10<sup>th</sup> january, 2023 </div>-->
-               
                <div class="blink-soft"> <span>15th INPALMS 2025 </span> The Westin. New Town. Kolkata - INDIA<span> 9th 10th 11th November 2025</span> </div>
             </div>
          </div>
          @include('partials.countdown')
-         
+
          <section class="video-sec">
          <div class="container">
              <h2 class="video-sec-content">Our<span>&nbsp;Videos</span></h2>
-             
+
             <div class="row">
-                
+
                <div class="col-md-12">
                   <div id="news-slider" class="owl-carousel">
                      <div class="post-slide">
@@ -171,15 +169,15 @@
             </div>
          </div>
          </section>
-         
-         
+
+
          <section class="video-sec-bottom">
          <div class="container">
             <div class="row">
                <div class="col-md-3">
                    <div class="video-sec-bottom-inner">
                   <a href="/accommodation">
-                      
+
                      <img src="indicons/images/A-1.png">
                      <h2> ACCOMMODATION </h2>
                   </a>
@@ -187,7 +185,7 @@
                </div>
                <div class="col-md-3">
                    <div class="video-sec-bottom-inner">
-                  <a href="https://vaicon2023.com/scientific">
+                  <a href="https://inpalms2025.com/scientific">
                      <img src="indicons/images/P-1.png">
                      <h2> PROGRAM </h2>
                   </a>
@@ -212,8 +210,8 @@
             </div>
          </div>
          </section>
-        
-     
+
+
       <div class="top-box-bottom">
          <div class="container">
              <h2 class="video-sec-content"><span>15th INPALMS 2025</span>&nbsp;KOLKATA. INDIA.</h2>
@@ -225,23 +223,23 @@
                        <div class="conference-sec-img-des">
                            <div class="conference-sec-img-des-name">Prof. (Dr.) Adarsh Kumar</div>
                            <div class="conference-sec-img-des-designation">Organizing Chairman</div>
-                           
+
                            <div class="conference-sec-img-des-bio">Secretary General - INPALMS & The President - IAMLE</div>
                        </div>
-                       
+
                    </div>
                </div>
-               
+
                 <div class="col-md-6">
                    <div class="conference-sec">
                        <div class="conference-sec-img"> <img src="indicons/images/con-2.webp" ></div>
                        <div class="conference-sec-img-des">
                            <div class="conference-sec-img-des-name">Dr. Jayanta Das</div>
                            <div class="conference-sec-img-des-designation">Organizing Secretary</div>
-                           
+
                            <div class="conference-sec-img-des-bio">Vice President, IAMLE</div>
                        </div>
-                       
+
                    </div>
                </div>
             </div>
@@ -251,12 +249,12 @@
          <div class="box-bottom-last">
             <div class="box-bottom_a">
                <div class="container">
-                 
+
                </div>
             </div>
             <div class="container">
                <div class="row" style="align-items: center;">
-                  
+
                   <div class="col-md-2">
                      <ul>
                         <li>
@@ -278,10 +276,10 @@
                            </a>
                         </li>
                         <li> <a href="{{route('abstract.submitpage')}}"><i class="fa fa-angle-right" aria-hidden="true"></i>
-                           Abstracts </a> 
+                           Abstracts </a>
                         </li>
                         <li> <a href="{{route('conference-register.show')}}"> <i class="fa fa-angle-right" aria-hidden="true"></i>
-                           Registration </a> 
+                           Registration </a>
                         </li>
                         <li>
                            <a href="{{route('about')}}">
@@ -376,14 +374,14 @@
       <script>
          $(function() {
              addCountdownTimer();
-         
+
              $('.showbutton').on('click', function() {
                  $(this).siblings('.showcase p').slideToggle();
                  $(this).text(function(i, v) {
                      return v === 'less' ? 'Read More' : 'less'
                  });
              });
-         
+
              $("#news-slider").owlCarousel({
                  items: 3,
                  itemsDesktop: [1199, 3],
@@ -400,7 +398,7 @@
          $(document).ready(function(){
              $("#myModal").modal('show');
          });
-         
-      </script>	  
+
+      </script>
    </body>
 </html>
