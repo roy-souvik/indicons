@@ -145,10 +145,10 @@
                <div class="blink-soft"> <span>15th INPALMS 2025 </span> The Westin. New Town. Kolkata - INDIA<span> 9th 10th 11th November 2025</span> </div>
             </div>
          </div>
- 
+
          @include('partials.countdown')
 
- 
+
             <section class="video-sec-bottom">
                 <div class="container">
                     <div class="row partner-wrapper">
@@ -158,39 +158,39 @@
                              <h2> INTERNATIONAL ASSOCIATION OF CLINICAL FORENSIC MEDICINE </h2>
                           </div>
                         </div>
-                        
+
                         <div class="col-md-2">
                            <div class="partner-sec-bottom-inner">
                              <img src="indicons/images/lgo2.png">
                              <h2> INTERNATIONAL ASSOCIATION OF FORENSIC SCIENCES</h2>
                           </div>
                         </div>
-                        
+
                         <div class="col-md-2">
                            <div class="partner-sec-bottom-inner">
                              <img src="indicons/images/lgo3.png">
                              <h2> WEST BENGAL NETIONAL UNIVERSITY OF JURIDICAL SCIENCES, KOLKATA</h2>
                           </div>
                         </div>
-                        
+
                         <div class="col-md-2">
                            <div class="partner-sec-bottom-inner">
                              <img src="indicons/images/lgo4.png">
                              <h2> BRAZILIAN ASSOCIATION OF LEGAL MEDICINE AND MEDICAL EXPERTISE </h2>
                           </div>
                         </div>
-                        
+
                         <div class="col-md-2">
                            <div class="partner-sec-bottom-inner">
                              <img src="indicons/images/lgo5.png">
                              <h2> ALL INDIA INSTITUTE OF MEDICAL SCIENCES, KALYANI</h2>
                           </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
-            
+
             <section class="doctor-sec-bottom">
                 <div class="container">
                     <div class="row partner-wrapper">
@@ -208,9 +208,9 @@
                              <p>The President, IAFS</p>
                           </div>
                         </div>
-                        
-                         
-                        
+
+
+
                         <div class="col-md-3">
                            <div class="doctor-sec-bottom-inner">
                              <img src="indicons/images/D-4.jpeg">
@@ -218,7 +218,7 @@
                              <p>The President, IACFM</p>
                           </div>
                         </div>
-                        
+
                         <div class="col-md-3">
                            <div class="doctor-sec-bottom-inner">
                              <img src="indicons/images/D-3.jpeg">
@@ -226,14 +226,14 @@
                              <p>The President, ABMLPM</p>
                           </div>
                         </div>
-                        
-                         
-                      
-                        
+
+
+
+
                     </div>
                 </div>
             </section>
- 
+
          <section class="video-sec">
          <div class="container">
              <h2 class="video-sec-content">Our<span>&nbsp;Videos</span></h2>
@@ -344,14 +344,14 @@
 
                   <div class="col-md-2">
                      <ul>
-                        
+
                         <li>
                            <a href="{{route('information.home')}}">
                            <i class="fa fa-angle-right" aria-hidden="true"></i>
                            Information
                            </a>
                         </li>
-                        
+
                         <li> <a href="{{route('abstract.submitpage')}}"><i class="fa fa-angle-right" aria-hidden="true"></i>
                            Abstracts </a>
                         </li>
@@ -397,15 +397,15 @@
                            <p>The Westin. New Town. Kolkata - INDIA<br>
                            </p>
                            <p>
-                             
-							 
-				
-							 
-							 
-							 
-							 
-							 
-							 
+
+
+
+
+
+
+
+
+
                            </p>
                            <!-- Modal -->
                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -426,14 +426,14 @@
                               </div>
                            </div>
                         </div>
-						
-						
+
+
 				<div class="col-md-12">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6529321601374!2d88.47183427435384!3d22.592080532257835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027549287696d5%3A0xbdd849b4c2cf930b!2sThe%20Westin%20Kolkata%20Rajarhat!5e0!3m2!1sen!2sin!4v1741446518704!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>			 
-				
-				</div>		
-						
-						
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6529321601374!2d88.47183427435384!3d22.592080532257835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027549287696d5%3A0xbdd849b4c2cf930b!2sThe%20Westin%20Kolkata%20Rajarhat!5e0!3m2!1sen!2sin!4v1741446518704!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+				</div>
+
+
                      </div>
                   </div></div>
                </div>
@@ -463,7 +463,8 @@
       <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'> </script>
       <script>
          $(function() {
-             addCountdownTimer();
+            // September 9th
+             addCountdownTimer('11/9/');
 
              $('.showbutton').on('click', function() {
                  $(this).siblings('.showcase p').slideToggle();
