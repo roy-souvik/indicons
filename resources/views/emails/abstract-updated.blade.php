@@ -11,9 +11,10 @@
 
         <tr>
             <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
-                <p>Conference: <b>{{config('site.app_title')}}.</b></p>
+                <p>Conference: <b>{{config('site.app_title')}} (15<sup>th</sup> Joint conference of INPALMS and IAMLE).</b></p>
                 <p>Venue: <b>THE WESTIN, KOLKATA, WEST BENGAL, INDIA</b></p>
                 <p>Dates: <b>9th, 10th and 11th November, 2025</b></p>
+                <p>Pre Conference workshops: <b>7th and 8th November, 2025</b></p>
                 <p>Registration ID: <b>{{$abstract->user->registration_id}}</b></p>
 
                 <p>Abstract ID: <b>{{$abstract->abstract_id}}</b></p>
@@ -22,6 +23,10 @@
 
                 @if ($status != 'declined')
                 <p>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata. </p>
+
+                <p>
+                    Thanks for your abstract submission. Our Scientific committee will evaluate and inform your regarding the outcome after 31st July, 2025.
+                </p>
 
                 @if ($status == 'confirmed')
                 <p>
@@ -80,17 +85,14 @@
                             <p><strong>Presenting time</strong></p>
                         </td>
                         <td width="469" valign="top">
-                            <p><strong>5 min / 1 pm to 2 pm &ndash; on 9th to 11th November, 2025</strong></p>
+                            <p>9th 10th and 11th November, 2025</strong></p>
                         </td>
                     </tr>
                     @endif
                 </table>
 
                 <br>
-                Thanking you.<br><br>
-                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.inpalms2025.com">www.inpalms2025.com </a> </p>
-                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:iivsdoc@gmail.com">iivsdoc@gmail.com</a></p>
-
+                @include('partials.email-footer')
             </td>
         </tr>
     </tbody>

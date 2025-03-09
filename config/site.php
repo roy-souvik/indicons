@@ -252,4 +252,6 @@ return [
     ],
 
     'app_title' => 'INPALMS 2025',
+
+    'contact_email' => 'inpalmsiamle25@gmail.com',
 ];

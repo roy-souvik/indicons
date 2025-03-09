@@ -58,9 +58,7 @@
                 </table>
 
                 <br>
-                Thanking you.<br><br>
-                <p><strong>Website: </strong> <a style="color: #3b2b98; text-decoration: none;" href="http://www.inpalms2025.com">www.inpalms2025.com </a> </p>
-                <p><strong>Email: </strong> <a style="color: #3b2b98; text-decoration: none;" href="mailto:iivsdoc@gmail.com">iivsdoc@gmail.com</a></p>
+                @include('partials.email-footer')
 
             </td>
         </tr>
