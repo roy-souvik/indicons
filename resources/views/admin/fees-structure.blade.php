@@ -16,64 +16,34 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th class="border-top-0">Registration Type</th>
-                    <th class="border-top-0">Currency</th>
-                    <th class="border-top-0">Early Bird</th>
-                    <th class="border-top-0">Standard</th>
-                    <th class="border-top-0">Spot</th>
-                    <th class="border-top-0">SAARC Discount</th>
+                    <th class="border-top-0" style="width: 12rem;">Type</th>
+                    <th class="border-top-0" style="width: 4rem;">Delegate</th>
+                    <th class="border-top-0" style="width: 8rem;">Category</th>
+                    <th class="border-top-0 text-center">Amount</th>
                     <th class="border-top-0">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($fees as $fee)
+                @foreach ($charges as $charge)
 
                 @php
                 $readonly = '';
 
-                if ($fee->role->isCompanion()) {
+                if ($charge->role->isCompanion()) {
                 $readonly = 'readonly="readonly"';
                 }
                 @endphp
 
                 <tr>
-                    <td>{{$fee->role->name}}</td>
-                    <td>{{$fee->currency}}</td>
-                    <td>
-                        <label for="early_bird_{{$fee->id}}">
-                            Regular Amount: <input type="number" id="early_bird_{{$fee->id}}" value="{{$fee->early_bird_amount}}" class="table-inputs"/>
-                        </label>
-
-                        <label for="early_bird_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="early_bird_member_discount_{{$fee->id}}" value="{{$fee->early_bird_member_discount}}" {{$readonly}} class="table-inputs"/>
-                        </label>
-                    </td>
-                    <td>
-                        <label for="standard_{{$fee->id}}">
-                            Regular Amount: <input type="number" id="standard_{{$fee->id}}" value="{{$fee->standard_amount}}" class="table-inputs"/>
-                        </label>
-
-                        <label for="standard_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="standard_member_discount_{{$fee->id}}" value="{{$fee->standard_member_discount}}" {{$readonly}} class="table-inputs"/>
-                        </label>
-                    </td>
-                    <td>
-                        <label for="spot_{{$fee->id}}">
-                            Regular Amount: <input type="number" id="spot_{{$fee->id}}" value="{{$fee->spot_amount}}" class="table-inputs"/>
-                        </label>
-
-                        <label for="spot_member_discount_{{$fee->id}}">
-                            Member Discount: <input type="number" id="spot_member_discount_{{$fee->id}}" value="{{$fee->spot_member_discount}}" {{$readonly}} class="table-inputs"/>
-                        </label>
+                    <td>{{$charge->role->name}}</td>
+                    <td>{{$charge->delegateType->description}}</td>
+                    <td>{{$charge->registrationPeriod->name}}</td>
+                    <td class="text-center">
+                        <input type="number" id="amount_{{$charge->id}}" value="{{$charge->amount}}" class="table-inputs"/>
                     </td>
 
-                    <td>
-                        <label for="saarc_discount_{{$fee->id}}">
-                            Discount: <input type="number" id="saarc_discount_{{$fee->id}}" value="{{$fee->saarc_discount}}" class="table-inputs"/>
-                        </label>
-                    </td>
                     <td style="vertical-align: middle;">
-                        <button class="btn btn-primary save-fees" data-feesid="{{$fee->id}}">Save</button>
+                        <button class="btn btn-primary save-fees" data-feesid="{{$charge->id}}">Save</button>
                     </td>
                 </tr>
                 @endforeach
@@ -88,24 +58,12 @@
 
         $('.save-fees').click(function() {
             const feesId = $(this).attr('data-feesid');
-            const earlyBirdAmount = $(`#early_bird_${feesId}`).val();
-            const earlyBirdMemberDiscount = $(`#early_bird_member_discount_${feesId}`).val();
-            const standardAmount = $(`#standard_${feesId}`).val();
-            const standardMemberDiscount = $(`#standard_member_discount_${feesId}`).val();
-            const spotAmount = $(`#spot_${feesId}`).val();
-            const spotMemberDiscount = $(`#spot_member_discount_${feesId}`).val();
-            const saarcDiscount = $(`#saarc_discount_${feesId}`).val();
+            const amount = $(`#amount_${feesId}`).val();
 
             const requestData = {
                 '_token': token,
                 'id': feesId,
-                'early_bird_amount': earlyBirdAmount,
-                'early_bird_member_discount': earlyBirdMemberDiscount,
-                'standard_amount': standardAmount,
-                'standard_member_discount': standardMemberDiscount,
-                'spot_amount': spotAmount,
-                'spot_member_discount': spotMemberDiscount,
-                'saarc_discount': saarcDiscount,
+                'amount': amount,
             };
 
             saveFees(requestData).then(function() {

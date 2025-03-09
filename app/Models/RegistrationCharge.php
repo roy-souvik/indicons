@@ -31,6 +31,16 @@ class RegistrationCharge extends Model
         return $this->belongsTo(RegistrationPeriod::class);
     }
 
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function delegateType(): BelongsTo
+    {
+        return $this->belongsTo(DelegateType::class);
+    }
+
     public function getPayableAmount(): int
     {
         return $this->amount - $this->discount;

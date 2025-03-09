@@ -13,9 +13,9 @@ use App\Models\AbstractEmailLog;
 use App\Models\AdminRegistration;
 use App\Models\ConferenceAbstract;
 use App\Models\ConferencePayment;
-use App\Models\Fee;
 use App\Models\Media;
 use App\Models\MediaCategory;
+use App\Models\RegistrationCharge;
 use App\Models\Role;
 use App\Models\SiteConfig;
 use App\Models\Sponsorship;
@@ -71,42 +71,34 @@ class AdminController extends Controller
 
     public function manageFeesStructure()
     {
-        $fees = Fee::with(['Role'])->where('event', 'physical_conference')->get();
+        $charges = RegistrationCharge::with([
+            'registrationPeriod',
+            'role',
+            'delegateType',
+        ])->get();
 
-        return view('admin.fees-structure', compact('fees'));
+        return view('admin.fees-structure', compact('charges'));
     }
 
     public function updateFeesStructure(Request $request)
     {
         $request->validate([
             'id' => ['required', 'integer'],
+            'amount' => ['required', 'integer'],
         ]);
 
         $requestData = $request->only([
             'id',
-            'early_bird_amount',
-            'standard_amount',
-            'spot_amount',
-            'early_bird_member_discount',
-            'standard_member_discount',
-            'spot_member_discount',
-            'saarc_discount'
+            'amount',
         ]);
 
-        $fees = Fee::where('id', data_get($requestData, 'id'))->firstOrFail();
+        $charge = RegistrationCharge::where('id', data_get($requestData, 'id'))->firstOrFail();
 
-        $fees->early_bird_amount = data_get($requestData, 'early_bird_amount');
-        $fees->standard_amount = data_get($requestData, 'standard_amount');
-        $fees->spot_amount = data_get($requestData, 'spot_amount');
+        $charge->amount = data_get($requestData, 'amount');
 
-        $fees->early_bird_member_discount = data_get($requestData, 'early_bird_member_discount');
-        $fees->standard_member_discount = data_get($requestData, 'standard_member_discount');
-        $fees->spot_member_discount = data_get($requestData, 'spot_member_discount');
-        $fees->saarc_discount = data_get($requestData, 'saarc_discount', 0);
+        $charge->save();
 
-        $fees->save();
-
-        return $fees;
+        return $charge;
     }
 
     public function abstractUpdate(Request $request)
