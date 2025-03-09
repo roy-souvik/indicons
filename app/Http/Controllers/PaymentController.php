@@ -134,6 +134,7 @@ class PaymentController extends Controller
         try {
             $payment->user_id = $authUser->id;
             $payment->transaction_id = $request->transaction_id;
+            $payment->registration_charge_id = $request->registration_charge_id ?? null;
             $payment->status = $request->status ?? '';
             $payment->amount = $request->amount ? $request->amount / 100 : 0;
             $payment->payment_response = json_encode($request->payment_response);

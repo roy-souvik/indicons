@@ -522,6 +522,7 @@
                 const responseData = {
                     '_token': token,
                     'transaction_id': response.razorpay_payment_id,
+                    'registration_charge_id': {{$registrationCharge->id}},
                     'status': orderData.status,
                     'amount': orderData.amount,
                     'payment_response': {

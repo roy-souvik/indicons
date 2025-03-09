@@ -32,6 +32,11 @@ class ConferencePayment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function registrationCharge(): BelongsTo
+    {
+        return $this->belongsTo(RegistrationCharge::class);
+    }
+
     public function scopeCompleted($query)
     {
         $query->where('status', 'created');

@@ -270,22 +270,22 @@
                   </a>
                   </div>
                </div>
-               <div class="col-md-3">
+               <!--<div class="col-md-3">
                    <div class="video-sec-bottom-inner">
                   <a href="https://inpalms2025.com/scientific">
                      <img src="indicons/images/P-1.png">
                      <h2> PROGRAM </h2>
                   </a>
                   </div>
-               </div>
-               <div class="col-md-3">
+               </div>-->
+               <!--<div class="col-md-3">
                    <div class="video-sec-bottom-inner">
                   <a href="/conference">
                      <img src="indicons/images/S-1.png" >
                      <h2> SPEAKERS </h2>
                   </a>
                   </div>
-               </div>
+               </div>-->
                <div class="col-md-3">
                    <div class="video-sec-bottom-inner">
                   <a href="/information#travel">
@@ -358,12 +358,12 @@
                         <li> <a href="{{route('conference-register.show')}}"> <i class="fa fa-angle-right" aria-hidden="true"></i>
                            Registration </a>
                         </li>
-                        <li>
+                   <!--     <li>
                            <a href="{{route('about')}}">
                            <i class="fa fa-angle-right" aria-hidden="true"></i>
                            About Us
                            </a>
-                        </li>
+                        </li>-->
                         <li>
                            <a href="{{route('contactus.show')}}">
                            <i class="fa fa-angle-right" aria-hidden="true"></i>

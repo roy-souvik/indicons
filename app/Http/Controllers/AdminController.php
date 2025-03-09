@@ -43,6 +43,7 @@ class AdminController extends Controller
     public function conferencePayments()
     {
         $payments = ConferencePayment::with([
+            'registrationCharge',
             'user.companions',
             'accommodations.room',
         ])

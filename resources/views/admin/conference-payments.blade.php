@@ -31,6 +31,7 @@
                     <th class="border-top-0">Registration Type</th>
                     <th class="border-top-0">Organization</th>
                     <th class="border-top-0">Amount</th>
+                    <th class="border-top-0">Currency</th>
                     <th class="border-top-0">Date</th>
                     <th class="border-top-0">Pickup + Drop</th>
                     <th class="border-top-0">Airplane Booking</th>
@@ -41,11 +42,19 @@
             </thead>
             <tbody>
                 @php
-                $totalAmount = 0;
+                $totalAmountInr = 0;
+                $totalAmountUsd = 0;
                 @endphp
                 @foreach ($payments as $payment)
                 @php
-                $totalAmount = $totalAmount + $payment->amount;
+                if ($payment->registrationCharge->currency === 'INR') {
+                    $totalAmountInr = $totalAmountInr + $payment->amount;
+                }
+
+                if ($payment->registrationCharge->currency === 'USD') {
+                    $totalAmountUsd = $totalAmountUsd + $payment->amount;
+                }
+
                 @endphp
                 <tr>
                     <td id="payment-{{$payment->id}}">{{$loop->index + 1}}</td>
@@ -56,6 +65,7 @@
                     <td>{{$payment->user?->role?->name ?? 'N/A'}}</td>
                     <td>{{$payment->user->company ?? 'N/A'}}</td>
                     <td>{{$payment->amount}}</td>
+                    <td>{{$payment->registrationCharge->currency}}</td>
                     <td>{{$payment->created_at}}</td>
                     <td>{{$payment->pickup_drop ? 'Yes' : 'No'}}</td>
                     <td>{{$payment->airplane_booking ? 'Yes' : 'No'}}</td>
@@ -102,8 +112,11 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
 
-        <h3>Total Amount: INR {{number_format($totalAmount, 2)}}</h3>
+    <div style="display: flex; justify-content: space-between;">
+        <h3>Total Amount: {{currencySymbol('INR')}} {{number_format($totalAmountInr, 2)}}</h3>
+        <h3>Total Amount: {{currencySymbol('USD')}} {{number_format($totalAmountUsd, 2)}}</h3>
     </div>
 </div>
 
