@@ -2,12 +2,7 @@
  @section('content')
 
  @php
-    $themes = [
-        'Lympho-Venous disease and management',
-        'Vascular disease and management',
-        'Society and healthcare',
-        'Research and sustainable healthcare',
-    ];
+    $themes = config('site.abstract_themes');
  @endphp
 
  @if (Auth::user())
@@ -51,11 +46,11 @@
              <span class="details">Theme</span>
 
              <select name="theme" id="theme" required>
-                 <option value="">-- choose one --</option>
-                 @foreach ($themes as $theme)
-                 <option value="{{$theme}}">{{$theme}}</option>
-                 @endforeach
-             </select>
+                <option value="">-- choose one --</option>
+                @foreach ($themes as $themeKey => $theme)
+                <option value="{{$themeKey}}">{{$theme}}</option>
+                @endforeach
+            </select>
          </div>
 
          <div class="input__box">

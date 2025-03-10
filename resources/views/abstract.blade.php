@@ -125,6 +125,10 @@
 </div>
 @endif
 
+@php
+$themes = config('site.abstract_themes');
+@endphp
+
 <form method="POST" action="{{route('abstract.save')}}" enctype="multipart/form-data">
     @csrf
     <div class="user__details">
@@ -158,10 +162,9 @@
 
             <select name="theme" id="theme" required>
                 <option value="">-- choose one --</option>
-                <option value="originality">Originality</option>
-                <option value="clarity">Clarity</option>
-                <option value="rigour">Rigour</option>
-                <option value="practical relevance.">Practical relevance</option>
+                @foreach ($themes as $themeKey => $theme)
+                <option value="{{$themeKey}}">{{$theme}}</option>
+                @endforeach
             </select>
         </div>
 

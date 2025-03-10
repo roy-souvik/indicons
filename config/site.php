@@ -254,4 +254,10 @@ return [
     'app_title' => 'INPALMS 2025',
 
     'contact_email' => 'inpalmsiamle25@gmail.com',
+
+    'abstract_themes' => [
+        'forensic-sciences' => 'Forensic Sciences',
+        'forensic-medicine'=> 'Forensic Medicine',
+        'law' => 'Law',
+    ],
 ];
