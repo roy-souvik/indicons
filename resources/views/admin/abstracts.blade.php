@@ -25,6 +25,7 @@
                     <th class="border-top-0">ID</th>
                     <th class="border-top-0">Reg. ID</th>
                     <th class="border-top-0">User Name</th>
+                    <th class="border-top-0">Image</th>
                     <th class="border-top-0">Heading</th>
                     <th class="border-top-0">Theme</th>
                     <th class="border-top-0" style="width: 10rem;">Description</th>
@@ -43,6 +44,7 @@
                     <td>{{$loop->index + 1}}</td>
                     <td>{{$abstract->abstract_id}}</td>
                     <td>{{$abstract->user->registration_id}}</td>
+                    <td> <img class="img-circle" width="100" src="{{url('images/' . $abstract->image)}}" /> </td>
                     <td>{{$abstract->user->name}}</td>
                     <td>{{$abstract->heading}}</td>
                     <td>{{ucfirst($abstract->theme)}}</td>
