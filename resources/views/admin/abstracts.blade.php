@@ -45,7 +45,12 @@
                     <td>{{$abstract->abstract_id}}</td>
                     <td>{{$abstract->user->registration_id}}</td>
                     <td>{{$abstract->user->name}}</td>
-                    <td> <img class="img-circle" width="100" src="{{url('images/' . $abstract->image)}}" /> </td>
+                    <td>
+                        <img class="img-circle" width="100" src="{{url('images/' . $abstract->image)}}" />
+                        <br />
+
+                        <a href="{{url('images/' . $abstract->image)}}" target="_blank">Open Image</a>
+                    </td>
                     <td>{{$abstract->heading}}</td>
                     <td>{{ucfirst($abstract->theme)}}</td>
                     <td>
