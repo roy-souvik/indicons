@@ -136,7 +136,11 @@
                    @foreach ($delegateTypes as $type)
                        <li class="nav-item">
                            <a class="nav-link {{ $selectedDelegateType->name === $type->name ? 'active' : '' }}"
-                               aria-current="page" href="{{ route('conference-register.show', ['type' => $type->name]) }}">
+                               aria-current="page"
+                               href="{{ route('conference-register.show', [
+                                   'type' => $type->name,
+                                   'module' => $module ?? '',
+                               ]) }}">
                                {{ $type->description }}
                            </a>
                        </li>
@@ -159,18 +163,19 @@
                                <td>{{ $charge->category }}</td>
                                <td>{{ $registrationPeriod->name }}</td>
                                <td>
-                                    @php
-                                        $role = $roles->where('name', $charge->category)->first();
-                                    @endphp
+                                   @php
+                                       $role = $roles->where('name', $charge->category)->first();
+                                   @endphp
 
-                                    @if (!empty($role?->id))
-                                        <button type="button" data-value="{{ $role?->id }}" class="btn btn-link select-role">
-                                            {{ $charge->display_amount }}
-                                        </button>
-                                    @else
-                                        {{ $charge->display_amount }}
-                                    @endif
-                                </td>
+                                   @if (!empty($role?->id))
+                                       <button type="button" data-value="{{ $role?->id }}"
+                                           class="btn btn-link select-role">
+                                           {{ $charge->display_amount }}
+                                       </button>
+                                   @else
+                                       {{ $charge->display_amount }}
+                                   @endif
+                               </td>
                            </tr>
                        @empty
                            <tr>
@@ -217,9 +222,9 @@
                    </div>
 
                    <!-- <div class="input__box">
-                                   <span class="details">Image</span>
-                                   <input type="file" name="image" placeholder="Choose image" id="image">
-                               </div> -->
+                                       <span class="details">Image</span>
+                                       <input type="file" name="image" placeholder="Choose image" id="image">
+                                   </div> -->
 
                    <div class="input__box">
                        <span class="details">Phone Number</span>
@@ -237,10 +242,10 @@
                    </div>
                    <div class="input__box">
                        <span class="details">
-                            Confirm Password
+                           Confirm Password
 
-                            <button class="btn btn-text" id="toggleConfirmPassword">show</button>
-                        </span>
+                           <button class="btn btn-text" id="toggleConfirmPassword">show</button>
+                       </span>
                        <input type="password" id="password_confirmation" name="password_confirmation" required>
                    </div>
 
@@ -274,7 +279,8 @@
                            <option value="">-- choose one --</option>
 
                            @foreach ($countries as $countryKey => $countryName)
-                               <option value="{{ $countryName }}" {{ old('country') == $countryName ? 'selected' : '' }}>
+                               <option value="{{ $countryName }}"
+                                   {{ old('country') == $countryName ? 'selected' : '' }}>
                                    {{ $countryName }}</option>
                            @endforeach
                        </select>
@@ -308,6 +314,7 @@
 
                <div class="button">
                    <input type="hidden" name="delegate_type_id" value="{{ $selectedDelegateType->id }}">
+                   <input type="hidden" name="module" value="{{ $module }}">
                    <input type="submit" value="Register" />
                </div>
            </form>
@@ -388,13 +395,13 @@
                        togglePassword($('#password_confirmation'), $(this));
                    });
 
-                   $('.select-role').click(function () {
-                        const roleId = $(this).data('value');
-                        $('#registration_type').val(roleId);
+                   $('.select-role').click(function() {
+                       const roleId = $(this).data('value');
+                       $('#registration_type').val(roleId);
 
-                        $('html, body').animate({
-                            scrollTop: $('#conference-register-form').offset().top - 20
-                        }, 200);
+                       $('html, body').animate({
+                           scrollTop: $('#conference-register-form').offset().top - 20
+                       }, 200);
                    });
                });
            </script>

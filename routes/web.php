@@ -101,7 +101,7 @@ Route::post('/contact-us', [RegistrationController::class, 'contactUsEmail'])->n
 
 Route::get('/sponsorships', [SponsorshipController::class, 'sponsorshipShow'])->name('sponsorship.show');
 
-Route::post('/registration', [RegistrationController::class, 'register']);
+Route::post('/registration', [RegistrationController::class, 'register'])->name('registration.user.show');
 
 Route::get('/workshop-register', [RegistrationController::class, 'workshopRegisterShow'])
     ->name('workshop.register.show');

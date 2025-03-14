@@ -39,6 +39,8 @@ class RegistrationController extends Controller
 
     public function show(Request $request)
     {
+        $module = $request->input('module');
+
         $delegateTypes = DB::table('delegate_types')->where('is_active', 1)->get();
 
         $validated = $request->validate([
@@ -69,6 +71,7 @@ class RegistrationController extends Controller
             'charges',
             'selectedDelegateType',
             'delegateTypes',
+            'module',
         ));
     }
 
@@ -123,7 +126,7 @@ class RegistrationController extends Controller
         Auth::login($user);
 
         if ($request->input('module') === 'abstract') {
-            return redirect(route('abstract.dates'));
+            return redirect(route('abstract.submitpage'));
         }
 
         return redirect(route('payment.show'));
