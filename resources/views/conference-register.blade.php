@@ -111,16 +111,16 @@
 
            <div class="title">Registration</div>
 
-           <div class="inner-count" style="position: relative;">
-               <h4 class="text-center">
-                   {{ $registrationPeriod->name }} Registration
-               </h4>
-               @include('partials.countdown')
-           </div>
-
+           @if ($module !== 'abstract')
+            <div class="inner-count" style="position: relative;">
+                <h4 class="text-center">
+                    {{ $registrationPeriod->name }} Registration
+                </h4>
+                @include('partials.countdown')
+            </div>
+           @endif
 
            <div class="row">
-
                @if (\Session::has('response'))
                    <div class="alert alert-info">
                        <ul>
@@ -130,8 +130,8 @@
                @endif
            </div>
 
+           @if ($module !== 'abstract')
            <div class="reg-table" style="display: flex; flex-direction: column;">
-
                <ul class="nav nav-pills nav-fill">
                    @foreach ($delegateTypes as $type)
                        <li class="nav-item">
@@ -184,8 +184,8 @@
                        @endforelse
                    </tbody>
                </table>
-
            </div>
+           @endif
 
            @if ($errors->any())
                <div class="alert alert-danger">
@@ -319,7 +319,7 @@
                </div>
            </form>
 
-
+           @if ($module !== 'abstract')
            <div class="row">
                <div class="col-md-10">
                    <h2>FULL REGISTRATION INCLUDES</h2>
@@ -350,12 +350,11 @@
                            <td>All facilities like Delegate. Except Conference kit.</td>
                        </tr>
                    </table>
-
                </div>
-
            </div>
+           @endif
 
-           <img src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:20px;">
+           <img src="indicons/images/SECRETARIATE.png" style="width:100%; margin-top:1.5rem;">
 
            <script>
                $(function() {
