@@ -3,6 +3,18 @@
 
 <h4>Registration Fees in {{$registrationCharge->currency}}</h4>
 
+<style>
+.blink {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+</style>
+
 <div id="conference-attributes" style="position: relative;">
     <div id="overlay" class="d-none" style="position: fixed;
     top: 0;
@@ -175,7 +187,9 @@
 <div class="d-flex">
     <h2>
         Total: {{currencySymbol($registrationCharge->currency)}} <span id="total-amount">0</span>
-        <em class="text-muted" style="font-size: 0.8rem;">18% tax included</em>
+        <em class="text-danger blink">
+            18% tax included
+        </em>
     </h2>
 
     <button id="proceed-payment" class="btn btn-primary ms-5" style="z-index: 110;">Proceed Payment</button>
