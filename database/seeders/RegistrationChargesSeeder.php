@@ -70,6 +70,12 @@ class RegistrationChargesSeeder extends Seeder
             ['role_id' => 2, 'event' => 'physical_conference', 'category' => 'PG / MSc / PhD', 'delegate_type_id' => 3, 'registration_period_id' => 4, 'currency' => 'USD', 'amount' => 800],
             ['role_id' => 4, 'event' => 'physical_conference', 'category' => 'Delegate', 'delegate_type_id' => 3, 'registration_period_id' => 4, 'currency' => 'USD', 'amount' => 900],
             ['role_id' => 5, 'event' => 'physical_conference', 'category' => 'Accompanying Person', 'delegate_type_id' => 3, 'registration_period_id' => 4, 'currency' => 'USD', 'amount' => 400],
+
+            // Workshop Charges
+            ['role_id' => 7, 'event' => 'workshop', 'category' => 'Workshop Attendee Indian', 'delegate_type_id' => 1, 'registration_period_id'
+            => 4, 'currency' => 'INR', 'amount' => 1000],
+            ['role_id' => 7, 'event' => 'workshop', 'category' => 'Workshop Attendee SAARC', 'delegate_type_id' => 2, 'registration_period_id' => 4, 'currency' => 'USD', 'amount' => 20],
+            ['role_id' => 7, 'event' => 'workshop', 'category' => 'Workshop Attendee International', 'delegate_type_id' => 3, 'registration_period_id' => 4, 'currency' => 'USD', 'amount' => 30],
         ];
 
         DB::table('registration_charges')->insert($data);

@@ -206,14 +206,33 @@ class RegistrationController extends Controller
         return $person->delete();
     }
 
-    public function workshopRegisterShow()
+    public function workshopRegisterShow(Request $request)
     {
         $razorPayKey = $this->api->getKey();
         $user = auth()->user();
 
+        $delegateTypes = DB::table('delegate_types')->where('is_active', 1)->get();
+
+        $validated = $request->validate([
+            'type' => [Rule::in($delegateTypes->pluck('name')->all())],
+        ]);
+
         $workshopAttendeeRole = Role::where('key', 'workshop_attendee')->firstOrFail();
         $workshopPrice = SiteConfig::where('name', 'workshop_price')->firstOrFail();
         $workshops = Workshop::active()->get();
+
+        $registrationTypeName = data_get($validated, 'type', $delegateTypes->pluck('name')->first());
+        $selectedDelegateType = $delegateTypes->where('name', $registrationTypeName)->first();
+
+        $delegateId = $delegateTypes->where('name', $registrationTypeName)->pluck('id')->first();
+
+        $registrationCharge = null;
+
+        if (!empty($user)) {
+            $registrationCharge = RegistrationCharge::where('role_id', $user->role_id)
+                ->where('delegate_type_id', $user->delegate_type_id)
+                ->first();
+        }
 
         return view('workshop-register', compact(
             'workshopAttendeeRole',
@@ -221,6 +240,9 @@ class RegistrationController extends Controller
             'workshops',
             'razorPayKey',
             'user',
+            'delegateTypes',
+            'selectedDelegateType',
+            'registrationCharge',
         ));
     }
 

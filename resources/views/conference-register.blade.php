@@ -148,7 +148,7 @@
            </div>
 
            @if ($module !== 'abstract')
-           <div class="reg-table" style="display: flex; flex-direction: column;">
+           <div class="reg-table d-flex" style="flex-direction: column;">
                <ul class="nav nav-pills nav-fill">
                    @foreach ($delegateTypes as $type)
                        <li class="nav-item">

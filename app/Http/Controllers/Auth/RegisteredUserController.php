@@ -58,6 +58,7 @@ class RegisteredUserController extends Controller
             'role_id' => $request->input('role_id'),
             'phone' => $request->input('phone'),
             'company' => $request->input('company'),
+            'delegate_type_id' => $request->input('delegate_type_id'),
         ]);
 
         event(new Registered($user));

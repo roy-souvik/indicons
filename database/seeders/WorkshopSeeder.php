@@ -19,8 +19,8 @@ class WorkshopSeeder extends Seeder
 
         $workshopList = [
             [
-                'name' => 'Workshop One',
-                'description' => 'Workshop one description',
+                'name' => 'Inpalms 2025, Workshop',
+                'description' => 'Inpalms 2025, Workshop',
             ],
         ];
 

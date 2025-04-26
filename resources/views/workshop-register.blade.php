@@ -2,12 +2,9 @@
 @section('content')
 
 @php
-function addGst($amount, $gstPercent = 18) {
-return $amount + (($amount*$gstPercent)/100);
-}
-
-$totalWorkshopPrice = $workshopPrice->value;
-
+$totalWorkshopPrice = !empty($registrationCharge)
+    ? $registrationCharge->amount
+    : 0;
 @endphp
 
 <div class="container">
@@ -28,6 +25,22 @@ $totalWorkshopPrice = $workshopPrice->value;
     @endif
 
     @guest
+    <div class="d-flex">
+        <ul class="nav nav-pills nav-fill">
+            @foreach ($delegateTypes as $type)
+                <li class="nav-item">
+                    <a class="nav-link {{ $selectedDelegateType->name === $type->name ? 'active' : '' }}"
+                        aria-current="page"
+                        href="{{ route('workshop.register.show', [
+                            'type' => $type->name,
+                        ]) }}">
+                        {{ $type->description }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
     <div class="row">
         <div class="card p-4" style="width: 40rem; min-height: 20rem;">
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -73,6 +86,7 @@ $totalWorkshopPrice = $workshopPrice->value;
 
                 <div>
                     <input type="hidden" name="role_id" value={{$workshopAttendeeRole->id}}>
+                    <input type="hidden" name="delegate_type_id" value="{{ $selectedDelegateType->id }}">
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
@@ -99,21 +113,27 @@ $totalWorkshopPrice = $workshopPrice->value;
                 @endforeach
             </ul>
 
-            <p>Price: INR {{$totalWorkshopPrice}}</p>
+            <p>Price: <span id="currency-symbol">{{currencySymbol($registrationCharge->currency)}}</span>{{$totalWorkshopPrice}}</p>
 
             <button id="proceed-payment" class="btn btn-primary ms-5" style="width: 14rem;">Proceed To Payment</button>
 
-            <button id="rzp-button1" class="btn btn-primary d-none" style="width: 10rem;">Pay, INR {{$totalWorkshopPrice}}</button>
+            <button id="rzp-button1" class="btn btn-primary d-none" style="width: 10rem;">
+                Pay, <span id="button-currency-symbol">{{currencySymbol($registrationCharge->currency)}}</span> {{$totalWorkshopPrice}}
+            </button>
         </div>
     </div>
+
     @endif
 
     @auth
     <script>
         const token = "{{ csrf_token() }}";
 
-        $(function() {
+        function addGst(amount, gstPercent = 18) {
+            return amount + ((amount * gstPercent) / 100);
+        }
 
+        $(function() {
             $('#proceed-payment').click(function() {
                 const amount = "{{$totalWorkshopPrice}}";
 
@@ -134,7 +154,7 @@ $totalWorkshopPrice = $workshopPrice->value;
                     data: JSON.stringify({
                         '_token': token,
                         'amount': totalAmount,
-                        'currency': 'INR',
+                        'currency': "{{$registrationCharge->currency}}",,
                     }),
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
@@ -164,7 +184,7 @@ $totalWorkshopPrice = $workshopPrice->value;
                 var options = {
                     "key": "{{$razorPayKey}}",
                     "amount": "{{$totalWorkshopPrice}}",
-                    "currency": "INR",
+                    'currency': "{{$registrationCharge->currency}}",
                     "name": "Inpalms 2025, Workshop Payment",
                     "description": "Inpalms 2025 conference workshop payment",
                     "image": "https://www.inpalms2025.com/indicons/images/logo.png",
