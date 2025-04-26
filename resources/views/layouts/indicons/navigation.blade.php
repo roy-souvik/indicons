@@ -38,7 +38,7 @@
                         <li><a href="{{route('conference-register.show')}}">Registration</a></li>
                         @endif
                         <li><a href="{{route('accommodation.home')}}">Accommodation</a></li>
-
+                        <li><a href="{{route('workshop.register.show')}}">Workshop Register</a></li>
 
                         @if (Auth::user())
                         <li>

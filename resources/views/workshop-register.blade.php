@@ -12,7 +12,10 @@ $totalWorkshopPrice = $workshopPrice->value;
 
 <div class="container">
 
-    <h4>Register for workshop</h4>
+    <div class="d-flex align-items-center">
+        <h4>Register for workshop</h4>
+        <span class="text-muted ms-1">(All fields are required)</span>
+    </div>
 
     @if ($errors->any())
     <div class="alert alert-danger">
