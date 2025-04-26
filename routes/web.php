@@ -5,7 +5,6 @@ use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaCategoryController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\UserController;
