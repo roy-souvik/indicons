@@ -48,12 +48,6 @@ $totalWorkshopPrice = $workshopPrice->value;
                     <input type="file" name="image" placeholder="Choose image" id="image">
                 </div>
 
-                <!-- <div>
-                    <label for="company" class="form-label">Company</label>
-
-                    <input type="text" name="company" value="{{ old('company') }}" class="form-control" id="company" />
-                </div> -->
-
                 <div>
                     <label for="phone" class="form-label">Phone</label>
 
@@ -202,7 +196,7 @@ $totalWorkshopPrice = $workshopPrice->value;
                         "contact": "{{$user->phone}}"
                     },
                     "notes": {
-                        "address": config('site.app_title') . " conference payment"
+                        "address": "{{config('site.app_title')}} conference payment"
                     },
                     "theme": {
                         "color": "#3399cc"
