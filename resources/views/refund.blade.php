@@ -1,25 +1,37 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
 
-<h1>Refund Policy</h1>
+<style>
+    .inner-page {
+        width: 100%;
+    padding-top: 45px;
+    padding-bottom: 0px;
+    overflow: hidden;
+    height: 480px;
+}
+</style>
+
+<h1 style="color: #ba1617;">Refund policy for INPALMS</h1>
+
+
+
+<div style="font-size: 18px; font-weight: 700; color: #07007c;">UPTO 30TH JUNE:</div>
+
+<p style="text-align: justify;">75 % will be refunded (except Tax)</p>
+
+<div style="font-size: 18px; font-weight: 700; color: #07007c;  text-transform: uppercase;">Upto 31st August:</div>
+
+<p style="text-align: justify;">50% will be refunded (except tax)</p>
+
+<div style="font-size: 18px; font-weight: 700; color: #07007c; text-transform: uppercase;">Form 1st Sept:</div>
+
+<p style="text-align: justify;">NO REFUND</p>
 
 
 
 
 
-<p><strong>EDUMED INFOTECH</strong>&nbsp;believes in helping its customers as far as possible and has therefore a liberal cancellation policy. Under this policy:</p>
-<h6>Cancellation Policy:</h6>
-<ul>
-  <li>Cancellations will be considered only if the request is made immediately after placing the order. However, the cancellation request may not be entertained if the orders have been communicated to the vendors/merchants and they have initiated the process of shipping them.</li>
-  <li><strong>EDUMED INFOTECHA</strong>&nbsp;does not accept cancellation requests for perishable items like flowers, eatables, etc. However, refund/replacement can be made if the customer establishes that the quality of the product delivered is not good.</li>
-</ul>
-<h6>Refund Policy:</h6>
-<ul>
-  <li>In case of receipt of damaged or defective items, please report the same to our Customer Service team. The request will, however, be entertained once the merchant has checked and determined the same at his own end. This should be reported within 2 days of receipt of the products.</li>
-  <li>In case you feel that the product received is not as shown on the site or as per your expectations, you must bring it to the notice of our customer service within 2 days of receiving the product. The Customer Service Team, after looking into your complaint, will take an appropriate decision.</li>
-  <li>In case of complaints regarding products that come with a warranty from manufacturers, please refer the issue to them.</li>
-  <li>In case of any refunds approved by&nbsp;<strong>EDUMED INFOTECH</strong>, it will take 16-30 days for the refund to be processed to the end customer.</li>
-</ul>
+<p style="text-align: justify;">How to get refund: mail to the secretariat with registration number and payment details, assigning the reason.</p>
  
 
 @stop

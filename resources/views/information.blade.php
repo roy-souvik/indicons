@@ -1,4 +1,4 @@
- @extends('layouts.indicons.main-layout')
+  @extends('layouts.indicons.main-layout')
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
@@ -68,8 +68,8 @@
             </tr>
             <tr>
                <td width="173" valign="top">
-                  <p><strong>Early Bird ( upto 31 Mar)</strong></p>
-               </td>
+                  <p><strong>Early Bird ( upto 30 April)</strong></p>
+              </td>
                <td width="52" valign="top">
                   <p><strong>15000</strong></p>
                </td>
@@ -89,13 +89,13 @@
                   <p><strong>300</strong></p>
                </td>
                <td width="47" valign="top">
-                  <p><strong>400</strong></p>
+                  <p><strong>300</strong></p>
                </td>
                <td width="45" valign="top">
-                  <p><strong>500</strong></p>
+                  <p><strong>400</strong></p>
                </td>
                <td width="44" valign="top">
-                  <p><strong>600</strong></p>
+                  <p><strong>500</strong></p>
                </td>
             </tr>
             <tr>
@@ -205,7 +205,7 @@
                   <p align="center"><strong>200    USD</strong></p>
                </td>
                <td width="135" colspan="3" valign="top">
-                  <p align="center"><strong>400    USD</strong></p>
+                  <p align="center"><strong>200    USD</strong></p>
                </td>
             </tr>
             <tr>
@@ -218,6 +218,7 @@
                      <li><strong>Lunch and Tea &amp; snacks for 3 days. </strong></li>
                      <li><strong>Dinner 2 days: 1st day &ndash; Cultural Night and Dinner. 2nd    day &ndash; Gala Dinner.</strong></li>
                      <li><strong>Special surprises. Can join as participant in all the events.</strong></li>
+                     <li><strong>Free entry to all the pre Conference workshops </strong></li>
                   </ol>
                   <p align="center"><strong>(18 % GST will be    applicable as per GOI rules)</strong></p>
                </td>
@@ -533,10 +534,10 @@
                   <p><strong>220 </strong></p>
                </td>
                <td width="66" valign="top">
-                  <p><strong>360 </strong></p>
+                  <p><strong>350 </strong></p>
                </td>
                <td width="66" valign="top">
-                  <p><strong>360 </strong></p>
+                  <p><strong>350 </strong></p>
                </td>
             </tr>
             <tr>
@@ -616,7 +617,7 @@
                <p>Last date of Early Bird Registration </p>
             </td>
             <td width="301" valign="top">
-               <p>  31-03-2025</p>
+               <p>  30-04-2025</p>
             </td>
          </tr>
          <tr>

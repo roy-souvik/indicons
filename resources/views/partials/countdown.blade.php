@@ -5,10 +5,12 @@
         text-align: center;
         display: table;
         margin: auto;
-        padding: 21px 60px 46px;
+        padding: 21px 40px 21px;
         border-radius: 200px;
 
         width: auto;
+        position: relative;
+        z-index: 1;
         right: 0px;
     }
 
@@ -27,25 +29,28 @@
     }
 
     #countdown li {
-        display: inline-block;
-        font-size: 1.5em;
-        list-style-type: none;
-        padding: 0px 1.5em;
-        text-transform: uppercase;
-        background-color: #3EB7E9;
-        font-family: "Roboto", serif !important;
-        border-radius: 9px;
-        padding: 20px;
-        margin-right: 20px;
-        width: 200px;
-    }
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 0px 1.5em;
+    text-transform: uppercase;
+    /* background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516); */
+    font-family: "Roboto", serif !important;
+    border-radius: 0px;
+    padding: 9px 0px;
+    width: 230px;
+    border-right: 2px solid #ffffff26;
+}
 
     #countdown li:nth-of-type(2) {
-        background-color: #006492;
+               /*background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);*/
+    
     }
 
     #countdown li:nth-of-type(4) {
-        background-color: #006492;
+                /*background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);*/
+                border: none;
+    
     }
 
     #countdown li span {
@@ -70,8 +75,9 @@
         padding: 0 .5rem;
     }
 </style>
+<div class="counter-sec">
+    <div class="elementor-background-overlay"></div>
 <div class="container">
-
     <div id="countdown">
         <ul>
             <li><span id="days"></span><strong>days</strong></li>
@@ -85,4 +91,5 @@
         <span> </span>
         <span> </span>
     </div>
+</div>
 </div>

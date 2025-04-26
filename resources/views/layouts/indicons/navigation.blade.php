@@ -12,6 +12,7 @@
                     <ul class="links">
 
                         <li><a href="{{route('home')}}">Home</a></li>
+                         <li><a href="{{route('about')}}">About</a></li>
 
                         <li><a href="{{route('information.home')}}">Information</a></li>
 
@@ -49,7 +50,8 @@
                             </form>
                         </li>
                         @else
-                        <li style="background:#3eb7e9"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                        <li style="background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+    box-shadow: 0 5px 15px rgba(242, 97, 103, .4);"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                         @endif
                     </ul>
                 </div>

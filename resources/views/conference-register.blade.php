@@ -1,6 +1,23 @@
        @extends('layouts.indicons.main-layout')
        @section('content')
            <style>
+           .counter-sec {
+    background-color: #301746;
+    position: relative;
+    margin: 30px 0px;
+}
+
+.counter-sec .elementor-background-overlay {
+       background-image: url(https://demos.bakerwebdev.net/festival-event/wp-content/uploads/sites/12/2020/03/wavy-blob.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: auto;
+    opacity: 0.44;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    inset: 0;
+    position: absolute;
+    z-index: 0;
+}
                #countdown {
                    position: static !important;
                }

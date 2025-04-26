@@ -1,4 +1,4 @@
-@extends('layouts.indicons.main-layout')
+ @extends('layouts.indicons.main-layout')
 @section('content')
 <div class="inner-page">
 <h1>GENERAL INSTRUCTIONS</h1>
@@ -97,6 +97,60 @@
     <td width="460" valign="top"><p>List    all references cited in the abstract in a standard citation format (APA 7th    edition).</p></td>
   </tr>
 </table>
+
+<p>&nbsp;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" style="width:100%">
+  <tr>
+    <td width="257" rowspan="5" valign="top"><p>&nbsp;</p>
+        <p>Insert your Photo <br>
+          (Principal Author)</p></td>
+    <td width="203" valign="top"><p>Name of the Author </p></td>
+    <td width="624" valign="top"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="203" valign="top"><p>Email</p></td>
+    <td width="624" valign="top"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="203" valign="top"><p>Phone No.</p></td>
+    <td width="624" valign="top"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="203" valign="top"><p>Affiliation</p></td>
+    <td width="624" valign="top"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td width="203" valign="top"><p>Co-Author/s Name/s</p></td>
+    <td width="624" valign="top"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table border="1" cellspacing="0" cellpadding="0" style="width:100%">
+  <tr>
+    <td width="601" valign="top"><p>Abstract (Not more than 150 words)</p></td>
+  </tr>
+  <tr>
+    <td width="601" valign="top"><p>Key words</p></td>
+  </tr>
+  <tr>
+    <td width="601" valign="top"><p><strong>Extended    abstract (1500 words, excluding references)</strong></p>
+        <p>Introduction<br>
+          Methods<br>
+          Results<br>
+          Discussion<br>
+          Conclusion</p></td>
+  </tr>
+  <tr>
+    <td width="601" valign="top"><p>Reference (APA 7th Edition)</p></td>
+  </tr>
+  <tr>
+    <td width="601" valign="top"><p>Disclosure of Conflict of Interest</p></td>
+  </tr>
+</table>
+ 
+
+
 <p>&nbsp;</p>
 <p><strong>Outstanding  Abstract Awards</strong><br>
   Organising  committee will award a number of young investigators* in recognition of outstanding  and original research (represented by the submitted abstracts). All accepted  abstracts will be eligible for the Outstanding Abstract Awards. The organizing  committee will identify a number of abstracts with the highest scores from all  the submitted abstracts. There will be no age restriction.</p>
