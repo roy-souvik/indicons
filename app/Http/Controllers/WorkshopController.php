@@ -19,6 +19,7 @@ class WorkshopController extends Controller
         $payment->transaction_id = $request->transaction_id;
         $payment->status = $request->status;
         $payment->amount = $request->amount ? $request->amount / 100 : 0;
+        $payment->currency = $request->currency ?? 'INR';
         $payment->payment_response = json_encode($request->payment_response);
 
         $payment->save();

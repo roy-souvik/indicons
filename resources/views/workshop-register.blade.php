@@ -195,6 +195,7 @@ $totalWorkshopPrice = !empty($registrationCharge)
                             'transaction_id': response.razorpay_payment_id,
                             'status': orderData.status,
                             'amount': orderData.amount,
+                            'currency': "{{$registrationCharge->currency}}",
                             'payment_response': {
                                 'checkout_response': response,
                                 'order_response': orderData,
@@ -260,6 +261,12 @@ $totalWorkshopPrice = !empty($registrationCharge)
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 processData: false,
+                beforeSend: function() {
+                    showLoader();
+                },
+                complete: function() {
+                    hideLoader();
+                },
                 success: function(result) {
                     return result;
                 },
