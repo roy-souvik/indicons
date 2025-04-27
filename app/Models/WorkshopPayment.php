@@ -35,4 +35,9 @@ class WorkshopPayment extends Model
     {
         $query->where('status', 'created');
     }
+
+    public function getDisplayAmountAttribute(): string
+    {
+        return currencySymbol($this->currency) . ' ' . $this->amount;
+    }
 }
