@@ -118,7 +118,7 @@ $totalWorkshopPrice = !empty($registrationCharge)
             <button id="proceed-payment" class="btn btn-primary ms-5" style="width: 14rem;">Proceed To Payment</button>
 
             <button id="rzp-button1" class="btn btn-primary d-none" style="width: 10rem;">
-                Pay, <span id="button-currency-symbol">{{currencySymbol($registrationCharge->currency)}}</span> {{$totalWorkshopPrice}}
+                Pay <span id="button-currency-symbol">{{currencySymbol($registrationCharge->currency)}}</span> {{$totalWorkshopPrice}}
             </button>
         </div>
     </div>
@@ -154,7 +154,7 @@ $totalWorkshopPrice = !empty($registrationCharge)
                     data: JSON.stringify({
                         '_token': token,
                         'amount': totalAmount,
-                        'currency': "{{$registrationCharge->currency}}",,
+                        'currency': "{{$registrationCharge->currency}}",
                     }),
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
