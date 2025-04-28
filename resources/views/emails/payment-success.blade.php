@@ -127,7 +127,10 @@
                             <td>Accompanying person</td>
                             <td>{{ $payment->user?->companions->count() ?? 0 }} Person(s)</td>
                             <td>
-                                {{ $payment->user->companions->count() ? $fee->currency : '' }}
+                                {{ $payment->user->companions->count()
+                                    ? $payment->registrationCharge->currency
+                                    : ''
+                                }}
                                 {{ $companionsAmount ?? 0 }}
                             </td>
                         </tr>
