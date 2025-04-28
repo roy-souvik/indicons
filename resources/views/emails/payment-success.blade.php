@@ -120,7 +120,7 @@
                     <table border="1" cellspacing="0" cellpadding="0">
                         <tr>
                             <td>Registration type</td>
-                            <td>{{ $payment->registration_type }}</td>
+                            <td>{{ $payment->registrationCharge->registrationPeriod->name }}</td>
                             <td>{{ $payment->registrationCharge->currency }} {{ $memberAmount }}</td>
                         </tr>
                         <tr>

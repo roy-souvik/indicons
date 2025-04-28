@@ -56,7 +56,7 @@ class ConferencePayment extends Model
     {
         $payment = ConferencePayment::with([
             'user.companions',
-            'registrationCharge',
+            'registrationCharge.registrationPeriod',
             'accommodations.room',
             'coupon',
         ])
