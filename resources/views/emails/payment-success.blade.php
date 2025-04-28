@@ -169,12 +169,12 @@
                         <tr>
                             <td>Pickup and Drop</td>
                             <td>{{ $payment->pickup_drop ? 'Yes' : 'No' }}</td>
-                            <td>{{ $payment->pickup_drop ? $fee->currency . ' ' . $pickupDropPrice : 0 }}</td>
+                            <td>{{ $payment->pickup_drop ? $payment->registrationCharge->currency . ' ' . $pickupDropPrice : 0 }}</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Total:</td>
-                            <td><strong>{{ $fee->currency }} {{ $payment->amount }}</strong></td>
+                            <td><strong>{{ $payment->registrationCharge->currency }} {{ $payment->amount }}</strong></td>
                         </tr>
                     </table>
                     <p style="padding: 5px;"><strong>Registration Cancellation / Refund Policy:</strong><br>
