@@ -54,7 +54,12 @@ class ConferencePayment extends Model
 
     public static function getPaymentReceiptData(string $transactionId): array
     {
-        $payment = ConferencePayment::with(['user.companions', 'accommodations.room', 'coupon'])
+        $payment = ConferencePayment::with([
+            'user.companions',
+            'registrationCharge',
+            'accommodations.room',
+            'coupon',
+        ])
             ->where('transaction_id', $transactionId)
             ->first();
 

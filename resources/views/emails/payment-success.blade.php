@@ -9,7 +9,6 @@
     .pdf-container {
         width: 100%;
         max-width: 900px;
-        /* Adjust this according to your PDF page size */
         margin: 0 auto;
     }
 
@@ -95,7 +94,7 @@
 
                     @php
                         $registrationTypeColumn = $payment->registration_type . '_amount';
-                        $memberAmount = $fee->{$registrationTypeColumn};
+                        $memberAmount = $payment->amount;
 
                         $companionsAmount = $payment->user->companions->reduce(function ($carry, $companion) {
                             $fee = !empty($companion->confirmed) ? intval($companion->fees) : 0;
@@ -122,7 +121,7 @@
                         <tr>
                             <td>Registration type</td>
                             <td>{{ $payment->registration_type }}</td>
-                            <td>{{ $fee->currency }} {{ $memberAmount }}</td>
+                            <td>{{ $payment->registrationCharge->currency }} {{ $memberAmount }}</td>
                         </tr>
                         <tr>
                             <td>Accompanying person</td>
