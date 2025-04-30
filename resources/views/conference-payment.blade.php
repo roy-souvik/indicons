@@ -36,7 +36,7 @@
         </tbody>
     </table>
 
-    <div id="coupon-wrap" class="d-flex" style="justify-content: right; align-items: center;">
+    {{-- <div id="coupon-wrap" class="d-flex" style="justify-content: right; align-items: center;">
         @if (empty($coupon))
             Coupon code:
             <input type="text" id="coupon_code" value="" class="ms-2 form-control" style="width: 10rem;">
@@ -52,7 +52,7 @@
 
             <div> <button id="unapply_coupon" class="btn btn-link" style="text-decoration: none; font-size: 1.2rem; font-weight: bold;">x</button></div>
         @endif
-    </div>
+    </div> --}}
 
     <hr />
 
