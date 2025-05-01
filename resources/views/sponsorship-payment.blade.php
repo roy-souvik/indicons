@@ -2,10 +2,6 @@
 @section('content')
 
 @php
-function addGst($amount, $gstPercent = 18) {
-    return $amount + (($amount*$gstPercent)/100);
-}
-
 $sponsorships = $userSponsorships->pluck('sponsorship');
 
 $totalAmount = 0;

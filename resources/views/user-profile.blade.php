@@ -130,10 +130,6 @@
 $confirmedCompanions = $user->companions->where('confirmed', 1);
 $unconfirmedCompanions = $user->companions->where('confirmed', 0);
 
-function addGst($amount, $gstPercent = 18) {
-return $amount + (($amount*$gstPercent)/100);
-}
-
 $companionAmount = 0;
 $totalCompanionAmount = 0;
 
