@@ -118,13 +118,14 @@ class PaymentController extends Controller
 
         // If the user has not made the conference payment then redirect to conference payment page.
         if (empty($conferencePayment)) {
-            redirect('payment.show');
+            return redirect(route('payment.show'));
         }
 
         $registrationPeriod = RegistrationPeriod::where('id', 4)->get()->first(); // SPOT
 
-        $registrationCharge = RegistrationCharge::where('role_id', $user->role_id)
+        $registrationCharge = RegistrationCharge::where('role_id', 4)
             ->where('registration_period_id', $registrationPeriod->id)
+            ->where('event', 'conference_addons')
             ->first();
 
         $companionCharge = RegistrationCharge::where('registration_period_id', $registrationPeriod->id)
@@ -140,9 +141,9 @@ class PaymentController extends Controller
 
         $razorPayKey = $this->api->getKey();
 
-        $hotels = Hotel::with(['rooms' => function ($query) use ($registrationPeriod, $user) {
+        $hotels = Hotel::with(['rooms' => function ($query) use ($conferencePayment, $user) {
             $query->where('delegate_type_id', $user->delegate_type_id)
-                  ->where('registration_period_id', $registrationPeriod->id);
+                  ->where('registration_period_id', $conferencePayment->registrationCharge->registration_period_id);
         }])
             ->active()
             ->get();
