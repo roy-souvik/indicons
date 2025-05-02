@@ -111,6 +111,66 @@ class PaymentController extends Controller
         ));
     }
 
+    public function showConferenceAddonsPage(Request $request)
+    {
+        $user = Auth::user();
+        $conferencePayment = ConferencePayment::where('user_id', $user->id)->get()->first();
+
+        // If the user has not made the conference payment then redirect to conference payment page.
+        if (empty($conferencePayment)) {
+            redirect('payment.show');
+        }
+
+        $registrationPeriod = RegistrationPeriod::where('id', 4)->get()->first(); // SPOT
+
+        $registrationCharge = RegistrationCharge::where('role_id', $user->role_id)
+            ->where('registration_period_id', $registrationPeriod->id)
+            ->first();
+
+        $companionCharge = RegistrationCharge::where('registration_period_id', $registrationPeriod->id)
+            ->where('delegate_type_id', $user->delegate_type_id)
+            ->where('event', 'conference_addons')
+            ->first();
+
+        $accompanyingPersons = AccompanyingPerson::where('user_id', Auth::user()->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $pickupDropPrice = SiteConfig::where('name', 'pick_drop_price')->first();
+
+        $razorPayKey = $this->api->getKey();
+
+        $hotels = Hotel::with(['rooms' => function ($query) use ($registrationPeriod, $user) {
+            $query->where('delegate_type_id', $user->delegate_type_id)
+                  ->where('registration_period_id', $registrationPeriod->id);
+        }])
+            ->active()
+            ->get();
+
+        $hotelBookingStartConfig = SiteConfig::where('name', 'hotel_booking_start')->first();
+        $hotelBookingEndConfig = SiteConfig::where('name', 'hotel_booking_end')->first();
+
+        $bookingPeriod = CarbonPeriod::create(
+            $hotelBookingStartConfig->value,
+            $hotelBookingEndConfig->value,
+        );
+
+        $maxRoomCount = intval(SiteConfig::where('name', 'max_allowed_rooms')->first()->value);
+
+        return view('conference-payment-addons', compact(
+            'registrationPeriod',
+            'registrationCharge',
+            'accompanyingPersons',
+            'pickupDropPrice',
+            'user',
+            'hotels',
+            'razorPayKey',
+            'bookingPeriod',
+            'maxRoomCount',
+            'companionCharge',
+        ));
+    }
+
     public function saveConferencePayment(Request $request): ConferencePayment | JsonResponse
     {
         $authUser = Auth::user();

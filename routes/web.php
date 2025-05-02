@@ -127,6 +127,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/conference-payment', [PaymentController::class, 'showConferencePaymentPage'])
         ->name('payment.show');
 
+    Route::get('/conference-addons', [PaymentController::class, 'showConferenceAddonsPage'])
+        ->name('conference.addons.show');
+
     Route::post('/save-payment', [PaymentController::class, 'saveConferencePayment'])
         ->name('payment.save');
 

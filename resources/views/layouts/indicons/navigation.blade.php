@@ -31,7 +31,9 @@
 
 
                         @if (Auth::user() && !Auth::user()->isSuperAdmin())
-                        <li><a href="/conference-payment">Conference Payment</a></li>
+                        <li><a href="{{ route('payment.show') }}">Conference Payment</a></li>
+
+                        <li><a href="{{ route('conference.addons.show') }}">Conference Addons</a></li>
                         @endif
 
                         @if (!Auth::user())
