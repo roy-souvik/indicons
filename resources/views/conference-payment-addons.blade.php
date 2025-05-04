@@ -22,19 +22,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.05);"></div>
-    <table class="table">
-        <tbody>
-            <tr>
-                <td>{{$registrationPeriod->name}} Registration</td>
-                <td>
-                    <input type="radio" id="payable_amount" name="payment" checked value="{{$registrationCharge->amount}}">
-                    <label for="payable_amount">
-                        {{$registrationCharge->display_amount}}
-                    </label>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
     <hr />
 

@@ -46,6 +46,16 @@ class RegistrationCharge extends Model
         return $this->amount - $this->discount;
     }
 
+    public function isPhysicalConference(): bool
+    {
+        return $this->event === 'physical_conference';
+    }
+
+    public function isConferenceAddons(): bool
+    {
+        return $this->event === 'conference_addons';
+    }
+
     /**
      * Get the amount with currency symbol.
      *
