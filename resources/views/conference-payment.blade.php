@@ -36,7 +36,7 @@
         </tbody>
     </table>
 
-    {{-- <div id="coupon-wrap" class="d-flex" style="justify-content: right; align-items: center;">
+    <div id="coupon-wrap" class="d-flex" style="justify-content: right; align-items: center;">
         @if (empty($coupon))
             Coupon code:
             <input type="text" id="coupon_code" value="" class="ms-2 form-control" style="width: 10rem;">
@@ -52,7 +52,7 @@
 
             <div> <button id="unapply_coupon" class="btn btn-link" style="text-decoration: none; font-size: 1.2rem; font-weight: bold;">x</button></div>
         @endif
-    </div> --}}
+    </div>
 
     <hr />
 
@@ -201,6 +201,7 @@
     const token = "{{ csrf_token() }}";
     var roomDetails = {};
     const maxRoomCount = parseInt("{{$maxRoomCount}}", 10);
+    const couponDiscount = parseInt("{{ $couponDiscount }}", 10);
 
     $(function() {
         updateAmount();
@@ -471,8 +472,7 @@
             0;
 
         const roomAmount = getRoomAmount(roomDetails);
-
-        let totalAmount = payerAmount + companionsAmount + pickUpDropPrice + roomAmount;
+        let totalAmount = (payerAmount - couponDiscount) + companionsAmount + pickUpDropPrice + roomAmount;
 
         totalAmount = addGst(totalAmount);
 
@@ -494,6 +494,7 @@
         return amount;
     }
 
+    // Create an order with the payment gateway.
     function createOrder(totalAmount) {
         return $.ajax({
             url: '/create-orders',
