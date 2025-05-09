@@ -57,10 +57,10 @@ class PaymentController extends Controller
             ->where('registration_period_id', $registrationPeriod->id)
             ->first();
 
-        $totalDiscount = 0;
+        $couponDiscount = 0;
 
         if (!empty($coupon)) {
-            $totalDiscount = $coupon->discount($registrationCharge->getPayableAmount());
+            $couponDiscount = $coupon->discount($registrationCharge->getPayableAmount());
         }
 
         $accompanyingPersonRole = Role::firstWhere('key', 'accompanying_person');
@@ -107,6 +107,7 @@ class PaymentController extends Controller
             'maxRoomCount',
             'companionCharge',
             'paypalConfig',
+            'couponDiscount',
         ));
     }
 
@@ -216,6 +217,9 @@ class PaymentController extends Controller
         return view('payment-success', compact('transactionId'));
     }
 
+    /**
+     * Create an order with the payment gateway.
+     */
     public function createOrder(Request $request)
     {
         $request->validate([
