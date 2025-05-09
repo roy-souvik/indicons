@@ -114,10 +114,13 @@ class PaymentController extends Controller
     public function showConferenceAddonsPage(Request $request)
     {
         $user = Auth::user();
-        $conferencePayment = ConferencePayment::where('user_id', $user->id)->get()->first();
+        $conferencePayment = ConferencePayment::with('registrationCharge')
+            ->where('user_id', $user->id)->get()->first();
+
+        dd($conferencePayment);
 
         // If the user has not made the conference payment then redirect to conference payment page.
-        if (empty($conferencePayment)) {
+        if (empty($conferencePayment) && $conferencePayment->registrationCharge) {
             return redirect(route('payment.show'));
         }
 
