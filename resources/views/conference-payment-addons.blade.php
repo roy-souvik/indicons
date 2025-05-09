@@ -142,12 +142,7 @@
                 </label>
             </div>
             @endif
-
         </div>
-        {{-- <label for="airplane_booking_check" class="mt-3">
-            <input name="airplane_booking_check" id="airplane_booking_check" type="checkbox">
-            I want to avail airplane tickets booking. (<em class="text-muted" style="font-size: 0.8rem;">Our team will contact you for furthur details.</em>)
-        </label> --}}
     </div>
 </div>
 
@@ -302,86 +297,7 @@
         $('input.booking-date').click(function() {
             updateAmount();
         });
-
-        $('#apply_coupon').click(function() {
-            const couponCode = $('#coupon_code').val();
-
-            if (!couponCode?.length || couponCode?.length !== 9) {
-                return;
-            }
-
-            applyCoupon(couponCode);
-        });
-
-        $('#unapply_coupon').click(function () {
-            Swal.fire({
-                title: 'Remove coupon',
-                text: 'Are you sure to remove the coupon?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-                denyButtonText: 'No',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    unapplyCoupon();
-                }
-            });
-
-        });
     });
-
-    function unapplyCoupon() {
-        $.ajax({
-            url: '/unapply-coupon',
-            type: 'POST',
-            data: JSON.stringify({
-                '_token': token,
-            }),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            processData: false,
-            success: function(result) {
-                location.reload();
-
-                return result;
-            },
-            error: function(xhr, status, error) {
-                showError(`Unable to apply coupon. ${xhr?.responseJSON?.message}`);
-
-                return error;
-            },
-        });
-    }
-
-    function applyCoupon(couponCode) {
-        $.ajax({
-            url: '/apply-coupon',
-            type: 'POST',
-            data: JSON.stringify({
-                '_token': token,
-                coupon_code: couponCode,
-            }),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            processData: false,
-            success: function(result) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Coupon code matched.',
-                    icon: 'success',
-                }).then(function() {
-                    location.reload();
-                });
-
-                return result;
-            },
-            error: function(xhr, status, error) {
-                showError(`Unable to apply coupon. ${xhr?.responseJSON?.message}`);
-
-                return error;
-            },
-        });
-    }
 
     function showError(message = 'Error', title = 'Error!') {
         Swal.fire({
@@ -447,6 +363,12 @@
 
         $('#total-amount').text(totalAmount);
 
+        if (totalAmount > 0) {
+            $('#proceed-payment').show();
+        } else {
+            $('#proceed-payment').hide();
+        }
+
         return {
             total_amount: totalAmount,
             payer_amount: payerAmount,
@@ -498,7 +420,7 @@
             "amount": parseInt(updateAmount().total_amount, 10),
             "currency": "{{$registrationCharge->currency}}",
             "name": "Inpalams 2025",
-            "description": "Inpalams 2025 conference registration payment",
+            "description": "Inpalams 2025 conference addons payment",
             "image": "https://inpalms2025.com/indicons/images/logo.png",
             "order_id": orderData.id,
             "handler": function(response) {
@@ -516,7 +438,7 @@
                     'member_registration_type': $('input[name="payment"]:checked').attr('id'),
                     'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
                     'airplane_booking': false,
-                    'payment_title': 'conference_payment',
+                    'payment_title': 'conference_addons_payment',
                     'rooms': Object.values(roomDetails),
                     'booking_dates': getBookingDates(),
                 };

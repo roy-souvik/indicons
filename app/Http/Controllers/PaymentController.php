@@ -117,8 +117,6 @@ class PaymentController extends Controller
         $conferencePayment = ConferencePayment::with('registrationCharge')
             ->where('user_id', $user->id)->get()->first();
 
-        dd($conferencePayment);
-
         // If the user has not made the conference payment then redirect to conference payment page.
         if (empty($conferencePayment) && $conferencePayment->registrationCharge) {
             return redirect(route('payment.show'));
@@ -131,9 +129,10 @@ class PaymentController extends Controller
             ->where('event', 'conference_addons')
             ->first();
 
-        $companionCharge = RegistrationCharge::where('registration_period_id', $registrationPeriod->id)
+        $companionCharge = RegistrationCharge::where('registration_period_id', 1)
             ->where('delegate_type_id', $user->delegate_type_id)
-            ->where('event', 'conference_addons')
+            ->where('event', 'physical_conference') // use same as conference
+            ->where('category', 'Accompanying Person')
             ->first();
 
         $accompanyingPersons = AccompanyingPerson::where('user_id', Auth::user()->id)
