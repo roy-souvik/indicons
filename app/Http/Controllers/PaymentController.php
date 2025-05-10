@@ -136,6 +136,7 @@ class PaymentController extends Controller
             ->first();
 
         $accompanyingPersons = AccompanyingPerson::where('user_id', Auth::user()->id)
+            ->where('confirmed', 0)
             ->orderBy('id', 'desc')
             ->get();
 
@@ -244,6 +245,7 @@ class PaymentController extends Controller
 
             if (!empty($request->status)) {
                 foreach ($accompanyingPersons as $person) {
+                    $person->transaction_id = $request->transaction_id;
                     $person->confirmed = 1;
                     $person->save();
                 }

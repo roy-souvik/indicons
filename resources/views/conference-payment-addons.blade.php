@@ -436,7 +436,7 @@
                     },
                     'payer_amount': updateAmount().payer_amount,
                     'member_registration_type': $('input[name="payment"]:checked').attr('id'),
-                    'pickup_drop': $('input[name="pickup_drop_check"]:checked').val() ? true : false,
+                    'pickup_drop': $('input[name="airportPickupPrice"]:checked').val() ? true : false,
                     'airplane_booking': false,
                     'payment_title': 'conference_addons_payment',
                     'rooms': Object.values(roomDetails),
@@ -455,7 +455,7 @@
                 "contact": ""
             },
             "notes": {
-                "address": "INPALMS 2025 conference payment",
+                "address": "INPALMS 2025 conference addon payment",
                 "user_email": "{{$user->email}}",
                 "site_order_data": JSON.stringify(orderData),
             },

@@ -72,9 +72,11 @@
                     <td>
                         <ul>
                             @foreach($payment->user->companions as $companion)
-                            <li>
-                                Name: {{$companion->getDisplayName()}}; {{$companion->email ?? ''}}
-                            </li>
+                                @if ($companion->transaction_id === $payment->transaction_id)
+                                <li>
+                                    Name: {{$companion->getDisplayName()}}; {{$companion->email ?? ''}}
+                                </li>
+                                @endif
                             @endforeach
                         </ul>
 
