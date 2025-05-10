@@ -118,7 +118,7 @@ class PaymentController extends Controller
             ->where('user_id', $user->id)->get()->first();
 
         // If the user has not made the conference payment then redirect to conference payment page.
-        if (empty($conferencePayment) && $conferencePayment->registrationCharge) {
+        if (empty($conferencePayment)) {
             return redirect(route('payment.show'));
         }
 
