@@ -480,7 +480,7 @@
 
         return {
             total_amount: totalAmount,
-            payer_amount: payerAmount,
+            payer_amount: (payerAmount - couponDiscount),
         };
     }
 
