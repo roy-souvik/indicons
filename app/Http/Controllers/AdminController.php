@@ -56,7 +56,7 @@ class AdminController extends Controller
 
     public function workshopPayments()
     {
-        $payments = WorkshopPayment::with(['user', 'workshop'])->completed()->orderBy('id', 'desc')->get();
+        $payments = WorkshopPayment::with(['user', 'workshopUsers'])->completed()->orderBy('id', 'desc')->get();
 
         return view('admin.workshop-payments', compact('payments'));
     }
@@ -231,7 +231,7 @@ class AdminController extends Controller
 
     public function workshopPaymentsShow()
     {
-        $payments = WorkshopPayment::with(['workshop', 'user'])->orderBy('id', 'desc')->get();
+        $payments = WorkshopPayment::with(['workshopUsers', 'user'])->orderBy('id', 'desc')->get();
 
         return view('admin.workshop-payments', compact('payments'));
     }
