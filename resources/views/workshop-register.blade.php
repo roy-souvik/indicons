@@ -8,9 +8,6 @@
             return $workshop->start_date->format('Y-m-d');
         });
 
-        // Optional: You can hardcode venues by date here if they aren't in DB
-        $venues = ['2025-11-07' => 'AIIMS KALYANI', '2025-11-08' => 'WBNUJS, KOLKATA',];
-
         $unitWorkshopPrice = !empty($registrationCharge) ? $registrationCharge->amount : 0;
     @endphp
 
@@ -77,7 +74,7 @@
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
                     <strong>Date: {{ Carbon::parse($date)->format('d.m.Y') }}</strong><br>
-                    <span>Venue: <u>{{ $venues[$date] ?? 'TBD' }}</u></span>
+                    <span>Venue: <u>{{ $dayWorkshops->first()->venue ?? 'TBD' }}</u></span>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -326,7 +323,7 @@
                                         'order_response': orderData,
                                     },
                                     'payment_title': 'workshop_register_payment',
-                                    'workshop_id': "{{ $firstWorkshopId = 1 }}"
+                                    'workshop_ids': selectedWorkshops.map(workshop => workshop.id),
                                 };
 
                                 saveWorkshopPayment(responseData).then(() => {

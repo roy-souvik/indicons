@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Workshop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class WorkshopPayment extends Model
 {
@@ -26,9 +26,9 @@ class WorkshopPayment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function workshop(): BelongsTo
+    public function workshopUsers(): HasMany
     {
-        return $this->belongsTo(Workshop::class);
+        return $this->hasMany(WorkshopUser::class, 'payment_id', 'id');
     }
 
     public function scopeCompleted($query)

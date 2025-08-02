@@ -1,57 +1,164 @@
-<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tbody>
-        <tr>
-            <td style="font-size:19px;background:transparent;border:none">
-                <img style="display:block" src="https://inpalms2025.com/indicons/images/banner-1.jpg" alt="image" width="700" data-image-whitelisted="">
-            </td>
-        </tr>
-        <tr>
-            <td style="border:none"></td>
-        </tr>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 900px;
+    }
 
-        <tr>
-            <td style="background-color:#fff;padding-left:30px;padding-right:30px;font-size:12px;padding-top:30px;padding-bottom:40px">
-                <p>Conference: <b>{{config('site.app_title')}}.</b></p>
-                <p>Venue: <b>THE WESTIN, KOLKATA, WEST BENGAL, INDIA</b></p>
-                <p>Dates: <b>9th, 10th and 11th November, 2025</b></p>
+    .pdf-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
 
-                <h5>Registration ID: {{$payment->user->registration_id}}</h5>
-                <h5>Transaction ID: {{$payment->transaction_id}}</h5>
+    table {
+        width: 90%;
+        border-collapse: collapse;
+    }
 
-                <p>Dear <strong>{{$payment->user->getDisplayName()}},</strong> </p>
-                <p>Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata. </p>
+    td {
+        padding: 1px;
+        vertical-align: top;
+    }
+</style>
 
-                <p>
-                    Thank you for registering for workshop of {{config('site.app_title')}}, which takes place 9th to 11th November 2025 at The Westin, Kolkata, India.
-                </p>
+<div class="pdf-container">
+    <table border="0" align="center" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td style="font-size:1.2rem; background:transparent; border:none">
+                    <img style="display:block" src="https://inpalms2025.com/indicons/images/banner-1.jpg" alt="image"
+                        width="600" data-image-whitelisted="">
+                </td>
+            </tr>
+            <tr>
+                <td>
 
+                    <h4 style="text-align:center; padding:5px 0px;">REGISTRATION DETAILS & INVOICE </h4>
+                    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                        <tr>
+                            <td valign="top">
+                                <p><strong>Conference Name</strong></p>
+                            </td>
+                            <td valign="top">
+                                <p>15TH INPALMS 2025
+                                    <br>
+                                    Jointly organised by INPALMS and IAMLE
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <p><strong>Conference Dates</strong></p>
+                            </td>
+                            <td valign="top">
+                                <p><a name="_Hlk191556963">9th, 10th, &amp; 11th November 2025</a> </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <p><strong>Venue</strong></p>
+                            </td>
+                            <td valign="top">
+                                <p><a name="_Hlk191556988">The Westin, Kolkata</a> </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <p><strong>Pre Conference workshops</strong></p>
+                            </td>
+                            <td valign="top">
+                                <p>7th&amp; 8th November 2025</p>
+                            </td>
+                        </tr>
+                    </table>
+                    @php
+                        $registrationTypeColumn = $payment->registration_type . '_amount';
+                        $memberAmount = $payment->amount;
 
-                <h5>Cancellation Policy:</h5>
+                        $companionsAmount = $payment->user->companions->reduce(function ($carry, $companion) {
+                            $fee = !empty($companion->confirmed) ? intval($companion->fees) : 0;
 
-                <ul>
-                    <li>Cancellation Date: 31 December 2022.</li>
-                    <li>
-                        All refund/cancellation requests must be provided in writing and received by 31 December
-                        2022. There will be an administrative fee of 25% deducted from each refund. After 31
-                        December 2022, no refunds will be given for registration cancellations.
-                    </li>
-                </ul>
+                            return $carry + $fee;
+                        });
+                    @endphp
 
-                <h5>Hotel at Venue, Cancellation Policy:</h5>
+                    <p style="padding: 0.5rem;">
+                        Dear&nbsp;<strong>{{ $payment->user->getDisplayName() }},</strong>
+                        <br />
+                        <br />
+                        Warm greetings from the Organising Secretary. Welcome to the city of joy, Kolkata.<br>
+                        Thank you for registering for 15th INPALMS, jointly organised by Indo-Pacific <br />Association
+                        of Law,
+                        Medicine, and Science (INPALMS) and Indian Academy of Medico Legal <br />Experts (IAMLE); which
+                        takes
+                        place on 9th 10th &amp; 11th November 2025 at The Westin, Kolkata; <br />along with pre
+                        conference
+                        workshops at various places on 7th and 8th November 2025.
+                    </p>
+                    <p><strong>Your Workshop Details:</strong></p>
+                    {{--  --}}
+                    <table border="1" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>Registration type</td>
+                            <td>{{ $payment->registrationCharge->registrationPeriod->name }}</td>
+                            <td>{{ $payment->registrationCharge->currency }} {{ $memberAmount }}</td>
+                        </tr>
+                        <tr>
+                            <td>Accompanying person</td>
+                            <td>{{ $payment->user?->companions->count() ?? 0 }} Person(s)</td>
+                            <td>
+                                {{ $payment->user->companions->count()
+                                    ? $payment->registrationCharge->currency
+                                    : ''
+                                }}
+                                {{ $companionsAmount ?? 0 }}
+                            </td>
+                        </tr>
 
-                <ul>
-                    <li>Full Cancellation Deadline: 31 December 2022.</li>
-                    <li>Cancellations up to 31 st December 2022 will be refunded after a 25% fee deduction</li>
-                    <li>
-                        All refund/cancellation requests must be provided in writing and received by 31 December
-                        2022.
-                    </li>
-                </ul>
+                        <tr>
+                            <td></td>
+                            <td>Total:</td>
+                            <td><strong>{{ $payment->registrationCharge->currency }} {{ $payment->amount }}</strong></td>
+                        </tr>
+                    </table>
+                    {{--  --}}
+                    <p style="padding: 5px;"><strong>Registration Cancellation / Refund Policy:</strong><br>
+                        All refund/cancellation requests must be provided in writing.</p>
+                    <table border="1" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td valign="top">
+                                <p><a name="_Hlk191560047"></a><a name="_Hlk191560013">Up to 30th June, 2025 </a> </p>
+                            </td>
+                            <td valign="top">
+                                <p>Up to 31st August, 2025</p>
+                            </td>
+                            <td valign="top">
+                                <p>1st September, 2025 onwards </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <p>25% of Deduction </p>
+                            </td>
+                            <td valign="top">
+                                <p>50% of Deduction </p>
+                            </td>
+                            <td valign="top">
+                                <p>No Refund</p>
+                            </td>
+                        </tr>
+                    </table>
 
-                <br>
-                @include('partials.email-footer')
+                    <p style="padding:5px; margin-bottom: 0.5rem;">Thanking You,<br>
+                        15th INPALMS 2025 Secretariate.<br>
+                        <a href="http://www.inpalms2025.com">www.inpalms2025.com</a> <br>
+                        <a href="mailto:inpalmsiamle25@gmail.com">inpalmsiamle25@gmail.com</a>
+                    </p>
+                </td>
 
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </tr>
+        </tbody>
+    </table>
+</div>

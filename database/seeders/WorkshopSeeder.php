@@ -18,45 +18,54 @@ class WorkshopSeeder extends Seeder
     {
         DB::table('workshops')->truncate();
 
+        $dayOneTimestamp = Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp;
+        $dayTwoTimestamp = Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp;
+
         $workshopList = [
             // Day 1 - 07.11.2025 @ AIIMS KALYANI
             [
                 'name' => 'Forensic Nursing',
                 'description' => '<p><strong>Convenor:</strong> Ms Poonam Joshi</p><p><strong>Co-Convenor:</strong> Ms. Geeta Parwanda</p>',
-                'start_date' => Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp,
-                'end_date' => Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp,
+                'venue' => 'AIIMS KALYANI',
+                'start_date' => $dayOneTimestamp,
+                'end_date' => $dayOneTimestamp,
             ],
             [
                 'name' => 'Forensic Dentistry',
                 'description' => '<p><strong>Convenor:</strong> Prof. Ajay Chhabra</p><p><strong>Co-Convenor:</strong> Dr. Parul Khare Sinha</p>',
-                'start_date' => Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp,
-                'end_date' => Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp,
+                'venue' => 'AIIMS KALYANI',
+                'start_date' => $dayOneTimestamp,
+                'end_date' => $dayOneTimestamp,
             ],
             [
                 'name' => 'Medical Certification of Cause of Death (MCCD)',
                 'description' => '<p><strong>Convenor:</strong> Prof. Gambhir Singh</p><p><strong>Co-Convenor:</strong> Dr. Ninad Najrale</p>',
-                'start_date' => Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp,
-                'end_date' => Carbon::createFromFormat('Y-m-d', '2025-11-07')->timestamp,
+                'venue' => 'AIIMS KALYANI',
+                'start_date' => $dayOneTimestamp,
+                'end_date' => $dayOneTimestamp,
             ],
 
             // Day 2 - 08.11.2025 @ WBNUJS, KOLKATA
             [
                 'name' => 'Crime Scene Management',
                 'description' => '<p><strong>Convenor:</strong> Dr Tanurup Das, WBNUJS, Kolkata</p><p><strong>Co-Convenor:</strong> Dr. Neetu Mishra, Lucknow</p>',
-                'start_date' => Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp,
-                'end_date' => Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp,
+                'venue' => 'WBNUJS, KOLKATA',
+                'start_date' => $dayTwoTimestamp,
+                'end_date' => $dayTwoTimestamp,
             ],
             [
                 'name' => 'Forensic Toxicology',
                 'description' => '<p><strong>Convenor:</strong> Dr Bhavya Srivastava, WBNUJS, Kolkata</p><p><strong>Co-Convenor:</strong> Dr. Anita Yadav, Bhopal</p>',
-                'start_date' => Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp,
-                'end_date' => Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp,
+                'venue' => 'WBNUJS, KOLKATA',
+                'start_date' => $dayTwoTimestamp,
+                'end_date' => $dayTwoTimestamp,
             ],
             [
                 'name' => 'Workshop on POCSO (British Council)',
                 'description' => '<p><strong>Convenor:</strong> TBD</p><p><strong>Co-Convenor:</strong> TBD</p>',
-                'start_date' => Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp,
-                'end_date' => Carbon::createFromFormat('Y-m-d', '2025-11-08')->timestamp,
+                'venue' => 'WBNUJS, KOLKATA',
+                'start_date' => $dayTwoTimestamp,
+                'end_date' => $dayTwoTimestamp,
             ],
         ];
 
