@@ -73,16 +73,6 @@
                             </td>
                         </tr>
                     </table>
-                    @php
-                        $registrationTypeColumn = $payment->registration_type . '_amount';
-                        $memberAmount = $payment->amount;
-
-                        $companionsAmount = $payment->user->companions->reduce(function ($carry, $companion) {
-                            $fee = !empty($companion->confirmed) ? intval($companion->fees) : 0;
-
-                            return $carry + $fee;
-                        });
-                    @endphp
 
                     <p style="padding: 0.5rem;">
                         Dear&nbsp;<strong>{{ $payment->user->getDisplayName() }},</strong>
@@ -98,31 +88,47 @@
                         workshops at various places on 7th and 8th November 2025.
                     </p>
                     <p><strong>Your Workshop Details:</strong></p>
-                    {{--  --}}
-                    <table border="1" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td>Registration type</td>
-                            <td>{{ $payment->registrationCharge->registrationPeriod->name }}</td>
-                            <td>{{ $payment->registrationCharge->currency }} {{ $memberAmount }}</td>
-                        </tr>
-                        <tr>
-                            <td>Accompanying person</td>
-                            <td>{{ $payment->user?->companions->count() ?? 0 }} Person(s)</td>
-                            <td>
-                                {{ $payment->user->companions->count()
-                                    ? $payment->registrationCharge->currency
-                                    : ''
-                                }}
-                                {{ $companionsAmount ?? 0 }}
-                            </td>
-                        </tr>
 
+                    {{-- Workshop list --}}
+                    <p><strong>Workshop(s) Attending:</strong></p>
+                    @if ($payment->user->workshops->isNotEmpty())
+                        <table border="1" cellspacing="0" cellpadding="5" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Workshop Name</th>
+                                    <th>Date</th>
+                                    <th>Venue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($payment->user->workshops as $workshop)
+                                    <tr>
+                                        <td>{{ $workshop->name }}</td>
+                                        <td>
+                                            @php
+                                                $start = $workshop->start_date->format('jS M Y');
+                                            @endphp
+                                            {{ $start }}
+                                        </td>
+                                        <td>{{ $workshop->venue ?? 'N/A' }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <p style="color: gray;">No workshops registered.</p>
+                    @endif
+
+                    {{-- Payment Summary --}}
+                    <table border="1" cellspacing="0" cellpadding="0">
                         <tr>
                             <td></td>
                             <td>Total:</td>
-                            <td><strong>{{ $payment->registrationCharge->currency }} {{ $payment->amount }}</strong></td>
+                            <td><strong>{{ $payment->currency }} {{ $payment->amount }}</strong>
+                            </td>
                         </tr>
                     </table>
+
                     {{--  --}}
                     <p style="padding: 5px;"><strong>Registration Cancellation / Refund Policy:</strong><br>
                         All refund/cancellation requests must be provided in writing.</p>

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -89,6 +90,12 @@ class User extends Authenticatable
     public function companions(): HasMany
     {
         return $this->hasMany(AccompanyingPerson::class);
+    }
+
+    public function workshops(): BelongsToMany
+    {
+        return $this->belongsToMany(Workshop::class, 'workshop_users', 'user_id', 'workshop_id')
+            ->withPivot('payment_id');
     }
 
     public function isIndian(): bool

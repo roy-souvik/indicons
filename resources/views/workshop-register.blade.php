@@ -102,7 +102,7 @@
         {{--  --}}
 
         @guest
-            <div class="row">
+            <div class="d-flex justify-content-center mb-4">
                 <div class="card p-4" style="width: 40rem; min-height: 20rem;">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
@@ -161,21 +161,19 @@
         @endguest
 
         @if (Auth::user())
-            <div class="row">
+            <div class="d-flex justify-content-center mb-4">
                 <div class="card p-4" style="width: 40rem;">
-                    <h4>Workshop Selected</h4>
+                    <h4>Workshop(s) Selected</h4>
 
-                    <ul id="selected-workshop-list">
+                    <ul id="selected-workshop-list"></ul>
 
-                    </ul>
-
-                    <p>
+                    <h5 class="text-bold">
                         Price:
                         <span id="currency-symbol">
                             {{ currencySymbol($registrationCharge->currency) }}
                         </span>
                         <span id="selected-total-fee">0</span>
-                    </p>
+                    </h5>
 
                     <button id="proceed-payment" class="btn btn-primary ms-5" style="width: 14rem;">
                         Proceed To Payment

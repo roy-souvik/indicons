@@ -33,7 +33,7 @@ class WorkshopPaymentSuccess extends Mailable
      */
     public function build()
     {
-        $payment = WorkshopPayment::with(['user', 'workshop'])
+        $payment = WorkshopPayment::with(['user', 'workshopUsers'])
             ->where('transaction_id', $this->transactionId)
             ->first();
 
