@@ -218,7 +218,6 @@ class RegistrationController extends Controller
         ]);
 
         $workshopAttendeeRole = Role::where('key', 'workshop_attendee')->firstOrFail();
-        $workshopPrice = SiteConfig::where('name', 'workshop_price')->firstOrFail();
         $workshops = Workshop::active()->get();
 
         $registrationTypeName = data_get($validated, 'type', $delegateTypes->pluck('name')->first());
@@ -236,7 +235,6 @@ class RegistrationController extends Controller
 
         return view('workshop-register', compact(
             'workshopAttendeeRole',
-            'workshopPrice',
             'workshops',
             'razorPayKey',
             'user',
