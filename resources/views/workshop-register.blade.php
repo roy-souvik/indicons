@@ -1,7 +1,17 @@
 @extends('layouts.indicons.main-layout')
 @section('content')
     @php
-        $totalWorkshopPrice = !empty($registrationCharge) ? $registrationCharge->amount : 0;
+        use Carbon\Carbon;
+
+        // Group workshops by date
+        $grouped = $workshops->groupBy(function ($workshop) {
+            return $workshop->start_date->format('Y-m-d');
+        });
+
+        // Optional: You can hardcode venues by date here if they aren't in DB
+        $venues = ['2025-11-07' => 'AIIMS KALYANI', '2025-11-08' => 'WBNUJS, KOLKATA',];
+
+        $unitWorkshopPrice = !empty($registrationCharge) ? $registrationCharge->amount : 0;
     @endphp
 
     <div class="container">
@@ -48,124 +58,53 @@
 
                         <table class="table table-sm table-striped">
                             <tbody>
-                                <tr>
-                                    <td>Indian</td>
-                                    <td>1000 INR</td>
-                                </tr>
-                                <tr>
-                                    <td>SAARC</td>
-                                    <td>20 USD</td>
-                                </tr>
-                                <tr>
-                                    <td>International</td>
-                                    <td>30 USD</td>
-                                </tr>
+                                @foreach ($registrationCharges as $regCh)
+                                    <tr>
+                                        <td>{{ strtoupper($regCh->delegateType->name) }}</td>
+                                        <td>{{ $regCh->amount }} {{ $regCh->currency }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+        @endguest
 
+        {{--  --}}
 
-            <!-- Day 1 -->
+        @foreach ($grouped as $date => $dayWorkshops)
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
-                    <strong>Date: 07.11.2025</strong><br>
-                    <span>Venue: <u>AIIMS KALYANI</u></span>
+                    <strong>Date: {{ Carbon::parse($date)->format('d.m.Y') }}</strong><br>
+                    <span>Venue: <u>{{ $venues[$date] ?? 'TBD' }}</u></span>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <!-- Workshop 1 -->
-                        <div class="col-md-4">
-                            <div class="form-check mb-2">
-                                <input class="orm-check-input workshop-checkbox" type="checkbox" value="Forensic Nursing"
-                                    id="workshop1">
-                                <label class="form-check-label fw-bold" for="workshop1">Forensic Nursing</label>
+                        @foreach ($dayWorkshops as $index => $workshop)
+                            <div class="col-md-4">
+                                <div class="form-check mb-2">
+                                    @auth
+                                        <input class="form-check-input workshop-checkbox" type="checkbox"
+                                            value="{{ $workshop->name }}" id="workshop{{ $workshop->id }}"
+                                            data-id="{{ $workshop->id }}" data-name="{{ $workshop->name }}"
+                                            data-amount="{{ $unitWorkshopPrice }}">
+                                    @endauth
+                                    <label class="form-check-label fw-bold" for="workshop{{ $workshop->id }}">
+                                        {{ $workshop->name }}
+                                    </label>
+                                </div>
+                                {!! $workshop->description !!}
                             </div>
-                            <p class="mb-1"><strong>Convenor:</strong> Ms Poonam Joshi</p>
-                            <p><strong>Co-Convenor:</strong> Ms. Geeta Parwanda</p>
-                        </div>
-
-                        <!-- Workshop 2 -->
-                        <div class="col-md-4">
-                            <div class="form-check mb-2">
-                                <input class="orm-check-input workshop-checkbox" type="checkbox" value="Forensic Dentistry"
-                                    id="workshop2">
-                                <label class="form-check-label fw-bold" for="workshop2">Forensic Dentistry</label>
-                            </div>
-                            <p class="mb-1"><strong>Convenor:</strong> Prof. Ajay Chhabra</p>
-                            <p><strong>Co-Convenor:</strong> Dr. Parul Khare Sinha</p>
-                        </div>
-
-                        <!-- Workshop 3 -->
-                        <div class="col-md-4">
-                            <div class="form-check mb-2">
-                                <input class="orm-check-input workshop-checkbox" type="checkbox"
-                                    value="Medical Certification of Cause of Death (MCCD)" id="workshop3">
-                                <label class="form-check-label fw-bold" for="workshop3">Medical Certification of Cause of Death
-                                    (MCCD)</label>
-                            </div>
-                            <p class="mb-1"><strong>Convenor:</strong> Prof. Gambhir Singh</p>
-                            <p><strong>Co-Convenor:</strong> Dr. Ninad Najrale</p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+        @endforeach
 
-            <!-- Day 2 -->
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <strong>Date: 08.11.2025</strong><br>
-                    <span>Venue: <u>WBNUJS, KOLKATA</u></span>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <!-- Workshop 4 -->
-                        <div class="col-md-4">
-                            <div class="form-check mb-2">
-                                <input class="orm-check-input workshop-checkbox" type="checkbox" value="Crime Scene Management"
-                                    id="workshop4">
-                                <label class="form-check-label fw-bold" for="workshop4">Crime Scene Management</label>
-                            </div>
-                            <p class="mb-1"><strong>Convenor:</strong> Dr Tanurup Das, WBNUJS, Kolkata</p>
-                            <p><strong>Co-Convenor:</strong> Dr. Neetu Mishra, Lucknow</p>
-                        </div>
+        {{--  --}}
 
-                        <!-- Workshop 5 -->
-                        <div class="col-md-4">
-                            <div class="form-check mb-2">
-                                <input class="orm-check-input workshop-checkbox" type="checkbox" value="Forensic Toxicology"
-                                    id="workshop5">
-                                <label class="form-check-label fw-bold" for="workshop5">Forensic Toxicology</label>
-                            </div>
-                            <p class="mb-1"><strong>Convenor:</strong> Dr Bhavya Srivastava, WBNUJS, Kolkata</p>
-                            <p><strong>Co-Convenor:</strong> Dr. Anita Yadav, Bhopal</p>
-                        </div>
-
-                        <!-- Workshop 6 -->
-                        <div class="col-md-4">
-                            <div class="form-check mb-2">
-                                <input class="orm-check-input workshop-checkbox" type="checkbox" value="Workshop on POCSO"
-                                    id="workshop6">
-                                <label class="form-check-label fw-bold" for="workshop6">Workshop on POCSO (British
-                                    Council)</label>
-                            </div>
-                            <p class="mb-1"><strong>Convenor:</strong> TBD</p>
-                            <p><strong>Co-Convenor:</strong> TBD</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @auth
-                <div class="mb-4">
-                    <h5>Total Fee:
-                        <span id="currency-symbol">{{ currencySymbol($registrationCharge->currency) }}</span>
-                        <span id="total-fee">0</span>
-                    </h5>
-                </div>
-            @endauth
-
+        @guest
             <div class="row">
                 <div class="card p-4" style="width: 40rem; min-height: 20rem;">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
@@ -185,11 +124,6 @@
                             <x-input id="email" class="form-control" type="email" name="email" :value="old('email')"
                                 required />
                         </div>
-
-                        {{-- <div class="mt-4 mb-4">
-                        <label for="image" class="form-label">Image</label>
-                        <input type="file" name="image" placeholder="Choose image" id="image">
-                    </div> --}}
 
                         <div>
                             <label for="phone" class="form-label">Phone</label>
@@ -232,37 +166,72 @@
         @if (Auth::user())
             <div class="row">
                 <div class="card p-4" style="width: 40rem;">
-                    <h4>Workshop Details</h4>
+                    <h4>Workshop Selected</h4>
 
-                    <ul>
-                        @php
-                            $firstWorkshopId = $workshops->first()->id;
-                        @endphp
-                        @foreach ($workshops as $workshop)
-                            <li>{{ $workshop->name }}</li>
-                        @endforeach
+                    <ul id="selected-workshop-list">
+
                     </ul>
 
-                    <p>Price: <span
-                            id="currency-symbol">{{ currencySymbol($registrationCharge->currency) }}</span>{{ $totalWorkshopPrice }}
+                    <p>
+                        Price:
+                        <span id="currency-symbol">
+                            {{ currencySymbol($registrationCharge->currency) }}
+                        </span>
+                        <span id="selected-total-fee">0</span>
                     </p>
 
-                    <button id="proceed-payment" class="btn btn-primary ms-5" style="width: 14rem;">Proceed To
-                        Payment</button>
+                    <button id="proceed-payment" class="btn btn-primary ms-5" style="width: 14rem;">
+                        Proceed To Payment
+                    </button>
 
                     <button id="rzp-button1" class="btn btn-primary d-none" style="width: 10rem;">
                         Pay <span id="button-currency-symbol">{{ currencySymbol($registrationCharge->currency) }}</span>
-                        {{ $totalWorkshopPrice }}
+                        <span id="final-amount">0</span>
                     </button>
                 </div>
             </div>
-
         @endif
 
         @auth
             <script>
                 const token = "{{ csrf_token() }}";
                 const unitWorkshopPrice = {{ $unitWorkshopPrice }};
+                const $finalAmount = $('#final-amount');
+
+                const selectedWorkshops = [];
+
+                function updateWorkshopList() {
+                    const $list = $('#selected-workshop-list');
+                    const $fee = $('#selected-total-fee');
+                    $list.empty();
+
+                    let total = 0;
+
+                    selectedWorkshops.forEach(item => {
+                        $list.append(`<li>${item.name}</li>`);
+                        total += parseInt(item.amount);
+                    });
+
+                    total = addGst(total);
+
+                    $fee.text(total);
+                    $finalAmount.text(total);
+                }
+
+                function addWorkshop(workshop) {
+                    if (!selectedWorkshops.find(item => item.id === workshop.id)) {
+                        selectedWorkshops.push(workshop);
+                    }
+                    updateWorkshopList();
+                }
+
+                function removeWorkshop(workshopId) {
+                    const index = selectedWorkshops.findIndex(item => item.id === workshopId);
+                    if (index > -1) {
+                        selectedWorkshops.splice(index, 1);
+                    }
+                    updateWorkshopList();
+                }
 
                 function addGst(amount, gstPercent = 18) {
                     return amount + ((amount * gstPercent) / 100);
@@ -274,12 +243,21 @@
                     return selectedCount * parseInt(unitWorkshopPrice, 10);
                 }
 
-                function updateTotalFee() {
-                    $('#total-fee').text(getTotalWorkshopFee());
-                }
-
                 $(function() {
-                    $('.workshop-checkbox').on('change', updateTotalFee);
+                    $('.workshop-checkbox').on('change', function() {
+                        const $checkbox = $(this);
+                        const workshop = {
+                            id: parseInt($checkbox.data('id')),
+                            name: $checkbox.data('name'),
+                            amount: parseInt($checkbox.data('amount'))
+                        };
+
+                        if ($checkbox.is(':checked')) {
+                            addWorkshop(workshop);
+                        } else {
+                            removeWorkshop(workshop.id);
+                        }
+                    });
 
                     $('#proceed-payment').click(function() {
                         const amount = addGst(getTotalWorkshopFee());
@@ -330,7 +308,7 @@
                     function buildCheckoutLink(orderData) {
                         var options = {
                             "key": "{{ $razorPayKey }}",
-                            "amount": "{{ $totalWorkshopPrice }}",
+                            "amount": "{{ $unitWorkshopPrice }}",
                             'currency': "{{ $registrationCharge->currency }}",
                             "name": "Inpalms 2025, Workshop Payment",
                             "description": "Inpalms 2025 conference workshop payment",
@@ -348,7 +326,7 @@
                                         'order_response': orderData,
                                     },
                                     'payment_title': 'workshop_register_payment',
-                                    'workshop_id': "{{ $firstWorkshopId }}"
+                                    'workshop_id': "{{ $firstWorkshopId = 1 }}"
                                 };
 
                                 saveWorkshopPayment(responseData).then(() => {

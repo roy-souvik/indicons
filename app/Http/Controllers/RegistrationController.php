@@ -225,10 +225,12 @@ class RegistrationController extends Controller
 
         $delegateId = $delegateTypes->where('name', $registrationTypeName)->pluck('id')->first();
 
+        $registrationCharges = RegistrationCharge::with('delegateType')->where('event', 'workshop')->get();
+
         $registrationCharge = null;
 
         if (!empty($user)) {
-            $registrationCharge = RegistrationCharge::where('role_id', $user->role_id)
+            $registrationCharge = $registrationCharges->where('role_id', $user->role_id)
                 ->where('delegate_type_id', $user->delegate_type_id)
                 ->first();
         }
@@ -241,6 +243,7 @@ class RegistrationController extends Controller
             'delegateTypes',
             'selectedDelegateType',
             'registrationCharge',
+            'registrationCharges',
         ));
     }
 

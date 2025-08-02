@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required', 'max:20', 'unique:users'],
             'company' => ['string', 'filled'],
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:8120'],
+            // 'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:8120'],
         ]);
 
         $filename = null;
