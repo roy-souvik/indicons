@@ -61,6 +61,13 @@ class AdminController extends Controller
         return view('admin.workshop-payments', compact('payments'));
     }
 
+    public function userPayments()
+    {
+        $users = User::with(['conferencePayments.registrationCharge', 'workshopPayments'])->get();
+
+        return view('admin.user-payments', compact('users'));
+    }
+
     public function abstractList()
     {
         $abstracts = ConferenceAbstract::with(['user', 'emailLogs'])

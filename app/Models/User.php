@@ -98,6 +98,16 @@ class User extends Authenticatable
             ->withPivot('payment_id');
     }
 
+    public function workshopPayments(): HasMany
+    {
+        return $this->hasMany(WorkshopPayment::class);
+    }
+
+    public function conferencePayments(): HasMany
+    {
+        return $this->hasMany(ConferencePayment::class);
+    }
+
     public function isIndian(): bool
     {
         return $this->delegate_type_id === 1;

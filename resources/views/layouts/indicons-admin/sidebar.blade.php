@@ -18,6 +18,13 @@
                     </a>
                 </li>
 
+                {{-- <li class="sidebar-item pt-2">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.user.payments')}}" aria-expanded="false">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span class="hide-menu">User Payments</span>
+                    </a>
+                </li> --}}
+
                 <li class="sidebar-item pt-2">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.manage.fees')}}" aria-expanded="false">
                         <i class="far fa-clock" aria-hidden="true"></i>
