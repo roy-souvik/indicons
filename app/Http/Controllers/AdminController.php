@@ -25,6 +25,7 @@ use App\Models\User;
 use App\Models\VaiMember;
 use App\Models\WorkshopPayment;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
@@ -345,7 +346,15 @@ class AdminController extends Controller
 
     public function showCreateUsersPage()
     {
-        return view('admin.create-registration');
+        $hotelBookingStartConfig = SiteConfig::where('name', 'hotel_booking_start')->first();
+        $hotelBookingEndConfig = SiteConfig::where('name', 'hotel_booking_end')->first();
+
+        $bookingPeriod = CarbonPeriod::create(
+            $hotelBookingStartConfig->value,
+            $hotelBookingEndConfig->value,
+        );
+
+        return view('admin.create-registration', compact('bookingPeriod'));
     }
 
     public function createUsers(Request $request)

@@ -78,10 +78,11 @@
                 <div class="col-md-12 border-bottom p-0">
                     <select name="stay_dates[]" id="stay_dates" class="form-control p-0 border-0" multiple required style="height: 8rem;">
                         <option value="No Stay">No Stay</option>
-                        <option value="2023-01-26">2023-01-26</option>
-                        <option value="2023-01-27">2023-01-27</option>
-                        <option value="2023-01-28">2023-01-28</option>
-                        <option value="2023-01-29">2023-01-29</option>
+                        @foreach ($bookingPeriod as $bookingDate)
+                        <option value="{{$bookingDate->format('Y-m-d')}}">
+                            {{$bookingDate->format('Y-m-d')}}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -97,10 +98,6 @@
 
 <script>
     const token = "{{ csrf_token() }}";
-
-    $(function() {
-
-    });
 </script>
 
 @stop
