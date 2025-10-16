@@ -82,6 +82,11 @@ class User extends Authenticatable
             : $this->name;
     }
 
+    public function getDisplayId(): string
+    {
+        return "User-00{$this->id}";
+    }
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);

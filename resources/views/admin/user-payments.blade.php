@@ -16,7 +16,7 @@
         <tbody>
             @foreach($users as $user)
             <tr>
-                <td>{{ $user->id }}</td>
+                <td>{{ $user->getDisplayId() }}</td>
                 <td>{{ $user->getDisplayName() }}</td>
 
                 {{-- Conference Payments --}}
