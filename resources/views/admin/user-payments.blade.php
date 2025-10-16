@@ -25,7 +25,7 @@
                         <ul>
                             @foreach($user->conferencePayments as $payment)
                                 <li>
-                                    Amt: {{ $payment->amount }} {{ $payment->registrationCharge->currency ?? '' }},
+                                    Amt: {{ number_format($payment->amount) }} {{ $payment->registrationCharge->currency ?? '' }},
                                     <em class="ml-2">Dt: {{ $payment->created_at->format('d-m-Y') }}</em>,
                                     <em class="ml-2">Txn: {{ $payment->transaction_id }}</em>
                                 </li>
@@ -42,7 +42,7 @@
                         <ul>
                             @foreach($user->workshopPayments as $payment)
                                 <li>
-                                    Amt: {{ $payment->amount }} {{ $payment->currency ?? '' }},
+                                    Amt: {{ number_format($payment->amount) }} {{ $payment->currency ?? '' }},
                                     <em class="ml-2">Dt: {{ $payment->created_at->format('d-m-Y') }}</em>,
                                     <em class="ml-2">Txn: {{ $payment->transaction_id }}</em>
                                 </li>
