@@ -123,6 +123,7 @@ class PaymentController extends Controller
 
         $registrationCharge = RegistrationCharge::where('role_id', 4)
             ->where('registration_period_id', $registrationPeriod->id)
+            ->where('delegate_type_id', $user->delegate_type_id)
             ->where('event', 'conference_addons')
             ->first();
 
