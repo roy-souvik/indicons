@@ -91,8 +91,6 @@ class PaymentController extends Controller
 
         $maxRoomCount = intval(SiteConfig::where('name', 'max_allowed_rooms')->first()->value);
 
-        $paypalConfig = "client-id=" . config('paypal.client_id');
-
         return view('conference-payment', compact(
             'registrationPeriod',
             'registrationCharge',
@@ -106,7 +104,6 @@ class PaymentController extends Controller
             'coupon',
             'maxRoomCount',
             'companionCharge',
-            'paypalConfig',
             'couponDiscount',
         ));
     }

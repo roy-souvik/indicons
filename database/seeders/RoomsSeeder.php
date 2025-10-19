@@ -247,7 +247,7 @@ class RoomsSeeder extends Seeder
                 'amount' => '360',
             ],
 
-            // SAARC: Early Bird
+            // International: Early Bird
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 3,
@@ -285,7 +285,7 @@ class RoomsSeeder extends Seeder
                 'amount' => '325',
             ],
 
-            // SAARC: Standard
+            // International: Standard
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 3,
@@ -323,11 +323,11 @@ class RoomsSeeder extends Seeder
                 'amount' => '350',
             ],
 
-            // SAARC: Late
+            // International: Late
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 3,
-                'registration_period_id' => 2,
+                'registration_period_id' => 3,
                 'room_category' => 'Delux',
                 'description' => 'Single',
                 'currency' => 'USD',
@@ -336,7 +336,7 @@ class RoomsSeeder extends Seeder
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 3,
-                'registration_period_id' => 2,
+                'registration_period_id' => 3,
                 'room_category' => 'Delux',
                 'description' => 'Double',
                 'currency' => 'USD',
@@ -345,7 +345,7 @@ class RoomsSeeder extends Seeder
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 3,
-                'registration_period_id' => 2,
+                'registration_period_id' => 3,
                 'room_category' => 'SUITE',
                 'description' => 'Single',
                 'currency' => 'USD',
@@ -354,7 +354,7 @@ class RoomsSeeder extends Seeder
             [
                 'hotel_id' => 1,
                 'delegate_type_id' => 3,
-                'registration_period_id' => 2,
+                'registration_period_id' => 3,
                 'room_category' => 'SUITE',
                 'description' => 'Double',
                 'currency' => 'USD',
