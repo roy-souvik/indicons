@@ -17,7 +17,10 @@
             @foreach($users as $user)
             <tr>
                 <td>{{ $user->getDisplayId() }}</td>
-                <td>{{ $user->getDisplayName() }}</td>
+                <td>
+                    {{ $user->getDisplayName() }}
+                    <em>({{ $user->created_at->format('d-m-Y') }})</em>
+                </td>
 
                 {{-- Conference Payments --}}
                 <td>

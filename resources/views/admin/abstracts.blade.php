@@ -34,7 +34,7 @@
                     <th class="border-top-0">Institution</th>
                     <th class="border-top-0">Confirmed</th>
                     <th class="border-top-0">Created</th>
-                    <th class="border-top-0">Email Count</th>
+                    <th class="border-top-0">Statements</th>
                     <th class="border-top-0">Action</th>
                 </tr>
             </thead>
@@ -67,7 +67,15 @@
                     <td>{{$abstract->institution}}</td>
                     <td>{{$abstract->confirmed ? 'Yes' : 'No'}}</td>
                     <td>{{$abstract->created_at->format('d-m-Y')}}</td>
-                    <td style="text-align: center;">
+                    <td>
+                        <div class="d-none statements-{{$abstract->id}}">
+                            @foreach (explode(',', $abstract->statements) as $statement)
+                                <p>{{$statement}}</p>
+                            @endforeach
+                        </div>
+                        <button class="btn btn-link show-statements" data-descid="{{$abstract->id}}">show statements</button>
+                    </td>
+                    {{-- <td style="text-align: center;">
                         @php
                             $emailLogCount = $abstract->emailLogs->count()
                         @endphp
@@ -79,7 +87,7 @@
                         @else
                         {{$emailLogCount}}
                         @endif
-                    </td>
+                    </td> --}}
                     <td>
 
                         <form method="POST" action="{{ route('admin.abstracts.update') }}">
@@ -129,6 +137,17 @@
                     <p>${description}</p>
 
                     <a class="copy-description" style="float: right; margin-top: 1rem;" data-abstractid="${id}" href="javascript:void(0);">Copy Description</a>
+                `,
+            });
+        });
+
+        $('.show-statements').click(function() {
+            const id = $(this).attr('data-descid');
+            const statements = $('.statements-' + id).html();
+
+            Swal.fire({
+                html: `
+                    <div>${statements}</div>
                 `,
             });
         });
