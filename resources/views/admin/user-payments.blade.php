@@ -9,6 +9,8 @@
             <tr>
                 <th>ID</th>
                 <th>User</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>Conference Payments</th>
                 <th>Workshop Payments</th>
             </tr>
@@ -21,6 +23,9 @@
                     {{ $user->getDisplayName() }}
                     <em>({{ $user->created_at->format('d-m-Y') }})</em>
                 </td>
+
+                <td>{{$user->email}}</td>
+                <td>{{$user->phone}}</td>
 
                 {{-- Conference Payments --}}
                 <td>
