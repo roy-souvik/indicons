@@ -258,6 +258,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/export-abstracts', [AdminController::class, 'exportAbstracts'])->name('admin.abstract.export');
 
+        Route::get('/export-workshops', [AdminController::class, 'exportWorkshops'])
+            ->name('admin.workshop.export');
+
         Route::get('/registrations', [AdminController::class, 'showRegistratons'])->name('admin.register.show');
 
         Route::get('/create-users', [AdminController::class, 'showCreateUsersPage'])->name('admin.register.page');

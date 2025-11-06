@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Exports\AbstractExport;
 use App\Http\Controllers\Exports\AdminRegistrationsExport;
 use App\Http\Controllers\Exports\ConferencePaymentExport;
+use App\Http\Controllers\Exports\WorkshopExport;
 use App\Mail\AbstractSend;
 use App\Mail\AbstractUpdated;
 use App\Mail\AdminRegisterConfirmation;
@@ -295,6 +296,11 @@ class AdminController extends Controller
     public function exportAbstracts()
     {
         return (new AbstractExport())->export();
+    }
+
+    public function exportWorkshops()
+    {
+        return (new WorkshopExport())->export();
     }
 
     public function sendAbstract(Request $request)

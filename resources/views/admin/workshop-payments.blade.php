@@ -2,7 +2,11 @@
 @section('content')
 
 <div class="white-box">
-    <h3 class="box-title">Workshop Payments</h3>
+    <div class="d-flex" style="justify-content: space-between;">
+        <h3 class="box-title">Payments</h3>
+
+        <a class="btn btn-primary mb-2" href="{{route('admin.workshop.export')}}" target="_blank">Export Data</a>
+    </div>
     <div class="table-responsive">
         <table class="table text-nowrap table-bordered">
             <thead>
@@ -37,7 +41,11 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $payment->user->name }}</td>
-                        <td>{{ $payment->user->email }}</td>
+                        <td>
+                            {{ $payment->user->email }}
+                            <br>
+                            {{ $payment->user->phone }}
+                        </td>
                         <td>
                             @foreach ($workshops as $workshop)
                                 <p>
